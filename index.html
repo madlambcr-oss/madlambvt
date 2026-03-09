@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MADLAMB. | Heritage Supply</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bronce: #C5A17A;
+            --bronce-oscuro: #9E7A52;
+            --lona: #F9F4F0; /* Lona un poco más clara y limpia */
+            --madera: #2A1F19;
+            --negro: #111111;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--madera);
+            background-image: url('https://www.transparenttextures.com/patterns/dark-wood.png');
+            color: var(--lona);
+            overflow-x: hidden;
+            background-attachment: fixed; /* La madera se queda fija al hacer scroll */
+        }
+
+        /* Cabecera Refinada */
+        .site-header {
+            background: rgba(26, 20, 17, 0.95);
+            padding: 1.2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--negro);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        .site-header h1 {
+            font-weight: 800;
+            font-size: 1.8rem;
+            margin: 0;
+            letter-spacing: 3px;
+            color: var(--lona);
+            text-shadow: 1px 1px 0px #000;
+        }
+
+        .nav-menu ul { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; }
+        .nav-menu a {
+            color: var(--lona);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+        .nav-menu a:hover { opacity: 1; color: var(--bronce); }
+
+        /* Sección Hero - Ladrillo con más contraste */
+        .hero {
+            padding: 12rem 1rem 6rem;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1596726192131-030a9e2d3122?q=80&w=1600');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 5px solid var(--negro);
+        }
+
+        .hero h2 {
+            font-size: 4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin: 0;
+            letter-spacing: 10px;
+            text-shadow: 6px 6px 0px #000;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            opacity: 0.9;
+            color: var(--bronce);
+        }
+
+        /* Contenedor Principal Elegante */
+        .main-container {
+            max-width: 1100px;
+            margin: 6rem auto;
+            padding: 3rem 1.5rem;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 4rem;
+            text-transform: uppercase;
+            color: var(--lona);
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 0px #000;
+        }
+
+        /* Cuadrícula Elegante y Pequeña */
+        .grid {
+            display: grid;
+            /* Hasta 4 por fila en pantallas grandes */
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: rgba(17, 17, 17, 0.7);
+            color: var(--lona);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover { transform: translateY(-8px); border-color: var(--bronce); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+
+        .card img {
+            width: 100%;
+            height: 260px; /* Imagen más compacta */
+            object-fit: cover;
+            border-bottom: 2px solid rgba(0,0,0,0.2);
+            filter: grayscale(20%) contrast(1.1);
+            transition: 0.4s;
+        }
+        .card:hover img { filter: grayscale(0%) contrast(1.1); }
+
+        .card-info { padding: 1.2rem; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;}
+        
+        .card-info h3 { 
+            margin: 0; 
+            font-size: 1rem; /* Título discreto */
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--lona);
+        }
+        
+        .precio { 
+            font-size: 1.3rem; /* Precio elegante */
+            font-weight: 400;
+            color: #fff; 
+            margin: 10px 0 20px; 
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-adquirir {
+            background: transparent;
+            color: var(--lona);
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--lona);
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            transition: 0.3s;
+        }
+
+        .btn-adquirir:hover { background: var(--bronce); color: #000; border-color: var(--bronce); }
+
+        /* Modal Estilo Bunker */
+        #modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); justify-content: center; align-items: center; z-index: 2000;
+        }
+
+        .modal-content {
+            background: #111; color: var(--lona); padding: 3rem; width: 90%; max-width: 380px;
+            border: 2px solid var(--bronce); text-align: center;
+        }
+        .modal-content h3 { font-family: inherit; font-weight: 700; color: var(--bronce); letter-spacing: 2px;}
+
+        input { 
+            width: 100%; padding: 12px; margin: 15px 0; 
+            background: #222; border: 1px solid rgba(255,255,255,0.1); 
+            color: #fff; box-sizing: border-box; font-family: inherit; font-weight: 300; 
+        }
+        input:focus { border-color: var(--bronce); outline: none;}
+
+        .politicas { 
+            font-size: 0.7rem; background: rgba(0,0,0,0.3); padding: 10px; margin: 15px 0; 
+            border: 1px solid rgba(255,255,255,0.1); text-align: left; color: #aaa;
+        }
+
+        footer { text-align: center; padding: 6rem 1rem; opacity: 0.5; font-size: 0.8rem; letter-spacing: 3px; font-weight: 300; }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <h1>MADLAMB.</h1>
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="#suministros">Suministros</a></li>
+            <li><a href="#">Historias</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Rugged Elegance</h2>
+    <p>Traditional Menswear | Suministros con Historia</p>
+</section>
+
+<div class="main-container" id="suministros">
+    <h2 class="section-title">The Originals</h2>
+    <div class="grid" id="galeria">
+        </div>
+</div>
+
+<footer>
+    © 2026 MADLAMB. | TRADICIÓN Y HERENCIA | SAN JOSÉ, CR
+</footer>
+
+<div id="modal">
+    <div class="modal-content">
+        <h3 id="modal-titulo" style="text-transform: uppercase;">ORDENAR SUMINISTRO</h3>
+        <form id="form-pedido">
+            <input type="text" id="nombre-cliente" placeholder="TU NOMBRE COMPLETO" required>
+            <div class="politicas">
+                <strong>REGLAS:</strong> Piezas únicas vintage. No hay cambios ni devoluciones. El pago se coordina vía transferencia/Sinpe. Envío no incluido.
+            </div>
+            <label style="font-size: 0.8rem; font-weight: 300; color: #aaa;">
+                <input type="checkbox" required style="width: auto; margin-right: 10px;"> He leído y acepto las políticas de compra.
+            </label>
+            <button type="submit" class="btn-adquirir" style="margin-top: 25px;">Enviar Pedido por WhatsApp</button>
+            <button type="button" onclick="cerrarModal()" style="background:none; border:none; color:#555; margin-top:15px; cursor:pointer; font-weight: bold;">[ CANCELAR ]</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Datos de los suministros
+    const prendas = [
+        { id: 1, nombre: "CHAQUETA TRUCKER '68", precio: "₡35,000", foto: "https://images.unsplash.com/photo-1551537482-f2075a1d41f2?q=80&w=600" },
+        { id: 2, nombre: "BOTAS DE INGENIERO", precio: "₡75,000", foto: "https://images.unsplash.com/photo-1520639889413-5d5586a98235?q=80&w=600" },
+        { id: 3, nombre: "CHALECO CUERO RAW", precio: "₡55,000", foto: "https://images.unsplash.com/photo-1517462913221-4b39176899f6?q=80&w=600" },
+        { id: 4, nombre: "SELVEDGE DENIM 21OZ", precio: "₡48,000", foto: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=600" },
+        { id: 5, nombre: "TRADITIONAL FLANNEL", precio: "₡22,000", foto: "https://images.unsplash.com/photo-1520975916090-310595b14299?q=80&w=600" },
+        { id: 6, nombre: "MECHANIC PANTS '55", precio: "₡28,000", foto: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=600" }
+    ];
+
+    const galeria = document.getElementById('galeria');
+    let seleccionada = "";
+
+    function cargar() {
+        prendas.forEach(p => {
+            galeria.innerHTML += `
+                <div class="card">
+                    <img src="${p.foto}" alt="${p.nombre}">
+                    <div class="card-info">
+                        <h3>${p.nombre}</h3>
+                        <p class="precio">${p.precio}</p>
+                        <button class="btn-adquirir" onclick="abrirModal('${p.nombre}')">ADQUIRIR</button>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    function abrirModal(n) {
+        seleccionada = n;
+        document.getElementById('modal-titulo').innerText = "SUMINISTRO: " + n;
+        document.getElementById('modal').style.display = 'flex';
+    }
+
+    function cerrarModal() { document.getElementById('modal').style.display = 'none'; }
+
+    document.getElementById('form-pedido').onsubmit = function(e) {
+        e.preventDefault();
+        const cliente = document.getElementById('nombre-cliente').value;
+        const telefono = "50683087480"; // <--- NO OLVIDES PONER TU NÚMERO AQUÍ
+        const mensaje = `Saludos Madlamb.! Soy ${cliente}. Me interesa la pieza: ${seleccionada}. He leído y acepto las políticas de compra.`;
+        window.open(`https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`, '_blank');
+        cerrarModal();
+    };
+
+    cargar();
+</script>
+
+</body>
+</html>
