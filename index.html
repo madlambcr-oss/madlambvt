@@ -64,12 +64,12 @@
 
 <div id="modal">
     <div class="modal-content">
-        <h3 id="modal-titulo" style="color: var(--bronce); text-transform: uppercase; font-size: 1.2rem;">ORDENAR</h3>
+        <input type="hidden" id="prenda-seleccionada-id">
+        <h3 id="modal-titulo" style="color: var(--bronce); text-transform: uppercase;">ORDENAR</h3>
         <form id="form-pedido">
             <input type="text" id="nombre-cliente" placeholder="TU NOMBRE COMPLETO" required>
-            <p style="font-size: 0.7rem; color: #888; margin-bottom: 15px;">Al dar clic, se enviará tu pedido automáticamente por WhatsApp.</p>
-            <button type="submit" class="btn-adquirir" style="background: var(--bronce); color: #000; border-color: var(--bronce);">ENVIAR A WHATSAPP</button>
-            <button type="button" onclick="cerrarModal()" style="color:#555; margin-top:15px; cursor:pointer; background:none; border:none; font-weight: bold;">[ CANCELAR ]</button>
+            <button type="submit" class="btn-adquirir" style="background: var(--bronce); color: #000;">ENVIAR A WHATSAPP</button>
+            <button type="button" onclick="cerrarModal()" style="color:#555; margin-top:15px; cursor:pointer; background:none; border:none;">[ CANCELAR ]</button>
         </form>
     </div>
 </div>
@@ -95,7 +95,6 @@
     ];
 
     const galeria = document.getElementById('galeria');
-    let seleccionada = "";
 
     function cargar() {
         galeria.innerHTML = prendas.map(p => `
@@ -104,29 +103,30 @@
                 <div class="card-info">
                     <h3>${p.nombre}</h3>
                     <p class="precio">₡${p.precio}</p>
-                    <button class="btn-adquirir" data-nombre="${p.nombre}">ADQUIRIR</button>
+                    <button class="btn-adquirir" onclick="abrirModal('${p.nombre}')">ADQUIRIR</button>
                 </div>
             </div>`).join('');
     }
 
-    // EL ESCUCHADOR MAESTRO
-    document.addEventListener('click', function(e) {
-        if (e.target && e.target.classList.contains('btn-adquirir')) {
-            seleccionada = e.target.getAttribute('data-nombre'); // CAPTURA EL NOMBRE AQUÍ
-            document.getElementById('modal-titulo').innerText = "ORDENAR: " + seleccionada;
-            document.getElementById('modal').style.display = 'flex';
-        }
-    });
+    // ABRIR MODAL - Ahora guarda el nombre en un lugar seguro
+    window.abrirModal = function(nombrePrenda) {
+        document.getElementById('prenda-seleccionada-id').value = nombrePrenda;
+        document.getElementById('modal-titulo').innerText = nombrePrenda;
+        document.getElementById('modal').style.display = 'flex';
+    };
 
-    window.cerrarModal = function() { document.getElementById('modal').style.display = 'none'; };
+    window.cerrarModal = function() { 
+        document.getElementById('modal').style.display = 'none'; 
+    };
 
+    // ENVÍO A WHATSAPP - Recupera el nombre guardado
     document.getElementById('form-pedido').addEventListener('submit', function(e) {
         e.preventDefault();
         const cliente = document.getElementById('nombre-cliente').value;
+        const nombrePrendaParaEnvio = document.getElementById('prenda-seleccionada-id').value;
         const numeroWhatsApp = "50683087480";
         
-        // CONSTRUCCIÓN DEL MENSAJE (Aquí es donde se une todo)
-        const mensajeFinal = `¡Saludos Madlamb.! Soy ${cliente}. Me interesa comprar: ${seleccionada}.`;
+        const mensajeFinal = `¡Saludos Madlamb.! Soy ${cliente}. Me interesa comprar: ${nombrePrendaParaEnvio}.`;
         
         window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensajeFinal)}`, '_blank');
         cerrarModal();
