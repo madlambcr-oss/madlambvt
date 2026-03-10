@@ -64,7 +64,6 @@
 
 <div id="modal">
     <div class="modal-content">
-        <input type="hidden" id="prenda-seleccionada-id">
         <h3 id="modal-titulo" style="color: var(--bronce); text-transform: uppercase;">ORDENAR</h3>
         <form id="form-pedido">
             <input type="text" id="nombre-cliente" placeholder="TU NOMBRE COMPLETO" required>
@@ -77,6 +76,9 @@
 <footer>© 2026 MADLAMB. | SAN JOSÉ, CR</footer>
 
 <script>
+    // Memoria Global
+    let prendaSeleccionadaParaEnvio = "";
+
     function showSection(id) {
         document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
         document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
@@ -94,9 +96,8 @@
         { id: 6, nombre: "MECHANIC PANTS '55", precio: "28,000", foto: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=600" }
     ];
 
-    const galeria = document.getElementById('galeria');
-
     function cargar() {
+        const galeria = document.getElementById('galeria');
         galeria.innerHTML = prendas.map(p => `
             <div class="card">
                 <img src="${p.foto}">
@@ -108,27 +109,26 @@
             </div>`).join('');
     }
 
-    // ABRIR MODAL - Ahora guarda el nombre en un lugar seguro
-    window.abrirModal = function(nombrePrenda) {
-        document.getElementById('prenda-seleccionada-id').value = nombrePrenda;
-        document.getElementById('modal-titulo').innerText = nombrePrenda;
+    window.abrirModal = function(nombre) {
+        prendaSeleccionadaParaEnvio = nombre; // Guarda el nombre inmediatamente
+        document.getElementById('modal-titulo').innerText = "ORDENAR: " + nombre;
         document.getElementById('modal').style.display = 'flex';
     };
 
-    window.cerrarModal = function() { 
-        document.getElementById('modal').style.display = 'none'; 
+    window.cerrarModal = function() {
+        document.getElementById('modal').style.display = 'none';
     };
 
-    // ENVÍO A WHATSAPP - Recupera el nombre guardado
     document.getElementById('form-pedido').addEventListener('submit', function(e) {
         e.preventDefault();
         const cliente = document.getElementById('nombre-cliente').value;
-        const nombrePrendaParaEnvio = document.getElementById('prenda-seleccionada-id').value;
-        const numeroWhatsApp = "50683087480";
+        const telefono = "50683087480";
         
-        const mensajeFinal = `¡Saludos Madlamb.! Soy ${cliente}. Me interesa comprar: ${nombrePrendaParaEnvio}.`;
+        // El mensaje ahora usa la variable global que se llenó al abrir el modal
+        const texto = `¡Saludos Madlamb.! Soy ${cliente}. Me interesa comprar: ${prendaSeleccionadaParaEnvio}.`;
         
-        window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensajeFinal)}`, '_blank');
+        const url = "https://wa.me/" + telefono + "?text=" + encodeURIComponent(texto);
+        window.open(url, '_blank');
         cerrarModal();
     });
 
