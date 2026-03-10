@@ -9,7 +9,7 @@
         :root {
             --bronce: #C5A17A;
             --bronce-oscuro: #9E7A52;
-            --lona: #F9F4F0; /* Lona un poco más clara y limpia */
+            --lona: #F9F4F0;
             --madera: #2A1F19;
             --negro: #111111;
         }
@@ -21,10 +21,9 @@
             background-image: url('https://www.transparenttextures.com/patterns/dark-wood.png');
             color: var(--lona);
             overflow-x: hidden;
-            background-attachment: fixed; /* La madera se queda fija al hacer scroll */
+            background-attachment: fixed;
         }
 
-        /* Cabecera Refinada */
         .site-header {
             background: rgba(26, 20, 17, 0.95);
             padding: 1.2rem 3rem;
@@ -62,7 +61,6 @@
         }
         .nav-menu a:hover { opacity: 1; color: var(--bronce); }
 
-        /* Sección Hero - Ladrillo con más contraste */
         .hero {
             padding: 12rem 1rem 6rem;
             text-align: center;
@@ -89,7 +87,50 @@
             color: var(--bronce);
         }
 
-        /* Contenedor Principal Elegante */
+        /* Estilo para las Historias de Bitácora (Opción B) */
+        .bitacora-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto 4rem;
+            padding: 0 1.5rem;
+        }
+
+        .historia-card {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .historia-card:hover { border-color: var(--bronce); }
+
+        .historia-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            filter: grayscale(60%);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--bronce);
+        }
+
+        .historia-card h3 {
+            font-size: 1rem;
+            color: var(--bronce);
+            text-transform: uppercase;
+            margin: 0 0 10px 0;
+            letter-spacing: 1px;
+        }
+
+        .historia-card p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            font-weight: 300;
+            margin: 0;
+            color: #ccc;
+        }
+
         .main-container {
             max-width: 1100px;
             margin: 6rem auto;
@@ -112,10 +153,8 @@
             text-shadow: 2px 2px 0px #000;
         }
 
-        /* Cuadrícula Elegante y Pequeña */
         .grid {
             display: grid;
-            /* Hasta 4 por fila en pantallas grandes */
             grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
             gap: 2rem;
         }
@@ -133,7 +172,7 @@
 
         .card img {
             width: 100%;
-            height: 260px; /* Imagen más compacta */
+            height: 260px;
             object-fit: cover;
             border-bottom: 2px solid rgba(0,0,0,0.2);
             filter: grayscale(20%) contrast(1.1);
@@ -145,7 +184,7 @@
         
         .card-info h3 { 
             margin: 0; 
-            font-size: 1rem; /* Título discreto */
+            font-size: 1rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -153,7 +192,7 @@
         }
         
         .precio { 
-            font-size: 1.3rem; /* Precio elegante */
+            font-size: 1.3rem;
             font-weight: 400;
             color: #fff; 
             margin: 10px 0 20px; 
@@ -176,7 +215,6 @@
 
         .btn-adquirir:hover { background: var(--bronce); color: #000; border-color: var(--bronce); }
 
-        /* Modal Estilo Bunker */
         #modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.95); justify-content: center; align-items: center; z-index: 2000;
@@ -210,7 +248,7 @@
     <nav class="nav-menu">
         <ul>
             <li><a href="#suministros">Suministros</a></li>
-            <li><a href="#">Historias</a></li>
+            <li><a href="#bitacora">Bitácora</a></li>
         </ul>
     </nav>
 </header>
@@ -218,10 +256,9 @@
 <section class="hero">
     <h2>Rugged Elegance</h2>
     <p>Traditional Menswear | Suministros con Historia</p>
-    
 </section>
+
 <div style="max-width: 1100px; margin: 3rem auto; padding: 0; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0; overflow: hidden; box-shadow: 10px 10px 30px rgba(0,0,0,0.5);">
-    
     <div style="width: 100%; height: 100%; min-height: 400px; overflow: hidden; border-right: 2px solid #111;">
         <img src="https://images.unsplash.com/photo-1520639889413-5d5586a98235?q=80&w=800&auto=format&fit=crop" 
              alt="Madlamb. Suministros con Historia" 
@@ -233,14 +270,34 @@
             Historias de Suministro
         </h2>
         <p style="font-size: 1.05rem; line-height: 1.8; font-weight: 300; color: var(--lona); margin-bottom: 0;">
-            En Madlamb. no vendemos moda rápida; entregamos equipo recuperado. Buscamos en talleres y rincones olvidados suministros que cuentan historias de labor, motores y libertad. Cada pieza es una herramienta de supervivencia con elegancia ruda, pensada para el hombre que valora la herencia y la resistencia.
+            En Madlamb. no vendemos moda rápida; entregamos equipo recuperado. Buscamos en talleres y rincones olvidados suministros que cuentan historias de labor, motores y libertad. Cada pieza es una herramienta de supervivencia con elegancia ruda.
         </p>
     </div>
 </div>
+
+<div id="bitacora" class="bitacora-grid">
+    <div class="historia-card">
+        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=400" alt="Denim">
+        <h3>El Denim Selvedge</h3>
+        <p>La "orilla" roja no es solo estética; indica que la tela fue tejida en telares antiguos de lanzadera, creando un borde que nunca se deshilacha.</p>
+    </div>
+
+    <div class="historia-card">
+        <img src="https://images.unsplash.com/photo-1517462913221-4b39176899f6?q=80&w=400" alt="Cuero">
+        <h3>Cuero 'Pull-Up'</h3>
+        <p>Al doblar este cuero, los aceites se desplazan creando tonos claros. Es un material vivo que registra cada aventura en su superficie.</p>
+    </div>
+
+    <div class="historia-card">
+        <img src="https://images.unsplash.com/photo-1520975916090-310595b14299?q=80&w=400" alt="Flannel">
+        <h3>Herencia de Franela</h3>
+        <p>Originalmente usada por granjeros galeses en el siglo XVII para protegerse del clima rudo. Resistencia pura convertida en estilo.</p>
+    </div>
+</div>
+
 <div class="main-container" id="suministros">
     <h2 class="section-title">The Originals</h2>
-    <div class="grid" id="galeria">
-        </div>
+    <div class="grid" id="galeria"></div>
 </div>
 
 <footer>
@@ -265,7 +322,6 @@
 </div>
 
 <script>
-    // Datos de los suministros
     const prendas = [
         { id: 1, nombre: "CHAQUETA TRUCKER '68", precio: "₡35,000", foto: "https://images.unsplash.com/photo-1551537482-f2075a1d41f2?q=80&w=600" },
         { id: 2, nombre: "BOTAS DE INGENIERO", precio: "₡75,000", foto: "https://images.unsplash.com/photo-1520639889413-5d5586a98235?q=80&w=600" },
@@ -304,8 +360,8 @@
     document.getElementById('form-pedido').onsubmit = function(e) {
         e.preventDefault();
         const cliente = document.getElementById('nombre-cliente').value;
-        const telefono = "50683087480"; // <--- NO OLVIDES PONER TU NÚMERO AQUÍ
-        const mensaje = `Saludos Madlamb.! Soy ${cliente}. Me interesa la pieza: ${seleccionada}. He leído y acepto las políticas de compra.`;
+        const telefono = "50683087480";
+        const mensaje = `¡Saludos Madlamb.! Soy ${cliente}. Me interesa la pieza: ${seleccionada}. He leído y acepto las políticas de compra.`;
         window.open(`https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`, '_blank');
         cerrarModal();
     };
@@ -314,6 +370,4 @@
 </script>
 
 </body>
-
 </html>
-
