@@ -50,7 +50,6 @@
 
         .carousel-container { position: relative; width: 100%; height: 500px; overflow: hidden; margin-bottom: 20px; background: #eee; }
         
-        /* El "riel" que mueve las fotos */
         .carousel-track { 
             display: flex; 
             width: 100%;
@@ -58,7 +57,6 @@
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); 
         }
         
-        /* Cada foto ocupa el 100% del contenedor */
         .carousel-track img { 
             min-width: 100%; 
             width: 100%;
@@ -88,12 +86,22 @@
             letter-spacing: 2px; cursor: pointer; transition: 0.3s;
         }
 
-        /* --- BITÁCORA --- */
+        /* --- BITÁCORA MEJORADA --- */
         .bitacora-header { padding: 8rem 5% 2rem; }
         .bitacora-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1200px; margin: 0 auto; padding: 0 5% 5rem; }
+        .bitacora-item { display: flex; flex-direction: column; }
         .bitacora-item img { width: 100%; height: 600px; object-fit: cover; margin-bottom: 20px; }
-        .bitacora-item h3 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 0; }
-        .bitacora-item p { line-height: 1.6; color: #555; font-size: 0.95rem; }
+        .bitacora-item h3 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 0 0 15px 0; }
+        
+        /* Ajuste de Texto Justificado */
+        .bitacora-item p { 
+            line-height: 1.8; 
+            color: #444; 
+            font-size: 0.95rem; 
+            text-align: justify; 
+            margin: 0;
+            hyphens: auto;
+        }
 
         /* --- MODAL --- */
         #modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.98); justify-content: center; align-items: center; z-index: 9999; }
@@ -133,13 +141,12 @@
         <div class="bitacora-item">
             <img src="The Waxed Canvas Trucker.jpg">
             <h3>The Waxed Canvas Trucker</h3>
-            <p>Gemini ha dicho
-La chaqueta de lona encerada es mucho más que una prenda; es una herencia de ingeniería textil que nació en el siglo XV para proteger a los marineros de los climas más hostiles. Desde las velas de alta mar hasta las icónicas rutas de motociclismo, este material ha evolucionado utilizando fibras como el algodón Martexin y remaches de cobre para ofrecer una resistencia hercúlea y eterna. A diferencia de la moda desechable, su valor real reside en la pátina que desarrolla con el tiempo, transformando cada arruga y marca en una crónica visual de las aventuras de quien la viste, convirtiéndola en una inversión única diseñada para pasar de generación en generación.</p>
+            <p>La chaqueta de lona encerada es mucho más que una prenda; es una herencia de ingeniería textil que nació en el siglo XV para proteger a los marineros de los climas más hostiles. Desde las velas de alta mar hasta las icónicas rutas de motociclismo, este material ha evolucionado utilizando fibras como el algodón Martexin y remaches de cobre para ofrecer una resistencia hercúlea y eterna. A diferencia de la moda desechable, su valor real reside en la pátina que desarrolla con el tiempo, transformando cada arruga y marca en una crónica visual de las aventuras de quien la viste, convirtiéndola en una inversión única diseñada para pasar de generación en generación.</p>
         </div>
         <div class="bitacora-item">
             <img src="https://images.unsplash.com/photo-1520639889413-5d5586a98235?q=80&w=800">
-            <h3>Leather Archive</h3>
-            <p>Desde chaquetas de patrulla hasta cueros de motorista. El desgaste no es daño, es pátina. Es historia viva sobre los hombros.</p>
+            <h3>Archivo de Cuero</h3>
+            <p>Desde chaquetas de patrulla hasta cueros de motorista. El desgaste no es daño, es pátina. Es historia viva sobre los hombros de quien la porta, una pieza que no envejece, sino que madura con cada kilómetro recorrido.</p>
         </div>
     </div>
 </section>
@@ -169,7 +176,6 @@ La chaqueta de lona encerada es mucho más que una prenda; es una herencia de in
         window.scrollTo(0,0);
     }
 
-    // --- LISTA DE PRENDAS EXACTA ---
     const prendas = [
         { id: 1, nombre: "HOODIE UNDER ARMOUR 'REAL TREE'", precio: "35,000", fotos: ["Hoodie under armour real tree.jpg"] },
         { id: 2, nombre: "CARHARRT DETROIT '100 AÑOS'", precio: "50,000", fotos: ["Carharrt Detroit 100 años.jpg"] },
@@ -207,13 +213,10 @@ La chaqueta de lona encerada es mucho más que una prenda; es una herencia de in
     window.moveCarousel = function(pIndex, direction) {
         const track = document.getElementById(`track-${pIndex}`);
         const totalFotos = prendas[pIndex].fotos.length;
-        
         if (!carruselPositions[pIndex]) carruselPositions[pIndex] = 0;
         carruselPositions[pIndex] += direction;
-
         if (carruselPositions[pIndex] < 0) carruselPositions[pIndex] = totalFotos - 1;
         if (carruselPositions[pIndex] >= totalFotos) carruselPositions[pIndex] = 0;
-
         track.style.transform = `translateX(-${carruselPositions[pIndex] * 100}%)`;
     };
 
@@ -236,6 +239,3 @@ La chaqueta de lona encerada es mucho más que una prenda; es una herencia de in
 </script>
 </body>
 </html>
-
-
-
