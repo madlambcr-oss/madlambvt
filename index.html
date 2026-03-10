@@ -8,7 +8,6 @@
     <style>
         :root {
             --bronce: #C5A17A;
-            --bronce-oscuro: #9E7A52;
             --lona: #F9F4F0;
             --madera: #2A1F19;
             --negro: #111111;
@@ -20,10 +19,10 @@
             background-color: var(--madera);
             background-image: url('https://www.transparenttextures.com/patterns/dark-wood.png');
             color: var(--lona);
-            overflow-x: hidden;
             background-attachment: fixed;
         }
 
+        /* Cabecera */
         .site-header {
             background: rgba(26, 20, 17, 0.95);
             padding: 1.2rem 3rem;
@@ -31,36 +30,16 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 2px solid var(--negro);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
             position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-sizing: border-box;
+            top: 0; width: 100%; z-index: 1000; box-sizing: border-box;
         }
 
-        .site-header h1 {
-            font-weight: 800;
-            font-size: 1.8rem;
-            margin: 0;
-            letter-spacing: 3px;
-            color: var(--lona);
-            text-shadow: 1px 1px 0px #000;
-        }
+        .site-header h1 { font-weight: 800; font-size: 1.8rem; margin: 0; letter-spacing: 3px; }
 
         .nav-menu ul { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; }
-        .nav-menu a {
-            color: var(--lona);
-            text-decoration: none;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.7;
-            transition: 0.3s;
-        }
-        .nav-menu a:hover { opacity: 1; color: var(--bronce); }
+        .nav-menu a { color: var(--lona); text-decoration: none; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; opacity: 0.7; }
 
+        /* Hero */
         .hero {
             padding: 12rem 1rem 6rem;
             text-align: center;
@@ -70,175 +49,48 @@
             border-bottom: 5px solid var(--negro);
         }
 
-        .hero h2 {
-            font-size: 4rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin: 0;
-            letter-spacing: 10px;
-            text-shadow: 6px 6px 0px #000;
-        }
-        .hero p {
-            font-size: 1.1rem;
-            font-weight: 300;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            opacity: 0.9;
-            color: var(--bronce);
+        .hero h2 { font-size: 4rem; font-weight: 800; text-transform: uppercase; margin: 0; letter-spacing: 10px; }
+
+        /* Historia Principal */
+        .historia-seccion {
+            max-width: 1100px; margin: 3rem auto; display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* Estilo para las Historias de Bitácora (Opción B) */
-        .bitacora-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1100px;
-            margin: 0 auto 4rem;
-            padding: 0 1.5rem;
-        }
-
-        .historia-card {
-            background: rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 1.5rem;
-            transition: 0.3s;
-        }
-
-        .historia-card:hover { border-color: var(--bronce); }
-
-        .historia-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            filter: grayscale(60%);
-            margin-bottom: 1rem;
-            border-bottom: 1px solid var(--bronce);
-        }
-
-        .historia-card h3 {
-            font-size: 1rem;
-            color: var(--bronce);
-            text-transform: uppercase;
-            margin: 0 0 10px 0;
-            letter-spacing: 1px;
-        }
-
-        .historia-card p {
-            font-size: 0.85rem;
-            line-height: 1.6;
-            font-weight: 300;
-            margin: 0;
-            color: #ccc;
-        }
-
-        .main-container {
-            max-width: 1100px;
-            margin: 6rem auto;
-            padding: 3rem 1.5rem;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255,255,255,0.05);
-            box-shadow: 20px 20px 60px rgba(0,0,0,0.5);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-top: 0;
-            margin-bottom: 4rem;
-            text-transform: uppercase;
-            color: var(--lona);
-            letter-spacing: 4px;
-            text-shadow: 2px 2px 0px #000;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: rgba(17, 17, 17, 0.7);
-            color: var(--lona);
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card:hover { transform: translateY(-8px); border-color: var(--bronce); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
-
-        .card img {
-            width: 100%;
-            height: 260px;
-            object-fit: cover;
-            border-bottom: 2px solid rgba(0,0,0,0.2);
-            filter: grayscale(20%) contrast(1.1);
-            transition: 0.4s;
-        }
-        .card:hover img { filter: grayscale(0%) contrast(1.1); }
-
-        .card-info { padding: 1.2rem; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;}
+        /* Grid de Prendas */
+        .main-container { max-width: 1100px; margin: 6rem auto; padding: 3rem 1.5rem; background: rgba(0,0,0,0.5); }
+        .section-title { text-align: center; font-size: 2.5rem; text-transform: uppercase; color: var(--lona); margin-bottom: 4rem; letter-spacing: 4px; }
         
-        .card-info h3 { 
-            margin: 0; 
-            font-size: 1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--lona);
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 2rem; }
         
-        .precio { 
-            font-size: 1.3rem;
-            font-weight: 400;
-            color: #fff; 
-            margin: 10px 0 20px; 
-            font-family: 'Montserrat', sans-serif;
-        }
+        .card { background: rgba(17, 17, 17, 0.7); border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; display: flex; flex-direction: column; }
+        .card img { width: 100%; height: 260px; object-fit: cover; }
+        .card-info { padding: 1.2rem; text-align: center; }
+        .card-info h3 { font-size: 1rem; text-transform: uppercase; color: var(--lona); margin: 0; }
+        .precio { font-size: 1.3rem; margin: 10px 0 20px; color: #fff; }
 
         .btn-adquirir {
-            background: transparent;
-            color: var(--lona);
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid var(--lona);
-            font-weight: 700;
-            text-transform: uppercase;
-            cursor: pointer;
-            letter-spacing: 2px;
-            font-size: 0.75rem;
-            transition: 0.3s;
+            background: transparent; color: var(--lona); padding: 0.8rem; border: 1px solid var(--lona);
+            font-weight: 700; text-transform: uppercase; cursor: pointer; letter-spacing: 2px; width: 100%;
         }
-
         .btn-adquirir:hover { background: var(--bronce); color: #000; border-color: var(--bronce); }
 
+        /* MODAL (Lo que estaba fallando) */
         #modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); justify-content: center; align-items: center; z-index: 2000;
+            display: none; /* Se activa con JS */
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); justify-content: center; align-items: center; z-index: 9999;
         }
 
         .modal-content {
-            background: #111; color: var(--lona); padding: 3rem; width: 90%; max-width: 380px;
-            border: 2px solid var(--bronce); text-align: center;
-        }
-        .modal-content h3 { font-family: inherit; font-weight: 700; color: var(--bronce); letter-spacing: 2px;}
-
-        input { 
-            width: 100%; padding: 12px; margin: 15px 0; 
-            background: #222; border: 1px solid rgba(255,255,255,0.1); 
-            color: #fff; box-sizing: border-box; font-family: inherit; font-weight: 300; 
-        }
-        input:focus { border-color: var(--bronce); outline: none;}
-
-        .politicas { 
-            font-size: 0.7rem; background: rgba(0,0,0,0.3); padding: 10px; margin: 15px 0; 
-            border: 1px solid rgba(255,255,255,0.1); text-align: left; color: #aaa;
+            background: #111; border: 2px solid var(--bronce); padding: 3rem;
+            width: 90%; max-width: 380px; text-align: center; color: var(--lona);
         }
 
-        footer { text-align: center; padding: 6rem 1rem; opacity: 0.5; font-size: 0.8rem; letter-spacing: 3px; font-weight: 300; }
+        input { width: 100%; padding: 12px; margin: 15px 0; background: #222; border: 1px solid #444; color: #fff; }
+
+        footer { text-align: center; padding: 6rem 1rem; opacity: 0.5; font-size: 0.8rem; letter-spacing: 3px; }
     </style>
 </head>
 <body>
@@ -258,70 +110,28 @@
     <p>Traditional Menswear | Suministros con Historia</p>
 </section>
 
-<div style="max-width: 1100px; margin: 3rem auto; padding: 0; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0; overflow: hidden; box-shadow: 10px 10px 30px rgba(0,0,0,0.5);">
-    <div style="width: 100%; height: 100%; min-height: 400px; overflow: hidden; border-right: 2px solid #111;">
-        <img src="https://images.unsplash.com/photo-1520639889413-5d5586a98235?q=80&w=800&auto=format&fit=crop" 
-             alt="Madlamb. Suministros con Historia" 
-             style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%) sepia(10%) contrast(1.1);">
-    </div>
-
-    <div style="padding: 3rem; display: flex; flex-direction: column; justify-content: center;">
-        <h2 style="font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--bronce); text-transform: uppercase; margin-top: 0; letter-spacing: 3px; font-size: 2rem; text-shadow: 2px 2px 0px #000;">
-            Historias de Suministro
-        </h2>
-        <p style="font-size: 1.05rem; line-height: 1.8; font-weight: 300; color: var(--lona); margin-bottom: 0;">
-            En Madlamb. no vendemos moda rápida; entregamos equipo recuperado. Buscamos en talleres y rincones olvidados suministros que cuentan historias de labor, motores y libertad. Cada pieza es una herramienta de supervivencia con elegancia ruda.
-        </p>
-    </div>
-</div>
-
-<div id="bitacora" class="bitacora-grid">
-    <div class="historia-card">
-        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=400" alt="Denim">
-        <h3>El Denim Selvedge</h3>
-        <p>La "orilla" roja no es solo estética; indica que la tela fue tejida en telares antiguos de lanzadera, creando un borde que nunca se deshilacha.</p>
-    </div>
-
-    <div class="historia-card">
-        <img src="https://images.unsplash.com/photo-1517462913221-4b39176899f6?q=80&w=400" alt="Cuero">
-        <h3>Cuero 'Pull-Up'</h3>
-        <p>Al doblar este cuero, los aceites se desplazan creando tonos claros. Es un material vivo que registra cada aventura en su superficie.</p>
-    </div>
-
-    <div class="historia-card">
-        <img src="https://images.unsplash.com/photo-1520975916090-310595b14299?q=80&w=400" alt="Flannel">
-        <h3>Herencia de Franela</h3>
-        <p>Originalmente usada por granjeros galeses en el siglo XVII para protegerse del clima rudo. Resistencia pura convertida en estilo.</p>
-    </div>
-</div>
-
 <div class="main-container" id="suministros">
     <h2 class="section-title">The Originals</h2>
     <div class="grid" id="galeria"></div>
 </div>
 
-<footer>
-    © 2026 MADLAMB. | TRADICIÓN Y HERENCIA | SAN JOSÉ, CR
-</footer>
+<footer>© 2026 MADLAMB. | SAN JOSÉ, CR</footer>
 
 <div id="modal">
     <div class="modal-content">
-        <h3 id="modal-titulo" style="text-transform: uppercase;">ORDENAR SUMINISTRO</h3>
+        <h3 id="modal-titulo">ORDENAR</h3>
         <form id="form-pedido">
             <input type="text" id="nombre-cliente" placeholder="TU NOMBRE COMPLETO" required>
-            <div class="politicas">
-                <strong>REGLAS:</strong> Piezas únicas vintage. No hay cambios ni devoluciones. El pago se coordina vía transferencia/Sinpe. Envío no incluido.
-            </div>
-            <label style="font-size: 0.8rem; font-weight: 300; color: #aaa;">
-                <input type="checkbox" required style="width: auto; margin-right: 10px;"> He leído y acepto las políticas de compra.
-            </label>
-            <button type="submit" class="btn-adquirir" style="margin-top: 25px;">Enviar Pedido por WhatsApp</button>
-            <button type="button" onclick="cerrarModal()" style="background:none; border:none; color:#555; margin-top:15px; cursor:pointer; font-weight: bold;">[ CANCELAR ]</button>
+            <p style="font-size: 0.7rem; color: #aaa;">Piezas únicas vintage. No hay cambios. Pago por transferencia.</p>
+            <label style="font-size: 0.8rem;"><input type="checkbox" required> Acepto las políticas</label>
+            <button type="submit" class="btn-adquirir" style="margin-top: 25px; background: var(--bronce); color: #000;">ENVIAR A WHATSAPP</button>
+            <button type="button" onclick="cerrarModal()" style="background:none; border:none; color:#555; margin-top:15px; cursor:pointer;">[ CANCELAR ]</button>
         </form>
     </div>
 </div>
 
 <script>
+    // 1. Tus datos
     const prendas = [
         { id: 1, nombre: "CHAQUETA TRUCKER '68", precio: "₡35,000", foto: "https://images.unsplash.com/photo-1551537482-f2075a1d41f2?q=80&w=600" },
         { id: 2, nombre: "BOTAS DE INGENIERO", precio: "₡75,000", foto: "https://images.unsplash.com/photo-1520639889413-5d5586a98235?q=80&w=600" },
@@ -334,6 +144,7 @@
     const galeria = document.getElementById('galeria');
     let seleccionada = "";
 
+    // 2. Función para mostrar prendas
     function cargar() {
         prendas.forEach(p => {
             galeria.innerHTML += `
@@ -349,19 +160,23 @@
         });
     }
 
+    // 3. Funciones del Modal (CONTROLAN LA APARICIÓN)
     function abrirModal(n) {
         seleccionada = n;
         document.getElementById('modal-titulo').innerText = "SUMINISTRO: " + n;
         document.getElementById('modal').style.display = 'flex';
     }
 
-    function cerrarModal() { document.getElementById('modal').style.display = 'none'; }
+    function cerrarModal() {
+        document.getElementById('modal').style.display = 'none';
+    }
 
+    // 4. Envío a WhatsApp
     document.getElementById('form-pedido').onsubmit = function(e) {
         e.preventDefault();
         const cliente = document.getElementById('nombre-cliente').value;
-        const telefono = "50683087480";
-        const mensaje = `¡Saludos Madlamb.! Soy ${cliente}. Me interesa la pieza: ${seleccionada}. He leído y acepto las políticas de compra.`;
+        const telefono = "50683087480"; 
+        const mensaje = `¡Saludos Madlamb.! Soy ${cliente}. Me interesa la pieza: ${seleccionada}.`;
         window.open(`https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`, '_blank');
         cerrarModal();
     };
