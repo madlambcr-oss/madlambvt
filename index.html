@@ -64,11 +64,12 @@
 
 <div id="modal">
     <div class="modal-content">
-        <h3 id="modal-titulo" style="color: var(--bronce); text-transform: uppercase;">ORDENAR</h3>
+        <h3 id="modal-titulo" style="color: var(--bronce); text-transform: uppercase; font-size: 1.2rem;">ORDENAR</h3>
         <form id="form-pedido">
             <input type="text" id="nombre-cliente" placeholder="TU NOMBRE COMPLETO" required>
-            <button type="submit" class="btn-adquirir" style="background: var(--bronce); color: #000;">ENVIAR A WHATSAPP</button>
-            <button type="button" onclick="cerrarModal()" style="color:#555; margin-top:15px; cursor:pointer; background:none; border:none;">[ CANCELAR ]</button>
+            <p style="font-size: 0.7rem; color: #888; margin-bottom: 15px;">Al dar clic, se enviará tu pedido automáticamente por WhatsApp.</p>
+            <button type="submit" class="btn-adquirir" style="background: var(--bronce); color: #000; border-color: var(--bronce);">ENVIAR A WHATSAPP</button>
+            <button type="button" onclick="cerrarModal()" style="color:#555; margin-top:15px; cursor:pointer; background:none; border:none; font-weight: bold;">[ CANCELAR ]</button>
         </form>
     </div>
 </div>
@@ -108,11 +109,11 @@
             </div>`).join('');
     }
 
-    // EL ESCUCHADOR MAESTRO (Solución definitiva)
+    // EL ESCUCHADOR MAESTRO
     document.addEventListener('click', function(e) {
         if (e.target && e.target.classList.contains('btn-adquirir')) {
-            seleccionada = e.target.getAttribute('data-nombre');
-            document.getElementById('modal-titulo').innerText = seleccionada;
+            seleccionada = e.target.getAttribute('data-nombre'); // CAPTURA EL NOMBRE AQUÍ
+            document.getElementById('modal-titulo').innerText = "ORDENAR: " + seleccionada;
             document.getElementById('modal').style.display = 'flex';
         }
     });
@@ -122,7 +123,12 @@
     document.getElementById('form-pedido').addEventListener('submit', function(e) {
         e.preventDefault();
         const cliente = document.getElementById('nombre-cliente').value;
-        window.open(`https://wa.me/50683087480?text=${encodeURIComponent('¡Saludos Madlamb.! Soy ' + cliente + '. Me interesa: ' + seleccionada)}`, '_blank');
+        const numeroWhatsApp = "50683087480";
+        
+        // CONSTRUCCIÓN DEL MENSAJE (Aquí es donde se une todo)
+        const mensajeFinal = `¡Saludos Madlamb.! Soy ${cliente}. Me interesa comprar: ${seleccionada}.`;
+        
+        window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensajeFinal)}`, '_blank');
         cerrarModal();
     });
 
