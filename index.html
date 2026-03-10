@@ -20,7 +20,7 @@
             background-image: url('https://www.transparenttextures.com/patterns/dark-wood.png');
             color: var(--lona);
             background-attachment: fixed;
-            padding-top: 80px; /* Espacio para el header fijo */
+            padding-top: 80px;
         }
 
         /* Cabecera */
@@ -51,7 +51,7 @@
         }
         .nav-menu a.active { opacity: 1; color: var(--bronce); border-bottom: 1px solid var(--bronce); }
 
-        /* Control de Visibilidad de Secciones */
+        /* Control de Visibilidad */
         .content-section { display: none; animation: fadeIn 0.5s ease; }
         .content-section.active { display: block; }
 
@@ -60,7 +60,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Hero (Solo en Inicio/Suministros) */
         .hero {
             padding: 8rem 1rem 4rem;
             text-align: center;
@@ -70,7 +69,6 @@
             margin-bottom: 2rem;
         }
 
-        /* Bitácora / Historias */
         .historia-seccion {
             max-width: 1000px; margin: 2rem auto; display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
@@ -85,7 +83,6 @@
         .historia-card { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05); padding: 1.5rem; }
         .historia-card img { width: 100%; height: 200px; object-fit: cover; filter: grayscale(60%); margin-bottom: 1rem; border-bottom: 1px solid var(--bronce); }
 
-        /* Catálogo */
         .main-container { max-width: 1100px; margin: 2rem auto; padding: 2rem; }
         .section-title { text-align: center; font-size: 2rem; text-transform: uppercase; color: var(--lona); margin-bottom: 3rem; letter-spacing: 4px; }
         
@@ -107,7 +104,7 @@
             background: rgba(0,0,0,0.95); justify-content: center; align-items: center; z-index: 9999;
         }
         .modal-content { background: #111; border: 2px solid var(--bronce); padding: 3rem; width: 90%; max-width: 380px; text-align: center; }
-        input { width: 100%; padding: 12px; margin: 15px 0; background: #222; border: 1px solid #444; color: #fff; }
+        input { width: 100%; padding: 12px; margin: 15px 0; background: #222; border: 1px solid #444; color: #fff; font-family: 'Montserrat'; }
 
         footer { text-align: center; padding: 4rem 1rem; opacity: 0.4; font-size: 0.8rem; }
     </style>
@@ -165,32 +162,28 @@
 
 <div id="modal">
     <div class="modal-content">
-        <h3 id="modal-titulo">ORDENAR</h3>
+        <h3 id="modal-titulo" style="color: var(--bronce); text-transform: uppercase; letter-spacing: 2px;">ORDENAR</h3>
         <form id="form-pedido">
             <input type="text" id="nombre-cliente" placeholder="TU NOMBRE COMPLETO" required>
-            <button type="submit" class="btn-adquirir" style="background: var(--bronce); color: #000;">ENVIAR A WHATSAPP</button>
-            <button type="button" onclick="cerrarModal()" style="color:#555; margin-top:15px; cursor:pointer; background:none; border:none;">[ CANCELAR ]</button>
+            <p style="font-size: 0.7rem; color: #888; margin-bottom: 20px;">Piezas únicas vintage. No hay cambios. Pago vía transferencia.</p>
+            <button type="submit" class="btn-adquirir" style="background: var(--bronce); color: #000; border-color: var(--bronce);">ENVIAR A WHATSAPP</button>
+            <button type="button" onclick="cerrarModal()" style="color:#555; margin-top:15px; cursor:pointer; background:none; border:none; font-weight: bold;">[ CANCELAR ]</button>
         </form>
     </div>
 </div>
 
 <script>
-    // 1. Navegación entre secciones
+    // 1. Navegación
     function showSection(sectionId) {
-        // Ocultar todas las secciones
         document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-        // Quitar estado activo del menú
         document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
         
-        // Mostrar la elegida
         document.getElementById(sectionId).classList.add('active');
         document.getElementById('nav-' + sectionId).classList.add('active');
-        
-        // Subir al inicio de la página automáticamente
         window.scrollTo(0,0);
     }
 
-    // 2. Datos y Carga de Prendas
+    // 2. Datos
     const prendas = [
         { id: 1, nombre: "CHAQUETA TRUCKER '68", precio: "35,000", foto: "https://images.unsplash.com/photo-1551537482-f2075a1d41f2?q=80&w=600" },
         { id: 2, nombre: "BOTAS DE INGENIERO", precio: "75,000", foto: "https://images.unsplash.com/photo-1520639889413-5d5586a98235?q=80&w=600" },
@@ -200,30 +193,40 @@
         { id: 6, nombre: "MECHANIC PANTS '55", precio: "28,000", foto: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=600" }
     ];
 
+    // 3. Carga de Galería
+    const galeria = document.getElementById('galeria');
     function cargar() {
-        const galeria = document.getElementById('galeria');
+        galeria.innerHTML = "";
         prendas.forEach(p => {
-            galeria.innerHTML += `
-                <div class="card">
-                    <img src="${p.foto}">
-                    <div class="card-info">
-                        <h3>${p.nombre}</h3>
-                        <p class="precio">₡${p.precio}</p>
-                        <button class="btn-adquirir" onclick="abrirModal('${p.nombre}')">ADQUIRIR</button>
-                    </div>
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <img src="${p.foto}">
+                <div class="card-info">
+                    <h3>${p.nombre}</h3>
+                    <p class="precio">₡${p.precio}</p>
+                    <button class="btn-adquirir" onclick="abrirModal('${p.nombre}')">ADQUIRIR</button>
                 </div>`;
+            galeria.appendChild(card);
         });
     }
 
-    // 3. Modal y WhatsApp
+    // 4. Modal y WhatsApp (Corregido)
     let seleccionada = "";
-    function abrirModal(n) { seleccionada = n; document.getElementById('modal-titulo').innerText = n; document.getElementById('modal').style.display = 'flex'; }
-    function cerrarModal() { document.getElementById('modal').style.display = 'none'; }
+    window.abrirModal = function(n) { 
+        seleccionada = n; 
+        document.getElementById('modal-titulo').innerText = "SUMINISTRO: " + n; 
+        document.getElementById('modal').style.display = 'flex'; 
+    };
+
+    window.cerrarModal = function() { 
+        document.getElementById('modal').style.display = 'none'; 
+    };
 
     document.getElementById('form-pedido').onsubmit = function(e) {
         e.preventDefault();
         const cliente = document.getElementById('nombre-cliente').value;
-        const msg = `¡Saludos Madlamb.! Soy ${cliente}. Me interesa: ${seleccionada}.`;
+        const msg = `¡Saludos Madlamb.! Soy ${cliente}. Me interesa comprar: ${seleccionada}.`;
         window.open(`https://wa.me/50683087480?text=${encodeURIComponent(msg)}`, '_blank');
         cerrarModal();
     };
