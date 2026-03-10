@@ -3,132 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MADLAMB. | Heritage Supply</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Cormorant+Garamond:wght@400;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <title>MADLAMB. | Home Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Oswald:wght@700&display=swap" rel="stylesheet">
     <style>
         :root { 
-            --tierra: #d4c4a8; /* Lona encerada suave */
-            --tabaco: #3e2723; /* Texto principal */
-            --bronce-viejo: #a1785c; /* Acentuación */
-            --crema: #fffdfa; /* Tarjetas y header */
-            --negro-archivo: #1a1a1a; /* Botones */
-            --shadow: 0 4px 15px rgba(62, 39, 35, 0.1);
+            --amarillo: #f7e018;
+            --naranja: #ff5c00;
+            --menta: #00c49a;
+            --blanco: #ffffff;
+            --negro: #000000;
         }
 
         body { 
             margin: 0; 
             font-family: 'Montserrat', sans-serif; 
-            /* FONDO: Color tierra con textura de lona encerada */
-            background-color: var(--tierra); 
-            background-image: url('https://www.transparenttextures.com/patterns/linen.png'); 
-            color: var(--tabaco); 
-            padding-top: 90px;
-            background-attachment: fixed;
+            background-color: var(--blanco);
+            color: var(--negro);
             overflow-x: hidden;
+            padding-top: 70px;
         }
 
-        /* --- HEADER PROFESIONAL Y LIMPIO --- */
+        /* --- HEADER TIPO CINTA (TAPE) --- */
         .site-header { 
-            background: rgba(255, 253, 250, 0.95); 
-            backdrop-filter: blur(10px);
-            padding: 1.2rem 5%; 
+            background: var(--negro); 
+            padding: 0.8rem 5%; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            border-bottom: 1px solid rgba(161, 120, 92, 0.3);
-            position: fixed; top: 0; width: 100%; z-index: 1000; box-sizing: border-box;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            border-bottom: 4px solid var(--negro);
         }
 
         .site-header h1 { 
-            font-family: 'Oswald', sans-serif;
-            font-weight: 700; font-size: 2.2rem; letter-spacing: 6px; margin: 0; 
-            color: var(--tabaco); cursor: pointer;
+            color: var(--blanco);
+            font-size: 1.5rem; letter-spacing: -1px; margin: 0; 
+            text-transform: uppercase; cursor: pointer;
         }
 
-        .nav-menu ul { display: flex; gap: 2.5rem; list-style: none; margin: 0; padding: 0; }
+        .nav-menu ul { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
         .nav-menu a { 
-            color: var(--tabaco); text-decoration: none; font-size: 0.75rem; font-weight: 600; 
-            text-transform: uppercase; letter-spacing: 2px; opacity: 0.7; transition: 0.3s;
-            position: relative;
+            color: var(--blanco); text-decoration: none; font-size: 0.7rem; font-weight: 900; 
+            text-transform: uppercase; padding: 5px 10px; transition: 0.2s;
         }
-        .nav-menu a:hover, .nav-menu a.active { opacity: 1; color: var(--bronce-viejo); }
-        .nav-menu a.active::after {
-            content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px;
-            background: var(--bronce-viejo);
-        }
+        .nav-menu a:hover, .nav-menu a.active { background: var(--amarillo); color: var(--negro); }
 
         /* --- SECCIONES --- */
-        .content-section { display: none; animation: fadeIn 0.8s ease; }
+        .content-section { display: none; }
         .content-section.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- HERO: Elegante y minimalista --- */
+        /* --- HERO COLLAGE --- */
         .hero { 
-            padding: 8rem 1rem 5rem; text-align: center; 
-            background: linear-gradient(rgba(212,196,168,0.9), rgba(212,196,168,0.7)), url('https://images.unsplash.com/photo-1520639889413-5d5586a98235?q=80&w=1600');
-            background-size: cover; background-position: center;
-            border-bottom: 1px solid rgba(161, 120, 92, 0.2);
-        }
-        .hero h2 { 
-            font-family: 'Cormorant Garamond', serif; 
-            font-size: 4.5rem; font-weight: 700; letter-spacing: 5px; margin: 0; color: var(--tabaco); 
-        }
-        .hero p { color: var(--bronce-viejo); font-weight: 400; letter-spacing: 4px; text-transform: uppercase; font-size: 0.9rem; margin-top: 15px; }
-
-        /* --- GRID DE SUMINISTROS TIPO ARCHIVO --- */
-        .main-container { max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
-
-        .card { 
-            background: var(--crema); 
-            border: 1px solid rgba(161, 120, 92, 0.2);
-            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            height: 60vh;
+            display: flex; align-items: center; justify-content: center;
+            background: 
+                linear-gradient(45deg, var(--amarillo) 25%, transparent 25%),
+                linear-gradient(-45deg, var(--amarillo) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, var(--amarillo) 75%),
+                linear-gradient(-45deg, transparent 75%, var(--amarillo) 75%);
+            background-size: 20px 20px;
+            background-color: #e5e5f7; /* Color de fondo de los puntos */
+            border-bottom: 10px solid var(--negro);
             position: relative;
         }
-        .card:hover { transform: translateY(-8px); box-shadow: var(--shadow); border-color: var(--bronce-viejo); }
 
-        /* --- CARRUSEL --- */
-        .carousel-container { position: relative; width: 100%; height: 450px; overflow: hidden; background: #f4f1ea; }
-        .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1); height: 100%; }
-        .carousel-track img { min-width: 100%; object-fit: cover; filter: sepia(10%) contrast(1.05); }
+        .hero-title-box {
+            background: var(--blanco);
+            border: 8px solid var(--negro);
+            padding: 2rem 4rem;
+            transform: rotate(-2deg);
+            box-shadow: 15px 15px 0px var(--negro);
+        }
+
+        .hero h2 { 
+            font-size: clamp(3rem, 10vw, 6rem); margin: 0; 
+            line-height: 0.9; text-transform: uppercase; letter-spacing: -2px;
+        }
+
+        /* --- GRID DE PRODUCTOS --- */
+        .main-container { 
+            padding: 4rem 5%; 
+            background-image: radial-gradient(var(--negro) 10%, transparent 10%);
+            background-size: 20px 20px; /* Patrón de puntos pop-art */
+        }
+        
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 40px; 
+        }
+
+        /* --- TARJETA ESTILO RECORTE --- */
+        .card { 
+            background: var(--blanco); 
+            border: 5px solid var(--negro);
+            transition: 0.3s;
+            position: relative;
+            box-shadow: 10px 10px 0px var(--negro);
+        }
+        .card:hover { transform: translate(-5px, -5px); box-shadow: 15px 15px 0px var(--naranja); }
+
+        .carousel-container { position: relative; width: 100%; height: 380px; overflow: hidden; border-bottom: 5px solid var(--negro); }
+        .carousel-track { display: flex; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); height: 100%; }
+        .carousel-track img { min-width: 100%; object-fit: cover; }
 
         .nav-btn { 
             position: absolute; top: 50%; transform: translateY(-50%); 
-            background: rgba(255,255,255,0.8); color: var(--tabaco); border: 1px solid rgba(62,39,35,0.2); 
-            width: 45px; height: 45px; cursor: pointer; z-index: 10; font-size: 1.2rem;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            transition: 0.3s; opacity: 0;
+            background: var(--amarillo); color: var(--negro); border: 3px solid var(--negro); 
+            width: 40px; height: 40px; cursor: pointer; font-weight: 900; z-index: 10;
         }
-        .card:hover .nav-btn { opacity: 1; }
-        .nav-btn:hover { background: var(--bronce-viejo); color: #fff; border-color: var(--bronce-viejo); }
-        .prev-btn { left: 15px; }
-        .next-btn { right: 15px; }
 
-        /* --- INFO DE PRENDA (TIPO ETIQUETA) --- */
-        .card-info { padding: 2rem; text-align: left; }
-        .card-info h3 { 
-            font-family: 'Cormorant Garamond', serif; 
-            font-size: 1.3rem; font-weight: 700; letter-spacing: 0.5px; margin: 0; color: var(--tabaco); line-height: 1.3;
+        .card-info { padding: 1.5rem; background: var(--blanco); }
+        .card-info h3 { font-size: 1.2rem; text-transform: uppercase; margin: 0; line-height: 1; }
+        .precio { 
+            display: inline-block;
+            background: var(--negro); color: var(--blanco);
+            padding: 5px 15px; font-size: 1.5rem; margin: 15px 0;
+            transform: rotate(2deg);
         }
-        .precio { font-size: 1.4rem; color: var(--bronce-viejo); margin: 15px 0 25px; font-weight: 400; font-family: 'Montserrat', sans-serif; }
 
         .btn-adquirir { 
-            background: var(--negro-archivo); color: #fff; padding: 1.1rem; 
-            border: none; font-weight: 700; text-transform: uppercase; 
-            cursor: pointer; letter-spacing: 3px; width: 100%; transition: 0.3s;
-            font-size: 0.75rem;
+            background: var(--menta); color: var(--negro); padding: 1rem; 
+            border: 4px solid var(--negro); font-weight: 900; text-transform: uppercase; 
+            cursor: pointer; width: 100%; font-size: 1rem; transition: 0.2s;
         }
-        .btn-adquirir:hover { background: var(--bronce-viejo); }
+        .btn-adquirir:hover { background: var(--naranja); color: var(--blanco); }
 
         /* --- MODAL --- */
-        #modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(62,39,35,0.8); justify-content: center; align-items: center; z-index: 9999; backdrop-filter: blur(5px); }
-        .modal-content { background: var(--crema); border: 1px solid var(--bronce-viejo); padding: 3.5rem; width: 90%; max-width: 400px; text-align: center; box-shadow: var(--shadow); }
-        .modal-content h3 { font-family: 'Cormorant Garamond'; color: var(--tabaco); font-size: 1.8rem; font-weight: 700; margin-bottom: 25px;}
-        input { width: 100%; padding: 15px; margin: 15px 0 25px; background: #fff; border: 1px solid rgba(62,39,35,0.2); color: var(--tabaco); font-family: inherit; font-size: 1rem; text-align: center;}
-        input:focus { border-color: var(--bronce-viejo); outline: none;}
+        #modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(247, 224, 24, 0.9); justify-content: center; align-items: center; z-index: 9999; }
+        .modal-content { background: var(--blanco); border: 10px solid var(--negro); padding: 3rem; width: 90%; max-width: 400px; text-align: center; box-shadow: 20px 20px 0px var(--negro); }
+        input { width: 100%; padding: 15px; margin: 20px 0; border: 4px solid var(--negro); font-size: 1.2rem; font-weight: 900; text-transform: uppercase; }
 
-        footer { text-align: center; padding: 6rem; opacity: 0.5; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--tabaco); border-top: 1px solid rgba(161, 120, 92, 0.1); }
+        footer { background: var(--negro); color: var(--blanco); text-align: center; padding: 3rem; font-weight: 900; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -144,33 +149,35 @@
 </header>
 
 <section id="suministros" class="content-section active">
-    <div class="hero"><h2>Suministros de Archivo</h2><p>Colección Heritage CR</p></div>
-    <div class="main-container"><div class="grid" id="galeria"></div></div>
+    <div class="hero">
+        <div class="hero-title-box">
+            <h2>MADLAMB<br><span style="color:var(--naranja)">IN STORE</span></h2>
+        </div>
+    </div>
+    
+    <div class="main-container">
+        <div class="grid" id="galeria"></div>
+    </div>
 </section>
 
 <section id="bitacora" class="content-section">
-    <div style="padding: 10rem 1rem 5rem; text-align: center;">
-        <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 4rem; letter-spacing: 10px; margin: 0; color: var(--tabaco);">Crónicas</h2>
-        <p style="color: var(--bronce-viejo); letter-spacing: 4px; text-transform: uppercase; margin-top: 15px;">Notas de Curador</p>
-    </div>
-    <div class="main-container" style="text-align: center; color: var(--tabaco); font-size: 1rem; letter-spacing: 2px; font-weight: 400; line-height: 2; max-width: 700px;">
-        <p>RECOLECTANDO HISTORIAS DE PIEZAS ÚNICAS. CADA PRENDA ES UN SUMINISTRO HISTÓRICO RECUPERADO. VUELVE PRONTO.</p>
+    <div style="background: var(--menta); padding: 10rem 1rem; text-align: center; border-bottom: 10px solid var(--negro);">
+        <h2 style="font-size: 5rem; text-transform: uppercase; margin: 0; color: var(--blanco); -webkit-text-stroke: 4px var(--negro);">Bitácora</h2>
     </div>
 </section>
 
 <div id="modal">
     <div class="modal-content">
-        <h3 id="modal-titulo">SOLICITAR</h3>
+        <h2 style="margin:0; font-size: 2rem;">¿LO QUIERES?</h2>
         <form id="form-pedido">
-            <input type="text" id="nombre-cliente" placeholder="TU NOMBRE COMPLETO" required>
-            <p style="font-size: 0.7rem; color: #888; margin-bottom: 30px; letter-spacing: 1px; font-weight: 400;">Piezas únicas vintage. No hay cambios. El pago se coordina vía transferencia/Sinpe.</p>
-            <button type="submit" class="btn-adquirir">PEDIR POR WHATSAPP</button>
-            <button type="button" onclick="cerrarModal()" style="color:#888; margin-top:20px; cursor:pointer; background:none; border:none; font-size: 0.65rem; letter-spacing: 3px; font-weight: 600;">[ VOLVER ]</button>
+            <input type="text" id="nombre-cliente" placeholder="TU NOMBRE" required>
+            <button type="submit" class="btn-adquirir">IR A WHATSAPP</button>
+            <button type="button" onclick="cerrarModal()" style="margin-top:20px; background:none; border:none; font-weight: 900; cursor:pointer; text-decoration: underline;">CANCELAR</button>
         </form>
     </div>
 </div>
 
-<footer>© 2026 MADLAMB. | TRADICIÓN Y HERENCIA | SAN JOSÉ, CR</footer>
+<footer>© 2026 MADLAMB. | STREET HERITAGE | SAN JOSÉ</footer>
 
 <script>
     let prendaSeleccionadaParaEnvio = "";
@@ -184,7 +191,6 @@
         window.scrollTo(0,0);
     }
 
-    // --- LISTA DE PRENDAS ACTUALIZADA Y EXACTA CON FOTOS MÚLTIPLES ---
     const prendas = [
         { id: 1, nombre: "HOODIE UNDER ARMOUR 'REAL TREE'", precio: "35,000", fotos: ["Hoodie under armour real tree.jpg"] },
         { id: 2, nombre: "CARHARRT DETROIT '100 AÑOS'", precio: "50,000", fotos: ["Carharrt Detroit 100 años.jpg"] },
@@ -212,8 +218,8 @@
                 </div>
                 <div class="card-info">
                     <h3>${p.nombre}</h3>
-                    <p class="precio">₡${p.precio}</p>
-                    <button class="btn-adquirir" onclick="abrirModal('${p.nombre}')">ADQUIRIR</button>
+                    <div class="precio">₡${p.precio}</div>
+                    <button class="btn-adquirir" onclick="abrirModal('${p.nombre}')">COMPRAR YA</button>
                 </div>
             </div>`;
         }).join('');
@@ -223,18 +229,14 @@
         const track = document.getElementById(`track-${pIndex}`);
         const totalFotos = prendas[pIndex].fotos.length;
         if (!carruselPositions[pIndex]) carruselPositions[pIndex] = 0;
-        
         carruselPositions[pIndex] += direction;
-
         if (carruselPositions[pIndex] < 0) carruselPositions[pIndex] = totalFotos - 1;
         if (carruselPositions[pIndex] >= totalFotos) carruselPositions[pIndex] = 0;
-
         track.style.transform = `translateX(-${carruselPositions[pIndex] * 100}%)`;
     };
 
     window.abrirModal = function(nombre) {
         prendaSeleccionadaParaEnvio = nombre;
-        document.getElementById('modal-titulo').innerText = "SOLICITAR";
         document.getElementById('modal').style.display = 'flex';
     };
 
@@ -243,7 +245,7 @@
     document.getElementById('form-pedido').addEventListener('submit', function(e) {
         e.preventDefault();
         const cliente = document.getElementById('nombre-cliente').value;
-        const msg = `¡Saludos Madlamb.! Soy ${cliente}. Me interesa solicitar el suministro: ${prendaSeleccionadaParaEnvio}.`;
+        const msg = `¡Saludos Madlamb.! Soy ${cliente}. Me interesa comprar: ${prendaSeleccionadaParaEnvio}.`;
         window.open("https://wa.me/50683087480?text=" + encodeURIComponent(msg), '_blank');
         cerrarModal();
     });
