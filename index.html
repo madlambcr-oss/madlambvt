@@ -73,12 +73,10 @@
         .nav-btn:hover { opacity: 1 !important; background: #fff; }
         .prev-btn { left: 10px; } .next-btn { right: 10px; }
 
-        /* Ficha Técnica Mejora #1 */
         .card-info h3 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin: 0; letter-spacing: 0.5px; }
         .precio { font-size: 0.85rem; color: var(--gris); margin: 5px 0 10px; }
         .specs { font-size: 0.65rem; color: var(--gris); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; font-weight: 600; }
 
-        /* Botón Mejora #2 */
         .btn-adquirir { 
             background: var(--negro); color: #fff; padding: 14px; border: none; width: 100%; 
             font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; 
@@ -87,19 +85,30 @@
         .btn-adquirir:hover:not(:disabled) { letter-spacing: 4px; background: #222; }
         .btn-adquirir:disabled { background: #ccc; cursor: not-allowed; opacity: 0.6; }
 
-        /* --- BITÁCORA EDITORIAL Mejora #4 --- */
+        /* --- BITÁCORA EDITORIAL --- */
         .bitacora-header { padding: 8rem 5% 2rem; }
         .bitacora-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1200px; margin: 0 auto; padding: 0 5% 5rem; }
-        .bitacora-item { display: flex; flex-direction: column; }
+        .bitacora-item { display: flex; flex-direction: column; cursor: pointer; transition: var(--transition); }
+        .bitacora-item:hover { transform: scale(1.02); }
         .meta-bitacora { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--gris); margin-bottom: 15px; }
         .bitacora-item img { width: 100%; height: 600px; object-fit: cover; margin-bottom: 20px; transition: var(--transition); }
-        .bitacora-item:hover img { filter: contrast(1.1); }
         .bitacora-item h3 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 0 0 15px 0; }
-        .bitacora-item p { line-height: 1.8; color: #444; font-size: 0.95rem; text-align: justify; margin: 0; hyphens: auto; }
+        
+        /* Texto cortado en bitácora principal */
+        .bitacora-item p { 
+            line-height: 1.8; color: #444; font-size: 0.95rem; text-align: justify; margin: 0; 
+            display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; 
+        }
 
-        /* --- MODAL --- */
-        #modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.98); justify-content: center; align-items: center; z-index: 9999; }
-        .modal-content { text-align: center; width: 90%; max-width: 500px; }
+        /* --- MODALES --- */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.98); justify-content: center; align-items: center; z-index: 9999; }
+        .modal-content { text-align: center; width: 90%; max-width: 500px; overflow-y: auto; max-height: 90vh; padding: 20px; }
+        
+        /* Modal específico para lectura de bitácora */
+        #modal-lectura .modal-content { max-width: 700px; text-align: left; }
+        #modal-lectura h3 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 20px; }
+        #modal-lectura p { line-height: 2; font-size: 1.1rem; text-align: justify; color: #333; }
+
         input { width: 100%; padding: 20px; border: none; border-bottom: 2px solid var(--negro); background: transparent; font-size: 1.5rem; outline: none; text-align: center; margin-bottom: 30px; font-family: 'Inter'; }
 
         footer { padding: 5rem; text-align: center; border-top: 1px solid var(--gris-claro); font-size: 0.6rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; opacity: 0.5; }
@@ -145,13 +154,14 @@
         <h2 style="font-size: 5rem; font-weight: 900; margin:0;">EL LEGADO.</h2>
     </div>
     <div class="bitacora-grid">
-        <div class="bitacora-item">
+        <div class="bitacora-item" onclick="abrirLectura('The Waxed Canvas Trucker', 'La chaqueta de lona encerada es mucho más que una prenda; es una herencia de ingeniería textil que nació en el siglo XV para proteger a los marineros de los climas más hostiles. Desde las velas de alta mar hasta las icónicas rutas de motociclismo, este material ha evolucionado utilizando fibras como el algodón Martexin y remaches de cobre para ofrecer una resistencia hercúlea y eterna. A diferencia de la moda desechable, su valor real reside en la pátina que desarrolla con el tiempo, transformando cada arruga y marca en una crónica visual de las aventuras de quien la viste, convirtiéndola en una inversión única diseñada para pasar de generación en generación.')">
             <span class="meta-bitacora">10 Marzo, 2026 — Lectura 3 min</span>
             <img src="The Waxed Canvas Trucker.jpg">
             <h3>The Waxed Canvas Trucker</h3>
             <p>La chaqueta de lona encerada es mucho más que una prenda; es una herencia de ingeniería textil que nació en el siglo XV...</p>
         </div>
-        <div class="bitacora-item">
+        
+        <div class="bitacora-item" onclick="abrirLectura('El Oro de Lona: La Detroit Jacket', 'Pocas piezas en la historia del vestuario masculino poseen la mística de la Carhartt Detroit. Nacida para el rigor de las líneas de ensamblaje en Michigan, esta chaqueta se convirtió en el uniforme no oficial de la clase obrera estadounidense. Su diseño corto a la cintura, pensado originalmente para no estorbar al trabajador sentado, hoy es la silueta más buscada por coleccionistas. Confeccionada en \'Duck Canvas\' de alto gramaje, cada Detroit cuenta una historia distinta a través de su desgaste; desde las manchas de aceite hasta el descolorido por el sol, representa una armadura urbana que solo mejora con el uso rudo y el paso de las décadas.')">
             <span class="meta-bitacora">05 Marzo, 2026 — Lectura 2 min</span>
             <img src="El Oro de Lona La Detroit Jacket.jpg">
             <h3>El Oro de Lona: La Detroit Jacket</h3>
@@ -160,14 +170,22 @@
     </div>
 </section>
 
-<div id="modal">
+<div id="modal" class="modal">
     <div class="modal-content">
-        <h3 style="font-size: 2rem; text-transform: uppercase; font-weight: 900;">Solicitar</h3>
+        <h3 id="modal-titulo" style="font-size: 2rem; text-transform: uppercase; font-weight: 900;">Solicitar</h3>
         <form id="form-pedido">
             <input type="text" id="nombre-cliente" placeholder="TU NOMBRE" required>
             <button type="submit" class="btn-adquirir">CONTINUAR A WHATSAPP</button>
             <button type="button" onclick="cerrarModal()" style="margin-top:20px; background:none; border:none; cursor:pointer; font-weight: 700; opacity: 0.3;">CANCELAR</button>
         </form>
+    </div>
+</div>
+
+<div id="modal-lectura" class="modal">
+    <div class="modal-content">
+        <h3 id="lectura-titulo"></h3>
+        <p id="lectura-texto"></p>
+        <button type="button" onclick="cerrarLectura()" style="margin-top:40px; background:var(--negro); color:white; padding: 15px 30px; border:none; cursor:pointer; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Cerrar Lectura</button>
     </div>
 </div>
 
@@ -185,6 +203,7 @@
         window.scrollTo(0,0);
     }
 
+    // Lógica del Modal de Venta
     window.abrirModal = function(nombre) {
         prendaSeleccionadaParaEnvio = nombre;
         document.getElementById('modal').style.display = 'flex';
@@ -194,7 +213,19 @@
         document.getElementById('modal').style.display = 'none';
     };
 
-    // --- LISTA DE PRENDAS ACTUALIZADA CON TALLA, ESTADO Y CATEGORÍA ---
+    // Lógica del Modal de Lectura
+    window.abrirLectura = function(titulo, texto) {
+        document.getElementById('lectura-titulo').innerText = titulo;
+        document.getElementById('lectura-texto').innerText = texto;
+        document.getElementById('modal-lectura').style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Bloquea scroll de fondo
+    };
+
+    window.cerrarLectura = function() {
+        document.getElementById('modal-lectura').style.display = 'none';
+        document.body.style.overflow = 'auto'; // Libera scroll
+    };
+
     const prendas = [
         { id: 1, nombre: "HOODIE UNDER ARMOUR 'REAL TREE'", precio: "35,000", talla: "XL", estado: "9/10", categoria: "hoodies", fotos: ["Hoodie under armour real tree.jpg"], disponible: true },
         { id: 2, nombre: "CARHARRT DETROIT '100 AÑOS'", precio: "50,000", talla: "L", estado: "8.5/10", categoria: "chaquetas", fotos: ["Carharrt Detroit 100 años.jpg"], disponible: true },
