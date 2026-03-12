@@ -8,20 +8,157 @@
 
 <title>MADLAMB. | Archive Supply</title>
 
-<meta name="description" content="MADLAMB Archive Supply — Curated vintage garments">
-<link rel="icon" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Playfair+Display:italic,wght@700&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<style>
 
-<link rel="stylesheet" href="styles.css">
+:root{
+--bg:#f4f4f4;
+--negro:#000;
+--gris:#888;
+--gris-claro:#ddd;
+--rojo-agotado:#a30000;
+}
+
+body{
+margin:0;
+font-family:'Inter',sans-serif;
+background:var(--bg);
+padding-top:60px;
+}
+
+.site-header{
+position:fixed;
+top:0;
+width:100%;
+background:white;
+display:flex;
+justify-content:space-between;
+padding:15px 5%;
+border-bottom:1px solid #ddd;
+}
+
+.nav-menu ul{
+display:flex;
+gap:20px;
+list-style:none;
+}
+
+.content-section{
+display:none;
+}
+
+.content-section.active{
+display:block;
+}
+
+.hero{
+padding:120px 5% 40px;
+}
+
+.hero h2{
+font-size:5rem;
+margin:0;
+}
+
+.hero-sub{
+font-size:0.8rem;
+letter-spacing:2px;
+color:var(--gris);
+}
+
+.filter-bar{
+padding:20px 5%;
+display:flex;
+gap:20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:20px;
+padding:40px 5%;
+}
+
+.card{
+background:white;
+padding:20px;
+}
+
+.card img{
+width:100%;
+height:400px;
+object-fit:cover;
+}
+
+.card-info h3{
+font-size:0.9rem;
+}
+
+.precio{
+color:var(--gris);
+}
+
+.specs{
+font-size:0.7rem;
+color:var(--gris);
+margin-bottom:15px;
+}
+
+.btn-adquirir{
+background:black;
+color:white;
+border:none;
+padding:12px;
+width:100%;
+cursor:pointer;
+}
+
+.bitacora-header{
+padding:120px 5% 40px;
+}
+
+.bitacora-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+padding:0 5% 60px;
+}
+
+.bitacora-item img{
+width:100%;
+height:500px;
+object-fit:cover;
+}
+
+footer{
+text-align:center;
+padding:60px;
+border-top:1px solid #ddd;
+font-size:0.7rem;
+}
+
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(255,255,255,0.95);
+justify-content:center;
+align-items:center;
+}
+
+.modal-content{
+max-width:500px;
+}
+
+</style>
 
 </head>
 
 <body>
-
-<div id="preloader">
-<h2>MADLAMB.</h2>
-</div>
 
 <header class="site-header">
 
@@ -30,7 +167,7 @@
 <nav class="nav-menu">
 
 <ul>
-<li><a id="nav-suministros" class="active" onclick="showSection('suministros')">Suministros</a></li>
+<li><a id="nav-suministros" onclick="showSection('suministros')">Suministros</a></li>
 <li><a id="nav-bitacora" onclick="showSection('bitacora')">Bitácora</a></li>
 </ul>
 
@@ -56,19 +193,15 @@ Curaduría de piezas vintage seleccionadas una a una.
 
 <div class="filter-bar">
 
-<button class="filter-btn active" onclick="filtrar('todas')">Todas</button>
-<button class="filter-btn" onclick="filtrar('chaquetas')">Chaquetas</button>
-<button class="filter-btn" onclick="filtrar('hoodies')">Hoodies</button>
-<button class="filter-btn" onclick="filtrar('camisetas')">Camisetas</button>
+<button onclick="filtrar('todas')">Todas</button>
+<button onclick="filtrar('chaquetas')">Chaquetas</button>
+<button onclick="filtrar('hoodies')">Hoodies</button>
+<button onclick="filtrar('camisetas')">Camisetas</button>
 
 </div>
 
-
-<div class="main-container">
 
 <div class="grid" id="galeria"></div>
-
-</div>
 
 </section>
 
@@ -87,36 +220,28 @@ Curaduría de piezas vintage seleccionadas una a una.
 </section>
 
 
+
 <footer>
 
 <p>MADLAMB ARCHIVE SUPPLY</p>
 
-<p class="footer-small">
-Curated Vintage Garments — San José, Costa Rica
-</p>
+<p>Curated Vintage Garments — San José, Costa Rica</p>
 
-<p class="footer-small">
-Established 2026
-</p>
+<p>Established 2026</p>
 
 </footer>
-
 
 
 <div id="modal" class="modal">
 
 <div class="modal-content">
 
-<h3>Adquirir</h3>
-
 <form id="form-pedido">
 
-<input type="text" id="nombre-cliente" placeholder="TU NOMBRE" required>
+<input id="nombre-cliente" placeholder="TU NOMBRE">
 
-<button class="btn-adquirir">CONTINUAR A WHATSAPP</button>
-
-<button type="button" onclick="cerrarModal()" class="cancel-btn">
-Cancelar
+<button class="btn-adquirir">
+CONTINUAR A WHATSAPP
 </button>
 
 </form>
@@ -126,27 +251,9 @@ Cancelar
 </div>
 
 
-
-<div id="modal-lectura" class="modal">
-
-<div class="modal-content lectura">
-
-<h3 id="lectura-titulo"></h3>
-
-<p id="lectura-texto"></p>
-
-<button onclick="cerrarLectura()" class="btn-adquirir">
-Cerrar Lectura
-</button>
-
-</div>
-
-</div>
-
-
-
 <script src="data.js"></script>
 <script src="main.js"></script>
 
 </body>
+
 </html>
