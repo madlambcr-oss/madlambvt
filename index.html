@@ -72,7 +72,6 @@
         .card:hover .carousel-track img { transform: scale(1.05); }
         .card.is-sold-out .carousel-track img { opacity: 0.6; filter: grayscale(0%) !important; transform: none !important; }
 
-        /* NAV BTN FIX */
         .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; font-size: 1.2rem; cursor: pointer; opacity: 0; transition: 0.3s; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; z-index: 30; border-radius: 50%; }
         .prev-btn { left: 10px; }
         .next-btn { right: 10px; }
@@ -91,6 +90,7 @@
         .btn-adquirir:hover:not(:disabled) { background: #222; letter-spacing: 3px; }
         .btn-adquirir:disabled { background: #ccc; cursor: not-allowed; opacity: 0.6; }
 
+        /* --- BITÁCORA --- */
         .bitacora-header { padding: 8rem 5% 2rem; }
         .bitacora-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1200px; margin: 0 auto; padding: 0 5% 5rem; }
         .bitacora-item { display: flex; flex-direction: column; cursor: pointer; transition: var(--transition); }
@@ -149,11 +149,17 @@
         <h2 style="font-size: 5rem; font-weight: 900; margin:0;">EL LEGADO.</h2>
     </div>
     <div class="bitacora-grid">
-        <div class="bitacora-item" onclick="abrirLectura('The Waxed Canvas Trucker', '...')">
-            <span class="meta-bitacora">10 Marzo, 2026</span>
+        <div class="bitacora-item" onclick="abrirLectura('The Waxed Canvas Trucker', 'La chaqueta de lona encerada es mucho más que una prenda; es una herencia de ingeniería textil que nació en el siglo XV para proteger a los marineros de los climas más hostiles. Desde las velas de alta mar hasta las icónicas rutas de motociclismo, este material ha evolucionado utilizando fibras como el algodón Martexin y remaches de cobre para ofrecer una resistencia hercúlea y eterna. A diferencia de la moda desechable, su valor real reside en la pátina que desarrolla con el tiempo, transformando cada arruga y marca en una crónica visual de las aventuras de quien la viste, convirtiéndola en una inversión única diseñada para pasar de generación en generación.')">
+            <span class="meta-bitacora">10 Marzo, 2026 — Lectura 3 min</span>
             <img src="The Waxed Canvas Trucker.jpg">
             <h3>The Waxed Canvas Trucker</h3>
             <p>La chaqueta de lona encerada es mucho más que una prenda...</p>
+        </div>
+        <div class="bitacora-item" onclick="abrirLectura('El Oro de Lona: La Detroit Jacket', 'Pocas piezas en la historia del vestuario masculino poseen la mística de la Carhartt Detroit. Nacida para el rigor de las líneas de ensamblaje en Michigan, esta chaqueta se convirtió en el uniforme no oficial de la clase obrera estadounidense. Su diseño corto a la cintura, pensado originalmente para no estorbar al trabajador sentado, hoy es la silueta más buscada por coleccionistas. Confeccionada en \'Duck Canvas\' de alto gramaje, cada Detroit cuenta una historia distinta a través de su desgaste; desde las manchas de aceite hasta el descolorido por el sol, representa una armadura urbana que solo mejora con el uso rudo y el paso de las décadas.')">
+            <span class="meta-bitacora">05 Marzo, 2026 — Lectura 2 min</span>
+            <img src="El Oro de Lona La Detroit Jacket.jpg">
+            <h3>El Oro de Lona: La Detroit Jacket</h3>
+            <p>Pocas piezas en la historia del vestuario masculino poseen la mística...</p>
         </div>
     </div>
 </section>
@@ -234,18 +240,13 @@
         const track = document.getElementById(`track-${prendaId}`);
         const prenda = prendas.find(p => p.id === prendaId);
         const totalFotos = prenda.fotos.length;
-        
         if (!carruselPositions[prendaId]) carruselPositions[prendaId] = 0;
-        
         carruselPositions[prendaId] += direction;
-        
         if (carruselPositions[prendaId] < 0) carruselPositions[prendaId] = totalFotos - 1;
         if (carruselPositions[prendaId] >= totalFotos) carruselPositions[prendaId] = 0;
-        
         track.style.transform = `translateX(-${carruselPositions[prendaId] * 100}%)`;
     };
 
-    // Funciones de navegación y modales
     window.filtrar = function(cat) {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         event.target.classList.add('active');
@@ -267,6 +268,18 @@
     };
     window.cerrarModal = function() { document.getElementById('modal').style.display = 'none'; };
     
+    window.abrirLectura = function(titulo, texto) {
+        document.getElementById('lectura-titulo').innerText = titulo;
+        document.getElementById('lectura-texto').innerText = texto;
+        document.getElementById('modal-lectura').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.cerrarLectura = function() {
+        document.getElementById('modal-lectura').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    };
+
     document.getElementById('form-pedido').addEventListener('submit', function(e) {
         e.preventDefault();
         const cliente = document.getElementById('nombre-cliente').value;
