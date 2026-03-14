@@ -76,23 +76,14 @@
         .filter-btn { background: none; border: none; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; opacity: 0.3; transition: var(--transition); padding: 5px 0; border-bottom: 2px solid transparent; }
         .filter-btn.active, .filter-btn:hover { opacity: 1; border-bottom: 2px solid var(--negro); }
 
-        /* --- Galería de Productos --- */
+        /* --- Galería --- */
         .main-container { max-width: 1600px; margin: 0 auto; padding: 2rem 5% 6rem; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 40px; }
 
-        /* Clase para la animación de las tarjetas */
         .card { 
             background: var(--bg); position: relative; transition: var(--transition); 
             animation: revealUp 0.8s cubic-bezier(0.2, 0, 0.2, 1) backwards;
         }
-        /* Delay escalonado dinámico para las tarjetas */
-        .card:nth-child(1) { animation-delay: 0.1s; }
-        .card:nth-child(2) { animation-delay: 0.2s; }
-        .card:nth-child(3) { animation-delay: 0.3s; }
-        .card:nth-child(4) { animation-delay: 0.4s; }
-        .card:nth-child(5) { animation-delay: 0.5s; }
-        .card:nth-child(6) { animation-delay: 0.6s; }
-
         .card:hover { transform: translateY(-10px); }
 
         .badge { position: absolute; top: 20px; right: 20px; z-index: 20; padding: 6px 12px; font-size: 0.55rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1.5px; background: var(--negro); color: white; border-radius: 2px; }
@@ -101,8 +92,12 @@
         .carousel-container { position: relative; width: 100%; aspect-ratio: 4 / 5; overflow: hidden; margin-bottom: 25px; background: var(--gris-claro); }
         .carousel-track { display: flex; height: 100%; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .carousel-track img { min-width: 100%; object-fit: cover; transition: transform 1.2s ease; }
-        .card:hover .carousel-track img { transform: scale(1.08); }
-        .card.is-sold-out .carousel-track img { filter: grayscale(100%); opacity: 0.5; }
+        
+        /* Ajuste de visibilidad para AGOTADOS */
+        .card.is-sold-out .carousel-track img { 
+            filter: grayscale(40%); /* Menos gris */
+            opacity: 0.85; /* Más visible */
+        }
 
         .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: white; border: none; font-size: 0.8rem; cursor: pointer; opacity: 0; transition: 0.3s; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; z-index: 30; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         .prev-btn { left: 15px; } .next-btn { right: 15px; }
@@ -124,11 +119,8 @@
         .bitacora-header { padding: 10rem 5% 4rem; text-align: center; }
         .bitacora-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1400px; margin: 0 auto; padding: 0 5% 8rem; }
         .bitacora-item { cursor: pointer; animation: revealUp 1s ease backwards; }
-        .bitacora-item:nth-child(1) { animation-delay: 0.2s; }
-        .bitacora-item:nth-child(2) { animation-delay: 0.4s; }
-        
         .meta-bitacora { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: var(--gris-medio); margin-bottom: 20px; display: block; }
-        .img-container { width: 100%; height: 500px; overflow: hidden; margin-bottom: 30px; }
+        .img-container { width: 100%; height: 500px; overflow: hidden; margin-bottom: 30px; background: #f9f9f9; }
         .bitacora-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.5s ease; }
         .bitacora-item:hover img { transform: scale(1.1); }
         .bitacora-item h3 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin: 0 0 20px 0; font-style: italic; }
@@ -136,19 +128,17 @@
 
         /* --- Modales --- */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.98); justify-content: center; align-items: center; z-index: 9999; }
-        .modal-content { text-align: center; width: 90%; max-width: 600px; padding: 40px; animation: revealUp 0.5s ease; }
+        .modal-content { text-align: center; width: 90%; max-width: 600px; padding: 40px; }
         #modal-lectura .modal-content { max-width: 800px; text-align: left; }
         #modal-lectura h3 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin-bottom: 30px; line-height: 1.1; }
-        #modal-lectura p { line-height: 2.2; font-size: 1.1rem; color: #333; font-weight: 300; }
+        #modal-lectura p { line-height: 2.2; font-size: 1.1rem; color: #333; font-weight: 300; white-space: pre-wrap; }
 
         input { width: 100%; padding: 25px 0; border: none; border-bottom: 1px solid #ccc; background: transparent; font-size: 1.8rem; outline: none; text-align: center; margin-bottom: 40px; font-family: 'Inter'; font-weight: 300; }
-        input:focus { border-bottom-color: var(--negro); }
-
         footer { padding: 8rem 5%; text-align: center; border-top: 1px solid var(--gris-claro); font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gris-medio); }
 
         @media (max-width: 768px) { 
             .bitacora-grid { grid-template-columns: 1fr; gap: 50px; } 
-            .hero h2 { font-size: 4.5rem; letter-spacing: -3px; }
+            .hero h2 { font-size: 4.5rem; }
             .grid { grid-template-columns: 1fr; }
             .img-container { height: 350px; }
         }
@@ -173,14 +163,12 @@
         <h2>Archivo<br>Madlamb</h2>
         <p>Selección curada de piezas con historia.</p>
     </div>
-    
     <div class="filter-bar">
         <button class="filter-btn active" onclick="filtrar('todas')">Todas</button>
         <button class="filter-btn" onclick="filtrar('jackets')">Jackets</button>
         <button class="filter-btn" onclick="filtrar('hoodies')">Hoodies</button>
         <button class="filter-btn" onclick="filtrar('camisetas')">Camisetas</button>
     </div>
-
     <div class="main-container">
         <div class="grid" id="galeria"></div>
     </div>
@@ -192,28 +180,40 @@
         <p style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gris-medio);">Historias detrás del archivo.</p>
     </div>
     <div class="bitacora-grid">
-        <div class="bitacora-item" onclick="abrirLectura('The Waxed Canvas Trucker', '...')">
+        <div class="bitacora-item" onclick="abrirLectura('The Waxed Canvas Trucker', 'La chaqueta de lona encerada es mucho más que una prenda; es una herencia de ingeniería textil que nació en el siglo XV para proteger a los marineros de los climas más hostiles. Desde las velas de alta mar hasta las icónicas rutas de motociclismo, este material ha evolucionado utilizando fibras como el algodón Martexin y remaches de cobre para ofrecer una resistencia hercúlea y eterna. A diferencia de la moda desechable, su valor real reside en la pátina que desarrolla con el tiempo, transformando cada arruga y marca en una crónica visual de las aventuras de quien la viste, convirtiéndola en una inversión única diseñada para pasar de generación en generación.')">
             <span class="meta-bitacora">10 Mar. 2026 — 03 min</span>
             <div class="img-container"><img src="The Waxed Canvas Trucker.jpg"></div>
             <h3>The Waxed Canvas Trucker</h3>
             <p>La chaqueta de lona encerada es mucho más que una prenda...</p>
         </div>
-        <div class="bitacora-item" onclick="abrirLectura('El Oro de Lona: La Detroit Jacket', '...')">
+        <div class="bitacora-item" onclick="abrirLectura('El Oro de Lona: La Detroit Jacket', 'Pocas piezas en la historia del vestuario masculino poseen la mística de la Carhartt Detroit. Nacida para el rigor de las líneas de ensamblaje en Michigan, esta chaqueta se convirtió en el uniforme no oficial de la clase obrera estadounidense. Su diseño corto a la cintura, pensado originalmente para no estorbar al trabajador sentado, hoy es la silueta más buscada por coleccionistas. Confeccionada en \'Duck Canvas\' de alto gramaje, cada Detroit cuenta una historia distinta a través de su desgaste; desde las manchas de aceite hasta el descolorido por el sol, representa una armadura urbana que solo mejora con el uso rudo y el paso de las décadas.')">
             <span class="meta-bitacora">05 Mar. 2026 — 02 min</span>
             <div class="img-container"><img src="El Oro de Lona La Detroit Jacket.jpg"></div>
             <h3>El Oro de Lona: La Detroit Jacket</h3>
             <p>Pocas piezas en la historia del vestuario masculino poseen la mística...</p>
+        </div>
+        <div class="bitacora-item" onclick="abrirLectura('El Guardián de 1970 Regal Toy Ltd', 'En el universo del coleccionismo vintage, existe una jerarquía invisible. En la cima no están los objetos producidos por millones, sino aquellos que cuentan la historia de una industria que ya no existe.\n\nHoy nos enfocamos en una de nuestras piezas más valiosas: el Regal Toy de la serie First Nations.\n\nRareza de Origen: El Sello de Toronto\nFundada en 1959, Regal Toy Ltd. fue el titán de la manufactura juguetera en Canadá. Poseer una pieza con el grabado original en la espalda no es solo tener un juguete; es poseer un fragmento del patrimonio industrial norteamericano. Tras el cierre de sus fábricas, estas figuras pasaron de los estantes de las tiendas a las vitrinas de los museos de diseño.\n\n⏳ La Exclusividad de la Supervivencia\nLo que hace a este ejemplar de 1970 una pieza de exclusividad absoluta no es solo su edad (más de 55 años), sino su estado de conservación.\n\nEl Vinilo Térmico: A diferencia del plástico moderno que se degrada y se vuelve quebradizo, el vinilo Regal fue diseñado para durar siglos.\n\nLa Pátina del Tiempo: La suavidad de sus facciones y el brillo conservado en su mirada son imposibles de replicar. Es una cápsula del tiempo que ha sobrevivido a décadas de cambios culturales y tecnológicos.\n\n💎 Más que un Objeto, una Inversión Cultural\nEn una era de consumo desechable, la exclusividad reside en la permanencia. Este muñeco representa una época donde el juguete era una obra de arte manual. Su vestimenta de fieltro, sus costuras reforzadas y su diseño étnico detallado lo convierten en un objeto muy interesante.')">
+            <span class="meta-bitacora">12 Mar. 2026 — 03 min</span>
+            <div class="img-container"><img src="Regal toy.png"></div>
+            <h3>El Guardián de 1970 Regal Toy Ltd</h3>
+            <p>En el universo del coleccionismo vintage, existe una jerarquía invisible...</p>
+        </div>
+        <div class="bitacora-item" onclick="abrirLectura('Ebbets Field Flannels: El Estandarte del Heritage Americano', 'Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna de lo retro; es una réplica exacta de ingeniería textil. Fabricada en Seattle, esta gorra logra capturar el \'look & feel\' preciso de los años 40 y 50, manteniendo viva la artesanía que las máquinas actuales han olvidado.\n\n¿Qué la hace una pieza única?\n\nLa Identidad de \'La Casa\': A diferencia de las reproducciones de equipos de ligas menores, esta edición limitada porta el logotipo \'EFF\' en fieltro blanco. Es la firma de la marca, una declaración de principios para el coleccionista que valora la historia de la propia manufactura.\n\nEstética de Época Impecable: Su estructura es exactamente igual a las gorras usadas en el diamante hace 80 años. Al no tener los refuerzos rígidos frontales de las gorras modernas, ofrece esa caída natural y perfil bajo que definió la silueta de los jugadores de la era dorada.\n\nMateriales que Cuentan una Historia:\nLana Broadcloth Auténtica: Tejida con la densidad y el peso originales.\n\nDetalles de Fidelidad Histórica:\nVisera de Satín Verde: Recupera el reverso clásico diseñado para mitigar el brillo solar, un sello de autenticidad visual.\nCorrea de Cuero Genuino: Un cierre robusto y tradicional que refuerza su herencia artesanal.\n\nEn conclusión: Es una pieza de diseño de autor. Combina la exclusividad de una tirada limitada de 2014 con la apariencia visual de una reliquia de 1945. Es, sencillamente, historia viva que puedes usar.')">
+            <span class="meta-bitacora">14 Mar. 2026 — 03 min</span>
+            <div class="img-container"><img src="Ebbets Field Flannels2.png"></div>
+            <h3>Ebbets Field Flannels: El Heritage Americano</h3>
+            <p>Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna...</p>
         </div>
     </div>
 </section>
 
 <div id="modal" class="modal">
     <div class="modal-content">
-        <h3 id="modal-titulo" style="font-size: 1rem; text-transform: uppercase; font-weight: 900; letter-spacing: 3px;">Reservar Pieza</h3>
+        <h3 id="modal-titulo" style="font-size: 1rem; text-transform: uppercase; font-weight: 900; letter-spacing: 3px;">Adquirir</h3>
         <form id="form-pedido">
             <input type="text" id="nombre-cliente" placeholder="TU NOMBRE" required>
             <button type="submit" class="btn-adquirir">CONTINUAR A WHATSAPP</button>
-            <button type="button" onclick="cerrarModal()" style="margin-top:30px; background:none; border:none; cursor:pointer; font-weight: 700; font-size: 0.6rem; letter-spacing: 2px; opacity: 0.4;">VOLVER</button>
+            <button type="button" onclick="cerrarModal()" style="margin-top:30px; background:none; border:none; cursor:pointer; font-weight: 700; font-size: 0.6rem; letter-spacing: 2px; opacity: 0.4;">CANCELAR</button>
         </form>
     </div>
 </div>
@@ -222,14 +222,13 @@
     <div class="modal-content">
         <h3 id="lectura-titulo"></h3>
         <p id="lectura-texto"></p>
-        <button type="button" onclick="cerrarLectura()" style="margin-top:50px; background:var(--negro); color:white; padding: 20px 40px; border:none; cursor:pointer; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem;">Cerrar</button>
+        <button type="button" onclick="cerrarLectura()" style="margin-top:50px; background:var(--negro); color:white; padding: 20px 40px; border:none; cursor:pointer; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem;">Cerrar Lectura</button>
     </div>
 </div>
 
 <footer>© 2026 MADLAMB. | CURATED IN SAN JOSÉ, COSTA RICA</footer>
 
 <script>
-    /* TU JAVASCRIPT ORIGINAL SE MANTIENE INTACTO */
     let prendaSeleccionadaParaEnvio = "";
     const carruselPositions = {};
 
@@ -251,21 +250,13 @@
     function cargar(filtro = 'todas') {
         const galeria = document.getElementById('galeria');
         const filtradas = filtro === 'todas' ? prendas : prendas.filter(p => p.categoria === filtro);
-        
         galeria.innerHTML = filtradas.map((p) => {
             const fotosHTML = p.fotos.map(f => `<img src="${f}" alt="${p.nombre}">`).join('');
-            const botonesNav = p.fotos.length > 1 ? `
-                <button class="nav-btn prev-btn" onclick="moveCarousel(${p.id}, -1)">←</button>
-                <button class="nav-btn next-btn" onclick="moveCarousel(${p.id}, 1)">→</button>
-            ` : '';
-            
-            return `
-            <div class="card ${p.disponible ? '' : 'is-sold-out'}">
-                ${p.disponible ? '<div class="badge">Disponible</div>' : '<div class="badge agotado">Sold Out</div>'}
+            const botonesNav = p.fotos.length > 1 ? `<button class="nav-btn prev-btn" onclick="moveCarousel(${p.id}, -1)">←</button><button class="nav-btn next-btn" onclick="moveCarousel(${p.id}, 1)">→</button>` : '';
+            return `<div class="card ${p.disponible ? '' : 'is-sold-out'}">
+                ${p.disponible ? '<div class="badge">Disponible</div>' : '<div class="badge agotado">Agotado</div>'}
                 <div class="carousel-container">
-                    <div class="carousel-track" id="track-${p.id}">
-                        ${fotosHTML}
-                    </div>
+                    <div class="carousel-track" id="track-${p.id}">${fotosHTML}</div>
                     ${botonesNav}
                 </div>
                 <div class="card-info">
@@ -311,14 +302,12 @@
         document.getElementById('modal').style.display = 'flex';
     };
     window.cerrarModal = function() { document.getElementById('modal').style.display = 'none'; };
-    
     window.abrirLectura = function(titulo, texto) {
         document.getElementById('lectura-titulo').innerText = titulo;
         document.getElementById('lectura-texto').innerText = texto;
         document.getElementById('modal-lectura').style.display = 'flex';
         document.body.style.overflow = 'hidden';
     };
-
     window.cerrarLectura = function() {
         document.getElementById('modal-lectura').style.display = 'none';
         document.body.style.overflow = 'auto';
