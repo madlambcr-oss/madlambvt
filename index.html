@@ -32,7 +32,6 @@
         }
         #preloader h2 { font-weight: 200; letter-spacing: 25px; font-size: 0.8rem; text-transform: uppercase; color: #fff; }
 
-        /* --- Animaciones de Lujo --- */
         @keyframes revealSlight {
             from { opacity: 0; transform: scale(1.05); filter: blur(10px); }
             to { opacity: 1; transform: scale(1); filter: blur(0); }
@@ -53,7 +52,7 @@
         .content-section { display: none; }
         .content-section.active { display: block; }
 
-        /* --- Hero High-Contrast --- */
+        /* --- Hero --- */
         .hero { padding: 12rem 5% 6rem; text-align: center; }
         .hero h2 { 
             font-size: clamp(3rem, 15vw, 12rem); font-weight: 900; line-height: 0.8; margin: 0; 
@@ -68,18 +67,16 @@
             margin-top: 20px; letter-spacing: 1px;
         }
 
-        /* --- Filter Bar --- */
+        /* --- Filters --- */
         .filter-bar { padding: 0 5% 4rem; display: flex; justify-content: center; gap: 4rem; overflow-x: auto; scrollbar-width: none; }
         .filter-btn { background: none; border: none; color: var(--accent); font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 4px; cursor: pointer; opacity: 0.2; transition: var(--transition); }
         .filter-btn.active, .filter-btn:hover { opacity: 1; }
 
-        /* --- Product Grid --- */
+        /* --- Grid --- */
         .main-container { max-width: 1800px; margin: 0 auto; padding: 0 5% 10rem; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 80px; }
 
-        .card { 
-            position: relative; animation: revealSlight 1.5s var(--transition) backwards;
-        }
+        .card { position: relative; animation: revealSlight 1.5s var(--transition) backwards; }
         .card:hover .carousel-container { transform: scale(1.02); }
 
         .badge { position: absolute; top: 20px; left: 20px; z-index: 20; padding: 5px 15px; font-size: 0.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); color: var(--accent); border: 1px solid rgba(255,255,255,0.1); }
@@ -90,12 +87,12 @@
         .carousel-track img { min-width: 100%; object-fit: cover; filter: brightness(0.8); transition: filter 0.8s ease; }
         .card:hover .carousel-track img { filter: brightness(1); }
 
-        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: white; font-size: 2rem; cursor: pointer; opacity: 0; z-index: 30; transition: var(--transition); font-weight: 100; }
+        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: white; font-size: 2rem; cursor: pointer; opacity: 0; z-index: 30; transition: var(--transition); }
         .prev-btn { left: 20px; } .next-btn { right: 20px; }
         .card:hover .nav-btn { opacity: 0.5; }
 
         .card-info { text-align: center; }
-        .card-info h3 { font-size: 0.8rem; font-weight: 400; text-transform: uppercase; margin: 0; letter-spacing: 3px; color: var(--accent); }
+        .card-info h3 { font-size: 0.8rem; font-weight: 400; text-transform: uppercase; margin: 0; letter-spacing: 3px; }
         .precio { font-size: 1.2rem; font-weight: 200; margin: 15px 0; color: var(--text-secondary); }
         .specs { font-size: 0.55rem; color: #444; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
 
@@ -107,7 +104,7 @@
         .btn-adquirir:hover:not(:disabled) { background: var(--accent); color: var(--bg); box-shadow: 0 0 30px rgba(255,255,255,0.2); }
         .btn-adquirir:disabled { opacity: 0.1; cursor: not-allowed; }
 
-        /* --- Bitácora Cine --- */
+        /* --- Bitácora --- */
         .bitacora-header { padding: 10rem 5% 5rem; text-align: center; }
         .bitacora-grid { display: grid; grid-template-columns: 1fr; gap: 150px; max-width: 1000px; margin: 0 auto; padding: 0 5% 10rem; }
         .bitacora-item { cursor: pointer; text-align: center; animation: revealSlight 1.5s var(--transition) backwards; }
@@ -115,7 +112,6 @@
         .img-container { width: 100%; height: 600px; overflow: hidden; margin-bottom: 50px; filter: grayscale(100%); transition: var(--transition); }
         .bitacora-item:hover .img-container { filter: grayscale(0%); }
         .bitacora-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 2s ease; }
-        .bitacora-item:hover img { transform: scale(1.1); }
         .bitacora-item h3 { font-family: 'Playfair Display', serif; font-size: 4rem; margin: 0 0 30px 0; font-weight: 400; font-style: italic; }
         .bitacora-item p { line-height: 2; color: var(--text-secondary); font-size: 1rem; max-width: 600px; margin: 0 auto; }
 
@@ -130,7 +126,7 @@
 
         footer { padding: 10rem 5%; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.55rem; font-weight: 700; letter-spacing: 8px; color: #333; }
 
-        @media (max-width: 768px) { .bitacora-item h3 { font-size: 2.5rem; } .grid { grid-template-columns: 1fr; } .hero h2 { font-size: 4rem; letter-spacing: -3px; } .img-container { height: 400px; } }
+        @media (max-width: 768px) { .bitacora-item h3 { font-size: 2.5rem; } .grid { grid-template-columns: 1fr; } .hero h2 { font-size: 4rem; } .img-container { height: 400px; } }
     </style>
 </head>
 <body>
@@ -168,25 +164,25 @@
         <h2 style="font-size: clamp(3rem, 15vw, 10rem); font-weight: 900; letter-spacing: -5px; margin:0;">ENTREGA</h2>
     </div>
     <div class="bitacora-grid">
-        <div class="bitacora-item" onclick="abrirLectura('The Waxed Canvas Trucker', 'La chaqueta de lona encerada es mucho más que una prenda...')">
+        <div class="bitacora-item" onclick="abrirLectura('The Waxed Canvas Trucker', 'La chaqueta de lona encerada es mucho más que una prenda; es una herencia de ingeniería textil que nació en el siglo XV para proteger a los marineros de los climas más hostiles. Desde las velas de alta mar hasta las icónicas rutas de motociclismo, este material ha evolucionado utilizando fibras como el algodón Martexin y remaches de cobre para ofrecer una resistencia hercúlea y eterna. A diferencia de la moda desechable, su valor real reside en la pátina que desarrolla con el tiempo, transformando cada arruga y marca en una crónica visual de las aventuras de quien la viste, convirtiéndola en una inversión única diseñada para pasar de generación en generación.')">
             <span class="meta-bitacora">10 Mar. 2026 — 03 min</span>
             <div class="img-container"><img src="The Waxed Canvas Trucker.jpg"></div>
             <h3>The Waxed Canvas Trucker</h3>
-            <p>La chaqueta de lona encerada es mucho más que una prenda; es una herencia de ingeniería textil...</p>
+            <p>La chaqueta de lona encerada es mucho más que una prenda...</p>
         </div>
-        <div class="bitacora-item" onclick="abrirLectura('El Oro de Lona: La Detroit Jacket', 'Pocas piezas en la historia del vestuario masculino poseen la mística...')">
+        <div class="bitacora-item" onclick="abrirLectura('El Oro de Lona: La Detroit Jacket', 'Pocas piezas en la historia del vestuario masculino poseen la mística de la Carhartt Detroit. Nacida para el rigor de las líneas de ensamblaje en Michigan, esta chaqueta se convirtió en el uniforme no oficial de la clase obrera estadounidense. Su diseño corto a la cintura, pensado originalmente para no estorbar al trabajador sentado, hoy es la silueta más buscada por coleccionistas. Confeccionada en \'Duck Canvas\' de alto gramaje, cada Detroit cuenta una historia distinta a través de su desgaste; desde las manchas de aceite hasta el descolorido por el sol, representa una armadura urbana que solo mejora con el uso rudo y el paso de las décadas.')">
             <span class="meta-bitacora">05 Mar. 2026 — 02 min</span>
             <div class="img-container"><img src="El Oro de Lona La Detroit Jacket.jpg"></div>
             <h3>El Oro de Lona: La Detroit Jacket</h3>
-            <p>Pocas piezas en la historia del vestuario masculino poseen la mística de la Carhartt Detroit...</p>
+            <p>Pocas piezas en la historia del vestuario masculino poseen la mística...</p>
         </div>
-        <div class="bitacora-item" onclick="abrirLectura('El Guardián de 1970 Regal Toy Ltd', 'En el universo del coleccionismo vintage...')">
+        <div class="bitacora-item" onclick="abrirLectura('El Guardián de 1970 Regal Toy Ltd', 'En el universo del coleccionismo vintage, existe una jerarquía invisible. En la cima no están los objetos producidos por millones, sino aquellos que cuentan la historia de una industria que ya no existe.\n\nHoy nos enfocamos en una de nuestras piezas más valiosas: el Regal Toy de la serie First Nations.\n\nRareza de Origen: El Sello de Toronto\nFundada en 1959, Regal Toy Ltd. fue el titán de la manufactura juguetera en Canadá. Poseer una pieza con el grabado original en la espalda no es solo tener un juguete; es poseer un fragmento del patrimonio industrial norteamericano. Tras el cierre de sus fábricas, estas figuras pasaron de los estantes de las tiendas a las vitrinas de los museos de diseño.\n\n⏳ La Exclusividad de la Supervivencia\nLo que hace a este ejemplar de 1970 una pieza de exclusividad absoluta no es solo su edad (más de 55 años), sino su estado de conservación.\n\nEl Vinilo Térmico: A diferencia del plástico moderno que se degrada y se vuelve quebradizo, el vinilo Regal fue diseñado para durar siglos.\n\nLa Pátina del Tiempo: La suavidad de sus facciones y el brillo conservado en su mirada son imposibles de replicar. Es una cápsula del tiempo que ha sobrevivido a décadas de cambios culturales y tecnológicos.\n\n💎 Más que un Objeto, una Inversión Cultural\nEn una era de consumo desechable, la exclusividad reside en la permanencia. Este muñeco representa una época donde el juguete era una obra de arte manual. Su vestimenta de fieltro, sus costuras reforzadas y su diseño étnico detallado lo convierten en un objeto muy interesante.')">
             <span class="meta-bitacora">12 Mar. 2026 — 03 min</span>
             <div class="img-container"><img src="Regal toy.png"></div>
             <h3>El Guardián de 1970 Regal Toy Ltd</h3>
             <p>En el universo del coleccionismo vintage, existe una jerarquía invisible...</p>
         </div>
-        <div class="bitacora-item" onclick="abrirLectura('Ebbets Field Flannels: El Heritage Americano', 'Esta pieza de Ebbets Field Flannels (2014)...')">
+        <div class="bitacora-item" onclick="abrirLectura('Ebbets Field Flannels: El Estandarte del Heritage Americano', 'Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna de lo retro; es una réplica exacta de ingeniería textil. Fabricada en Seattle, esta gorra logra capturar el \'look & feel\' preciso de los años 40 y 50, manteniendo viva la artesanía que las máquinas actuales han olvidado.\n\n¿Qué la hace una pieza única?\n\nLa Identidad de \'La Casa\': A diferencia de las reproducciones de equipos de ligas menores, esta edición limitada porta el logotipo \'EFF\' en fieltro blanco. Es la firma de la marca, una declaración de principios para el coleccionista que valora la historia de la propia manufactura.\n\nEstética de Época Impecable: Su estructura es exactamente igual a las gorras usadas en el diamante hace 80 años. Al no tener los refuerzos rígidos frontales de las gorras modernas, ofrece esa caída natural y perfil bajo que definió la silueta de los jugadores de la era dorada.\n\nMateriales que Cuentan una Historia:\nLana Broadcloth Auténtica: Tejida con la densidad y el peso originales.\n\nDetalles de Fidelidad Histórica:\nVisera de Satín Verde: Recupera el reverso clásico diseñado para mitigar el brillo solar, un sello de autenticidad visual.\nCorrea de Cuero Genuino: Un cierre robusto y tradicional que refuerza su herencia artesanal.\n\nEn conclusión: Es una pieza de diseño de autor. Combina la exclusividad de una tirada limitada de 2014 con la apariencia visual de una reliquia de 1945. Es, sencillamente, historia viva que puedes usar.')">
             <span class="meta-bitacora">14 Mar. 2026 — 03 min</span>
             <div class="img-container"><img src="Ebbets Field Flannels2.png"></div>
             <h3>Ebbets Field Flannels: El Heritage Americano</h3>
@@ -214,10 +210,9 @@
     </div>
 </div>
 
-<footer>© 2026 MADLAMB. | ARCHIVE SUPPLY SUPPLY</footer>
+<footer>© 2026 MADLAMB. | ARCHIVE SUPPLY</footer>
 
 <script>
-    /* LÓGICA ORIGINAL INTACTA */
     let prendaSeleccionadaParaEnvio = "";
     const carruselPositions = {};
 
