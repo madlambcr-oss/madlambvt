@@ -136,7 +136,7 @@
             padding: 20px 45px; border: none; cursor: pointer; 
             font-weight: 700; text-transform: uppercase; letter-spacing: 4px; 
             font-size: 0.7rem; transition: var(--transition);
-            margin-bottom: 40px; /* Espacio extra al final */
+            margin-bottom: 40px; 
         }
         .btn-cerrar-lectura:hover { transform: scale(1.05); filter: brightness(0.9); }
 
@@ -145,13 +145,30 @@
 
         footer { padding: 10rem 5%; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.6rem; font-weight: 700; letter-spacing: 10px; color: #333; text-transform: uppercase; }
 
-        @media (max-width: 768px) { .bitacora-item h3 { font-size: 2.5rem; } .grid { grid-template-columns: 1fr; } .hero h2 { font-size: 4rem; } .img-container { height: 400px; } }
+        /* --- AJUSTES CELULAR (Mobile Responsive) --- */
+        @media (max-width: 768px) {
+            .site-header { padding: 1rem 5%; }
+            .nav-menu ul { gap: 1.5rem; }
+            .hero { padding: 8rem 5% 4rem; }
+            .hero h2 { font-size: 4rem; letter-spacing: -2px; }
+            .hero p { font-size: 1.1rem; }
+            
+            .filter-bar { gap: 2rem; justify-content: flex-start; padding-bottom: 2rem; }
+            
+            .grid { grid-template-columns: 1fr; gap: 50px; }
+            
+            .bitacora-grid { gap: 80px; }
+            .bitacora-item h3 { font-size: 2.2rem; }
+            .img-container { height: 350px; }
+            
+            input { font-size: 1.5rem; }
+        }
     </style>
 </head>
 <body>
-
+ 
 <div id="preloader"><h2>MADLAMB.</h2></div>
-
+ 
 <header class="site-header">
     <h1 onclick="showSection('suministros')">MADLAMB.</h1>
     <nav class="nav-menu">
@@ -161,7 +178,7 @@
         </ul>
     </nav>
 </header>
-
+ 
 <section id="suministros" class="content-section active">
     <div class="hero">
         <h2>Archivo</h2>
@@ -177,7 +194,7 @@
         <div class="grid" id="galeria"></div>
     </div>
 </section>
-
+ 
 <section id="bitacora" class="content-section">
     <div class="bitacora-header">
         <h2 style="font-size: clamp(3rem, 15vw, 10rem); font-weight: 900; letter-spacing: -5px; margin:0;">EL LEGADO</h2>
@@ -209,7 +226,7 @@
         </div>
     </div>
 </section>
-
+ 
 <div id="modal" class="modal">
     <div class="modal-content">
         <h3 style="text-transform: uppercase; font-weight: 900; letter-spacing: 5px; font-size: 1rem;">Adquirir Pieza</h3>
@@ -220,7 +237,7 @@
         </form>
     </div>
 </div>
-
+ 
 <div id="modal-lectura" class="modal">
     <div class="modal-content">
         <h3 id="lectura-titulo"></h3>
@@ -228,19 +245,19 @@
         <button type="button" onclick="cerrarLectura()" class="btn-cerrar-lectura">Cerrar Lectura</button>
     </div>
 </div>
-
+ 
 <footer>© 2026 MADLAMB. | Archive Supply</footer>
-
+ 
 <script>
     let prendaSeleccionadaParaEnvio = "";
     const carruselPositions = {};
-
+ 
     window.addEventListener('load', () => {
         const preloader = document.getElementById('preloader');
         preloader.style.opacity = '0';
         setTimeout(() => preloader.style.display = 'none', 1500);
     });
-
+ 
     const prendas = [
         { id: 1, nombre: "HOODIE UNDER ARMOUR 'REAL TREE'", precio: "35,000", talla: "L", estado: "10/10", categoria: "hoodies", fotos: ["Hoodie under armour real tree.jpg"], disponible: true },
         { id: 2, nombre: "CARHARRT DETROIT '100 AÑOS'", precio: "50,000", talla: "L", estado: "8.5/10", categoria: "jackets", fotos: ["Carharrt Detroit 100 años.jpg"], disponible: true },
@@ -249,7 +266,7 @@
         { id: 5, nombre: "ONEITA 'LOSER' TEE 'VINTAGE'", precio: "50,000", talla: "L", estado: "9/10", categoria: "camisetas", fotos: ["Oneita loser tee.jpg","Oneita loser tee2.jpg"], disponible: true },
         { id: 6, nombre: "CARHARTT ACTIVE 'FLANNEL LINED'", precio: "110,000", talla: "M", estado: "9/10", categoria: "jackets", fotos: ["Carhartt Active 'Flannel Lined'.jpg","Carhartt Active 'Flannel Lined2'.jpg"], disponible: false }
     ];
-
+ 
     function cargar(filtro = 'todas') {
         const galeria = document.getElementById('galeria');
         const filtradas = filtro === 'todas' ? prendas : prendas.filter(p => p.categoria === filtro);
@@ -268,12 +285,12 @@
                     <div class="specs">${p.talla} // ${p.estado}</div>
                     <button class="btn-adquirir" ${p.disponible ? '' : 'disabled'} onclick="abrirModal('${p.nombre.replace(/'/g, "\\'")}')">
                         ${p.disponible ? 'Adquirir' : 'Agotado'}
-                    </button>
-                </div>
+                     </button>
+                 </div>
             </div>`;
         }).join('');
     }
-
+ 
     window.moveCarousel = function(prendaId, direction) {
         const track = document.getElementById(`track-${prendaId}`);
         const prenda = prendas.find(p => p.id === prendaId);
@@ -284,13 +301,13 @@
         if (carruselPositions[prendaId] >= totalFotos) carruselPositions[prendaId] = 0;
         track.style.transform = `translateX(-${carruselPositions[prendaId] * 100}%)`;
     };
-
+ 
     window.filtrar = function(cat) {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         event.target.classList.add('active');
         cargar(cat);
     };
-
+ 
     window.showSection = function(id) {
         document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
         document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
@@ -299,7 +316,7 @@
         if(navElem) navElem.classList.add('active');
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
-
+ 
     window.abrirModal = function(nombre) {
         prendaSeleccionadaParaEnvio = nombre;
         document.getElementById('modal').style.display = 'flex';
@@ -313,12 +330,12 @@
         document.body.style.overflow = 'hidden';
         document.getElementById('modal-lectura').scrollTop = 0;
     };
-
+ 
     window.cerrarLectura = function() {
         document.getElementById('modal-lectura').style.display = 'none';
         document.body.style.overflow = 'auto';
     };
-
+ 
     document.getElementById('form-pedido').addEventListener('submit', function(e) {
         e.preventDefault();
         const cliente = document.getElementById('nombre-cliente').value;
@@ -326,7 +343,7 @@
         window.open("https://wa.me/50683087480?text=" + encodeURIComponent(msg), '_blank');
         cerrarModal();
     });
-
+ 
     cargar();
 </script>
 </body>
