@@ -13,7 +13,6 @@
             --text-secondary: #707070;
             --border: rgba(255, 255, 255, 0.08);
             --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            /* NUEVO: Color Óxido Editorial */
             --oxido: #b35a38; 
         }
 
@@ -21,9 +20,8 @@
         body { 
             margin: 0; font-family: 'Inter', sans-serif; 
             background-color: var(--bg); color: var(--accent);
-            padding-top: 100px; overflow-x: hidden;
+            padding-top: 80px; overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            letter-spacing: -0.01em;
         }
 
         /* --- Preloader --- */
@@ -37,133 +35,97 @@
         
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         /* --- Header --- */
         .site-header { 
             background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(30px);
-            padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; 
+            padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; 
             position: fixed; top: 0; width: 100%; z-index: 1000; box-sizing: border-box;
             border-bottom: 1px solid var(--border);
         }
         .site-header h1 { font-weight: 900; font-size: 1.4rem; letter-spacing: -1px; margin: 0; cursor: pointer; text-transform: uppercase; }
-        
         .nav-menu ul { display: flex; gap: 3.5rem; list-style: none; margin: 0; padding: 0; }
-        .nav-menu a { 
-            color: var(--accent); 
-            text-decoration: none; 
-            font-size: 1rem; 
-            font-weight: 600; 
-            text-transform: uppercase; 
-            letter-spacing: 3px; 
-            opacity: 0.4; 
-            transition: var(--transition); 
-            cursor: pointer; 
-        }
-        /* AJUSTE: Color óxido en navegación */
+        .nav-menu a { color: var(--accent); text-decoration: none; font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; opacity: 0.4; transition: var(--transition); cursor: pointer; }
         .nav-menu a.active, .nav-menu a:hover { opacity: 1; color: var(--oxido); }
 
         .content-section { display: none; }
-        .content-section.active { display: block; animation: fadeInUp 1s var(--transition); }
+        .content-section.active { display: block; }
 
-        /* --- Hero --- */
-        .hero { padding: 10rem 5% 5rem; text-align: center; }
-        .hero h2 { 
-            font-size: clamp(4rem, 20vw, 15rem); font-weight: 900; line-height: 0.75; margin: 0; 
-            letter-spacing: -0.06em; text-transform: uppercase;
+        /* --- NUEVO: Banner de Fondo (Estilo Patagonia) --- */
+        .hero-banner { 
+            position: relative;
+            height: 80vh; 
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* REEMPLAZA 'tu-imagen.jpg' con la ruta de tu foto de fondo */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('banner-vintage.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin-bottom: 5rem;
         }
-        .hero .frase-pregunta {
-            display: block;
+        .hero-banner h2 { 
+            font-size: clamp(4rem, 15vw, 12rem); font-weight: 900; line-height: 0.8; margin: 0; 
+            letter-spacing: -0.06em; text-transform: uppercase; color: #fff;
+        }
+        .hero-banner .frase-pregunta {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem; 
-            font-style: italic;
-            color: var(--text-secondary);
-            margin-top: 25px;
-            letter-spacing: 0;
-            font-weight: 400;
+            font-size: 2rem; font-style: italic; color: #eee;
+            margin: 25px 0 40px;
         }
+        .btn-banner {
+            background: #fff; color: #000; padding: 18px 40px; border-radius: 50px;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+            text-decoration: none; transition: var(--transition); font-size: 0.9rem;
+        }
+        .btn-banner:hover { transform: scale(1.05); background: var(--oxido); color: #fff; }
 
         /* --- Filtros --- */
         .filter-bar { padding: 0 5% 4rem; display: flex; justify-content: center; gap: 3rem; overflow-x: auto; scrollbar-width: none;}
-        .filter-btn { 
-            background: none; border: none; color: var(--accent); 
-            font-size: 1rem; 
-            font-weight: 600; 
-            text-transform: uppercase; 
-            letter-spacing: 3px; 
-            cursor: pointer; opacity: 0.3; transition: var(--transition); padding-bottom: 8px;
-            border-bottom: 1px solid transparent;
-            white-space: nowrap;
-        }
-        /* AJUSTE: Color óxido en filtros */
+        .filter-btn { background: none; border: none; color: var(--accent); font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; cursor: pointer; opacity: 0.3; transition: var(--transition); padding-bottom: 8px; border-bottom: 1px solid transparent; white-space: nowrap; }
         .filter-btn.active, .filter-btn:hover { opacity: 1; color: var(--oxido); border-bottom: 1px solid var(--oxido); }
 
         /* --- Grid de Productos --- */
         .main-container { max-width: 1600px; margin: 0 auto; padding: 0 5% 10rem; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 60px; }
-
         .card { position: relative; border: 1px solid transparent; transition: var(--transition); padding: 15px; }
         .card:hover { border-color: var(--border); background: var(--surface); }
-
         .carousel-container { position: relative; width: 100%; aspect-ratio: 1 / 1.3; overflow: hidden; margin-bottom: 30px; background: #000; }
         .carousel-track { display: flex; height: 100%; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        .carousel-track img { min-width: 100%; object-fit: cover; transition: transform 1.2s ease; }
-        .card:hover .carousel-track img { transform: scale(1.05); }
-
+        .carousel-track img { min-width: 100%; object-fit: cover; }
         .badge { position: absolute; top: 30px; left: 30px; z-index: 20; padding: 6px 14px; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; background: #fff; color: #000; }
-        .badge.agotado { background: var(--rojo-agotado); color: #fff; }
 
-        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: #fff; border: none; color: #000; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; z-index: 30; transition: var(--transition); border-radius: 50%; }
-        .prev-btn { left: 20px; } .next-btn { right: 20px; }
-        .card:hover .nav-btn { opacity: 1; }
-
-        .card-info { text-align: left; padding: 0 5px; }
-        .card-info h3 { font-size: 1.1rem; font-weight: 600; text-transform: uppercase; margin: 0; letter-spacing: 1px; }
-        .precio { font-size: 1.3rem; font-weight: 400; margin: 10px 0; color: var(--accent); }
-        .specs { font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 25px; }
-
-        .btn-adquirir { 
-            background: #fff; color: #000; padding: 20px; border: none; width: 100%; 
-            font-size: 0.85rem; font-weight: 900; text-transform: uppercase; letter-spacing: 3px; 
-            cursor: pointer; transition: var(--transition);
-        }
+        .btn-adquirir { background: #fff; color: #000; padding: 20px; border: none; width: 100%; font-size: 0.85rem; font-weight: 900; text-transform: uppercase; letter-spacing: 3px; cursor: pointer; transition: var(--transition); }
         .btn-adquirir:hover:not(:disabled) { background: #ccc; }
-        .btn-adquirir:disabled { background: #1a1a1a; color: #444; cursor: not-allowed; }
 
-        /* --- Bitácora --- */
-        .bitacora-header h2 { font-size: clamp(3rem, 15vw, 10rem); font-weight: 900; text-align: center; padding: 8rem 0 4rem; }
-        .bitacora-grid { display: grid; grid-template-columns: 1fr; gap: 120px; max-width: 900px; margin: 0 auto; padding-bottom: 10rem; }
+        /* --- Bitácora (JUSTIFICADA) --- */
+        .bitacora-grid { display: grid; grid-template-columns: 1fr; gap: 120px; max-width: 900px; margin: 0 auto; padding: 5rem 5% 10rem; }
         .bitacora-item { cursor: pointer; border-bottom: 1px solid var(--border); padding-bottom: 60px; }
-        .meta-bitacora { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: var(--text-secondary); margin-bottom: 30px; display: block; }
-        .img-container { width: 100%; height: 600px; overflow: hidden; margin-bottom: 40px; }
-        .bitacora-item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 1s ease; }
-        .bitacora-item:hover img { filter: grayscale(0); transform: scale(1.03); }
-        .bitacora-item h3 { font-family: 'Playfair Display', serif; font-size: 4rem; margin: 0 0 20px 0; font-weight: 400; font-style: italic; }
-        .bitacora-item p { line-height: 1.8; color: var(--text-secondary); font-size: 1.2rem; }
+        .bitacora-item h3 { font-family: 'Playfair Display', serif; font-size: 4rem; margin: 0 0 20px 0; font-weight: 400; font-style: italic; text-align: center; }
+        /* AJUSTE: Texto Justificado */
+        .bitacora-item p { 
+            line-height: 1.8; color: var(--text-secondary); 
+            font-size: 1.2rem; text-align: justify; 
+        }
 
         /* --- Modales --- */
-        .modal { 
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.98); justify-content: center; align-items: center; 
-            z-index: 9999; padding: 20px;
-        }
-        .modal-content { width: 100%; max-width: 600px; animation: fadeInUp 0.5s ease; position: relative;}
-        #modal-lectura .modal-content { max-width: 850px; padding: 40px; height: 85vh; overflow-y: auto; text-align: left;}
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); justify-content: center; align-items: center; z-index: 9999; padding: 20px; }
+        .modal-content { width: 100%; max-width: 600px; text-align: center; }
+        #modal-lectura .modal-content { max-width: 850px; text-align: left; background: #000; padding: 40px; overflow-y: auto; max-height: 90vh; }
         #modal-lectura h3 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-style: italic; margin-bottom: 30px; }
-        #modal-lectura p { font-size: 1.3rem; line-height: 2.1; font-weight: 200; color: #ccc; }
+        /* AJUSTE: Texto Justificado en el Modal */
+        #modal-lectura p { font-size: 1.3rem; line-height: 2.1; font-weight: 200; color: #ccc; text-align: justify; }
 
         input { width: 100%; padding: 20px 0; border: none; border-bottom: 2px solid #222; background: transparent; font-size: 2.5rem; outline: none; text-align: center; color: #fff; margin-bottom: 40px; font-weight: 900; }
-
         footer { padding: 8rem 5%; text-align: center; border-top: 1px solid var(--border); font-size: 0.75rem; font-weight: 600; letter-spacing: 6px; color: #444; }
 
         @media (max-width: 768px) {
-            .grid { grid-template-columns: 1fr; }
-            .hero h2 { font-size: 18vw; }
-            .nav-menu ul { gap: 1.5rem; }
-            .nav-menu a, .filter-btn { font-size: 0.85rem; }
+            .hero-banner { height: 60vh; }
+            .hero-banner h2 { font-size: 18vw; }
+            .bitacora-item h3 { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -182,47 +144,53 @@
 </header>
 
 <section id="suministros" class="content-section active">
-    <div class="hero">
-        <h2>Archivo</h2>
+    <div class="hero-banner">
+        <h2>Archive</h2>
         <span class="frase-pregunta">¿Qué historia vestirás hoy?</span>
+        <a href="#galeria" class="btn-banner">Explorar Selección</a>
     </div>
+    
     <div class="filter-bar">
         <button class="filter-btn active" onclick="filtrar('todas')">Todo</button>
         <button class="filter-btn" onclick="filtrar('jackets')">Jackets</button>
         <button class="filter-btn" onclick="filtrar('hoodies')">Hoodies</button>
         <button class="filter-btn" onclick="filtrar('camisetas')">T-Shirts</button>
     </div>
+    
     <div class="main-container">
         <div class="grid" id="galeria"></div>
     </div>
 </section>
 
 <section id="bitacora" class="content-section">
-    <div class="bitacora-header">
-        <h2>LEGADO</h2>
+    <div style="text-align: center; padding: 10rem 0 2rem;">
+        <h2 style="font-size: clamp(3rem, 15vw, 10rem); font-weight: 900; margin:0;">LEGADO</h2>
     </div>
     <div class="bitacora-grid">
         <div class="bitacora-item" onclick="abrirLectura('The Waxed Canvas Trucker', 'La chaqueta de lona encerada es mucho más que una prenda; es una herencia de ingeniería textil que nació en el siglo XV para proteger a los marineros de los climas más hostiles. Desde las velas de alta mar hasta las icónicas rutas de motociclismo, este material ha evolucionado utilizando fibras como el algodón Martexin y remaches de cobre para ofrecer una resistencia hercúlea y eterna. A diferencia de la moda desechable, su valor real reside en la pátina que desarrolla con el tiempo, transformando cada arruga y marca en una crónica visual de las aventuras de quien la viste, convirtiéndola en una inversión única diseñada para pasar de generación en generación.')">
             <span class="meta-bitacora">10 Mar. 2026 — 3 min read</span>
-            <div class="img-container"><img src="The Waxed Canvas Trucker.jpg"></div>
+            <div class="img-container" style="height: 500px; overflow: hidden; margin-bottom: 30px;"><img src="The Waxed Canvas Trucker.jpg" style="width: 100%; height: 100%; object-fit: cover;"></div>
             <h3>The Waxed Canvas Trucker</h3>
             <p>La chaqueta de lona encerada es mucho más que una prenda...</p>
         </div>
+        
         <div class="bitacora-item" onclick="abrirLectura('El Oro de Lona: La Detroit Jacket', 'Pocas piezas en la historia del vestuario masculino poseen la mística de la Carhartt Detroit. Nacida para el rigor de las líneas de ensamblaje en Michigan, esta chaqueta se convirtió en el uniforme no oficial de la clase obrera estadounidense. Su diseño corto a la cintura, pensado originalmente para no estorbar al trabajador sentado, hoy es la silueta más buscada por coleccionistas. Confeccionada en \'Duck Canvas\' de alto gramaje, cada Detroit cuenta una historia distinta a través de su desgaste; desde las manchas de aceite hasta el descolorido por el sol, representa una armadura urbana que solo mejora con el uso rudo y el paso de las décadas.')">
             <span class="meta-bitacora">05 Mar. 2026 — 2 min read</span>
-            <div class="img-container"><img src="El Oro de Lona La Detroit Jacket.jpg"></div>
+            <div class="img-container" style="height: 500px; overflow: hidden; margin-bottom: 30px;"><img src="El Oro de Lona La Detroit Jacket.jpg" style="width: 100%; height: 100%; object-fit: cover;"></div>
             <h3>El Oro de Lona: La Detroit Jacket</h3>
             <p>Pocas piezas en la historia del vestuario masculino poseen la mística de la Carhartt Detroit...</p>
         </div>
+
         <div class="bitacora-item" onclick="abrirLectura('El Guardián de 1970 Regal Toy Ltd', 'En el universo del coleccionismo vintage, existe una jerarquía invisible. En la cima no están los objetos producidos por millones, sino aquellos que cuentan la historia de una industria que ya no existe.\n\nHoy nos enfocamos en una de nuestras piezas más valiosas: el Regal Toy de la serie First Nations.\n\nRareza de Origen: El Sello de Toronto\nFundada en 1959, Regal Toy Ltd. fue el titán de la manufactura juguetera en Canadá. Poseer una pieza con el grabado original en la espalda no es solo tener un juguete; es poseer un fragmento del patrimonio industrial norteamericano. Tras el cierre de sus fábricas, estas figuras pasaron de los estantes de las tiendas a las vitrinas de los museos de diseño.\n\n⏳ La Exclusividad de la Supervivencia\nLo que hace a este ejemplar de 1970 una pieza de exclusividad absoluta no es solo su edad (más de 55 años), sino su estado de conservación.\n\nEl Vinilo Térmico: A diferencia del plástico moderno que se degrada y se vuelve quebradizo, el vinilo Regal fue diseñado para durar siglos.\n\nLa Pátina del Tiempo: La suavidad de sus facciones y el brillo conservado en su mirada son imposibles de replicar. Es una cápsula del tiempo que ha sobrevivido a décadas de cambios culturales y tecnológicos.\n\n💎 Más que un Objeto, una Inversión Cultural\nEn una era de consumo desechable, la exclusividad reside en la permanencia. Este muñeco representa una época donde el juguete era una obra de arte manual. Su vestimenta de fieltro, sus costuras reforzadas y su diseño étnico detallado lo convierten en un objeto muy interesante.')">
             <span class="meta-bitacora">12 Mar. 2026 — 3 min read</span>
-            <div class="img-container"><img src="Regal toy.png"></div>
+            <div class="img-container" style="height: 500px; overflow: hidden; margin-bottom: 30px;"><img src="Regal toy.png" style="width: 100%; height: 100%; object-fit: cover;"></div>
             <h3>El Guardián de 1970 Regal Toy Ltd</h3>
             <p>En el universo del coleccionismo vintage, existe una jerarquía invisible...</p>
         </div>
+
         <div class="bitacora-item" onclick="abrirLectura('Ebbets Field Flannels: El Heritage Americano', 'Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna de lo retro; es una réplica exacta de ingeniería textil. Fabricada en Seattle, esta gorra logra capturar el \'look & feel\' preciso de los años 40 y 50, manteniendo viva la artesanía que las máquinas actuales han olvidado.\n\n¿Qué la hace una pieza única?\n\nLa Identidad de \'La Casa\': A diferencia de las reproducciones de equipos de ligas menores, esta edición limitada porta el logotipo \'EFF\' en fieltro blanco. Es la firma de la marca, una declaración de principios para el coleccionista que valora la historia de la propia manufactura.\n\nEstética de Época Impecable: Su estructura es exactamente igual a las gorras usadas en el diamante hace 80 años. Al no tener los refuerzos rígidos frontales de las gorras modernas, ofrece esa caída natural y perfil bajo que definió la silueta de los jugadores de la era dorada.\n\nMateriales que Cuentan una Historia:\nLana Broadcloth Auténtica: Tejida con la densidad y el peso originales.\n\nDetalles de Fidelidad Histórica:\nVisera de Satín Verde: Recupera el reverso clásico diseñado para mitigar el brillo solar, un sello de autenticidad visual.\nCorrea de Cuero Genuino: Un cierre robusto y tradicional que refuerza su herencia artesanal.\n\nEn conclusión: Es una pieza de diseño de autor. Combina la exclusividad de una tirada limitada de 2014 con la apariencia visual de una reliquia de 1945. Es, sencillamente, historia viva que puedes usar.')">
             <span class="meta-bitacora">14 Mar. 2026 — 3 min read</span>
-            <div class="img-container"><img src="Ebbets Field Flannels2.png"></div>
+            <div class="img-container" style="height: 500px; overflow: hidden; margin-bottom: 30px;"><img src="Ebbets Field Flannels2.png" style="width: 100%; height: 100%; object-fit: cover;"></div>
             <h3>Ebbets Field Flannels: El Heritage Americano</h3>
             <p>Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna...</p>
         </div>
