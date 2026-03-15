@@ -94,14 +94,12 @@
         .carousel-track { display: flex; height: 100%; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .carousel-track img { min-width: 100%; object-fit: cover; }
         
-        /* Badge Styles */
         .badge { position: absolute; top: 20px; left: 20px; z-index: 20; padding: 8px 15px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; background: #fff; color: #000; }
         .badge.agotado { background: #1a1a1a; color: #888; border: 1px solid rgba(255,255,255,0.1); }
 
-        /* --- AJUSTE AGOTADO: Sutil y Elegante --- */
         .card.agotado-visual .carousel-track img { 
-            filter: grayscale(60%); /* Deja pasar el 40% del color original */
-            opacity: 0.7; /* Mucho más visible que antes */
+            filter: grayscale(60%); 
+            opacity: 0.7; 
         }
         .card.agotado-visual .card-info {
             opacity: 0.8;
@@ -114,7 +112,6 @@
         .btn-adquirir { background: transparent; color: #fff; padding: 18px; border: 1px solid var(--border); width: 100%; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; cursor: pointer; transition: var(--transition); }
         .btn-adquirir:hover:not(:disabled) { background: #fff; color: #000; border-color: #fff; }
         
-        /* Botón Agotado Ajustado */
         .btn-adquirir:disabled {
             border: 1px solid rgba(255,255,255,0.1);
             color: #666;
@@ -127,14 +124,64 @@
         .prev-btn { left: 0; }
         .next-btn { right: 0; }
 
-        /* --- Bitácora --- */
-        .bitacora-grid { display: grid; grid-template-columns: 1fr; gap: 120px; max-width: 900px; margin: 0 auto; padding: 5rem 5% 10rem; }
-        .bitacora-item { cursor: pointer; border-bottom: 1px solid var(--border); padding-bottom: 60px; }
-        .bitacora-item .img-container { width: 100%; height: auto; overflow: visible; margin-top: 25px; margin-bottom: 35px; background: transparent; }
-        .bitacora-item .img-container img { width: 100%; height: auto; display: block; object-fit: contain; }
-        .bitacora-item h3 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin: 25px 0; font-weight: 400; font-style: italic; line-height: 1.1; }
-        .meta-bitacora { font-size: 0.85rem; letter-spacing: 3px; color: var(--oxido); text-transform: uppercase; font-weight: 600; }
-        .bitacora-item p { line-height: 1.8; color: var(--text-secondary); font-size: 1.25rem; text-align: justify; }
+        /* --- Bitácora Optimizada --- */
+        .bitacora-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 80px 40px; 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 5rem 5% 10rem; 
+        }
+        .bitacora-item { 
+            cursor: pointer; 
+            border-bottom: 1px solid var(--border); 
+            padding-bottom: 40px; 
+            transition: var(--transition);
+        }
+        .bitacora-item:hover { transform: translateY(-5px); }
+        .bitacora-item .img-container { 
+            width: 100%; 
+            aspect-ratio: 16 / 9; 
+            overflow: hidden; 
+            margin-top: 25px; 
+            margin-bottom: 30px; 
+            background: #0d0d0d; 
+        }
+        .bitacora-item .img-container img { 
+            width: 100%; 
+            height: 100%; 
+            display: block; 
+            object-fit: cover; 
+            transition: transform 0.8s ease;
+        }
+        .bitacora-item:hover .img-container img { transform: scale(1.05); }
+        .bitacora-item h3 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 2.2rem; 
+            margin: 20px 0; 
+            font-weight: 400; 
+            font-style: italic; 
+            line-height: 1.2; 
+        }
+        .meta-bitacora { 
+            font-size: 0.75rem; 
+            letter-spacing: 2px; 
+            color: var(--oxido); 
+            text-transform: uppercase; 
+            font-weight: 600; 
+        }
+        .bitacora-item p { 
+            line-height: 1.6; 
+            color: var(--text-secondary); 
+            font-size: 1.1rem; 
+            text-align: left; 
+            margin: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
 
         /* --- Modales --- */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.96); justify-content: center; align-items: center; z-index: 9999; padding: 20px; }
@@ -146,10 +193,13 @@
         input { width: 100%; padding: 20px 0; border: none; border-bottom: 2px solid #333; background: transparent; font-size: 2.2rem; outline: none; text-align: center; color: #fff; margin-bottom: 45px; font-family: 'Playfair Display', serif; font-style: italic; }
         footer { padding: 8rem 5%; text-align: center; border-top: 1px solid var(--border); font-size: 0.85rem; font-weight: 600; letter-spacing: 6px; color: #444; }
 
+        @media (max-width: 1024px) {
+            .bitacora-grid { grid-template-columns: 1fr; gap: 60px; max-width: 800px; }
+        }
         @media (max-width: 768px) {
             .hero-banner { height: 55vh; }
             .hero-banner h2 { font-size: 18vw; }
-            .bitacora-item h3 { font-size: 2.5rem; }
+            .bitacora-item h3 { font-size: 1.8rem; }
             .nav-menu ul { gap: 1.5rem; }
             .nav-menu a { font-size: 0.8rem; }
         }
@@ -266,7 +316,6 @@
         { id: 7, nombre: "COOGI AUSTRALIA AUTHENTIC 3D TEXTURED", precio: "50,000", talla: "L", estado: "9,5/10", categoria: "jackets", fotos: ["Coogi Australia Authentic 3D Textured.jpg","Coogi Australia Authentic 3D Textured2.jpg"], disponible: false },
         { id: 8, nombre: "LEE STORM RIDER DENIM JACKET", precio: "110,000", talla: "M", estado: "10/10", categoria: "jackets", fotos: ["Lee Storm Rider Denim Jacket.jpg","Lee Storm Rider Denim Jacket2.jpg"], disponible: false },
         { id: 9, nombre: "CARHARTT SANTA FE SANDSTONE FINISH", precio: "50,000", talla: "L", estado: "9/10", categoria: "jackets", fotos: ["Carhartt Santa Fe Sandstone Finish.jpg","Carhartt Santa Fe Sandstone Finish2.jpg"], disponible: false }
-    
     ];
 
     function cargar(filtro = 'todas') {
@@ -275,11 +324,9 @@
         galeria.innerHTML = filtradas.map((p) => {
             const fotosHTML = p.fotos.map(f => `<img src="${f}" alt="${p.nombre}">`).join('');
             const botonesNav = p.fotos.length > 1 ? `<button class="nav-btn prev-btn" onclick="moveCarousel(${p.id}, -1)">←</button><button class="nav-btn next-btn" onclick="moveCarousel(${p.id}, 1)">→</button>` : '';
-            
             const statusClass = p.disponible ? "" : "agotado-visual";
             const badgeClass = p.disponible ? "badge" : "badge agotado";
             const badgeText = p.disponible ? "Disponible" : "Agotado";
-
             return `<div class="card ${statusClass}">
                 <div class="${badgeClass}">${badgeText}</div>
                 <div class="carousel-container">
