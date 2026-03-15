@@ -37,7 +37,7 @@
             to { opacity: 1; transform: translateY(0); filter: blur(0); }
         }
 
-        /* --- Navegación (Aumentada) --- */
+        /* --- Navegación --- */
         .site-header { 
             background: rgba(5, 5, 5, 0.9); backdrop-filter: blur(25px);
             padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center; 
@@ -77,34 +77,28 @@
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); gap: 100px; }
 
         .card { position: relative; animation: revealSlight 1.5s var(--transition) backwards; }
-        .card:hover .carousel-container { transform: scale(1.01); }
-
-        .badge { position: absolute; top: 25px; left: 25px; z-index: 20; padding: 8px 20px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); color: var(--accent); border: 1px solid rgba(255,255,255,0.1); }
-        .badge.agotado { color: #ff4444; border-color: #ff4444; background: rgba(255,0,0,0.05); }
+        .card-info { text-align: center; }
+        .card-info h3 { font-size: 1.1rem; font-weight: 400; text-transform: uppercase; margin: 0; letter-spacing: 4px; line-height: 1.4; }
+        .precio { font-size: 1.4rem; font-weight: 200; margin: 20px 0; color: var(--text-secondary); }
+        .specs { font-size: 0.8rem; color: #666; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 35px; }
 
         .carousel-container { position: relative; width: 100%; aspect-ratio: 1 / 1.25; overflow: hidden; margin-bottom: 40px; background: #111; transition: var(--transition); border-radius: 2px; }
         .carousel-track { display: flex; height: 100%; transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
         .carousel-track img { min-width: 100%; object-fit: cover; filter: brightness(0.85); transition: filter 0.8s ease; }
         .card:hover .carousel-track img { filter: brightness(1); }
 
-        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: white; font-size: 2.5rem; cursor: pointer; opacity: 0; z-index: 30; transition: var(--transition); }
-        .prev-btn { left: 25px; } .next-btn { right: 25px; }
-        .card:hover .nav-btn { opacity: 0.7; }
-
-        .card-info { text-align: center; }
-        .card-info h3 { font-size: 1.1rem; font-weight: 400; text-transform: uppercase; margin: 0; letter-spacing: 4px; line-height: 1.4; }
-        .precio { font-size: 1.4rem; font-weight: 200; margin: 20px 0; color: var(--text-secondary); }
-        .specs { font-size: 0.8rem; color: #666; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 35px; }
+        .badge { position: absolute; top: 25px; left: 25px; z-index: 20; padding: 8px 20px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); color: var(--accent); border: 1px solid rgba(255,255,255,0.1); }
+        .badge.agotado { color: #ff4444; border-color: #ff4444; background: rgba(255,0,0,0.05); }
 
         .btn-adquirir { 
             background: transparent; color: var(--accent); padding: 25px; border: 1px solid rgba(255,255,255,0.15); width: 100%; 
             font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 6px; 
             cursor: pointer; transition: var(--transition); border-radius: 2px;
         }
-        .btn-adquirir:hover:not(:disabled) { background: var(--accent); color: var(--bg); box-shadow: 0 0 40px rgba(255,255,255,0.15); }
+        .btn-adquirir:hover:not(:disabled) { background: var(--accent); color: var(--bg); }
         .btn-adquirir:disabled { opacity: 0.1; cursor: not-allowed; }
 
-        /* --- Bitácora --- */
+        /* --- Bitácora (Textos Ajustados) --- */
         .bitacora-header { padding: 10rem 5% 5rem; text-align: center; }
         .bitacora-grid { display: grid; grid-template-columns: 1fr; gap: 180px; max-width: 1100px; margin: 0 auto; padding: 0 5% 10rem; }
         .bitacora-item { cursor: pointer; text-align: center; animation: revealSlight 1.5s var(--transition) backwards; }
@@ -112,7 +106,6 @@
         .img-container { width: 100%; height: 700px; overflow: hidden; margin-bottom: 60px; filter: grayscale(100%); transition: var(--transition); border-radius: 2px; }
         .bitacora-item:hover .img-container { filter: grayscale(0%); }
         .bitacora-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 2s ease; }
-        .bitacora-item:hover img { transform: scale(1.05); }
         .bitacora-item h3 { font-family: 'Playfair Display', serif; font-size: 5rem; margin: 0 0 35px 0; font-weight: 400; font-style: italic; }
         .bitacora-item p { line-height: 2; color: var(--text-secondary); font-size: 1.2rem; max-width: 750px; margin: 0 auto; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
 
@@ -125,7 +118,6 @@
         .modal-content { 
             width: 90%; max-width: 700px; text-align: center; 
             animation: revealSlight 0.6s ease; margin: 20px auto;
-            position: relative;
         }
         #modal-lectura .modal-content { max-width: 900px; text-align: left; padding-bottom: 100px; }
         #modal-lectura h3 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 10vw, 4.5rem); margin-bottom: 50px; font-weight: 400; line-height: 1.1; color: var(--accent); }
@@ -136,32 +128,24 @@
             padding: 25px 60px; border: none; cursor: pointer; 
             font-weight: 700; text-transform: uppercase; letter-spacing: 5px; 
             font-size: 0.85rem; transition: var(--transition);
-            margin-bottom: 40px; 
         }
-        .btn-cerrar-lectura:hover { transform: scale(1.03); filter: brightness(0.9); }
 
         input { width: 100%; padding: 40px 0; border: none; border-bottom: 1px solid #333; background: transparent; font-size: 3rem; outline: none; text-align: center; margin-bottom: 60px; color: #fff; font-weight: 200; }
-        input:focus { border-bottom-color: #fff; }
 
         footer { padding: 12rem 5%; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.75rem; font-weight: 700; letter-spacing: 12px; color: #444; text-transform: uppercase; }
 
-        /* --- Mobile Optimization --- */
         @media (max-width: 768px) {
-            .hero { padding: 8rem 5% 4rem !important; }
-            .hero h2 { font-size: 20vw !important; letter-spacing: -2px !important; }
-            .hero p { font-size: 1.4rem !important; }
-            .grid { grid-template-columns: 1fr !important; gap: 70px !important; }
+            .hero h2 { font-size: 20vw !important; }
+            .grid { grid-template-columns: 1fr !important; }
             .bitacora-item h3 { font-size: 3.5rem !important; }
             .img-container { height: 450px !important; }
-            .nav-menu ul { gap: 1.5rem !important; }
-            .nav-menu a { font-size: 0.75rem !important; letter-spacing: 2px; }
         }
     </style>
 </head>
 <body>
- 
+
 <div id="preloader"><h2>MADLAMB.</h2></div>
- 
+
 <header class="site-header">
     <h1 onclick="showSection('suministros')">MADLAMB.</h1>
     <nav class="nav-menu">
@@ -171,7 +155,7 @@
         </ul>
     </nav>
 </header>
- 
+
 <section id="suministros" class="content-section active">
     <div class="hero">
         <h2>Archivo</h2>
@@ -187,7 +171,7 @@
         <div class="grid" id="galeria"></div>
     </div>
 </section>
- 
+
 <section id="bitacora" class="content-section">
     <div class="bitacora-header">
         <h2 style="font-size: clamp(4rem, 15vw, 11rem); font-weight: 900; letter-spacing: -5px; margin:0;">EL LEGADO</h2>
@@ -205,9 +189,21 @@
             <h3>El Oro de Lona: La Detroit Jacket</h3>
             <p>Pocas piezas en la historia del vestuario masculino poseen la mística de la Carhartt Detroit...</p>
         </div>
+        <div class="bitacora-item" onclick="abrirLectura('El Guardián de 1970 Regal Toy Ltd', 'En el universo del coleccionismo vintage, existe una jerarquía invisible. En la cima no están los objetos producidos por millones, sino aquellos que cuentan la historia de una industria que ya no existe.\n\nHoy nos enfocamos en una de nuestras piezas más valiosas: el Regal Toy de la serie First Nations.\n\nRareza de Origen: El Sello de Toronto\nFundada en 1959, Regal Toy Ltd. fue el titán de la manufactura juguetera en Canadá. Poseer una pieza con el grabado original en la espalda no es solo tener un juguete; es poseer un fragmento del patrimonio industrial norteamericano. Tras el cierre de sus fábricas, estas figuras pasaron de los estantes de las tiendas a las vitrinas de los museos de diseño.\n\n⏳ La Exclusividad de la Supervivencia\nLo que hace a este ejemplar de 1970 una pieza de exclusividad absoluta no es solo su edad (más de 55 años), sino su estado de conservación.\n\nEl Vinilo Térmico: A diferencia del plástico moderno que se degrada y se vuelve quebradizo, el vinilo Regal fue diseñado para durar siglos.\n\nLa Pátina del Tiempo: La suavidad de sus facciones y el brillo conservado en su mirada son imposibles de replicar. Es una cápsula del tiempo que ha sobrevivido a décadas de cambios culturales y tecnológicos.\n\n💎 Más que un Objeto, una Inversión Cultural\nEn una era de consumo desechable, la exclusividad reside en la permanencia. Este muñeco representa una época donde el juguete era una obra de arte manual. Su vestimenta de fieltro, sus costuras reforzadas y su diseño étnico detallado lo convierten en un objeto muy interesante.')">
+            <span class="meta-bitacora">12 Mar. 2026 — Lectura 3 min</span>
+            <div class="img-container"><img src="Regal toy.png"></div>
+            <h3>El Guardián de 1970 Regal Toy Ltd</h3>
+            <p>En el universo del coleccionismo vintage, existe una jerarquía invisible...</p>
+        </div>
+        <div class="bitacora-item" onclick="abrirLectura('Ebbets Field Flannels: El Heritage Americano', 'Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna de lo retro; es una réplica exacta de ingeniería textil. Fabricada en Seattle, esta gorra logra capturar el \'look & feel\' preciso de los años 40 y 50, manteniendo viva la artesanía que las máquinas actuales han olvidado.\n\n¿Qué la hace una pieza única?\n\nLa Identidad de \'La Casa\': A diferencia de las reproducciones de equipos de ligas menores, esta edición limitada porta el logotipo \'EFF\' en fieltro blanco. Es la firma de la marca, una declaración de principios para el coleccionista que valora la historia de la propia manufactura.\n\nEstética de Época Impecable: Su estructura es exactamente igual a las gorras usadas en el diamante hace 80 años. Al no tener los refuerzos rígidos frontales de las gorras modernas, ofrece esa caída natural y perfil bajo que definió la silueta de los jugadores de la era dorada.\n\nMateriales que Cuentan una Historia:\nLana Broadcloth Auténtica: Tejida con la densidad y el peso originales.\n\nDetalles de Fidelidad Histórica:\nVisera de Satín Verde: Recupera el reverso clásico diseñado para mitigar el brillo solar, un sello de autenticidad visual.\nCorrea de Cuero Genuino: Un cierre robusto y tradicional que refuerza su herencia artesanal.\n\nEn conclusión: Es una pieza de diseño de autor. Combina la exclusividad de una tirada limitada de 2014 con la apariencia visual de una reliquia de 1945. Es, sencillamente, historia viva que puedes usar.')">
+            <span class="meta-bitacora">14 Mar. 2026 — Lectura 3 min</span>
+            <div class="img-container"><img src="Ebbets Field Flannels2.png"></div>
+            <h3>Ebbets Field Flannels: El Heritage Americano</h3>
+            <p>Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna...</p>
+        </div>
     </div>
 </section>
- 
+
 <div id="modal" class="modal">
     <div class="modal-content">
         <h3 style="text-transform: uppercase; font-weight: 900; letter-spacing: 5px; font-size: 1.2rem; margin-bottom: 20px;">Adquirir Pieza</h3>
@@ -218,7 +214,7 @@
         </form>
     </div>
 </div>
- 
+
 <div id="modal-lectura" class="modal">
     <div class="modal-content">
         <h3 id="lectura-titulo"></h3>
@@ -226,28 +222,28 @@
         <button type="button" onclick="cerrarLectura()" class="btn-cerrar-lectura">Cerrar Lectura</button>
     </div>
 </div>
- 
+
 <footer>© 2026 MADLAMB. | Archive Supply</footer>
- 
+
 <script>
     let prendaSeleccionadaParaEnvio = "";
     const carruselPositions = {};
- 
+
     window.addEventListener('load', () => {
         const preloader = document.getElementById('preloader');
         preloader.style.opacity = '0';
         setTimeout(() => preloader.style.display = 'none', 1500);
     });
- 
+
     const prendas = [
         { id: 1, nombre: "HOODIE UNDER ARMOUR 'REAL TREE'", precio: "35,000", talla: "L", estado: "10/10", categoria: "hoodies", fotos: ["Hoodie under armour real tree.jpg"], disponible: true },
         { id: 2, nombre: "CARHARRT DETROIT '100 AÑOS'", precio: "50,000", talla: "L", estado: "8.5/10", categoria: "jackets", fotos: ["Carharrt Detroit 100 años.jpg"], disponible: true },
-        { id: 3, nombre: "WINDBREAKER PLAYBOY", precio: "25,000", talla: "M", estado: "9/10", categoria: "jackets", fotos: ["Windbreaker PlayBoy.jpg"], disponible: true },
-        { id: 4, nombre: "T-SHIRT GALLERY DEPT. 'TOKYO' EDITION", precio: "35,000", talla: "M", estado: "10/10", categoria: "camisetas", fotos: ["Gallery dept. tokyo edition.jpg"], disponible: true },
-        { id: 5, nombre: "ONEITA 'LOSER' TEE 'VINTAGE'", precio: "50,000", talla: "L", estado: "9/10", categoria: "camisetas", fotos: ["Oneita loser tee.jpg"], disponible: true },
-        { id: 6, nombre: "CARHARTT ACTIVE 'FLANNEL LINED'", precio: "110,000", talla: "M", estado: "9/10", categoria: "jackets", fotos: ["Carhartt Active 'Flannel Lined'.jpg"], disponible: false }
+        { id: 3, nombre: "WINDBREAKER PLAYBOY", precio: "25,000", talla: "M", estado: "9/10", categoria: "jackets", fotos: ["Windbreaker PlayBoy.jpg","Windbreaker PlayBoy2.jpg","Windbreaker PlayBoy3.jpg"], disponible: true },
+        { id: 4, nombre: "T-SHIRT GALLERY DEPT. 'TOKYO' EDITION", precio: "35,000", talla: "M", estado: "10/10", categoria: "camisetas", fotos: ["Gallery dept. tokyo edition.jpg","Gallery dept. tokyo edition2.jpg"], disponible: true },
+        { id: 5, nombre: "ONEITA 'LOSER' TEE 'VINTAGE'", precio: "50,000", talla: "L", estado: "9/10", categoria: "camisetas", fotos: ["Oneita loser tee.jpg","Oneita loser tee2.jpg"], disponible: true },
+        { id: 6, nombre: "CARHARTT ACTIVE 'FLANNEL LINED'", precio: "110,000", talla: "M", estado: "9/10", categoria: "jackets", fotos: ["Carhartt Active 'Flannel Lined'.jpg","Carhartt Active 'Flannel Lined2'.jpg"], disponible: false }
     ];
- 
+
     function cargar(filtro = 'todas') {
         const galeria = document.getElementById('galeria');
         const filtradas = filtro === 'todas' ? prendas : prendas.filter(p => p.categoria === filtro);
@@ -271,7 +267,7 @@
             </div>`;
         }).join('');
     }
- 
+
     window.moveCarousel = function(prendaId, direction) {
         const track = document.getElementById(`track-${prendaId}`);
         const prenda = prendas.find(p => p.id === prendaId);
@@ -282,13 +278,13 @@
         if (carruselPositions[prendaId] >= totalFotos) carruselPositions[prendaId] = 0;
         track.style.transform = `translateX(-${carruselPositions[prendaId] * 100}%)`;
     };
- 
+
     window.filtrar = function(cat) {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         event.target.classList.add('active');
         cargar(cat);
     };
- 
+
     window.showSection = function(id) {
         document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
         document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
@@ -297,14 +293,12 @@
         if(navElem) navElem.classList.add('active');
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
- 
+
     window.abrirModal = function(nombre) {
         prendaSeleccionadaParaEnvio = nombre;
         document.getElementById('modal').style.display = 'flex';
     };
-    window.cerrarModal = function() { 
-        document.getElementById('modal').style.display = 'none'; 
-    };
+    window.cerrarModal = function() { document.getElementById('modal').style.display = 'none'; };
     
     window.abrirLectura = function(titulo, texto) {
         document.getElementById('lectura-titulo').innerText = titulo;
@@ -312,12 +306,12 @@
         document.getElementById('modal-lectura').style.display = 'block';
         document.body.style.overflow = 'hidden';
     };
- 
+
     window.cerrarLectura = function() {
         document.getElementById('modal-lectura').style.display = 'none';
         document.body.style.overflow = 'auto';
     };
- 
+
     document.getElementById('form-pedido').addEventListener('submit', function(e) {
         e.preventDefault();
         const cliente = document.getElementById('nombre-cliente').value;
@@ -325,7 +319,7 @@
         window.open("https://wa.me/50683087480?text=" + encodeURIComponent(msg), '_blank');
         cerrarModal();
     });
- 
+
     cargar();
 </script>
 </body>
