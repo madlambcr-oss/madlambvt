@@ -124,7 +124,7 @@
         .prev-btn { left: 0; }
         .next-btn { right: 0; }
 
-        /* --- Bitácora Optimizada --- */
+        /* --- Bitácora Optimizada (Simétrica y Completa) --- */
         .bitacora-grid { 
             display: grid; 
             grid-template-columns: repeat(2, 1fr); 
@@ -140,22 +140,27 @@
             transition: var(--transition);
         }
         .bitacora-item:hover { transform: translateY(-5px); }
+        
         .bitacora-item .img-container { 
             width: 100%; 
-            aspect-ratio: 16 / 9; 
+            aspect-ratio: 4 / 3; 
             overflow: hidden; 
             margin-top: 25px; 
             margin-bottom: 30px; 
-            background: #0d0d0d; 
+            background: #000; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .bitacora-item .img-container img { 
             width: 100%; 
             height: 100%; 
             display: block; 
-            object-fit: cover; 
+            object-fit: contain; /* Muestra la imagen completa sin recortes */
             transition: transform 0.8s ease;
         }
-        .bitacora-item:hover .img-container img { transform: scale(1.05); }
+        .bitacora-item:hover .img-container img { transform: scale(1.02); }
+        
         .bitacora-item h3 { 
             font-family: 'Playfair Display', serif; 
             font-size: 2.2rem; 
@@ -213,192 +218,4 @@
     <h1 onclick="showSection('suministros')">MADLAMB.</h1>
     <nav class="nav-menu">
         <ul>
-            <li><a id="nav-suministros" class="active" onclick="showSection('suministros')">Suministros</a></li>
-            <li><a id="nav-bitacora" onclick="showSection('bitacora')">Bitácora</a></li>
-        </ul>
-    </nav>
-</header>
-
-<section id="suministros" class="content-section active">
-    <div class="hero-banner">
-        <h2>Archivo</h2>
-        <span class="frase-pregunta">¿Qué historia vestirás hoy?</span>
-        <a href="#galeria" class="btn-banner">Explorar Selección</a>
-    </div>
-    
-    <div class="filter-bar">
-        <button class="filter-btn active" onclick="filtrar('todas')">Todo</button>
-        <button class="filter-btn" onclick="filtrar('jackets')">Jackets</button>
-        <button class="filter-btn" onclick="filtrar('hoodies')">Hoodies</button>
-        <button class="filter-btn" onclick="filtrar('camisetas')">T-Shirts</button>
-    </div>
-    
-    <div class="main-container">
-        <div class="grid" id="galeria"></div>
-    </div>
-</section>
-
-<section id="bitacora" class="content-section">
-    <div style="text-align: center; padding: 10rem 0 2rem;">
-        <h2 style="font-size: clamp(4rem, 15vw, 10rem); font-weight: 900; margin:0; letter-spacing: -2px;">LEGADO</h2>
-    </div>
-    <div class="bitacora-grid">
-        <div class="bitacora-item" onclick="abrirLectura('The Waxed Canvas Trucker', 'La chaqueta de lona encerada es mucho más que una prenda; es una herencia de ingeniería textil que nació en el siglo XV para proteger a los marineros de los climas más hostiles. Desde las velas de alta mar hasta las icónicas rutas de motociclismo, este material ha evolucionado utilizando fibras como el algodón Martexin y remaches de cobre para ofrecer una resistencia hercúlea y eterna. A diferencia de la moda desechable, su valor real reside en la pátina que desarrolla con el tiempo, transformando cada arruga y marca en una crónica visual de las aventuras de quien la viste, convirtiéndola en una inversión única diseñada para pasar de generación en generación.')">
-            <span class="meta-bitacora">10 Mar. 2026 — 3 min read</span>
-            <div class="img-container"><img src="The Waxed Canvas Trucker.jpg"></div>
-            <h3>The Waxed Canvas Trucker</h3>
-            <p>La chaqueta de lona encerada es mucho más que una prenda...</p>
-        </div>
-        
-        <div class="bitacora-item" onclick="abrirLectura('El Oro de Lona: La Detroit Jacket', 'Pocas piezas en la historia del vestuario masculino poseen la mística de la Carhartt Detroit. Nacida para el rigor de las líneas de ensamblaje en Michigan, esta chaqueta se convirtió en el uniforme no oficial de la clase obrera estadounidense. Su diseño corto a la cintura, pensado originalmente para no estorbar al trabajador sentado, hoy es la silueta más buscada por coleccionistas. Confeccionada en \'Duck Canvas\' de alto gramaje, cada Detroit cuenta una historia distinta a través de su desgaste; desde las manchas de aceite hasta el descolorido por el sol, representa una armadura urbana que solo mejora con el uso rudo y el paso de las décadas.')">
-            <span class="meta-bitacora">05 Mar. 2026 — 2 min read</span>
-            <div class="img-container"><img src="El Oro de Lona La Detroit Jacket.jpg"></div>
-            <h3>El Oro de Lona: La Detroit Jacket</h3>
-            <p>Pocas piezas en la historia del vestuario masculino poseen la mística de la Carhartt Detroit...</p>
-        </div>
-
-        <div class="bitacora-item" onclick="abrirLectura('El Guardián de 1970 Regal Toy Ltd', 'En el universo del coleccionismo vintage, existe una jerarquía invisible. En la cima no están los objetos producidos por millones, sino aquellos que cuentan la historia de una industria que ya no existe.\n\nHoy nos enfocamos en una de nuestras piezas más valiosas: el Regal Toy de la serie First Nations.\n\nRareza de Origen: El Sello de Toronto\nFundada en 1959, Regal Toy Ltd. fue el titán de la manufactura juguetera en Canadá. Poseer una pieza con el grabado original en la espalda no es solo tener un juguete; es poseer un fragmento del patrimonio industrial norteamericano. Tras el cierre de sus fábricas, estas figuras pasaron de los estantes de las tiendas a las vitrinas de los museos de diseño.\n\n⏳ La Exclusividad de la Supervivencia\nLo que hace a este ejemplar de 1970 una pieza de exclusividad absoluta no es solo su edad (más de 55 años), sino su estado de conservación.\n\nEl Vinilo Térmico: A diferencia del plástico moderno que se degrada y se vuelve quebradizo, el vinilo Regal fue diseñado para durar siglos.\n\nLa Pátina del Tiempo: La suavidad de sus facciones y el brillo conservado en su mirada son imposibles de replicar. Es una cápsula del tiempo que ha sobrevivido a décadas de cambios culturales y tecnológicos.\n\n💎 Más que un Objeto, una Inversión Cultural\nEn una era de consumo desechable, la exclusividad reside en la permanencia. Este muñeco representa una época donde el juguete era una obra de arte manual. Su vestimenta de fieltro, sus costuras reforzadas y su diseño étnico detallado lo convierten en un objeto muy interesante.')">
-            <span class="meta-bitacora">12 Mar. 2026 — 3 min read</span>
-            <div class="img-container"><img src="Regal toy.png"></div>
-            <h3>El Guardián de 1970 Regal Toy Ltd</h3>
-            <p>En el universo del coleccionismo vintage, existe una jerarquía invisible...</p>
-        </div>
-
-        <div class="bitacora-item" onclick="abrirLectura('Ebbets Field Flannels: El Heritage Americano', 'Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna de lo retro; es una réplica exacta de ingeniería textil. Fabricada en Seattle, esta gorra logra capturar el \'look & feel\' preciso de los años 40 y 50, manteniendo viva la artesanía que las máquinas actuales han olvidado.\n\n¿Qué la hace una pieza única?\n\nLa Identidad de \'La Casa\': A diferencia de las reproducciones de equipos de ligas menores, esta edición limitada porta el logotipo \'EFF\' en fieltro blanco. Es la firma de la marca, una declaración de principios para el coleccionista que valora la historia de la propia manufactura.\n\nEstética de Época Impecable: Su estructura es exactamente igual a las gorras usadas en el diamante hace 80 años. Al no tener los refuerzos rígidos frontales de las gorras modernas, ofrece esa caída natural y perfil bajo que definió la silueta de los jugadores de la era dorada.\n\nMateriales que Cuentan una Historia:\nLana Broadcloth Auténtica: Tejida con la densidad y el peso originales.\n\nDetalles de Fidelidad Histórica:\nVisera de Satín Verde: Recupera el reverso clásico diseñado para mitigar el brillo solar, un sello de autenticidad visual.\nCorrea de Cuero Genuino: Un cierre robusto y tradicional que refuerza su herencia artesanal.\n\nEn conclusión: Es una pieza de diseño de autor. Combina la exclusividad de una tirada limitada de 2014 con la apariencia visual de una reliquia de 1945. Es, sencillamente, historia viva que puedes usar.')">
-            <span class="meta-bitacora">14 Mar. 2026 — 3 min read</span>
-            <div class="img-container"><img src="Ebbets Field Flannels2.png"></div>
-            <h3>Ebbets Field Flannels: El Heritage Americano</h3>
-            <p>Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna...</p>
-        </div>
-    </div>
-</section>
-
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <form id="form-pedido">
-            <h3 style="text-transform: uppercase; font-weight: 900; font-size: 1rem; letter-spacing: 5px; margin-bottom: 30px; opacity: 0.6;">Adquirir Pieza</h3>
-            <input type="text" id="nombre-cliente" placeholder="Tu nombre" required>
-            <button type="submit" class="btn-adquirir" style="background: #fff; color: #000;">SOLICITAR VÍA WHATSAPP</button>
-            <p onclick="cerrarModal()" style="margin-top: 30px; cursor: pointer; font-size: 0.85rem; letter-spacing: 2px; opacity: 0.5;">CANCELAR</p>
-        </form>
-    </div>
-</div>
-
-<div id="modal-lectura" class="modal">
-    <div class="modal-content">
-        <h3 id="lectura-titulo"></h3>
-        <p id="lectura-texto"></p>
-        <button type="button" onclick="cerrarLectura()" class="btn-adquirir" style="width: auto; padding: 15px 60px; margin-top: 40px;">Cerrar Lectura</button>
-    </div>
-</div>
-
-<footer>© 2026 MADLAMB. | ARCHIVE SUPPLY</footer>
-
-<script>
-    let prendaSeleccionadaParaEnvio = "";
-    const carruselPositions = {};
-
-    window.addEventListener('load', () => {
-        const preloader = document.getElementById('preloader');
-        setTimeout(() => {
-            preloader.style.opacity = '0';
-            setTimeout(() => preloader.style.display = 'none', 1000);
-        }, 500);
-    });
-
-    const prendas = [
-        { id: 1, nombre: "HOODIE UNDER ARMOUR 'REAL TREE'", precio: "35,000", talla: "L", estado: "10/10", categoria: "hoodies", fotos: ["Hoodie under armour real tree.jpg"], disponible: true },
-        { id: 2, nombre: "CARHARRT DETROIT '100 AÑOS'", precio: "50,000", talla: "L", estado: "8.5/10", categoria: "jackets", fotos: ["Carharrt Detroit 100 años.jpg"], disponible: true },
-        { id: 3, nombre: "WINDBREAKER PLAYBOY", precio: "25,000", talla: "M", estado: "9/10", categoria: "jackets", fotos: ["Windbreaker PlayBoy.jpg","Windbreaker PlayBoy2.jpg","Windbreaker PlayBoy3.jpg"], disponible: true },
-        { id: 4, nombre: "T-SHIRT GALLERY DEPT. 'TOKYO' EDITION", precio: "35,000", talla: "M", estado: "10/10", categoria: "camisetas", fotos: ["Gallery dept. tokyo edition.jpg","Gallery dept. tokyo edition2.jpg"], disponible: true },
-        { id: 5, nombre: "ONEITA 'LOSER' TEE 'VINTAGE'", precio: "50,000", talla: "L", estado: "9/10", categoria: "camisetas", fotos: ["Oneita loser tee.jpg","Oneita loser tee2.jpg"], disponible: true },
-        { id: 6, nombre: "CARHARTT ACTIVE 'FLANNEL LINED'", precio: "110,000", talla: "M", estado: "9/10", categoria: "jackets", fotos: ["Carhartt Active 'Flannel Lined'.jpg","Carhartt Active 'Flannel Lined2'.jpg"], disponible: false },
-        { id: 7, nombre: "COOGI AUSTRALIA AUTHENTIC 3D TEXTURED", precio: "50,000", talla: "L", estado: "9,5/10", categoria: "jackets", fotos: ["Coogi Australia Authentic 3D Textured.jpg","Coogi Australia Authentic 3D Textured2.jpg"], disponible: false },
-        { id: 8, nombre: "LEE STORM RIDER DENIM JACKET", precio: "110,000", talla: "M", estado: "10/10", categoria: "jackets", fotos: ["Lee Storm Rider Denim Jacket.jpg","Lee Storm Rider Denim Jacket2.jpg"], disponible: false },
-        { id: 9, nombre: "CARHARTT SANTA FE SANDSTONE FINISH", precio: "50,000", talla: "L", estado: "9/10", categoria: "jackets", fotos: ["Carhartt Santa Fe Sandstone Finish.jpg","Carhartt Santa Fe Sandstone Finish2.jpg"], disponible: false }
-    ];
-
-    function cargar(filtro = 'todas') {
-        const galeria = document.getElementById('galeria');
-        const filtradas = filtro === 'todas' ? prendas : prendas.filter(p => p.categoria === filtro);
-        galeria.innerHTML = filtradas.map((p) => {
-            const fotosHTML = p.fotos.map(f => `<img src="${f}" alt="${p.nombre}">`).join('');
-            const botonesNav = p.fotos.length > 1 ? `<button class="nav-btn prev-btn" onclick="moveCarousel(${p.id}, -1)">←</button><button class="nav-btn next-btn" onclick="moveCarousel(${p.id}, 1)">→</button>` : '';
-            const statusClass = p.disponible ? "" : "agotado-visual";
-            const badgeClass = p.disponible ? "badge" : "badge agotado";
-            const badgeText = p.disponible ? "Disponible" : "Agotado";
-            return `<div class="card ${statusClass}">
-                <div class="${badgeClass}">${badgeText}</div>
-                <div class="carousel-container">
-                    <div class="carousel-track" id="track-${p.id}">${fotosHTML}</div>
-                    ${botonesNav}
-                </div>
-                <div class="card-info">
-                    <h3>${p.nombre}</h3>
-                    <p class="precio">₡${p.precio}</p>
-                    <div class="specs">${p.talla} // ${p.estado}</div>
-                    <button class="btn-adquirir" ${p.disponible ? '' : 'disabled'} onclick="abrirModal('${p.nombre.replace(/'/g, "\\'")}')">
-                        ${p.disponible ? 'Adquirir' : 'Agotado'}
-                     </button>
-                 </div>
-            </div>`;
-        }).join('');
-    }
-
-    window.moveCarousel = function(prendaId, direction) {
-        const track = document.getElementById(`track-${prendaId}`);
-        const prenda = prendas.find(p => p.id === prendaId);
-        const totalFotos = prenda.fotos.length;
-        if (!carruselPositions[prendaId]) carruselPositions[prendaId] = 0;
-        carruselPositions[prendaId] += direction;
-        if (carruselPositions[prendaId] < 0) carruselPositions[prendaId] = totalFotos - 1;
-        if (carruselPositions[prendaId] >= totalFotos) carruselPositions[prendaId] = 0;
-        track.style.transform = `translateX(-${carruselPositions[prendaId] * 100}%)`;
-    };
-
-    window.filtrar = function(cat) {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        if(event) event.target.classList.add('active');
-        cargar(cat);
-    };
-
-    window.showSection = function(id) {
-        document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-        document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-        const navElem = document.getElementById('nav-' + id);
-        if(navElem) navElem.classList.add('active');
-        window.scrollTo({top: 0, behavior: 'smooth'});
-    }
-
-    window.abrirModal = function(nombre) {
-        prendaSeleccionadaParaEnvio = nombre;
-        document.getElementById('modal').style.display = 'flex';
-    };
-    
-    window.cerrarModal = function() { document.getElementById('modal').style.display = 'none'; };
-    
-    window.abrirLectura = function(titulo, texto) {
-        document.getElementById('lectura-titulo').innerText = titulo;
-        document.getElementById('lectura-texto').innerText = texto;
-        document.getElementById('modal-lectura').style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    };
-
-    window.cerrarLectura = function() {
-        document.getElementById('modal-lectura').style.display = 'none';
-        document.body.style.overflow = 'auto';
-    };
-
-    document.getElementById('form-pedido').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const cliente = document.getElementById('nombre-cliente').value;
-        const msg = `¡Saludos Madlamb.! Soy ${cliente}. Me interesa la pieza: ${prendaSeleccionadaParaEnvio}.`;
-        window.open("https://wa.me/50683087480?text=" + encodeURIComponent(msg), '_blank');
-        cerrarModal();
-    });
-
-    cargar();
-</script>
-</body>
-</html>
+            <li><a id="nav-suministros" class="active" onclick="showSection
