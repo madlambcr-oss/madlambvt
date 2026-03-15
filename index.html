@@ -107,19 +107,28 @@
         .prev-btn { left: 0; }
         .next-btn { right: 0; }
 
-        /* --- Bitácora (AJUSTADA PARA NO CORTAR IMÁGENES) --- */
+        /* --- Bitácora (CORRECCIÓN DEFINITIVA: SIN RECORTES DE IMAGEN) --- */
         .bitacora-grid { display: grid; grid-template-columns: 1fr; gap: 120px; max-width: 900px; margin: 0 auto; padding: 5rem 5% 10rem; }
         .bitacora-item { cursor: pointer; border-bottom: 1px solid var(--border); padding-bottom: 60px; }
+        
+        /* CORRECCIÓN AQUÍ: Contenedor flexible sin altura fija */
         .bitacora-item .img-container { 
             width: 100%; 
-            height: auto; /* Permite que la imagen dicte la altura */
-            max-height: 700px; /* Evita que sea infinitamente larga */
-            overflow: hidden; 
+            height: auto; /* El contenedor se adapta a la imagen */
+            overflow: visible; /* Asegura que nada se corte */
             margin-top: 25px; 
             margin-bottom: 35px;
-            background: #111;
+            background: transparent;
         }
-        .bitacora-item .img-container img { width: 100%; height: 100%; object-fit: contain; /* Muestra la imagen completa sin cortes */ }
+        
+        /* CORRECCIÓN AQUÍ: Imagen al 100% de ancho, altura automática */
+        .bitacora-item .img-container img { 
+            width: 100%; 
+            height: auto; /* Mantiene la proporción original */
+            display: block; /* Elimina espacios vacíos inferiores */
+            object-fit: contain; /* Muestra la imagen completa */
+        }
+        
         .bitacora-item h3 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin: 25px 0; font-weight: 400; font-style: italic; line-height: 1.1; }
         .meta-bitacora { font-size: 0.85rem; letter-spacing: 3px; color: var(--oxido); text-transform: uppercase; font-weight: 600; }
         .bitacora-item p { line-height: 1.8; color: var(--text-secondary); font-size: 1.25rem; text-align: justify; }
@@ -195,7 +204,7 @@
             <p>Pocas piezas en la historia del vestuario masculino poseen la mística de la Carhartt Detroit...</p>
         </div>
 
-        <div class="bitacora-item" onclick="abrirLectura('El Guardián de 1970 Regal Toy Ltd', 'En el universo del coleccionismo vintage, existe una jerarquía invisible. En la cima no están los objetos producidos por millones, sino aquellos que cuentan la historia de una industria que ya no existe.\n\nHoy nos enfocamos en una de nuestras piezas más valiosas: el Regal Toy de la serie First Nations.\n\nRareza de Origen: El Sello de Toronto\nFundada en 1959, Regal Toy Ltd. fue el titán de la manufactura juguetera en Canadá. Poseer una pieza con el grabado original en la espalda no es solo tener un juguete; es poseer un fragmento del patrimonio industrial norteamericano. Tras el cierre de sus fábricas, estas figuras pasaron de los estantes de las tiendas a las vitrinas de los museos de diseño.\n\n⏳ La Exclusividad de la Supervivencia\nLo que hace a este ejemplar de 1970 una pieza de exclusividad absoluta no es solo su edad (más de 55 años), sino su estado de conservación.\n\nEl Vinilo Té r mico: A diferencia del plástico moderno que se degrada y se vuelve quebradizo, el vinilo Regal fue diseñado para durar siglos.\n\nLa Pátina del Tiempo: La suavidad de sus facciones y el brillo conservado en su mirada son imposibles de replicar. Es una cápsula del tiempo que ha sobrevivido a décadas de cambios culturales y tecnológicos.\n\n💎 Más que un Objeto, una Inversión Cultural\nEn una era de consumo desechable, la exclusividad reside en la permanencia. Este muñeco representa una época donde el juguete era una obra de arte manual. Su vestimenta de fieltro, sus costuras reforzadas y su diseño étnico detallado lo convierten en un objeto muy interesante.')">
+        <div class="bitacora-item" onclick="abrirLectura('El Guardián de 1970 Regal Toy Ltd', 'En el universo del coleccionismo vintage, existe una jerarquía invisible. En la cima no están los objetos producidos por millones, sino aquellos que cuentan la historia de una industria que ya no existe.\n\nHoy nos enfocamos en una de nuestras piezas más valiosas: el Regal Toy de la serie First Nations.\n\nRareza de Origen: El Sello de Toronto\nFundada en 1959, Regal Toy Ltd. fue el titán de la manufactura juguetera en Canadá. Poseer una pieza con el grabado original en la espalda no es solo tener un juguete; es poseer un fragmento del patrimonio industrial norteamericano. Tras el cierre de sus fábricas, estas figuras pasaron de los estantes de las tiendas a las vitrinas de los museos de diseño.\n\n⏳ La Exclusividad de la Supervivencia\nLo que hace a este ejemplar de 1970 una pieza de exclusividad absoluta no es solo su edad (más de 55 años), sino su estado de conservación.\n\nEl Vinilo Térmico: A diferencia del plástico moderno que se degrada y se vuelve quebradizo, el vinilo Regal fue diseñado para durar siglos.\n\nLa Pátina del Tiempo: La suavidad de sus facciones y el brillo conservado en su mirada son imposibles de replicar. Es una cápsula del tiempo que ha sobrevivido a décadas de cambios culturales y tecnológicos.\n\n💎 Más que un Objeto, una Inversión Cultural\nEn una era de consumo desechable, la exclusividad reside en la permanencia. Este muñeco representa una época donde el juguete era una obra de arte manual. Su vestimenta de fieltro, sus costuras reforzadas y su diseño étnico detallado lo convierten en un objeto muy interesante.')">
             <span class="meta-bitacora">12 Mar. 2026 — 3 min read</span>
             <div class="img-container"><img src="Regal toy.png"></div>
             <h3>El Guardián de 1970 Regal Toy Ltd</h3>
