@@ -96,15 +96,15 @@
         
         /* Badge Styles */
         .badge { position: absolute; top: 20px; left: 20px; z-index: 20; padding: 8px 15px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; background: #fff; color: #000; }
-        .badge.agotado { background: #1a1a1a; color: #666; border: 1px solid rgba(255,255,255,0.1); }
+        .badge.agotado { background: #1a1a1a; color: #888; border: 1px solid rgba(255,255,255,0.1); }
 
-        /* AGOTADO EFFECT */
+        /* --- AJUSTE AGOTADO: Sutil y Elegante --- */
         .card.agotado-visual .carousel-track img { 
-            filter: grayscale(100%); 
-            opacity: 0.4; 
+            filter: grayscale(60%); /* Deja pasar el 40% del color original */
+            opacity: 0.7; /* Mucho más visible que antes */
         }
         .card.agotado-visual .card-info {
-            opacity: 0.6;
+            opacity: 0.8;
         }
 
         .card-info h3 { font-size: 1.2rem; margin: 20px 0 8px; font-weight: 600; letter-spacing: 1px; }
@@ -114,11 +114,12 @@
         .btn-adquirir { background: transparent; color: #fff; padding: 18px; border: 1px solid var(--border); width: 100%; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; cursor: pointer; transition: var(--transition); }
         .btn-adquirir:hover:not(:disabled) { background: #fff; color: #000; border-color: #fff; }
         
-        /* Botón Agotado */
+        /* Botón Agotado Ajustado */
         .btn-adquirir:disabled {
-            border: 1px solid rgba(255,255,255,0.05);
-            color: #444;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #666;
             cursor: not-allowed;
+            background: rgba(255,255,255,0.02);
         }
 
         .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 20px 15px; cursor: pointer; z-index: 30; opacity: 0; transition: 0.3s; font-size: 1.2rem; }
@@ -271,7 +272,6 @@
             const fotosHTML = p.fotos.map(f => `<img src="${f}" alt="${p.nombre}">`).join('');
             const botonesNav = p.fotos.length > 1 ? `<button class="nav-btn prev-btn" onclick="moveCarousel(${p.id}, -1)">←</button><button class="nav-btn next-btn" onclick="moveCarousel(${p.id}, 1)">→</button>` : '';
             
-            // Lógica de clase para AGOTADO
             const statusClass = p.disponible ? "" : "agotado-visual";
             const badgeClass = p.disponible ? "badge" : "badge agotado";
             const badgeText = p.disponible ? "Disponible" : "Agotado";
