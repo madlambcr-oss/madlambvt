@@ -4,94 +4,134 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MADLAMB. | Archive Supply</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:italic,wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;900&family=Playfair+Display:italic,wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root { 
             --bg: #050505;
+            --surface: #0d0d0d;
             --accent: #ffffff;
-            --text-secondary: #888;
-            --border: rgba(255, 255, 255, 0.1);
+            --text-secondary: #707070;
+            --border: rgba(255, 255, 255, 0.08);
+            --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
             --oxido: #b35a38; 
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
+        /* --- Reset & Base --- */
         body { 
             margin: 0; font-family: 'Inter', sans-serif; 
             background-color: var(--bg); color: var(--accent);
-            padding-top: 80px;
-            overflow-x: hidden;
+            padding-top: 80px; overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* --- Header: Fijo y Proporcional --- */
+        /* --- Preloader --- */
+        #preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 10000;
+            display: flex; justify-content: center; align-items: center;
+            transition: opacity 1s ease;
+        }
+        #preloader h2 { font-weight: 900; letter-spacing: 15px; font-size: 1.2rem; text-transform: uppercase; color: #fff; animation: pulse 2s infinite; }
+        
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+
+        /* --- Header --- */
         .site-header { 
-            background: rgba(5, 5, 5, 0.95); backdrop-filter: blur(10px);
+            background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(30px);
             padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; 
             position: fixed; top: 0; width: 100%; z-index: 1000; box-sizing: border-box;
             border-bottom: 1px solid var(--border);
         }
-        .site-header h1 { font-weight: 900; font-size: 1.4rem; letter-spacing: 2px; margin: 0; cursor: pointer; }
-        .nav-menu ul { display: flex; gap: 2.5rem; list-style: none; margin: 0; padding: 0; }
-        .nav-menu a { color: var(--accent); text-decoration: none; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; opacity: 0.5; transition: var(--transition); cursor: pointer; }
+        .site-header h1 { font-weight: 900; font-size: 1.4rem; letter-spacing: -1px; margin: 0; cursor: pointer; text-transform: uppercase; }
+        .nav-menu ul { display: flex; gap: 3.5rem; list-style: none; margin: 0; padding: 0; }
+        .nav-menu a { color: var(--accent); text-decoration: none; font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; opacity: 0.4; transition: var(--transition); cursor: pointer; }
         .nav-menu a.active, .nav-menu a:hover { opacity: 1; color: var(--oxido); }
 
         .content-section { display: none; }
         .content-section.active { display: block; }
 
-        /* --- Hero --- */
+        /* --- NUEVO: Banner de Fondo (Estilo Patagonia) --- */
         .hero-banner { 
-            height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('banner-vintage.png') center/cover;
-            border-bottom: 1px solid var(--border);
+            position: relative;
+            height: 80vh; 
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* REEMPLAZA 'tu-imagen.jpg' con la ruta de tu foto de fondo */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('banner-vintage.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin-bottom: 5rem;
         }
-        .hero-banner h2 { font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; margin: 0; letter-spacing: -2px; }
+        .hero-banner h2 { 
+            font-size: clamp(4rem, 15vw, 12rem); font-weight: 900; line-height: 0.8; margin: 0; 
+            letter-spacing: -0.06em; text-transform: uppercase; color: #fff;
+        }
+        .hero-banner .frase-pregunta {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem; font-style: italic; color: #eee;
+            margin: 25px 0 40px;
+        }
+        .btn-banner {
+            background: #fff; color: #000; padding: 18px 40px; border-radius: 50px;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+            text-decoration: none; transition: var(--transition); font-size: 0.9rem;
+        }
+        .btn-banner:hover { transform: scale(1.05); background: var(--oxido); color: #fff; }
 
         /* --- Filtros --- */
-        .filter-bar { padding: 2rem 5%; display: flex; justify-content: center; gap: 1.5rem; border-bottom: 1px solid var(--border); }
-        .filter-btn { background: none; border: 1px solid var(--border); color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; padding: 10px 20px; transition: var(--transition); font-size: 0.75rem; }
-        .filter-btn.active { background: #fff; color: #000; border-color: #fff; }
+        .filter-bar { padding: 0 5% 4rem; display: flex; justify-content: center; gap: 3rem; overflow-x: auto; scrollbar-width: none;}
+        .filter-btn { background: none; border: none; color: var(--accent); font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; cursor: pointer; opacity: 0.3; transition: var(--transition); padding-bottom: 8px; border-bottom: 1px solid transparent; white-space: nowrap; }
+        .filter-btn.active, .filter-btn:hover { opacity: 1; color: var(--oxido); border-bottom: 1px solid var(--oxido); }
 
-        /* --- Grid de Productos: 3 Columnas (Equilibrado) --- */
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
-            gap: 1px; 
-            background: var(--border);
-        }
-        .card { background: var(--bg); padding: 2.5rem; transition: var(--transition); }
-        
-        .carousel-container { 
-            position: relative; width: 100%; aspect-ratio: 1 / 1.2; 
-            overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border);
-        }
-        .carousel-track { display: flex; height: 100%; transition: transform 0.5s ease; }
+        /* --- Grid de Productos --- */
+        .main-container { max-width: 1600px; margin: 0 auto; padding: 0 5% 10rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 60px; }
+        .card { position: relative; border: 1px solid transparent; transition: var(--transition); padding: 15px; }
+        .card:hover { border-color: var(--border); background: var(--surface); }
+        .carousel-container { position: relative; width: 100%; aspect-ratio: 1 / 1.3; overflow: hidden; margin-bottom: 30px; background: #000; }
+        .carousel-track { display: flex; height: 100%; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .carousel-track img { min-width: 100%; object-fit: cover; }
+        .badge { position: absolute; top: 30px; left: 30px; z-index: 20; padding: 6px 14px; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; background: #fff; color: #000; }
 
-        .card-info h3 { font-size: 1.2rem; font-weight: 900; margin-bottom: 8px; text-transform: uppercase; }
-        .precio { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--oxido); margin-bottom: 12px; }
-        .specs { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 25px; }
+        .btn-adquirir { background: #fff; color: #000; padding: 20px; border: none; width: 100%; font-size: 0.85rem; font-weight: 900; text-transform: uppercase; letter-spacing: 3px; cursor: pointer; transition: var(--transition); }
+        .btn-adquirir:hover:not(:disabled) { background: #ccc; }
 
-        .btn-adquirir { 
-            background: #fff; color: #000; padding: 15px; border: none; width: 100%; 
-            font-size: 0.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; 
+        /* --- Bitácora (JUSTIFICADA) --- */
+        .bitacora-grid { display: grid; grid-template-columns: 1fr; gap: 120px; max-width: 900px; margin: 0 auto; padding: 5rem 5% 10rem; }
+        .bitacora-item { cursor: pointer; border-bottom: 1px solid var(--border); padding-bottom: 60px; }
+        .bitacora-item h3 { font-family: 'Playfair Display', serif; font-size: 4rem; margin: 0 0 20px 0; font-weight: 400; font-style: italic; text-align: center; }
+        /* AJUSTE: Texto Justificado */
+        .bitacora-item p { 
+            line-height: 1.8; color: var(--text-secondary); 
+            font-size: 1.2rem; text-align: justify; 
         }
 
-        /* --- Bitácora --- */
-        .bitacora-item { padding: 5rem 10%; border-bottom: 1px solid var(--border); max-width: 900px; margin: 0 auto; }
-        .bitacora-item h3 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-style: italic; margin-bottom: 20px; }
-        .bitacora-item p { font-size: 1.1rem; line-height: 1.7; color: #ccc; text-align: justify; }
-        .bitacora-img { width: 100%; height: 450px; object-fit: cover; margin-bottom: 30px; border: 1px solid var(--border); }
+        /* --- Modales --- */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); justify-content: center; align-items: center; z-index: 9999; padding: 20px; }
+        .modal-content { width: 100%; max-width: 600px; text-align: center; }
+        #modal-lectura .modal-content { max-width: 850px; text-align: left; background: #000; padding: 40px; overflow-y: auto; max-height: 90vh; }
+        #modal-lectura h3 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-style: italic; margin-bottom: 30px; }
+        /* AJUSTE: Texto Justificado en el Modal */
+        #modal-lectura p { font-size: 1.3rem; line-height: 2.1; font-weight: 200; color: #ccc; text-align: justify; }
 
-        /* Modales */
-        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 2000; align-items: center; justify-content: center; padding: 20px; }
-        .modal-content { max-width: 700px; width: 100%; background: #000; border: 1px solid var(--border); padding: 40px; }
-        input { width: 100%; padding: 15px 0; border: none; border-bottom: 1px solid #333; background: transparent; font-size: 1.8rem; color: #fff; margin-bottom: 30px; outline: none; text-align: center; }
+        input { width: 100%; padding: 20px 0; border: none; border-bottom: 2px solid #222; background: transparent; font-size: 2.5rem; outline: none; text-align: center; color: #fff; margin-bottom: 40px; font-weight: 900; }
+        footer { padding: 8rem 5%; text-align: center; border-top: 1px solid var(--border); font-size: 0.75rem; font-weight: 600; letter-spacing: 6px; color: #444; }
 
-        footer { padding: 4rem; text-align: center; border-top: 1px solid var(--border); font-size: 0.7rem; color: #444; letter-spacing: 5px; }
-
-        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) {
+            .hero-banner { height: 60vh; }
+            .hero-banner h2 { font-size: 18vw; }
+            .bitacora-item h3 { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body>
+
+<div id="preloader"><h2>MADLAMB.</h2></div>
 
 <header class="site-header">
     <h1 onclick="showSection('suministros')">MADLAMB.</h1>
@@ -105,47 +145,74 @@
 
 <section id="suministros" class="content-section active">
     <div class="hero-banner">
-        <h2>ARCHIVE SUPPLY</h2>
+        <h2>Archive</h2>
+        <span class="frase-pregunta">¿Qué historia vestirás hoy?</span>
+        <a href="#galeria" class="btn-banner">Explorar Selección</a>
     </div>
+    
     <div class="filter-bar">
         <button class="filter-btn active" onclick="filtrar('todas')">Todo</button>
         <button class="filter-btn" onclick="filtrar('jackets')">Jackets</button>
         <button class="filter-btn" onclick="filtrar('hoodies')">Hoodies</button>
         <button class="filter-btn" onclick="filtrar('camisetas')">T-Shirts</button>
     </div>
-    <div class="grid" id="galeria"></div>
+    
+    <div class="main-container">
+        <div class="grid" id="galeria"></div>
+    </div>
 </section>
 
 <section id="bitacora" class="content-section">
-    <div style="text-align: center; padding: 6rem 0 2rem;">
-        <h2 style="font-size: 4rem; font-weight: 900; letter-spacing: -2px;">LEGADO</h2>
+    <div style="text-align: center; padding: 10rem 0 2rem;">
+        <h2 style="font-size: clamp(3rem, 15vw, 10rem); font-weight: 900; margin:0;">LEGADO</h2>
     </div>
-    <div id="bitacora-container">
-        <article class="bitacora-item" onclick="abrirLectura('The Waxed Canvas Trucker', 'La chaqueta de lona encerada es mucho más que una prenda; es una herencia de ingeniería textil que nació en el siglo XV para proteger a los marineros de los climas más hostiles. Desde las velas de alta mar hasta las icónicas rutas de motociclismo, este material ha evolucionado utilizando fibras como el algodón Martexin y remaches de cobre para ofrecer una resistencia hercúlea y eterna. A diferencia de la moda desechable, su valor real reside en la pátina que desarrolla con el tiempo, transformando cada arruga y marca en una crónica visual de las aventuras de quien la viste, convirtiéndola en una inversión única diseñada para pasar de generación en generación.')">
-            <span style="color:var(--oxido); font-weight:700;">REG_01</span>
+    <div class="bitacora-grid">
+        <div class="bitacora-item" onclick="abrirLectura('The Waxed Canvas Trucker', 'La chaqueta de lona encerada es mucho más que una prenda; es una herencia de ingeniería textil que nació en el siglo XV para proteger a los marineros de los climas más hostiles. Desde las velas de alta mar hasta las icónicas rutas de motociclismo, este material ha evolucionado utilizando fibras como el algodón Martexin y remaches de cobre para ofrecer una resistencia hercúlea y eterna. A diferencia de la moda desechable, su valor real reside en la pátina que desarrolla con el tiempo, transformando cada arruga y marca en una crónica visual de las aventuras de quien la viste, convirtiéndola en una inversión única diseñada para pasar de generación en generación.')">
+            <span class="meta-bitacora">10 Mar. 2026 — 3 min read</span>
+            <div class="img-container" style="height: 500px; overflow: hidden; margin-bottom: 30px;"><img src="The Waxed Canvas Trucker.jpg" style="width: 100%; height: 100%; object-fit: cover;"></div>
             <h3>The Waxed Canvas Trucker</h3>
-            <img src="The Waxed Canvas Trucker.jpg" class="bitacora-img">
-            <p>La chaqueta de lona encerada es mucho más que una prenda; es una herencia de ingeniería textil...</p>
-        </article>
+            <p>La chaqueta de lona encerada es mucho más que una prenda...</p>
         </div>
+        
+        <div class="bitacora-item" onclick="abrirLectura('El Oro de Lona: La Detroit Jacket', 'Pocas piezas en la historia del vestuario masculino poseen la mística de la Carhartt Detroit. Nacida para el rigor de las líneas de ensamblaje en Michigan, esta chaqueta se convirtió en el uniforme no oficial de la clase obrera estadounidense. Su diseño corto a la cintura, pensado originalmente para no estorbar al trabajador sentado, hoy es la silueta más buscada por coleccionistas. Confeccionada en \'Duck Canvas\' de alto gramaje, cada Detroit cuenta una historia distinta a través de su desgaste; desde las manchas de aceite hasta el descolorido por el sol, representa una armadura urbana que solo mejora con el uso rudo y el paso de las décadas.')">
+            <span class="meta-bitacora">05 Mar. 2026 — 2 min read</span>
+            <div class="img-container" style="height: 500px; overflow: hidden; margin-bottom: 30px;"><img src="El Oro de Lona La Detroit Jacket.jpg" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <h3>El Oro de Lona: La Detroit Jacket</h3>
+            <p>Pocas piezas en la historia del vestuario masculino poseen la mística de la Carhartt Detroit...</p>
+        </div>
+
+        <div class="bitacora-item" onclick="abrirLectura('El Guardián de 1970 Regal Toy Ltd', 'En el universo del coleccionismo vintage, existe una jerarquía invisible. En la cima no están los objetos producidos por millones, sino aquellos que cuentan la historia de una industria que ya no existe.\n\nHoy nos enfocamos en una de nuestras piezas más valiosas: el Regal Toy de la serie First Nations.\n\nRareza de Origen: El Sello de Toronto\nFundada en 1959, Regal Toy Ltd. fue el titán de la manufactura juguetera en Canadá. Poseer una pieza con el grabado original en la espalda no es solo tener un juguete; es poseer un fragmento del patrimonio industrial norteamericano. Tras el cierre de sus fábricas, estas figuras pasaron de los estantes de las tiendas a las vitrinas de los museos de diseño.\n\n⏳ La Exclusividad de la Supervivencia\nLo que hace a este ejemplar de 1970 una pieza de exclusividad absoluta no es solo su edad (más de 55 años), sino su estado de conservación.\n\nEl Vinilo Térmico: A diferencia del plástico moderno que se degrada y se vuelve quebradizo, el vinilo Regal fue diseñado para durar siglos.\n\nLa Pátina del Tiempo: La suavidad de sus facciones y el brillo conservado en su mirada son imposibles de replicar. Es una cápsula del tiempo que ha sobrevivido a décadas de cambios culturales y tecnológicos.\n\n💎 Más que un Objeto, una Inversión Cultural\nEn una era de consumo desechable, la exclusividad reside en la permanencia. Este muñeco representa una época donde el juguete era una obra de arte manual. Su vestimenta de fieltro, sus costuras reforzadas y su diseño étnico detallado lo convierten en un objeto muy interesante.')">
+            <span class="meta-bitacora">12 Mar. 2026 — 3 min read</span>
+            <div class="img-container" style="height: 500px; overflow: hidden; margin-bottom: 30px;"><img src="Regal toy.png" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <h3>El Guardián de 1970 Regal Toy Ltd</h3>
+            <p>En el universo del coleccionismo vintage, existe una jerarquía invisible...</p>
+        </div>
+
+        <div class="bitacora-item" onclick="abrirLectura('Ebbets Field Flannels: El Heritage Americano', 'Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna de lo retro; es una réplica exacta de ingeniería textil. Fabricada en Seattle, esta gorra logra capturar el \'look & feel\' preciso de los años 40 y 50, manteniendo viva la artesanía que las máquinas actuales han olvidado.\n\n¿Qué la hace una pieza única?\n\nLa Identidad de \'La Casa\': A diferencia de las reproducciones de equipos de ligas menores, esta edición limitada porta el logotipo \'EFF\' en fieltro blanco. Es la firma de la marca, una declaración de principios para el coleccionista que valora la historia de la propia manufactura.\n\nEstética de Época Impecable: Su estructura es exactamente igual a las gorras usadas en el diamante hace 80 años. Al no tener los refuerzos rígidos frontales de las gorras modernas, ofrece esa caída natural y perfil bajo que definió la silueta de los jugadores de la era dorada.\n\nMateriales que Cuentan una Historia:\nLana Broadcloth Auténtica: Tejida con la densidad y el peso originales.\n\nDetalles de Fidelidad Histórica:\nVisera de Satín Verde: Recupera el reverso clásico diseñado para mitigar el brillo solar, un sello de autenticidad visual.\nCorrea de Cuero Genuino: Un cierre robusto y tradicional que refuerza su herencia artesanal.\n\nEn conclusión: Es una pieza de diseño de autor. Combina la exclusividad de una tirada limitada de 2014 con la apariencia visual de una reliquia de 1945. Es, sencillamente, historia viva que puedes usar.')">
+            <span class="meta-bitacora">14 Mar. 2026 — 3 min read</span>
+            <div class="img-container" style="height: 500px; overflow: hidden; margin-bottom: 30px;"><img src="Ebbets Field Flannels2.png" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <h3>Ebbets Field Flannels: El Heritage Americano</h3>
+            <p>Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna...</p>
+        </div>
+    </div>
 </section>
 
 <div id="modal" class="modal">
     <div class="modal-content">
         <form id="form-pedido">
-            <h3 style="letter-spacing: 2px;">SOLICITAR PIEZA</h3>
+            <h3 style="text-transform: uppercase; font-weight: 900; font-size: 0.9rem; letter-spacing: 5px; margin-bottom: 20px;">Adquirir</h3>
             <input type="text" id="nombre-cliente" placeholder="TU NOMBRE" required>
-            <button type="submit" class="btn-adquirir">IR A WHATSAPP</button>
-            <p onclick="cerrarModal()" style="margin-top:20px; cursor:pointer; opacity:0.5;">Cerrar</p>
+            <button type="submit" class="btn-adquirir">CONTINUAR A WHATSAPP</button>
+            <p onclick="cerrarModal()" style="margin-top: 30px; cursor: pointer; font-size: 0.75rem; letter-spacing: 2px; opacity: 0.5;">CANCELAR</p>
         </form>
     </div>
 </div>
 
 <div id="modal-lectura" class="modal">
     <div class="modal-content">
-        <h3 id="lectura-titulo" style="font-family: 'Playfair Display', serif; font-style: italic;"></h3>
-        <div id="lectura-texto" style="font-size: 1rem; line-height: 1.6; color: #ccc;"></div>
-        <button type="button" onclick="cerrarLectura()" class="btn-adquirir" style="margin-top:30px;">Cerrar Registro</button>
+        <h3 id="lectura-titulo"></h3>
+        <p id="lectura-texto"></p>
+        <button type="button" onclick="cerrarLectura()" class="btn-adquirir" style="width: auto; padding: 15px 50px;">Cerrar</button>
     </div>
 </div>
 
@@ -154,6 +221,14 @@
 <script>
     let prendaSeleccionadaParaEnvio = "";
     const carruselPositions = {};
+
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        setTimeout(() => {
+            preloader.style.opacity = '0';
+            setTimeout(() => preloader.style.display = 'none', 1000);
+        }, 500);
+    });
 
     const prendas = [
         { id: 1, nombre: "HOODIE UNDER ARMOUR 'REAL TREE'", precio: "35,000", talla: "L", estado: "10/10", categoria: "hoodies", fotos: ["Hoodie under armour real tree.jpg"], disponible: true },
@@ -169,30 +244,34 @@
         const filtradas = filtro === 'todas' ? prendas : prendas.filter(p => p.categoria === filtro);
         galeria.innerHTML = filtradas.map((p) => {
             const fotosHTML = p.fotos.map(f => `<img src="${f}" alt="${p.nombre}">`).join('');
+            const botonesNav = p.fotos.length > 1 ? `<button class="nav-btn prev-btn" onclick="moveCarousel(${p.id}, -1)">←</button><button class="nav-btn next-btn" onclick="moveCarousel(${p.id}, 1)">→</button>` : '';
             return `<div class="card">
+                ${p.disponible ? '<div class="badge">Disponible</div>' : '<div class="badge agotado">Agotado</div>'}
                 <div class="carousel-container">
                     <div class="carousel-track" id="track-${p.id}">${fotosHTML}</div>
-                    <div style="position:absolute; top:10px; left:10px; background:white; color:black; padding:4px 8px; font-size:10px; font-weight:900;">${p.disponible ? 'DISPONIBLE' : 'AGOTADO'}</div>
+                    ${botonesNav}
                 </div>
                 <div class="card-info">
                     <h3>${p.nombre}</h3>
                     <p class="precio">₡${p.precio}</p>
-                    <div class="specs">Talla: ${p.talla} / Cond: ${p.estado}</div>
+                    <div class="specs">${p.talla} // ${p.estado}</div>
                     <button class="btn-adquirir" ${p.disponible ? '' : 'disabled'} onclick="abrirModal('${p.nombre.replace(/'/g, "\\'")}')">
                         ${p.disponible ? 'Adquirir' : 'Agotado'}
-                    </button>
-                </div>
+                     </button>
+                 </div>
             </div>`;
         }).join('');
     }
 
-    // Funciones de navegación y modales corregidas
-    window.showSection = function(id) {
-        document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-        document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-        document.getElementById('nav-' + id).classList.add('active');
-        window.scrollTo({top: 0, behavior: 'smooth'});
+    window.moveCarousel = function(prendaId, direction) {
+        const track = document.getElementById(`track-${prendaId}`);
+        const prenda = prendas.find(p => p.id === prendaId);
+        const totalFotos = prenda.fotos.length;
+        if (!carruselPositions[prendaId]) carruselPositions[prendaId] = 0;
+        carruselPositions[prendaId] += direction;
+        if (carruselPositions[prendaId] < 0) carruselPositions[prendaId] = totalFotos - 1;
+        if (carruselPositions[prendaId] >= totalFotos) carruselPositions[prendaId] = 0;
+        track.style.transform = `translateX(-${carruselPositions[prendaId] * 100}%)`;
     };
 
     window.filtrar = function(cat) {
@@ -201,20 +280,38 @@
         cargar(cat);
     };
 
-    window.abrirModal = function(n) { prendaSeleccionadaParaEnvio = n; document.getElementById('modal').style.display = 'flex'; };
+    window.showSection = function(id) {
+        document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        const navElem = document.getElementById('nav-' + id);
+        if(navElem) navElem.classList.add('active');
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    window.abrirModal = function(nombre) {
+        prendaSeleccionadaParaEnvio = nombre;
+        document.getElementById('modal').style.display = 'flex';
+    };
+    
     window.cerrarModal = function() { document.getElementById('modal').style.display = 'none'; };
-    window.abrirLectura = function(t, txt) {
-        document.getElementById('lectura-titulo').innerText = t;
-        document.getElementById('lectura-texto').innerHTML = `<p>${txt.replace(/\n/g, '</p><p>')}</p>`;
+    
+    window.abrirLectura = function(titulo, texto) {
+        document.getElementById('lectura-titulo').innerText = titulo;
+        document.getElementById('lectura-texto').innerText = texto;
         document.getElementById('modal-lectura').style.display = 'flex';
         document.body.style.overflow = 'hidden';
     };
-    window.cerrarLectura = function() { document.getElementById('modal-lectura').style.display = 'none'; document.body.style.overflow = 'auto'; };
+
+    window.cerrarLectura = function() {
+        document.getElementById('modal-lectura').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    };
 
     document.getElementById('form-pedido').addEventListener('submit', function(e) {
         e.preventDefault();
         const cliente = document.getElementById('nombre-cliente').value;
-        const msg = `¡Saludos Madlamb.! Soy ${cliente}. Me interesa: ${prendaSeleccionadaParaEnvio}.`;
+        const msg = `¡Saludos Madlamb.! Soy ${cliente}. Me interesa la pieza: ${prendaSeleccionadaParaEnvio}.`;
         window.open("https://wa.me/50683087480?text=" + encodeURIComponent(msg), '_blank');
         cerrarModal();
     });
