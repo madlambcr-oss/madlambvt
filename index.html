@@ -13,6 +13,8 @@
             --text-secondary: #707070;
             --border: rgba(255, 255, 255, 0.08);
             --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            /* NUEVO: Color Óxido Editorial */
+            --oxido: #b35a38; 
         }
 
         /* --- Reset & Base --- */
@@ -40,7 +42,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- Header (Aumentado como pediste) --- */
+        /* --- Header --- */
         .site-header { 
             background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(30px);
             padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; 
@@ -49,12 +51,11 @@
         }
         .site-header h1 { font-weight: 900; font-size: 1.4rem; letter-spacing: -1px; margin: 0; cursor: pointer; text-transform: uppercase; }
         
-        /* AJUSTE: Tamaño de fuente navegación */
         .nav-menu ul { display: flex; gap: 3.5rem; list-style: none; margin: 0; padding: 0; }
         .nav-menu a { 
             color: var(--accent); 
             text-decoration: none; 
-            font-size: 1rem; /* Subió de 0.75rem a 1rem */
+            font-size: 1rem; 
             font-weight: 600; 
             text-transform: uppercase; 
             letter-spacing: 3px; 
@@ -62,7 +63,8 @@
             transition: var(--transition); 
             cursor: pointer; 
         }
-        .nav-menu a.active, .nav-menu a:hover { opacity: 1; }
+        /* AJUSTE: Color óxido en navegación */
+        .nav-menu a.active, .nav-menu a:hover { opacity: 1; color: var(--oxido); }
 
         .content-section { display: none; }
         .content-section.active { display: block; animation: fadeInUp 1s var(--transition); }
@@ -73,11 +75,10 @@
             font-size: clamp(4rem, 20vw, 15rem); font-weight: 900; line-height: 0.75; margin: 0; 
             letter-spacing: -0.06em; text-transform: uppercase;
         }
-        /* La frase sugerida */
         .hero .frase-pregunta {
             display: block;
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem; /* Tamaño de la frase */
+            font-size: 1.8rem; 
             font-style: italic;
             color: var(--text-secondary);
             margin-top: 25px;
@@ -85,11 +86,11 @@
             font-weight: 400;
         }
 
-        /* --- Filtros (Aumentado como pediste) --- */
+        /* --- Filtros --- */
         .filter-bar { padding: 0 5% 4rem; display: flex; justify-content: center; gap: 3rem; overflow-x: auto; scrollbar-width: none;}
         .filter-btn { 
             background: none; border: none; color: var(--accent); 
-            font-size: 1rem; /* Subió de 0.75rem a 1rem */
+            font-size: 1rem; 
             font-weight: 600; 
             text-transform: uppercase; 
             letter-spacing: 3px; 
@@ -97,7 +98,8 @@
             border-bottom: 1px solid transparent;
             white-space: nowrap;
         }
-        .filter-btn.active, .filter-btn:hover { opacity: 1; border-bottom: 1px solid #fff; }
+        /* AJUSTE: Color óxido en filtros */
+        .filter-btn.active, .filter-btn:hover { opacity: 1; color: var(--oxido); border-bottom: 1px solid var(--oxido); }
 
         /* --- Grid de Productos --- */
         .main-container { max-width: 1600px; margin: 0 auto; padding: 0 5% 10rem; }
