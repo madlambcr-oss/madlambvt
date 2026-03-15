@@ -21,7 +21,7 @@
             background-color: var(--bg); color: var(--accent);
             padding-top: 100px; overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.01em;
         }
 
         /* --- Preloader --- */
@@ -40,39 +40,62 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- Header Editorial --- */
+        /* --- Header (Aumentado como pediste) --- */
         .site-header { 
-            background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(30px);
+            background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(30px);
             padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; 
             position: fixed; top: 0; width: 100%; z-index: 1000; box-sizing: border-box;
             border-bottom: 1px solid var(--border);
         }
         .site-header h1 { font-weight: 900; font-size: 1.4rem; letter-spacing: -1px; margin: 0; cursor: pointer; text-transform: uppercase; }
-        .nav-menu ul { display: flex; gap: 3rem; list-style: none; margin: 0; padding: 0; }
-        .nav-menu a { color: var(--accent); text-decoration: none; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; opacity: 0.4; transition: var(--transition); cursor: pointer; }
+        
+        /* AJUSTE: Tamaño de fuente navegación */
+        .nav-menu ul { display: flex; gap: 3.5rem; list-style: none; margin: 0; padding: 0; }
+        .nav-menu a { 
+            color: var(--accent); 
+            text-decoration: none; 
+            font-size: 1rem; /* Subió de 0.75rem a 1rem */
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            opacity: 0.4; 
+            transition: var(--transition); 
+            cursor: pointer; 
+        }
         .nav-menu a.active, .nav-menu a:hover { opacity: 1; }
 
         .content-section { display: none; }
         .content-section.active { display: block; animation: fadeInUp 1s var(--transition); }
 
-        /* --- Hero High-End --- */
+        /* --- Hero --- */
         .hero { padding: 10rem 5% 5rem; text-align: center; }
         .hero h2 { 
             font-size: clamp(4rem, 20vw, 15rem); font-weight: 900; line-height: 0.75; margin: 0; 
             letter-spacing: -0.06em; text-transform: uppercase;
         }
-        .hero p { 
-            font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--text-secondary); 
-            margin-top: 20px; font-style: italic; max-width: 600px; margin-left: auto; margin-right: auto;
+        /* La frase sugerida */
+        .hero .frase-pregunta {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem; /* Tamaño de la frase */
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-top: 25px;
+            letter-spacing: 0;
+            font-weight: 400;
         }
 
-        /* --- Filtros Minimalistas --- */
-        .filter-bar { padding: 0 5% 4rem; display: flex; justify-content: center; gap: 2.5rem; }
+        /* --- Filtros (Aumentado como pediste) --- */
+        .filter-bar { padding: 0 5% 4rem; display: flex; justify-content: center; gap: 3rem; overflow-x: auto; scrollbar-width: none;}
         .filter-btn { 
-            background: none; border: none; color: var(--accent); font-size: 0.75rem; 
-            font-weight: 600; text-transform: uppercase; letter-spacing: 2px; 
-            cursor: pointer; opacity: 0.3; transition: var(--transition); padding-bottom: 5px;
+            background: none; border: none; color: var(--accent); 
+            font-size: 1rem; /* Subió de 0.75rem a 1rem */
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            cursor: pointer; opacity: 0.3; transition: var(--transition); padding-bottom: 8px;
             border-bottom: 1px solid transparent;
+            white-space: nowrap;
         }
         .filter-btn.active, .filter-btn:hover { opacity: 1; border-bottom: 1px solid #fff; }
 
@@ -96,51 +119,49 @@
         .card:hover .nav-btn { opacity: 1; }
 
         .card-info { text-align: left; padding: 0 5px; }
-        .card-info h3 { font-size: 1rem; font-weight: 600; text-transform: uppercase; margin: 0; letter-spacing: 1px; }
-        .precio { font-size: 1.2rem; font-weight: 400; margin: 10px 0; color: var(--accent); }
-        .specs { font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 25px; }
+        .card-info h3 { font-size: 1.1rem; font-weight: 600; text-transform: uppercase; margin: 0; letter-spacing: 1px; }
+        .precio { font-size: 1.3rem; font-weight: 400; margin: 10px 0; color: var(--accent); }
+        .specs { font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 25px; }
 
         .btn-adquirir { 
-            background: #fff; color: #000; padding: 18px; border: none; width: 100%; 
-            font-size: 0.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: 3px; 
+            background: #fff; color: #000; padding: 20px; border: none; width: 100%; 
+            font-size: 0.85rem; font-weight: 900; text-transform: uppercase; letter-spacing: 3px; 
             cursor: pointer; transition: var(--transition);
         }
-        .btn-adquirir:hover:not(:disabled) { background: var(--text-secondary); color: #fff; }
+        .btn-adquirir:hover:not(:disabled) { background: #ccc; }
         .btn-adquirir:disabled { background: #1a1a1a; color: #444; cursor: not-allowed; }
 
-        /* --- Bitácora Archive Style --- */
+        /* --- Bitácora --- */
         .bitacora-header h2 { font-size: clamp(3rem, 15vw, 10rem); font-weight: 900; text-align: center; padding: 8rem 0 4rem; }
         .bitacora-grid { display: grid; grid-template-columns: 1fr; gap: 120px; max-width: 900px; margin: 0 auto; padding-bottom: 10rem; }
         .bitacora-item { cursor: pointer; border-bottom: 1px solid var(--border); padding-bottom: 60px; }
-        .meta-bitacora { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: var(--text-secondary); margin-bottom: 30px; display: block; }
-        .img-container { width: 100%; height: 550px; overflow: hidden; margin-bottom: 40px; }
+        .meta-bitacora { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: var(--text-secondary); margin-bottom: 30px; display: block; }
+        .img-container { width: 100%; height: 600px; overflow: hidden; margin-bottom: 40px; }
         .bitacora-item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 1s ease; }
         .bitacora-item:hover img { filter: grayscale(0); transform: scale(1.03); }
-        .bitacora-item h3 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin: 0 0 20px 0; font-weight: 400; font-style: italic; }
-        .bitacora-item p { line-height: 1.8; color: var(--text-secondary); font-size: 1.1rem; }
+        .bitacora-item h3 { font-family: 'Playfair Display', serif; font-size: 4rem; margin: 0 0 20px 0; font-weight: 400; font-style: italic; }
+        .bitacora-item p { line-height: 1.8; color: var(--text-secondary); font-size: 1.2rem; }
 
-        /* --- Modal Experience --- */
+        /* --- Modales --- */
         .modal { 
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0,0,0,0.98); justify-content: center; align-items: center; 
             z-index: 9999; padding: 20px;
         }
         .modal-content { width: 100%; max-width: 600px; animation: fadeInUp 0.5s ease; position: relative;}
-        #modal-lectura .modal-content { max-width: 800px; padding: 40px; height: 80vh; overflow-y: auto; text-align: left;}
-        #modal-lectura h3 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; margin-bottom: 30px; }
-        #modal-lectura p { font-size: 1.25rem; line-height: 2; font-weight: 200; color: #ccc; }
+        #modal-lectura .modal-content { max-width: 850px; padding: 40px; height: 85vh; overflow-y: auto; text-align: left;}
+        #modal-lectura h3 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-style: italic; margin-bottom: 30px; }
+        #modal-lectura p { font-size: 1.3rem; line-height: 2.1; font-weight: 200; color: #ccc; }
 
         input { width: 100%; padding: 20px 0; border: none; border-bottom: 2px solid #222; background: transparent; font-size: 2.5rem; outline: none; text-align: center; color: #fff; margin-bottom: 40px; font-weight: 900; }
-        input:focus { border-bottom-color: #fff; }
 
-        footer { padding: 8rem 5%; text-align: center; border-top: 1px solid var(--border); font-size: 0.7rem; font-weight: 600; letter-spacing: 5px; color: #444; }
+        footer { padding: 8rem 5%; text-align: center; border-top: 1px solid var(--border); font-size: 0.75rem; font-weight: 600; letter-spacing: 6px; color: #444; }
 
         @media (max-width: 768px) {
             .grid { grid-template-columns: 1fr; }
             .hero h2 { font-size: 18vw; }
-            .bitacora-item h3 { font-size: 2.5rem; }
-            .site-header { padding: 1rem 5%; }
             .nav-menu ul { gap: 1.5rem; }
+            .nav-menu a, .filter-btn { font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -161,7 +182,7 @@
 <section id="suministros" class="content-section active">
     <div class="hero">
         <h2>Archive</h2>
-        <p>¿Qué historia vestirás hoy?</p>
+        <span class="frase-pregunta">¿Qué historia vestirás hoy?</span>
     </div>
     <div class="filter-bar">
         <button class="filter-btn active" onclick="filtrar('todas')">Todo</button>
@@ -209,10 +230,10 @@
 <div id="modal" class="modal">
     <div class="modal-content">
         <form id="form-pedido">
-            <h3 style="text-transform: uppercase; font-weight: 900; font-size: 0.8rem; letter-spacing: 5px; margin-bottom: 20px;">Identificación del Cliente</h3>
+            <h3 style="text-transform: uppercase; font-weight: 900; font-size: 0.9rem; letter-spacing: 5px; margin-bottom: 20px;">Adquirir</h3>
             <input type="text" id="nombre-cliente" placeholder="TU NOMBRE" required>
-            <button type="submit" class="btn-adquirir">SOLICITAR VÍA WHATSAPP</button>
-            <p onclick="cerrarModal()" style="margin-top: 30px; cursor: pointer; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.5;">CERRAR</p>
+            <button type="submit" class="btn-adquirir">CONTINUAR A WHATSAPP</button>
+            <p onclick="cerrarModal()" style="margin-top: 30px; cursor: pointer; font-size: 0.75rem; letter-spacing: 2px; opacity: 0.5;">CANCELAR</p>
         </form>
     </div>
 </div>
@@ -221,7 +242,7 @@
     <div class="modal-content">
         <h3 id="lectura-titulo"></h3>
         <p id="lectura-texto"></p>
-        <button type="button" onclick="cerrarLectura()" class="btn-adquirir" style="width: auto; padding: 15px 40px;">Volver</button>
+        <button type="button" onclick="cerrarLectura()" class="btn-adquirir" style="width: auto; padding: 15px 50px;">Cerrar</button>
     </div>
 </div>
 
@@ -255,7 +276,7 @@
             const fotosHTML = p.fotos.map(f => `<img src="${f}" alt="${p.nombre}">`).join('');
             const botonesNav = p.fotos.length > 1 ? `<button class="nav-btn prev-btn" onclick="moveCarousel(${p.id}, -1)">←</button><button class="nav-btn next-btn" onclick="moveCarousel(${p.id}, 1)">→</button>` : '';
             return `<div class="card">
-                ${p.disponible ? '<div class="badge">Disponibilidad Inmediata</div>' : '<div class="badge agotado">Sold Out</div>'}
+                ${p.disponible ? '<div class="badge">Disponible</div>' : '<div class="badge agotado">Agotado</div>'}
                 <div class="carousel-container">
                     <div class="carousel-track" id="track-${p.id}">${fotosHTML}</div>
                     ${botonesNav}
@@ -263,9 +284,9 @@
                 <div class="card-info">
                     <h3>${p.nombre}</h3>
                     <p class="precio">₡${p.precio}</p>
-                    <div class="specs">Size ${p.talla} // Condición ${p.estado}</div>
+                    <div class="specs">${p.talla} // ${p.estado}</div>
                     <button class="btn-adquirir" ${p.disponible ? '' : 'disabled'} onclick="abrirModal('${p.nombre.replace(/'/g, "\\'")}')">
-                        ${p.disponible ? 'Comprar ahora' : 'No disponible'}
+                        ${p.disponible ? 'Adquirir' : 'Agotado'}
                      </button>
                  </div>
             </div>`;
@@ -303,9 +324,7 @@
         document.getElementById('modal').style.display = 'flex';
     };
     
-    window.cerrarModal = function() { 
-        document.getElementById('modal').style.display = 'none'; 
-    };
+    window.cerrarModal = function() { document.getElementById('modal').style.display = 'none'; };
     
     window.abrirLectura = function(titulo, texto) {
         document.getElementById('lectura-titulo').innerText = titulo;
