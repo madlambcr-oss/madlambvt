@@ -51,38 +51,17 @@
 
         /* --- Hero Banner --- */
         .hero-banner { 
-            position: relative;
-            height: 60vh; 
-            width: 100%; 
-            margin: 0px auto 5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            border-radius: 4px;
+            position: relative; height: 60vh; width: 100%; margin: 0px auto 5rem;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; background-size: cover; background-position: center;
+            background-attachment: fixed; border-radius: 4px;
         }
-        
         #suministros .hero-banner { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('banner-vintage regal.png'); }
-        #articulos .hero-banner { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('banner-articulos.png'); }
+        #articulos .hero-banner { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('banner-vintage regal.png'); }
 
-        .hero-banner h2 { 
-            font-size: clamp(3.5rem, 12vw, 10rem); font-weight: 900; line-height: 0.8; margin: 0; 
-            letter-spacing: -0.05em; text-transform: uppercase; color: #fff;
-        }
-        .hero-banner .frase-pregunta {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem; font-style: italic; color: #eee;
-            margin: 25px 0 40px;
-        }
-        .btn-banner {
-            background: #fff; color: #000; padding: 18px 45px; border-radius: 2px;
-            font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
-            text-decoration: none; transition: var(--transition); font-size: 0.9rem;
-        }
+        .hero-banner h2 { font-size: clamp(3.5rem, 12vw, 10rem); font-weight: 900; line-height: 0.8; margin: 0; letter-spacing: -0.05em; text-transform: uppercase; color: #fff; }
+        .hero-banner .frase-pregunta { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; color: #eee; margin: 25px 0 40px; }
+        .btn-banner { background: #fff; color: #000; padding: 18px 45px; border-radius: 2px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; transition: var(--transition); font-size: 0.9rem; }
 
         /* --- Filtros --- */
         .filter-bar { padding: 0 5% 4rem; display: flex; justify-content: center; gap: 3rem; overflow-x: auto; scrollbar-width: none;}
@@ -99,11 +78,7 @@
         
         .badge { position: absolute; top: 20px; left: 20px; z-index: 20; padding: 8px 15px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; background: #fff; color: #000; }
         .badge.agotado { background: #1a1a1a; color: #888; border: 1px solid rgba(255,255,255,0.1); }
-
-        .card.agotado-visual .carousel-track img { 
-            filter: grayscale(60%); 
-            opacity: 0.7; 
-        }
+        .card.agotado-visual .carousel-track img { filter: grayscale(60%); opacity: 0.7; }
         .card.agotado-visual .card-info { opacity: 0.8; }
 
         .card-info h3 { font-size: 1.2rem; margin: 20px 0 8px; font-weight: 600; letter-spacing: 1px; }
@@ -112,7 +87,6 @@
 
         .btn-adquirir { background: transparent; color: #fff; padding: 18px; border: 1px solid var(--border); width: 100%; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; cursor: pointer; transition: var(--transition); }
         .btn-adquirir:hover:not(:disabled) { background: #fff; color: #000; border-color: #fff; }
-        
         .btn-adquirir:disabled { border: 1px solid rgba(255,255,255,0.1); color: #666; cursor: not-allowed; background: rgba(255,255,255,0.02); }
 
         .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 20px 15px; cursor: pointer; z-index: 30; opacity: 0; transition: 0.3s; font-size: 1.2rem; }
@@ -172,57 +146,21 @@
         <button class="filter-btn" onclick="filtrar('hoodies')">Hoodies</button>
         <button class="filter-btn" onclick="filtrar('camisetas')">T-Shirts</button>
     </div>
-    <div class="main-container">
-        <div class="grid" id="galeria"></div>
-    </div>
+    <div class="main-container"><div class="grid" id="galeria"></div></div>
 </section>
 
 <section id="articulos" class="content-section">
     <div class="hero-banner">
-        <h2>Curaduría</h2>
-        <span class="frase-pregunta">Objetos con historia propia.</span>
-        <a href="#galeria-articulos" class="btn-banner">Explorar Objetos</a>
+        <h2>Objetos</h2>
+        <span class="frase-pregunta">Curaduría de piezas únicas.</span>
+        <a href="#galeria-articulos" class="btn-banner">Ver Artículos</a>
     </div>
-    <div class="filter-bar">
-        <button class="filter-btn active" onclick="filtrarArticulos('todas')">Todo</button>
-        <button class="filter-btn" onclick="filtrarArticulos('deco')">Decoración</button>
-        <button class="filter-btn" onclick="filtrarArticulos('coleccionables')">Coleccionables</button>
-    </div>
-    <div class="main-container">
-        <div class="grid" id="galeria-articulos"></div>
-    </div>
+    <div class="main-container"><div class="grid" id="galeria-articulos"></div></div>
 </section>
 
 <section id="bitacora" class="content-section">
-    <div style="text-align: center; padding: 10rem 0 2rem;">
-        <h2 style="font-size: clamp(4rem, 15vw, 10rem); font-weight: 900; margin:0; letter-spacing: -2px;">LEGADO</h2>
-    </div>
-    <div class="bitacora-grid">
-        <div class="bitacora-item" onclick="abrirLectura('The Waxed Canvas Trucker', 'La chaqueta de lona encerada es mucho más que una prenda...')">
-            <span class="meta-bitacora">10 Mar. 2026 — 3 min read</span>
-            <div class="img-container"><img src="The Waxed Canvas Trucker.jpg"></div>
-            <h3>The Waxed Canvas Trucker</h3>
-            <p>La chaqueta de lona encerada es mucho más que una prenda...</p>
-        </div>
-        <div class="bitacora-item" onclick="abrirLectura('La Detroit Jacket', 'No es moda rápida. No es una tendencia de Instagram...')">
-            <span class="meta-bitacora">17 Mar. 2026 — 4 min read</span>
-            <div class="img-container"><img src="El Oro de Lona La Detroit Jacket.png"></div>
-            <h3>La Detroit Jacket: El Icono del Asfalto</h3>
-            <p>No es moda rápida. Es lona de pato de 12 onzas...</p>
-        </div>
-        <div class="bitacora-item" onclick="abrirLectura('El Guardián de 1970 Regal Toy Ltd', 'En el universo del coleccionismo vintage...')">
-            <span class="meta-bitacora">12 Mar. 2026 — 3 min read</span>
-            <div class="img-container"><img src="Regal toy.jpg"></div>
-            <h3>El Guardián de 1970 Regal Toy Ltd</h3>
-            <p>En el universo del coleccionismo vintage...</p>
-        </div>
-        <div class="bitacora-item" onclick="abrirLectura('Ebbets Field Flannels', 'Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna...')">
-            <span class="meta-bitacora">14 Mar. 2026 — 3 min read</span>
-            <div class="img-container"><img src="Ebbets Field Flannels2.png"></div>
-            <h3>Ebbets Field Flannels: El Heritage Americano</h3>
-            <p>Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna...</p>
-        </div>
-    </div>
+    <div style="text-align: center; padding: 10rem 0 2rem;"><h2 style="font-size: clamp(4rem, 15vw, 10rem); font-weight: 900; margin:0; letter-spacing: -2px;">LEGADO</h2></div>
+    <div class="bitacora-grid" id="bitacora-grid"></div>
 </section>
 
 <div id="modal" class="modal">
@@ -273,56 +211,50 @@
         { id: 12, nombre: "HOT SHOT REALTREE EDGE CAMO HOODED BOMBER JACKET - QUILTED LINED", precio: "25,000", talla: "S", estado: "10/10", categoria: "jackets", fotos: ["Hot Shot Realtree Edge Camo Hooded Bomber Jacket - Quilted Lined.jpg","Hot Shot Realtree Edge Camo Hooded Bomber Jacket - Quilted Lined2.jpg"], disponible: false },
         { id: 13, nombre: "RARE VINTAGE FFA AGRICULTURAL EDUCATION JACKET - ILLINOIS TAYLORVILLE", precio: "70,000", talla: "L", estado: "10/10", categoria: "jackets", fotos: ["Rare Vintage Ffa Agricultural Education Jacket - Illinois Taylorville.jpg","Rare Vintage Ffa Agricultural Education Jacket - Illinois Taylorville2.jpg","Rare Vintage Ffa Agricultural Education Jacket - Illinois Taylorville3.jpg"], disponible: true },
         { id: 14, nombre: "RARE VINTAGE CARHARTT ACTIVE JACKET - DARK PURPLE WASHED FINISH", precio: "40,000", talla: "L", estado: "10/10", categoria: "jackets", fotos: ["Rare Vintage Carhartt Active Jacket - Dark Purple Washed Finish.jpg","Rare Vintage Carhartt Active Jacket - Dark Purple Washed Finish3.jpg"], disponible: false },
-        { id: 15, nombre: "VINTAGE CARHARTT ARCTIC TRADITIONAL COAT - NAVY BLUE", precio: "40,000", talla: "M", estado: "10/10", categoria: "hoodies", fotos: ["Vintage Carhartt Arctic Traditional Coat - NAVY BLUE.jpg","Vintage Carhartt Arctic Traditional Coat - Navy Blue2.jpg"], disponible: false },
+        { id: 15, nombre: "VINTAGE CARHARTT ARCTIC TRADITIONAL COAT - NAVY BLUE", precio: "40,000", talla: "M", estado: "10/10", categoria: "hoodies", fotos: ["Vintage Carhartt Arctic Traditional Coat - Navy Blue.jpg","Vintage Carhartt Arctic Traditional Coat - Navy Blue2.jpg"], disponible: false },
         { id: 16, nombre: "VINTAGE CARHARTT SANTA FE JACKET - SANDSTONE FINISH - AGED CANVAS", precio: "50,000", talla: "L", estado: "9/10", categoria: "jackets", fotos: ["Carhartt Santa Fe Sandstone Finish.jpg","Carhartt Santa Fe Sandstone Finish2.jpg"], disponible: false }
     ];
 
     const articulos = [
-        { id: 101, nombre: "REGAL TOY FIRST NATIONS 1970", precio: "85,000", talla: "Única", estado: "10/10", categoria: "coleccionables", fotos: ["Regal toy.jpg"], disponible: true },
-        { id: 102, nombre: "EBBETS FIELD FLANNELS EFF CAP", precio: "32,000", talla: "Ajustable", estado: "10/10", categoria: "deco", fotos: ["Ebbets Field Flannels2.png"], disponible: true }
+        { id: 101, nombre: "REGAL TOY FIRST NATIONS 1970", precio: "85,000", talla: "Única", estado: "10/10", fotos: ["Regal toy.jpg"], disponible: true },
+        { id: 102, nombre: "EBBETS FIELD FLANNELS EFF CAP", precio: "32,000", talla: "Ajustable", estado: "10/10", fotos: ["Ebbets Field Flannels2.png"], disponible: true }
     ];
 
-    function cargarGrid(containerId, lista) {
-        const container = document.getElementById(containerId);
-        container.innerHTML = lista.map((p) => {
-            const fotosHTML = p.fotos.map(f => `<img src="${f}" alt="${p.nombre}">`).join('');
-            const botonesNav = p.fotos.length > 1 ? `<button class="nav-btn prev-btn" onclick="moveCarousel(${p.id}, -1)">←</button><button class="nav-btn next-btn" onclick="moveCarousel(${p.id}, 1)">→</button>` : '';
-            const statusClass = p.disponible ? "" : "agotado-visual";
-            const badgeClass = p.disponible ? "badge" : "badge agotado";
-            const badgeText = p.disponible ? "Disponible" : "Agotado";
-            return `<div class="card ${statusClass}">
-                <div class="${badgeClass}">${badgeText}</div>
-                <div class="carousel-container">
-                    <div class="carousel-track" id="track-${p.id}">${fotosHTML}</div>
-                    ${botonesNav}
-                </div>
-                <div class="card-info">
-                    <h3>${p.nombre}</h3>
-                    <p class="precio">₡${p.precio}</p>
-                    <div class="specs">${p.talla} // ${p.estado}</div>
-                    <button class="btn-adquirir" ${p.disponible ? '' : 'disabled'} onclick="abrirModal('${p.nombre.replace(/'/g, "\\'")}')">
-                        ${p.disponible ? 'Adquirir' : 'Agotado'}
-                    </button>
-                </div>
-            </div>`;
+    const bitacora = [
+        { titulo: "The Waxed Canvas Trucker", meta: "10 Mar. 2026 — 3 min read", img: "The Waxed Canvas Trucker.jpg", short: "La chaqueta de lona encerada es mucho más que una prenda...", content: "La chaqueta de lona encerada es mucho más que una prenda; es una herencia de ingeniería textil que nació en el siglo XV para proteger a los marineros de los climas más hostiles. Desde las velas de alta mar hasta las icónicas rutas de motociclismo, este material ha evolucionado utilizando fibras como el algodón Martexin y remaches de cobre para ofrecer una resistencia hercúlea y eterna. A diferencia de la moda desechable, su valor real reside en la pátina que desarrolla con el tiempo, transformando cada arruga y marca en una crónica visual de las aventuras de quien la viste, convirtiéndola en una inversión única diseñada para pasar de generación en generación." },
+        { titulo: "La Detroit Jacket: El Icono del Asfalto", meta: "17 Mar. 2026 — 4 min read", img: "El Oro de Lona La Detroit Jacket.png", short: "No es moda rápida. Es lona de pato de 12 onzas...", content: "No es moda rápida. No es una tendencia de Instagram que desaparece en dos semanas. Es lona de pato de 12 onzas, triple costura y una reputación forjada en el acero y el concreto de Michigan. Estamos hablando de la Carhartt Detroit Jacket. Si has visto Interstellar, Yellowstone, o simplemente has caminado por cualquier ciudad con clima frío en los últimos 30 años, la has visto. Pero, ¿por qué esta pieza de ropa de trabajo se convirtió en un ícono cultural inamovible? En MadLamb, desglosamos el ADN de la chaqueta que se niega a morir. \n\n (La Historia: Nacida del Vapor) \n Hamilton Carhartt no diseñó la Detroit Jacket para las pasarelas en 1889. La diseñó para los hombres que construyeron América: trabajadores del ferrocarril y obreros siderúrgicos. Necesitaban algo que no se rompiera, que resistiera chispas y que los mantuviera calientes sin restringir el movimiento. La Detroit Jacket original (con su corte corto a la cintura y forro de manta) fue la respuesta. Su color 'Carhartt Brown' no era estético; era el color natural de la lona resistente que usaban. Nació de la pura necesidad funcional. \n\n (La Curiosidad: Del Andamio al 'Grunge' y el Hip-Hop) \n ¿Cómo pasó de un sitio de construcción a ser la pieza central del streetwear? En los años 90, algo cambió. El movimiento grunge en Seattle adoptó la ropa de trabajo por su autenticidad y durabilidad. Simultáneamente, la escena del Hip-Hop en Nueva York comenzó a usarla como un símbolo de 'dureza' y resistencia urbana. No estaban tratando de parecer trabajadores; estaban usando una armadura urbana que reflejaba la realidad de la calle. \n\n (La Conexión de Hollywood: El Uniforme del Héroe Relatable) \n Aquí es donde la Detroit Jacket solidifica su estatus legendario. En el cine, cuando un director necesita que un personaje parezca rudo, honesto y práctico, no le ponen un traje. Le ponen una Carhartt Detroit desgastada. \n\n - Matthew McConaughey en Interstellar: Su chaqueta marrón representa al agricultor que debe salvar el mundo. \n - Kevin Costner en Yellowstone: La versión de lona negra encarna al cowboy moderno y endurecido. \n - Robert Pattinson en Tenet: Aparece en azul marino para anclar al personaje en la realidad física de la acción. \n\n En un mundo de consumo desechable, la Carhartt Detroit es una anomalía. Se ve mejor cuando está vieja, manchada y desgastada. Cada rasguño cuenta una historia. No es solo una chaqueta; es un testimonio de que la autenticidad y la función nunca pasan de moda." },
+        { titulo: "El Guardián de 1970 Regal Toy Ltd", meta: "12 Mar. 2026 — 3 min read", img: "Regal toy.jpg", short: "En el universo del coleccionismo vintage...", content: "En el universo del coleccionismo vintage, existe una jerarquía invisible. En la cima no están los objetos producidos por millones, sino aquellos que cuentan la historia de una industria que ya no existe.\n\nHoy nos enfocamos en una de nuestras piezas más valiosas: el Regal Toy de la serie First Nations.\n\nRareza de Origen: El Sello de Toronto\nFundada en 1959, Regal Toy Ltd. fue el titán de la manufactura juguetera en Canadá. Poseer una pieza con el grabado original en la espalda no es solo tener un juguete; es poseer un fragmento del patrimonio industrial norteamericano. Tras el cierre de sus fábricas, estas figuras pasaron de los estantes de las tiendas a las vitrinas de los museos de diseño.\n\n⏳ La Exclusividad de la Supervivencia\nLo que hace a este ejemplar de 1970 una pieza de exclusividad absoluta no es solo su edad (más de 55 años), sino su estado de conservación.\n\nEl Vinilo Térmico: A diferencia del plástico moderno que se degrada y se vuelve quebradizo, el vinilo Regal fue diseñado para durar siglos.\n\nLa Pátina del Tiempo: La suavidad de sus facciones y el brillo conservado en su mirada son imposibles de replicar. Es una cápsula del tiempo que ha sobrevivido a décadas de cambios culturales y tecnológicos.\n\n💎 Más que un Objeto, una Inversión Cultural\nEn una era de consumo desechable, la exclusividad reside en la permanencia. Este muñeco representa una época donde el juguete era una obra de arte manual. Su vestimenta de fieltro, sus costuras reforzadas y su diseño étnico detallado lo convierten en un objeto muy interesante." },
+        { titulo: "Ebbets Field Flannels: El Heritage Americano", meta: "14 Mar. 2026 — 3 min read", img: "Ebbets Field Flannels2.png", short: "Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna...", content: "Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna de lo retro; es una réplica exacta de ingeniería textil. Fabricada en Seattle, esta gorra logra capturar el 'look & feel' preciso de los años 40 y 50, manteniendo viva la artesanía que las máquinas actuales han olvidado.\n\n¿Qué la hace una pieza única?\n\nLa Identidad de 'La Casa': A diferencia de las reproducciones de equipos de ligas menores, esta edición limitada porta el logotipo 'EFF' en fieltro blanco. Es la firma de la marca, una declaración de principios para el coleccionista que valora la historia de la propia manufactura.\n\nEstética de Época Impecable: Su estructura es exactamente igual a las gorras usadas en el diamante hace 80 años. Al no tener los refuerzos rígidos frontales de las gorras modernas, ofrece esa caída natural y perfil bajo que definió la silueta de los jugadores de la era dorada.\n\nMateriales que Cuentan una Historia:\nLana Broadcloth Auténtica: Tejida con la densidad y el peso originales.\n\nDetalles de Fidelidad Histórica:\nVisera de Satín Verde: Recupera el reverso clásico diseñado para mitigar el brillo solar, un sello de autenticidad visual.\nCorrea de Cuero Genuino: Un cierre robusto y tradicional que refuerza su herencia artesanal.\n\nEn conclusión: Es una pieza de diseño de autor. Combina la exclusividad de una tirada limitada de 2014 con la apariencia visual de una reliquia de 1945. Es, sencillamente, historia viva que puedes usar." }
+    ];
+
+    function cargarGrid(id, lista) {
+        document.getElementById(id).innerHTML = lista.map(p => {
+            const fotos = p.fotos.map(f => `<img src="${f}">`).join('');
+            const nav = p.fotos.length > 1 ? `<button class="nav-btn prev-btn" onclick="moveCarousel(${p.id}, -1)">←</button><button class="nav-btn next-btn" onclick="moveCarousel(${p.id}, 1)">→</button>` : '';
+            return `<div class="card ${p.disponible?'':'agotado-visual'}">
+                <div class="badge ${p.disponible?'':'agotado'}">${p.disponible?'Disponible':'Agotado'}</div>
+                <div class="carousel-container"><div class="carousel-track" id="track-${p.id}">${fotos}</div>${nav}</div>
+                <div class="card-info"><h3>${p.nombre}</h3><p class="precio">₡${p.precio}</p><div class="specs">${p.talla} // ${p.estado}</div>
+                <button class="btn-adquirir" ${p.disponible?'':'disabled'} onclick="abrirModal('${p.nombre.replace(/'/g, "\\'")}')">${p.disponible?'Adquirir':'Agotado'}</button></div></div>`;
         }).join('');
+    }
+
+    function cargarBitacora() {
+        document.getElementById('bitacora-grid').innerHTML = bitacora.map(b => `
+            <div class="bitacora-item" onclick="abrirLectura('${b.titulo.replace(/'/g, "\\'")}', \`${b.content}\`)">
+                <span class="meta-bitacora">${b.meta}</span>
+                <div class="img-container"><img src="${b.img}"></div>
+                <h3>${b.titulo}</h3><p>${b.short}</p>
+            </div>`).join('');
     }
 
     window.filtrar = function(cat) {
         document.querySelectorAll('#suministros .filter-btn').forEach(b => b.classList.remove('active'));
         event.target.classList.add('active');
-        const filtradas = cat === 'todas' ? prendas : prendas.filter(p => p.categoria === cat);
-        cargarGrid('galeria', filtradas);
+        cargarGrid('galeria', cat === 'todas' ? prendas : prendas.filter(p => p.categoria === cat));
     };
 
-    window.filtrarArticulos = function(cat) {
-        document.querySelectorAll('#articulos .filter-btn').forEach(b => b.classList.remove('active'));
-        event.target.classList.add('active');
-        const filtrados = cat === 'todas' ? articulos : articulos.filter(a => a.categoria === cat);
-        cargarGrid('galeria-articulos', filtrados);
-    };
-
-    window.showSection = function(id) {
+    window.showSection = (id) => {
         document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
         document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
         document.getElementById(id).classList.add('active');
@@ -330,33 +262,26 @@
         window.scrollTo({top: 0, behavior: 'smooth'});
     };
 
-    window.moveCarousel = function(id, dir) {
+    window.moveCarousel = (id, dir) => {
         const item = [...prendas, ...articulos].find(p => p.id === id);
-        if (!carruselPositions[id]) carruselPositions[id] = 0;
-        carruselPositions[id] = (carruselPositions[id] + dir + item.fotos.length) % item.fotos.length;
-        document.getElementById(`track-${id}`).style.transform = `translateX(-${carruselPositions[id] * 100}%)`;
+        carruselPositions[id] = ( (carruselPositions[id] || 0) + dir + item.fotos.length) % item.fotos.length;
+        document.getElementById(`track-${id}`).style.transform = `translateX(-${carruselPositions[id]*100}%)`;
     };
 
     window.abrirModal = (n) => { prendaSeleccionadaParaEnvio = n; document.getElementById('modal').style.display = 'flex'; };
-    window.cerrarModal = () => { document.getElementById('modal').style.display = 'none'; };
-    window.abrirLectura = (t, txt) => { 
-        document.getElementById('lectura-titulo').innerText = t; 
-        document.getElementById('lectura-texto').innerText = txt; 
-        document.getElementById('modal-lectura').style.display = 'flex'; 
-        document.body.style.overflow = 'hidden'; 
-    };
+    window.cerrarModal = () => document.getElementById('modal').style.display = 'none';
+    window.abrirLectura = (t, txt) => { document.getElementById('lectura-titulo').innerText = t; document.getElementById('lectura-texto').innerText = txt; document.getElementById('modal-lectura').style.display = 'flex'; document.body.style.overflow = 'hidden'; };
     window.cerrarLectura = () => { document.getElementById('modal-lectura').style.display = 'none'; document.body.style.overflow = 'auto'; };
 
     document.getElementById('form-pedido').addEventListener('submit', function(e) {
         e.preventDefault();
-        const msg = `¡Saludos Madlamb.! Soy ${document.getElementById('nombre-cliente').value}. Me interesa la pieza: ${prendaSeleccionadaParaEnvio}.`;
-        window.open("https://wa.me/50683087480?text=" + encodeURIComponent(msg), '_blank');
+        window.open(`https://wa.me/50683087480?text=${encodeURIComponent("¡Saludos Madlamb.! Soy " + document.getElementById('nombre-cliente').value + ". Me interesa la pieza: " + prendaSeleccionadaParaEnvio + ".")}`, '_blank');
         cerrarModal();
     });
 
-    // Carga inicial
     cargarGrid('galeria', prendas);
     cargarGrid('galeria-articulos', articulos);
+    cargarBitacora();
 </script>
 </body>
 </html>
