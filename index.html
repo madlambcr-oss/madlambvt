@@ -65,10 +65,9 @@
             background-attachment: fixed;
             border-radius: 4px;
         }
-        /* Banner específico para suministros */
-        #suministros .hero-banner { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('banner-vintage-regal.png'); }
-        /* Banner específico para artículos */
-        #articulos .hero-banner { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('articulos-banner.jpg'); }
+        
+        #suministros .hero-banner { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('banner-vintage regal.png'); }
+        #articulos .hero-banner { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('banner-articulos.png'); }
 
         .hero-banner h2 { 
             font-size: clamp(3.5rem, 12vw, 10rem); font-weight: 900; line-height: 0.8; margin: 0; 
@@ -105,9 +104,7 @@
             filter: grayscale(60%); 
             opacity: 0.7; 
         }
-        .card.agotado-visual .card-info {
-            opacity: 0.8;
-        }
+        .card.agotado-visual .card-info { opacity: 0.8; }
 
         .card-info h3 { font-size: 1.2rem; margin: 20px 0 8px; font-weight: 600; letter-spacing: 1px; }
         .card-info .precio { font-family: 'Playfair Display', serif; font-style: italic; color: var(--text-secondary); margin-bottom: 12px; font-size: 1.3rem; }
@@ -116,12 +113,7 @@
         .btn-adquirir { background: transparent; color: #fff; padding: 18px; border: 1px solid var(--border); width: 100%; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; cursor: pointer; transition: var(--transition); }
         .btn-adquirir:hover:not(:disabled) { background: #fff; color: #000; border-color: #fff; }
         
-        .btn-adquirir:disabled {
-            border: 1px solid rgba(255,255,255,0.1);
-            color: #666;
-            cursor: not-allowed;
-            background: rgba(255,255,255,0.02);
-        }
+        .btn-adquirir:disabled { border: 1px solid rgba(255,255,255,0.1); color: #666; cursor: not-allowed; background: rgba(255,255,255,0.02); }
 
         .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 20px 15px; cursor: pointer; z-index: 30; opacity: 0; transition: 0.3s; font-size: 1.2rem; }
         .card:hover .nav-btn { opacity: 1; }
@@ -129,76 +121,15 @@
         .next-btn { right: 0; }
 
         /* --- Bitácora --- */
-        .bitacora-grid { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 120px 60px; 
-            max-width: 1400px; 
-            margin: 0 auto; 
-            padding: 5rem 5% 10rem; 
-            align-items: start;
-        }
-        
-        .bitacora-item { 
-            cursor: pointer; 
-            border-bottom: 1px solid var(--border); 
-            padding-bottom: 60px; 
-            display: flex;
-            flex-direction: column;
-            transition: var(--transition);
-        }
-        
+        .bitacora-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 120px 60px; max-width: 1400px; margin: 0 auto; padding: 5rem 5% 10rem; align-items: start; }
+        .bitacora-item { cursor: pointer; border-bottom: 1px solid var(--border); padding-bottom: 60px; display: flex; flex-direction: column; transition: var(--transition); }
         .bitacora-item:hover { transform: translateY(-5px); }
-
-        .bitacora-item .img-container { 
-            width: 100%; 
-            height: auto; 
-            overflow: hidden; 
-            margin-top: 25px; 
-            margin-bottom: 35px; 
-            background: transparent; 
-            display: flex;
-            justify-content: center;
-        }
-        
-        .bitacora-item .img-container img { 
-            width: 100%; 
-            height: auto; 
-            display: block; 
-            object-fit: original; 
-            transition: transform 0.8s ease;
-        }
-
+        .bitacora-item .img-container { width: 100%; height: auto; overflow: hidden; margin-top: 25px; margin-bottom: 35px; background: transparent; display: flex; justify-content: center; }
+        .bitacora-item .img-container img { width: 100%; height: auto; display: block; object-fit: original; transition: transform 0.8s ease; }
         .bitacora-item:hover .img-container img { transform: scale(1.03); }
-
-        .bitacora-item h3 { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 2.5rem; 
-            margin: 25px 0; 
-            font-weight: 400; 
-            font-style: italic; 
-            line-height: 1.1; 
-        }
-        
-        .meta-bitacora { 
-            font-size: 0.85rem; 
-            letter-spacing: 3px; 
-            color: var(--oxido); 
-            text-transform: uppercase; 
-            font-weight: 600; 
-        }
-        
-        .bitacora-item p { 
-            line-height: 1.7; 
-            color: var(--text-secondary); 
-            font-size: 1.15rem; 
-            text-align: left; 
-            margin: 0;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
+        .bitacora-item h3 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 25px 0; font-weight: 400; font-style: italic; line-height: 1.1; }
+        .meta-bitacora { font-size: 0.85rem; letter-spacing: 3px; color: var(--oxido); text-transform: uppercase; font-weight: 600; }
+        .bitacora-item p { line-height: 1.7; color: var(--text-secondary); font-size: 1.15rem; text-align: left; margin: 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
         /* --- Modales --- */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.96); justify-content: center; align-items: center; z-index: 9999; padding: 20px; }
@@ -210,18 +141,8 @@
         input { width: 100%; padding: 20px 0; border: none; border-bottom: 2px solid #333; background: transparent; font-size: 2.2rem; outline: none; text-align: center; color: #fff; margin-bottom: 45px; font-family: 'Playfair Display', serif; font-style: italic; }
         footer { padding: 8rem 5%; text-align: center; border-top: 1px solid var(--border); font-size: 0.85rem; font-weight: 600; letter-spacing: 6px; color: #444; }
 
-        @media (max-width: 1024px) {
-            .bitacora-grid { grid-template-columns: 1fr; gap: 80px; max-width: 800px; }
-            .bitacora-item h3 { font-size: 3rem; }
-        }
-        
-        @media (max-width: 768px) {
-            .hero-banner { height: 55vh; }
-            .hero-banner h2 { font-size: 18vw; }
-            .bitacora-item h3 { font-size: 2rem; }
-            .nav-menu ul { gap: 1.5rem; }
-            .nav-menu a { font-size: 0.8rem; }
-        }
+        @media (max-width: 1024px) { .bitacora-grid { grid-template-columns: 1fr; gap: 80px; max-width: 800px; } .bitacora-item h3 { font-size: 3rem; } }
+        @media (max-width: 768px) { .hero-banner { height: 55vh; } .hero-banner h2 { font-size: 18vw; } .bitacora-item h3 { font-size: 2rem; } .nav-menu ul { gap: 1.5rem; } .nav-menu a { font-size: 0.8rem; } }
     </style>
 </head>
 <body>
@@ -245,14 +166,12 @@
         <span class="frase-pregunta">¿Qué historia vestirás hoy?</span>
         <a href="#galeria" class="btn-banner">Explorar Selección</a>
     </div>
-    
     <div class="filter-bar">
         <button class="filter-btn active" onclick="filtrar('todas')">Todo</button>
         <button class="filter-btn" onclick="filtrar('jackets')">Jackets</button>
         <button class="filter-btn" onclick="filtrar('hoodies')">Hoodies</button>
         <button class="filter-btn" onclick="filtrar('camisetas')">T-Shirts</button>
     </div>
-    
     <div class="main-container">
         <div class="grid" id="galeria"></div>
     </div>
@@ -264,14 +183,11 @@
         <span class="frase-pregunta">Objetos con alma propia.</span>
         <a href="#galeria-articulos" class="btn-banner">Ver Objetos</a>
     </div>
-    
     <div class="filter-bar">
         <button class="filter-btn active" onclick="filtrarArticulos('todas')">Todo</button>
         <button class="filter-btn" onclick="filtrarArticulos('deco')">Decoración</button>
         <button class="filter-btn" onclick="filtrarArticulos('coleccionables')">Coleccionables</button>
-        <button class="filter-btn" onclick="filtrarArticulos('accesorios')">Accesorios</button>
     </div>
-    
     <div class="main-container">
         <div class="grid" id="galeria-articulos"></div>
     </div>
@@ -288,21 +204,18 @@
             <h3>The Waxed Canvas Trucker</h3>
             <p>La chaqueta de lona encerada es mucho más que una prenda...</p>
         </div>
-        
         <div class="bitacora-item" onclick="abrirLectura('La Detroit Jacket', '...')">
             <span class="meta-bitacora">17 Mar. 2026 — 4 min read</span>
             <div class="img-container"><img src="El Oro de Lona La Detroit Jacket.png"></div>
             <h3>La Detroit Jacket: El Icono del Asfalto</h3>
             <p>No es moda rápida. Es lona de pato de 12 onzas...</p>
         </div>
-
         <div class="bitacora-item" onclick="abrirLectura('El Guardián de 1970 Regal Toy Ltd', '...')">
             <span class="meta-bitacora">12 Mar. 2026 — 3 min read</span>
             <div class="img-container"><img src="Regal toy.jpg"></div>
             <h3>El Guardián de 1970 Regal Toy Ltd</h3>
             <p>En el universo del coleccionismo vintage...</p>
         </div>
-
         <div class="bitacora-item" onclick="abrirLectura('Ebbets Field Flannels', '...')">
             <span class="meta-bitacora">14 Mar. 2026 — 3 min read</span>
             <div class="img-container"><img src="Ebbets Field Flannels2.png"></div>
@@ -346,21 +259,30 @@
     });
 
     const prendas = [
-        { id: 1, nombre: "VINTAGE AVIREX G-1 FLIGHT JACKET", precio: "120,000", talla: "L", estado: "9/10", categoria: "jackets", fotos: ["Vintage Avirex G-1 Flight Jacket - First Air Commando Group - World Map Lining.jpg"], disponible: false },
-        { id: 2, nombre: "CARHARTT ACTIVE 'FLANNEL LINED'", precio: "110,000", talla: "M", estado: "9/10", categoria: "jackets", fotos: ["Carhartt Active 'Flannel Lined'.jpg"], disponible: false },
-        { id: 4, nombre: "NATIVE AMERICAN CHIEF DOUBLE-SIDED", precio: "15,000", talla: "XL", estado: "8/10", categoria: "camisetas", fotos: ["Native American Chief Double-Sided Graphic Tee.jpg"], disponible: true },
-        { id: 5, nombre: "CARHARRT DETROIT '100 AÑOS'", precio: "50,000", talla: "L", estado: "8.5/10", categoria: "jackets", fotos: ["Carharrt Detroit 100 años.jpg"], disponible: true }
-        // ... (resto de tus prendas aquí)
+        { id: 1, nombre: "VINTAGE AVIREX G-1 FLIGHT JACKET - FIRST AIR COMMANDO GROUP - WORLD MAP LINING'", precio: "120,000", talla: "L", estado: "9/10", categoria: "jackets", fotos: ["Vintage Avirex G-1 Flight Jacket - First Air Commando Group - World Map Lining.jpg","Vintage Avirex G-1 Flight Jacket - First Air Commando Group - World Map Lining2.jpg"], disponible: false },
+        { id: 2, nombre: "CARHARTT ACTIVE 'FLANNEL LINED'", precio: "110,000", talla: "M", estado: "9/10", categoria: "jackets", fotos: ["Carhartt Active 'Flannel Lined'.jpg","Carhartt Active 'Flannel Lined2'.jpg"], disponible: false },
+        { id: 3, nombre: "COOGI AUSTRALIA AUTHENTIC 3D TEXTURED", precio: "50,000", talla: "L", estado: "9,5/10", categoria: "jackets", fotos: ["Coogi Australia Authentic 3D Textured.jpg","Coogi Australia Authentic 3D Textured2.jpg"], disponible: false },
+        { id: 4, nombre: "NATIVE AMERICAN CHIEF DOUBLE-SIDED", precio: "15,000", talla: "XL", estado: "8/10", categoria: "camisetas", fotos: ["Native American Chief Double-Sided Graphic Tee.jpg","Native American Chief Double-Sided Graphic Tee2.jpg","Native American Chief Double-Sided Graphic Tee3.jpg"], disponible: true },
+        { id: 5, nombre: "CARHARRT DETROIT '100 AÑOS'", precio: "50,000", talla: "L", estado: "8.5/10", categoria: "jackets", fotos: ["Carharrt Detroit 100 años.jpg","Carharrt Detroit 100 años2.jpg","Carharrt Detroit 100 años3.jpg"], disponible: true },
+        { id: 6, nombre: "STONE ISLAND BIG LOGO BACK PRINT T-SHIRT", precio: "40,000", talla: "L fit M", estado: "10/10", categoria: "camisetas", fotos: ["Stone Island Big Logo Back Print T-Shirt.jpg","Stone Island Big Logo Back Print T-Shirt2.jpg"], disponible: true },
+        { id: 7, nombre: "WINDBREAKER PLAYBOY", precio: "25,000", talla: "M", estado: "9/10", categoria: "jackets", fotos: ["Windbreaker PlayBoy.jpg","Windbreaker PlayBoy2.jpg","Windbreaker PlayBoy3.jpg"], disponible: true },
+        { id: 8, nombre: "T-SHIRT GALLERY DEPT. 'TOKYO' EDITION", precio: "35,000", talla: "M", estado: "10/10", categoria: "camisetas", fotos: ["Gallery dept. tokyo edition.jpg","Gallery dept. tokyo edition2.jpg"], disponible: true },
+        { id: 9, nombre: "ONEITA 'LOSER' TEE 'VINTAGE'", precio: "50,000", talla: "L", estado: "9/10", categoria: "camisetas", fotos: ["Oneita loser tee.jpg","Oneita loser tee2.jpg"], disponible: true },
+        { id: 10, nombre: "LEE STORM RIDER DENIM JACKET", precio: "110,000", talla: "M", estado: "10/10", categoria: "jackets", fotos: ["Lee Storm Rider Denim Jacket.jpg","Lee Storm Rider Denim Jacket2.jpg"], disponible: false },
+        { id: 11, nombre: "UNDER ARMOUR COLDGEAR REALTREE AP CAMO HOODIE - BIG LOGO", precio: "35,000", talla: "L", estado: "10/10", categoria: "hoodies", fotos: ["Hoodie under armour real tree.jpg"], disponible: true },
+        { id: 12, nombre: "HOT SHOT REALTREE EDGE CAMO HOODED BOMBER JACKET - QUILTED LINED", precio: "25,000", talla: "S", estado: "10/10", categoria: "jackets", fotos: ["Hot Shot Realtree Edge Camo Hooded Bomber Jacket - Quilted Lined.jpg","Hot Shot Realtree Edge Camo Hooded Bomber Jacket - Quilted Lined2.jpg"], disponible: false },
+        { id: 13, nombre: "RARE VINTAGE FFA AGRICULTURAL EDUCATION JACKET - ILLINOIS TAYLORVILLE", precio: "70,000", talla: "L", estado: "10/10", categoria: "jackets", fotos: ["Rare Vintage Ffa Agricultural Education Jacket - Illinois Taylorville.jpg","Rare Vintage Ffa Agricultural Education Jacket - Illinois Taylorville2.jpg","Rare Vintage Ffa Agricultural Education Jacket - Illinois Taylorville3.jpg"], disponible: true },
+        { id: 14, nombre: "RARE VINTAGE CARHARTT ACTIVE JACKET - DARK PURPLE WASHED FINISH", precio: "40,000", talla: "L", estado: "10/10", categoria: "jackets", fotos: ["Rare Vintage Carhartt Active Jacket - Dark Purple Washed Finish.jpg","Rare Vintage Carhartt Active Jacket - Dark Purple Washed Finish3.jpg"], disponible: false },
+        { id: 15, nombre: "VINTAGE CARHARTT ARCTIC TRADITIONAL COAT - NAVY BLUE", precio: "40,000", talla: "M", estado: "10/10", categoria: "hoodies", fotos: ["Vintage Carhartt Arctic Traditional Coat - Navy Blue.jpg","Vintage Carhartt Arctic Traditional Coat - Navy Blue2.jpg"], disponible: false },
+        { id: 16, nombre: "VINTAGE CARHARTT SANTA FE JACKET - SANDSTONE FINISH - AGED CANVAS", precio: "50,000", talla: "L", estado: "9/10", categoria: "jackets", fotos: ["Carhartt Santa Fe Sandstone Finish.jpg","Carhartt Santa Fe Sandstone Finish2.jpg"], disponible: false }
     ];
 
-    // NUEVA DATA: ARTÍCULOS VINTAGE
     const articulos = [
         { id: 101, nombre: "REGAL TOY FIRST NATIONS 1970", precio: "85,000", talla: "N/A", estado: "10/10", categoria: "coleccionables", fotos: ["Regal toy.jpg"], disponible: true },
-        { id: 102, nombre: "EBBETS FIELD FLANNELS EFF CAP", precio: "32,000", talla: "Adjustable", estado: "10/10", categoria: "accesorios", fotos: ["Ebbets Field Flannels2.png"], disponible: true }
+        { id: 102, nombre: "EBBETS FIELD FLANNELS EFF CAP", precio: "32,000", talla: "Unique", estado: "10/10", categoria: "deco", fotos: ["Ebbets Field Flannels2.png"], disponible: true }
     ];
 
-    // Función de carga genérica para mantener el código limpio
-    function renderGrid(containerId, lista) {
+    function cargarGrid(containerId, lista) {
         const container = document.getElementById(containerId);
         container.innerHTML = lista.map((p) => {
             const fotosHTML = p.fotos.map(f => `<img src="${f}" alt="${p.nombre}">`).join('');
@@ -368,7 +290,6 @@
             const statusClass = p.disponible ? "" : "agotado-visual";
             const badgeClass = p.disponible ? "badge" : "badge agotado";
             const badgeText = p.disponible ? "Disponible" : "Agotado";
-
             return `<div class="card ${statusClass}">
                 <div class="${badgeClass}">${badgeText}</div>
                 <div class="carousel-container">
@@ -387,79 +308,49 @@
         }).join('');
     }
 
-    function cargarSuministros(filtro = 'todas') {
-        const filtradas = filtro === 'todas' ? prendas : prendas.filter(p => p.categoria === filtro);
-        renderGrid('galeria', filtradas);
-    }
-
-    function cargarArticulos(filtro = 'todas') {
-        const filtrados = filtro === 'todas' ? articulos : articulos.filter(a => a.categoria === filtro);
-        renderGrid('galeria-articulos', filtrados);
-    }
-
     window.filtrar = function(cat) {
-        document.querySelector('#suministros .filter-btn.active').classList.remove('active');
+        document.querySelectorAll('#suministros .filter-btn').forEach(b => b.classList.remove('active'));
         event.target.classList.add('active');
-        cargarSuministros(cat);
+        const filtradas = cat === 'todas' ? prendas : prendas.filter(p => p.categoria === cat);
+        cargarGrid('galeria', filtradas);
     };
 
     window.filtrarArticulos = function(cat) {
-        document.querySelector('#articulos .filter-btn.active').classList.remove('active');
+        document.querySelectorAll('#articulos .filter-btn').forEach(b => b.classList.remove('active'));
         event.target.classList.add('active');
-        cargarArticulos(cat);
+        const filtrados = cat === 'todas' ? articulos : articulos.filter(a => a.categoria === cat);
+        cargarGrid('galeria-articulos', filtrados);
     };
 
     window.showSection = function(id) {
         document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
         document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
         document.getElementById(id).classList.add('active');
-        const navElem = document.getElementById('nav-' + id);
-        if(navElem) navElem.classList.add('active');
+        document.getElementById('nav-' + id).classList.add('active');
         window.scrollTo({top: 0, behavior: 'smooth'});
-    }
-
-    window.moveCarousel = function(prendaId, direction) {
-        const track = document.getElementById(`track-${prendaId}`);
-        // Busca en ambos arrays para encontrar la info de fotos
-        const item = [...prendas, ...articulos].find(p => p.id === prendaId);
-        const totalFotos = item.fotos.length;
-        if (!carruselPositions[prendaId]) carruselPositions[prendaId] = 0;
-        carruselPositions[prendaId] += direction;
-        if (carruselPositions[prendaId] < 0) carruselPositions[prendaId] = totalFotos - 1;
-        if (carruselPositions[prendaId] >= totalFotos) carruselPositions[prendaId] = 0;
-        track.style.transform = `translateX(-${carruselPositions[prendaId] * 100}%)`;
     };
 
-    window.abrirModal = function(nombre) {
-        prendaSeleccionadaParaEnvio = nombre;
-        document.getElementById('modal').style.display = 'flex';
-    };
-    
-    window.cerrarModal = function() { document.getElementById('modal').style.display = 'none'; };
-    
-    window.abrirLectura = function(titulo, texto) {
-        document.getElementById('lectura-titulo').innerText = titulo;
-        document.getElementById('lectura-texto').innerText = texto;
-        document.getElementById('modal-lectura').style.display = 'flex';
-        document.body.style.overflow = 'hidden';
+    window.moveCarousel = function(id, dir) {
+        const item = [...prendas, ...articulos].find(p => p.id === id);
+        if (!carruselPositions[id]) carruselPositions[id] = 0;
+        carruselPositions[id] = (carruselPositions[id] + dir + item.fotos.length) % item.fotos.length;
+        document.getElementById(`track-${id}`).style.transform = `translateX(-${carruselPositions[id] * 100}%)`;
     };
 
-    window.cerrarLectura = function() {
-        document.getElementById('modal-lectura').style.display = 'none';
-        document.body.style.overflow = 'auto';
-    };
+    window.abrirModal = (n) => { prendaSeleccionadaParaEnvio = n; document.getElementById('modal').style.display = 'flex'; };
+    window.cerrarModal = () => { document.getElementById('modal').style.display = 'none'; };
+    window.abrirLectura = (t, txt) => { document.getElementById('lectura-titulo').innerText = t; document.getElementById('lectura-texto').innerText = txt; document.getElementById('modal-lectura').style.display = 'flex'; document.body.style.overflow = 'hidden'; };
+    window.cerrarLectura = () => { document.getElementById('modal-lectura').style.display = 'none'; document.body.style.overflow = 'auto'; };
 
     document.getElementById('form-pedido').addEventListener('submit', function(e) {
         e.preventDefault();
-        const cliente = document.getElementById('nombre-cliente').value;
-        const msg = `¡Saludos Madlamb.! Soy ${cliente}. Me interesa la pieza: ${prendaSeleccionadaParaEnvio}.`;
+        const msg = `¡Saludos Madlamb.! Soy ${document.getElementById('nombre-cliente').value}. Me interesa la pieza: ${prendaSeleccionadaParaEnvio}.`;
         window.open("https://wa.me/50683087480?text=" + encodeURIComponent(msg), '_blank');
         cerrarModal();
     });
 
-    // Carga inicial de ambas secciones
-    cargarSuministros();
-    cargarArticulos();
+    cargarGrid('galeria', prendas);
+    cargarGrid('galeria-articulos', articulos);
 </script>
 </body>
 </html>
