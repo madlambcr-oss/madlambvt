@@ -67,7 +67,7 @@
         }
         
         #suministros .hero-banner { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('banner-vintage regal.png'); }
-        #articulos .hero-banner { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('banner-articulos.png'); }
+        #articulos .hero-banner { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('banner-articulos.png'); }
 
         .hero-banner h2 { 
             font-size: clamp(3.5rem, 12vw, 10rem); font-weight: 900; line-height: 0.8; margin: 0; 
@@ -180,8 +180,8 @@
 <section id="articulos" class="content-section">
     <div class="hero-banner">
         <h2>Curaduría</h2>
-        <span class="frase-pregunta">Objetos con alma propia.</span>
-        <a href="#galeria-articulos" class="btn-banner">Ver Objetos</a>
+        <span class="frase-pregunta">Objetos con historia propia.</span>
+        <a href="#galeria-articulos" class="btn-banner">Explorar Objetos</a>
     </div>
     <div class="filter-bar">
         <button class="filter-btn active" onclick="filtrarArticulos('todas')">Todo</button>
@@ -198,25 +198,25 @@
         <h2 style="font-size: clamp(4rem, 15vw, 10rem); font-weight: 900; margin:0; letter-spacing: -2px;">LEGADO</h2>
     </div>
     <div class="bitacora-grid">
-        <div class="bitacora-item" onclick="abrirLectura('The Waxed Canvas Trucker', '...')">
+        <div class="bitacora-item" onclick="abrirLectura('The Waxed Canvas Trucker', 'La chaqueta de lona encerada es mucho más que una prenda...')">
             <span class="meta-bitacora">10 Mar. 2026 — 3 min read</span>
             <div class="img-container"><img src="The Waxed Canvas Trucker.jpg"></div>
             <h3>The Waxed Canvas Trucker</h3>
             <p>La chaqueta de lona encerada es mucho más que una prenda...</p>
         </div>
-        <div class="bitacora-item" onclick="abrirLectura('La Detroit Jacket', '...')">
+        <div class="bitacora-item" onclick="abrirLectura('La Detroit Jacket', 'No es moda rápida. No es una tendencia de Instagram...')">
             <span class="meta-bitacora">17 Mar. 2026 — 4 min read</span>
             <div class="img-container"><img src="El Oro de Lona La Detroit Jacket.png"></div>
             <h3>La Detroit Jacket: El Icono del Asfalto</h3>
             <p>No es moda rápida. Es lona de pato de 12 onzas...</p>
         </div>
-        <div class="bitacora-item" onclick="abrirLectura('El Guardián de 1970 Regal Toy Ltd', '...')">
+        <div class="bitacora-item" onclick="abrirLectura('El Guardián de 1970 Regal Toy Ltd', 'En el universo del coleccionismo vintage...')">
             <span class="meta-bitacora">12 Mar. 2026 — 3 min read</span>
             <div class="img-container"><img src="Regal toy.jpg"></div>
             <h3>El Guardián de 1970 Regal Toy Ltd</h3>
             <p>En el universo del coleccionismo vintage...</p>
         </div>
-        <div class="bitacora-item" onclick="abrirLectura('Ebbets Field Flannels', '...')">
+        <div class="bitacora-item" onclick="abrirLectura('Ebbets Field Flannels', 'Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna...')">
             <span class="meta-bitacora">14 Mar. 2026 — 3 min read</span>
             <div class="img-container"><img src="Ebbets Field Flannels2.png"></div>
             <h3>Ebbets Field Flannels: El Heritage Americano</h3>
@@ -273,13 +273,13 @@
         { id: 12, nombre: "HOT SHOT REALTREE EDGE CAMO HOODED BOMBER JACKET - QUILTED LINED", precio: "25,000", talla: "S", estado: "10/10", categoria: "jackets", fotos: ["Hot Shot Realtree Edge Camo Hooded Bomber Jacket - Quilted Lined.jpg","Hot Shot Realtree Edge Camo Hooded Bomber Jacket - Quilted Lined2.jpg"], disponible: false },
         { id: 13, nombre: "RARE VINTAGE FFA AGRICULTURAL EDUCATION JACKET - ILLINOIS TAYLORVILLE", precio: "70,000", talla: "L", estado: "10/10", categoria: "jackets", fotos: ["Rare Vintage Ffa Agricultural Education Jacket - Illinois Taylorville.jpg","Rare Vintage Ffa Agricultural Education Jacket - Illinois Taylorville2.jpg","Rare Vintage Ffa Agricultural Education Jacket - Illinois Taylorville3.jpg"], disponible: true },
         { id: 14, nombre: "RARE VINTAGE CARHARTT ACTIVE JACKET - DARK PURPLE WASHED FINISH", precio: "40,000", talla: "L", estado: "10/10", categoria: "jackets", fotos: ["Rare Vintage Carhartt Active Jacket - Dark Purple Washed Finish.jpg","Rare Vintage Carhartt Active Jacket - Dark Purple Washed Finish3.jpg"], disponible: false },
-        { id: 15, nombre: "VINTAGE CARHARTT ARCTIC TRADITIONAL COAT - NAVY BLUE", precio: "40,000", talla: "M", estado: "10/10", categoria: "hoodies", fotos: ["Vintage Carhartt Arctic Traditional Coat - Navy Blue.jpg","Vintage Carhartt Arctic Traditional Coat - Navy Blue2.jpg"], disponible: false },
+        { id: 15, nombre: "VINTAGE CARHARTT ARCTIC TRADITIONAL COAT - NAVY BLUE", precio: "40,000", talla: "M", estado: "10/10", categoria: "hoodies", fotos: ["Vintage Carhartt Arctic Traditional Coat - NAVY BLUE.jpg","Vintage Carhartt Arctic Traditional Coat - Navy Blue2.jpg"], disponible: false },
         { id: 16, nombre: "VINTAGE CARHARTT SANTA FE JACKET - SANDSTONE FINISH - AGED CANVAS", precio: "50,000", talla: "L", estado: "9/10", categoria: "jackets", fotos: ["Carhartt Santa Fe Sandstone Finish.jpg","Carhartt Santa Fe Sandstone Finish2.jpg"], disponible: false }
     ];
 
     const articulos = [
-        { id: 101, nombre: "REGAL TOY FIRST NATIONS 1970", precio: "85,000", talla: "N/A", estado: "10/10", categoria: "coleccionables", fotos: ["Regal toy.jpg"], disponible: true },
-        { id: 102, nombre: "EBBETS FIELD FLANNELS EFF CAP", precio: "32,000", talla: "Unique", estado: "10/10", categoria: "deco", fotos: ["Ebbets Field Flannels2.png"], disponible: true }
+        { id: 101, nombre: "REGAL TOY FIRST NATIONS 1970", precio: "85,000", talla: "Única", estado: "10/10", categoria: "coleccionables", fotos: ["Regal toy.jpg"], disponible: true },
+        { id: 102, nombre: "EBBETS FIELD FLANNELS EFF CAP", precio: "32,000", talla: "Ajustable", estado: "10/10", categoria: "deco", fotos: ["Ebbets Field Flannels2.png"], disponible: true }
     ];
 
     function cargarGrid(containerId, lista) {
@@ -339,7 +339,12 @@
 
     window.abrirModal = (n) => { prendaSeleccionadaParaEnvio = n; document.getElementById('modal').style.display = 'flex'; };
     window.cerrarModal = () => { document.getElementById('modal').style.display = 'none'; };
-    window.abrirLectura = (t, txt) => { document.getElementById('lectura-titulo').innerText = t; document.getElementById('lectura-texto').innerText = txt; document.getElementById('modal-lectura').style.display = 'flex'; document.body.style.overflow = 'hidden'; };
+    window.abrirLectura = (t, txt) => { 
+        document.getElementById('lectura-titulo').innerText = t; 
+        document.getElementById('lectura-texto').innerText = txt; 
+        document.getElementById('modal-lectura').style.display = 'flex'; 
+        document.body.style.overflow = 'hidden'; 
+    };
     window.cerrarLectura = () => { document.getElementById('modal-lectura').style.display = 'none'; document.body.style.overflow = 'auto'; };
 
     document.getElementById('form-pedido').addEventListener('submit', function(e) {
@@ -349,6 +354,7 @@
         cerrarModal();
     });
 
+    // Carga inicial
     cargarGrid('galeria', prendas);
     cargarGrid('galeria-articulos', articulos);
 </script>
