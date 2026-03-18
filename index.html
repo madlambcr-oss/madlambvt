@@ -60,12 +60,16 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('banner-vintage regal.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             border-radius: 4px;
         }
+        /* Banner específico para suministros */
+        #suministros .hero-banner { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('banner-vintage-regal.png'); }
+        /* Banner específico para artículos */
+        #articulos .hero-banner { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('articulos-banner.jpg'); }
+
         .hero-banner h2 { 
             font-size: clamp(3.5rem, 12vw, 10rem); font-weight: 900; line-height: 0.8; margin: 0; 
             letter-spacing: -0.05em; text-transform: uppercase; color: #fff;
@@ -94,7 +98,6 @@
         .carousel-track { display: flex; height: 100%; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .carousel-track img { min-width: 100%; object-fit: cover; }
         
-        /* Badge Styles */
         .badge { position: absolute; top: 20px; left: 20px; z-index: 20; padding: 8px 15px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; background: #fff; color: #000; }
         .badge.agotado { background: #1a1a1a; color: #888; border: 1px solid rgba(255,255,255,0.1); }
 
@@ -125,16 +128,15 @@
         .prev-btn { left: 0; }
         .next-btn { right: 0; }
 
-        /* --- Bitácora ELIMINANDO FRANJAS --- */
+        /* --- Bitácora --- */
         .bitacora-grid { 
             display: grid; 
-            /* Grid de 2 columnas principales */
             grid-template-columns: repeat(2, 1fr); 
-            gap: 120px 60px; /* Separación editorial amplia */
+            gap: 120px 60px; 
             max-width: 1400px; 
             margin: 0 auto; 
             padding: 5rem 5% 10rem; 
-            align-items: start; /* Mosaico orgánico */
+            align-items: start;
         }
         
         .bitacora-item { 
@@ -146,38 +148,32 @@
             transition: var(--transition);
         }
         
-        .bitacora-item:hover {
-            transform: translateY(-5px);
-        }
+        .bitacora-item:hover { transform: translateY(-5px); }
 
-        /* Contenedor de imagen: sin altura forzada, sin fondo negro */
         .bitacora-item .img-container { 
             width: 100%; 
-            height: auto; /* Altura dinámica */
+            height: auto; 
             overflow: hidden; 
             margin-top: 25px; 
             margin-bottom: 35px; 
-            background: transparent; /* Fondo transparente */
+            background: transparent; 
             display: flex;
             justify-content: center;
         }
         
-        /* Imagen: object-fit original, sin contain, sin recortes */
         .bitacora-item .img-container img { 
             width: 100%; 
-            height: auto; /* Muestra la imagen completa */
+            height: auto; 
             display: block; 
-            object-fit: original; /* Comportamiento natural */
+            object-fit: original; 
             transition: transform 0.8s ease;
         }
 
-        .bitacora-item:hover .img-container img {
-            transform: scale(1.03);
-        }
+        .bitacora-item:hover .img-container img { transform: scale(1.03); }
 
         .bitacora-item h3 { 
             font-family: 'Playfair Display', serif; 
-            font-size: 2.5rem; /* Tamaño editorial ajustado */
+            font-size: 2.5rem; 
             margin: 25px 0; 
             font-weight: 400; 
             font-style: italic; 
@@ -196,9 +192,8 @@
             line-height: 1.7; 
             color: var(--text-secondary); 
             font-size: 1.15rem; 
-            text-align: left; /* Alineación limpia */
+            text-align: left; 
             margin: 0;
-            /* Limitamos a 3 líneas para la vista previa */
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -238,6 +233,7 @@
     <nav class="nav-menu">
         <ul>
             <li><a id="nav-suministros" class="active" onclick="showSection('suministros')">Suministros</a></li>
+            <li><a id="nav-articulos" onclick="showSection('articulos')">Artículos</a></li>
             <li><a id="nav-bitacora" onclick="showSection('bitacora')">Bitácora</a></li>
         </ul>
     </nav>
@@ -262,35 +258,52 @@
     </div>
 </section>
 
+<section id="articulos" class="content-section">
+    <div class="hero-banner">
+        <h2>Curaduría</h2>
+        <span class="frase-pregunta">Objetos con alma propia.</span>
+        <a href="#galeria-articulos" class="btn-banner">Ver Objetos</a>
+    </div>
+    
+    <div class="filter-bar">
+        <button class="filter-btn active" onclick="filtrarArticulos('todas')">Todo</button>
+        <button class="filter-btn" onclick="filtrarArticulos('deco')">Decoración</button>
+        <button class="filter-btn" onclick="filtrarArticulos('coleccionables')">Coleccionables</button>
+        <button class="filter-btn" onclick="filtrarArticulos('accesorios')">Accesorios</button>
+    </div>
+    
+    <div class="main-container">
+        <div class="grid" id="galeria-articulos"></div>
+    </div>
+</section>
+
 <section id="bitacora" class="content-section">
     <div style="text-align: center; padding: 10rem 0 2rem;">
         <h2 style="font-size: clamp(4rem, 15vw, 10rem); font-weight: 900; margin:0; letter-spacing: -2px;">LEGADO</h2>
     </div>
     <div class="bitacora-grid">
-        <div class="bitacora-item" onclick="abrirLectura('The Waxed Canvas Trucker', 'La chaqueta de lona encerada es mucho más que una prenda; es una herencia de ingeniería textil que nació en el siglo XV para proteger a los marineros de los climas más hostiles. Desde las velas de alta mar hasta las icónicas rutas de motociclismo, este material ha evolucionado utilizando fibras como el algodón Martexin y remaches de cobre para ofrecer una resistencia hercúlea y eterna. A diferencia de la moda desechable, su valor real reside en la pátina que desarrolla con el tiempo, transformando cada arruga y marca en una crónica visual de las aventuras de quien la viste, convirtiéndola en una inversión única diseñada para pasar de generación en generación.')">
+        <div class="bitacora-item" onclick="abrirLectura('The Waxed Canvas Trucker', '...')">
             <span class="meta-bitacora">10 Mar. 2026 — 3 min read</span>
             <div class="img-container"><img src="The Waxed Canvas Trucker.jpg"></div>
             <h3>The Waxed Canvas Trucker</h3>
             <p>La chaqueta de lona encerada es mucho más que una prenda...</p>
         </div>
         
-       <div class="bitacora-item" onclick="abrirLectura('La Detroit Jacket: Cómo una Chaqueta de Trabajo Conquistó el Asfalto, la Moda y el Cine', 'No es moda rápida. No es una tendencia de Instagram que desaparece en dos semanas. Es lona de pato de 12 onzas, triple costura y una reputación forjada en el acero y el concreto de Michigan. Estamos hablando de la Carhartt Detroit Jacket. Si has visto Interstellar, Yellowstone, o simplemente has caminado por cualquier ciudad con clima frío en los últimos 30 años, la has visto. Pero, ¿por qué esta pieza de ropa de trabajo se convirtió en un ícono cultural inamovible? En MadLamb, desglosamos el ADN de la chaqueta que se niega a morir. \n\n (La Historia: Nacida del Vapor) \n Hamilton Carhartt no diseñó la Detroit Jacket para las pasarelas en 1889. La diseñó para los hombres que construyeron América: trabajadores del ferrocarril y obreros siderúrgicos. Necesitaban algo que no se rompiera, que resistiera chispas y que los mantuviera calientes sin restringir el movimiento. La Detroit Jacket original (con su corte corto a la cintura y forro de manta) fue la respuesta. Su color \'Carhartt Brown\' no era estético; era el color natural de la lona resistente que usaban. Nació de la pura necesidad funcional. \n\n (La Curiosidad: Del Andamio al \'Grunge\' y el Hip-Hop) \n ¿Cómo pasó de un sitio de construcción a ser la pieza central del streetwear? En los años 90, algo cambió. El movimiento grunge en Seattle adoptó la ropa de trabajo por su autenticidad y durabilidad. Simultáneamente, la escena del Hip-Hop en Nueva York comenzó a usarla como un símbolo de \'dureza\' y resistencia urbana. No estaban tratando de parecer trabajadores; estaban usando una armadura urbana que reflejaba la realidad de la calle. \n\n (La Conexión de Hollywood: El Uniforme del Héroe Relatable) \n Aquí es donde la Detroit Jacket solidifica su estatus legendario. En el cine, cuando un director necesita que un personaje parezca rudo, honesto y práctico, no le ponen un traje. Le ponen una Carhartt Detroit desgastada. \n\n - Matthew McConaughey en Interstellar: Su chaqueta marrón representa al agricultor que debe salvar el mundo. \n - Kevin Costner en Yellowstone: La versión de lona negra encarna al cowboy moderno y endurecido. \n - Robert Pattinson en Tenet: Aparece en azul marino para anclar al personaje en la realidad física de la acción. \n\n En un mundo de consumo desechable, la Carhartt Detroit es una anomalía. Se ve mejor cuando está vieja, manchada y desgastada. Cada rasguño cuenta una historia. No es solo una chaqueta; es un testimonio de que la autenticidad y la función nunca pasan de moda.')">
-    <span class="meta-bitacora">17 Mar. 2026 — 4 min read</span>
-    <div class="img-container">
-        <img src="El Oro de Lona La Detroit Jacket.png" alt="Detroit Jacket">
-    </div>
-    <h3>La Detroit Jacket: El Icono del Asfalto</h3>
-    <p>No es moda rápida. Es lona de pato de 12 onzas, triple costura y una reputación forjada en el acero...</p>
-</div>
+        <div class="bitacora-item" onclick="abrirLectura('La Detroit Jacket', '...')">
+            <span class="meta-bitacora">17 Mar. 2026 — 4 min read</span>
+            <div class="img-container"><img src="El Oro de Lona La Detroit Jacket.png"></div>
+            <h3>La Detroit Jacket: El Icono del Asfalto</h3>
+            <p>No es moda rápida. Es lona de pato de 12 onzas...</p>
+        </div>
 
-        <div class="bitacora-item" onclick="abrirLectura('El Guardián de 1970 Regal Toy Ltd', 'En el universo del coleccionismo vintage, existe una jerarquía invisible. En la cima no están los objetos producidos por millones, sino aquellos que cuentan la historia de una industria que ya no existe.\n\nHoy nos enfocamos en una de nuestras piezas más valiosas: el Regal Toy de la serie First Nations.\n\nRareza de Origen: El Sello de Toronto\nFundada en 1959, Regal Toy Ltd. fue el titán de la manufactura juguetera en Canadá. Poseer una pieza con el grabado original en la espalda no es solo tener un juguete; es poseer un fragmento del patrimonio industrial norteamericano. Tras el cierre de sus fábricas, estas figuras pasaron de los estantes de las tiendas a las vitrinas de los museos de diseño.\n\n⏳ La Exclusividad de la Supervivencia\nLo que hace a este ejemplar de 1970 una pieza de exclusividad absoluta no es solo su edad (más de 55 años), sino su estado de conservación.\n\nEl Vinilo Térmico: A diferencia del plástico moderno que se degrada y se vuelve quebradizo, el vinilo Regal fue diseñado para durar siglos.\n\nLa Pátina del Tiempo: La suavidad de sus facciones y el brillo conservado en su mirada son imposibles de replicar. Es una cápsula del tiempo que ha sobrevivido a décadas de cambios culturales y tecnológicos.\n\n💎 Más que un Objeto, una Inversión Cultural\nEn una era de consumo desechable, la exclusividad reside en la permanencia. Este muñeco representa una época donde el juguete era una obra de arte manual. Su vestimenta de fieltro, sus costuras reforzadas y su diseño étnico detallado lo convierten en un objeto muy interesante.')">
+        <div class="bitacora-item" onclick="abrirLectura('El Guardián de 1970 Regal Toy Ltd', '...')">
             <span class="meta-bitacora">12 Mar. 2026 — 3 min read</span>
             <div class="img-container"><img src="Regal toy.jpg"></div>
             <h3>El Guardián de 1970 Regal Toy Ltd</h3>
-            <p>En el universo del coleccionismo vintage, existe una jerarquía invisible...</p>
+            <p>En el universo del coleccionismo vintage...</p>
         </div>
 
-        <div class="bitacora-item" onclick="abrirLectura('Ebbets Field Flannels: El Heritage Americano', 'Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna de lo retro; es una réplica exacta de ingeniería textil. Fabricada en Seattle, esta gorra logra capturar el \'look & feel\' preciso de los años 40 y 50, manteniendo viva la artesanía que las máquinas actuales han olvidado.\n\n¿Qué la hace una pieza única?\n\nLa Identidad de \'La Casa\': A diferencia de las reproducciones de equipos de ligas menores, esta edición limitada porta el logotipo \'EFF\' en fieltro blanco. Es la firma de la marca, una declaración de principios para el coleccionista que valora la historia de la propia manufactura.\n\nEstética de Época Impecable: Su estructura es exactamente igual a las gorras usadas en el diamante hace 80 años. Al no tener los refuerzos rígidos frontales de las gorras modernas, ofrece esa caída natural y perfil bajo que definió la silueta de los jugadores de la era dorada.\n\nMateriales que Cuentan una Historia:\nLana Broadcloth Auténtica: Tejida con la densidad y el peso originales.\n\nDetalles de Fidelidad Histórica:\nVisera de Satín Verde: Recupera el reverso clásico diseñado para mitigar el brillo solar, un sello de autenticidad visual.\nCorrea de Cuero Genuino: Un cierre robusto y tradicional que refuerza su herencia artesanal.\n\nEn conclusión: Es una pieza de diseño de autor. Combina la exclusividad de una tirada limitada de 2014 con la apariencia visual de una reliquia de 1945. Es, sencillamente, historia viva que puedes usar.')">
+        <div class="bitacora-item" onclick="abrirLectura('Ebbets Field Flannels', '...')">
             <span class="meta-bitacora">14 Mar. 2026 — 3 min read</span>
             <div class="img-container"><img src="Ebbets Field Flannels2.png"></div>
             <h3>Ebbets Field Flannels: El Heritage Americano</h3>
@@ -333,32 +346,25 @@
     });
 
     const prendas = [
-        { id: 1, nombre: "VINTAGE AVIREX G-1 FLIGHT JACKET - FIRST AIR COMMANDO GROUP - WORLD MAP LINING'", precio: "120,000", talla: "L", estado: "9/10", categoria: "jackets", fotos: ["Vintage Avirex G-1 Flight Jacket - First Air Commando Group - World Map Lining.jpg","Vintage Avirex G-1 Flight Jacket - First Air Commando Group - World Map Lining2.jpg"], disponible: false },
-        { id: 2, nombre: "CARHARTT ACTIVE 'FLANNEL LINED'", precio: "110,000", talla: "M", estado: "9/10", categoria: "jackets", fotos: ["Carhartt Active 'Flannel Lined'.jpg","Carhartt Active 'Flannel Lined2'.jpg"], disponible: false },
-        { id: 3, nombre: "COOGI AUSTRALIA AUTHENTIC 3D TEXTURED", precio: "50,000", talla: "L", estado: "9,5/10", categoria: "jackets", fotos: ["Coogi Australia Authentic 3D Textured.jpg","Coogi Australia Authentic 3D Textured2.jpg"], disponible: false },
-        { id: 4, nombre: "NATIVE AMERICAN CHIEF DOUBLE-SIDED", precio: "15,000", talla: "XL", estado: "8/10", categoria: "camisetas", fotos: ["Native American Chief Double-Sided Graphic Tee.jpg","Native American Chief Double-Sided Graphic Tee2.jpg","Native American Chief Double-Sided Graphic Tee3.jpg"], disponible: true },
-        { id: 5, nombre: "CARHARRT DETROIT '100 AÑOS'", precio: "50,000", talla: "L", estado: "8.5/10", categoria: "jackets", fotos: ["Carharrt Detroit 100 años.jpg","Carharrt Detroit 100 años2.jpg","Carharrt Detroit 100 años3.jpg"], disponible: true },
-        { id: 6, nombre: "STONE ISLAND BIG LOGO BACK PRINT T-SHIRT", precio: "40,000", talla: "L fit M", estado: "10/10", categoria: "camisetas", fotos: ["Stone Island Big Logo Back Print T-Shirt.jpg","Stone Island Big Logo Back Print T-Shirt2.jpg"], disponible: true },
-        { id: 7, nombre: "WINDBREAKER PLAYBOY", precio: "25,000", talla: "M", estado: "9/10", categoria: "jackets", fotos: ["Windbreaker PlayBoy.jpg","Windbreaker PlayBoy2.jpg","Windbreaker PlayBoy3.jpg"], disponible: true },
-        { id: 8, nombre: "T-SHIRT GALLERY DEPT. 'TOKYO' EDITION", precio: "35,000", talla: "M", estado: "10/10", categoria: "camisetas", fotos: ["Gallery dept. tokyo edition.jpg","Gallery dept. tokyo edition2.jpg"], disponible: true },
-        { id: 9, nombre: "ONEITA 'LOSER' TEE 'VINTAGE'", precio: "50,000", talla: "L", estado: "9/10", categoria: "camisetas", fotos: ["Oneita loser tee.jpg","Oneita loser tee2.jpg"], disponible: true },
-        { id: 10, nombre: "LEE STORM RIDER DENIM JACKET", precio: "110,000", talla: "M", estado: "10/10", categoria: "jackets", fotos: ["Lee Storm Rider Denim Jacket.jpg","Lee Storm Rider Denim Jacket2.jpg"], disponible: false },
-        { id: 11, nombre: "UNDER ARMOUR COLDGEAR REALTREE AP CAMO HOODIE - BIG LOGO", precio: "35,000", talla: "L", estado: "10/10", categoria: "hoodies", fotos: ["Hoodie under armour real tree.jpg"], disponible: true },
-        { id: 12, nombre: "HOT SHOT REALTREE EDGE CAMO HOODED BOMBER JACKET - QUILTED LINED", precio: "25,000", talla: "S", estado: "10/10", categoria: "jackets", fotos: ["Hot Shot Realtree Edge Camo Hooded Bomber Jacket - Quilted Lined.jpg","Hot Shot Realtree Edge Camo Hooded Bomber Jacket - Quilted Lined2.jpg"], disponible: false },
-        { id: 13, nombre: "RARE VINTAGE FFA AGRICULTURAL EDUCATION JACKET - ILLINOIS TAYLORVILLE", precio: "70,000", talla: "L", estado: "10/10", categoria: "jackets", fotos: ["Rare Vintage Ffa Agricultural Education Jacket - Illinois Taylorville.jpg","Rare Vintage Ffa Agricultural Education Jacket - Illinois Taylorville2.jpg","Rare Vintage Ffa Agricultural Education Jacket - Illinois Taylorville3.jpg"], disponible: true },
-        { id: 14, nombre: "RARE VINTAGE CARHARTT ACTIVE JACKET - DARK PURPLE WASHED FINISH", precio: "40,000", talla: "L", estado: "10/10", categoria: "jackets", fotos: ["Rare Vintage Carhartt Active Jacket - Dark Purple Washed Finish.jpg","Rare Vintage Carhartt Active Jacket - Dark Purple Washed Finish3.jpg"], disponible: false },
-        { id: 15, nombre: "VINTAGE CARHARTT ARCTIC TRADITIONAL COAT - NAVY BLUE", precio: "40,000", talla: "M", estado: "10/10", categoria: "hoodies", fotos: ["Vintage Carhartt Arctic Traditional Coat - Navy Blue.jpg","Vintage Carhartt Arctic Traditional Coat - Navy Blue2.jpg"], disponible: false },
-        { id: 16, nombre: "VINTAGE CARHARTT SANTA FE JACKET - SANDSTONE FINISH - AGED CANVAS", precio: "50,000", talla: "L", estado: "9/10", categoria: "jackets", fotos: ["Carhartt Santa Fe Sandstone Finish.jpg","Carhartt Santa Fe Sandstone Finish2.jpg"], disponible: false }
-    
+        { id: 1, nombre: "VINTAGE AVIREX G-1 FLIGHT JACKET", precio: "120,000", talla: "L", estado: "9/10", categoria: "jackets", fotos: ["Vintage Avirex G-1 Flight Jacket - First Air Commando Group - World Map Lining.jpg"], disponible: false },
+        { id: 2, nombre: "CARHARTT ACTIVE 'FLANNEL LINED'", precio: "110,000", talla: "M", estado: "9/10", categoria: "jackets", fotos: ["Carhartt Active 'Flannel Lined'.jpg"], disponible: false },
+        { id: 4, nombre: "NATIVE AMERICAN CHIEF DOUBLE-SIDED", precio: "15,000", talla: "XL", estado: "8/10", categoria: "camisetas", fotos: ["Native American Chief Double-Sided Graphic Tee.jpg"], disponible: true },
+        { id: 5, nombre: "CARHARRT DETROIT '100 AÑOS'", precio: "50,000", talla: "L", estado: "8.5/10", categoria: "jackets", fotos: ["Carharrt Detroit 100 años.jpg"], disponible: true }
+        // ... (resto de tus prendas aquí)
     ];
 
-    function cargar(filtro = 'todas') {
-        const galeria = document.getElementById('galeria');
-        const filtradas = filtro === 'todas' ? prendas : prendas.filter(p => p.categoria === filtro);
-        galeria.innerHTML = filtradas.map((p) => {
+    // NUEVA DATA: ARTÍCULOS VINTAGE
+    const articulos = [
+        { id: 101, nombre: "REGAL TOY FIRST NATIONS 1970", precio: "85,000", talla: "N/A", estado: "10/10", categoria: "coleccionables", fotos: ["Regal toy.jpg"], disponible: true },
+        { id: 102, nombre: "EBBETS FIELD FLANNELS EFF CAP", precio: "32,000", talla: "Adjustable", estado: "10/10", categoria: "accesorios", fotos: ["Ebbets Field Flannels2.png"], disponible: true }
+    ];
+
+    // Función de carga genérica para mantener el código limpio
+    function renderGrid(containerId, lista) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = lista.map((p) => {
             const fotosHTML = p.fotos.map(f => `<img src="${f}" alt="${p.nombre}">`).join('');
             const botonesNav = p.fotos.length > 1 ? `<button class="nav-btn prev-btn" onclick="moveCarousel(${p.id}, -1)">←</button><button class="nav-btn next-btn" onclick="moveCarousel(${p.id}, 1)">→</button>` : '';
-            
             const statusClass = p.disponible ? "" : "agotado-visual";
             const badgeClass = p.disponible ? "badge" : "badge agotado";
             const badgeText = p.disponible ? "Disponible" : "Agotado";
@@ -375,27 +381,32 @@
                     <div class="specs">${p.talla} // ${p.estado}</div>
                     <button class="btn-adquirir" ${p.disponible ? '' : 'disabled'} onclick="abrirModal('${p.nombre.replace(/'/g, "\\'")}')">
                         ${p.disponible ? 'Adquirir' : 'Agotado'}
-                     </button>
-                 </div>
+                    </button>
+                </div>
             </div>`;
         }).join('');
     }
 
-    window.moveCarousel = function(prendaId, direction) {
-        const track = document.getElementById(`track-${prendaId}`);
-        const prenda = prendas.find(p => p.id === prendaId);
-        const totalFotos = prenda.fotos.length;
-        if (!carruselPositions[prendaId]) carruselPositions[prendaId] = 0;
-        carruselPositions[prendaId] += direction;
-        if (carruselPositions[prendaId] < 0) carruselPositions[prendaId] = totalFotos - 1;
-        if (carruselPositions[prendaId] >= totalFotos) carruselPositions[prendaId] = 0;
-        track.style.transform = `translateX(-${carruselPositions[prendaId] * 100}%)`;
-    };
+    function cargarSuministros(filtro = 'todas') {
+        const filtradas = filtro === 'todas' ? prendas : prendas.filter(p => p.categoria === filtro);
+        renderGrid('galeria', filtradas);
+    }
+
+    function cargarArticulos(filtro = 'todas') {
+        const filtrados = filtro === 'todas' ? articulos : articulos.filter(a => a.categoria === filtro);
+        renderGrid('galeria-articulos', filtrados);
+    }
 
     window.filtrar = function(cat) {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        if(event) event.target.classList.add('active');
-        cargar(cat);
+        document.querySelector('#suministros .filter-btn.active').classList.remove('active');
+        event.target.classList.add('active');
+        cargarSuministros(cat);
+    };
+
+    window.filtrarArticulos = function(cat) {
+        document.querySelector('#articulos .filter-btn.active').classList.remove('active');
+        event.target.classList.add('active');
+        cargarArticulos(cat);
     };
 
     window.showSection = function(id) {
@@ -406,6 +417,18 @@
         if(navElem) navElem.classList.add('active');
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
+
+    window.moveCarousel = function(prendaId, direction) {
+        const track = document.getElementById(`track-${prendaId}`);
+        // Busca en ambos arrays para encontrar la info de fotos
+        const item = [...prendas, ...articulos].find(p => p.id === prendaId);
+        const totalFotos = item.fotos.length;
+        if (!carruselPositions[prendaId]) carruselPositions[prendaId] = 0;
+        carruselPositions[prendaId] += direction;
+        if (carruselPositions[prendaId] < 0) carruselPositions[prendaId] = totalFotos - 1;
+        if (carruselPositions[prendaId] >= totalFotos) carruselPositions[prendaId] = 0;
+        track.style.transform = `translateX(-${carruselPositions[prendaId] * 100}%)`;
+    };
 
     window.abrirModal = function(nombre) {
         prendaSeleccionadaParaEnvio = nombre;
@@ -434,7 +457,9 @@
         cerrarModal();
     });
 
-    cargar();
+    // Carga inicial de ambas secciones
+    cargarSuministros();
+    cargarArticulos();
 </script>
 </body>
 </html>
