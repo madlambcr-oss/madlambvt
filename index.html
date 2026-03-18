@@ -232,19 +232,19 @@
             const fotos = p.fotos.map(f => `<img src="${f}">`).join('');
             const nav = p.fotos.length > 1 ? `<button class="nav-btn prev-btn" onclick="moveCarousel(${p.id}, -1)">←</button><button class="nav-btn next-btn" onclick="moveCarousel(${p.id}, 1)">→</button>` : '';
             
-            // Usamos p.info que ahora es estándar para todos
-            return `<div class="card ${p.disponible ? '' : 'agotado-visual'}">
-                <div class="badge ${p.disponible ? '' : 'agotado'}">${p.disponible ? 'Disponible' : 'Agotado'}</div>
-                <div class="carousel-container">
-                    <div class="carousel-track" id="track-${p.id}">${fotos}</div>
-                    ${nav}
-                </div>
+            // LÓGICA CORREGIDA:
+            // Si el objeto tiene 'talla', la usa. Si tiene 'info', usa esa.
+            const detallePrincipal = p.talla || p.info || "";
+
+            return `<div class="card ${p.disponible?'':'agotado-visual'}">
+                <div class="badge ${p.disponible?'':'agotado'}">${p.disponible?'Disponible':'Agotado'}</div>
+                <div class="carousel-container"><div class="carousel-track" id="track-${p.id}">${fotos}</div>${nav}</div>
                 <div class="card-info">
                     <h3>${p.nombre}</h3>
                     <p class="precio">₡${p.precio}</p>
-                    <div class="specs">${p.info || ""} // ${p.estado}</div>
-                    <button class="btn-adquirir" ${p.disponible ? '' : 'disabled'} onclick="abrirModal('${p.nombre.replace(/'/g, "\\'")}')">
-                        ${p.disponible ? 'Adquirir' : 'Agotado'}
+                    <div class="specs">${detallePrincipal} // ${p.estado}</div>
+                    <button class="btn-adquirir" ${p.disponible?'':'disabled'} onclick="abrirModal('${p.nombre.replace(/'/g, "\\'")}')">
+                        ${p.disponible?'Adquirir':'Agotado'}
                     </button>
                 </div>
             </div>`;
