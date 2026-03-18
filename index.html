@@ -216,8 +216,8 @@
     ];
 
     const articulos = [
-        { id: 101, nombre: "70s MOD-STYLE TWO-TONE CARRY-ON – AVOCADO GREEN & MIDNIGHT BLACK (ARCHIVE PIECE)", precio: "35,000", tamaño: "30x20", estado: "10/10", fotos: ["70s Mod-Style Two-Tone Carry-On – Avocado Green & Midnight Black (Archive Piece).png","70s Mod-Style Two-Tone Carry-On – Avocado Green & Midnight Black (Archive Piece)2.png"], disponible: false },
-        { id: 102, nombre: "70s-80s HERITAGE OVERSIZE PULLMAN TRUNK – OXBLOOD PEBBLED VINYL (MADE IN KOREA", precio: "50,000", tamaño: "70x50cm", estado: "8/10", fotos: ["1980s Heritage Traveler Trunk – Oxblood Pebbled Vinyl (Made in Korea).png","1980s Heritage Traveler Trunk – Oxblood Pebbled Vinyl (Made in Korea)2.png","1980s Heritage Traveler Trunk – Oxblood Pebbled Vinyl (Made in Korea)3.png","1980s Heritage Traveler Trunk – Oxblood Pebbled Vinyl (Made in Korea)4.png"], disponible: true }
+        { id: 101, nombre: "70s MOD-STYLE TWO-TONE CARRY-ON – AVOCADO GREEN & MIDNIGHT BLACK (ARCHIVE PIECE)", precio: "35,000", info: "30x20", estado: "10/10", fotos: ["70s Mod-Style Two-Tone Carry-On – Avocado Green & Midnight Black (Archive Piece).png","70s Mod-Style Two-Tone Carry-On – Avocado Green & Midnight Black (Archive Piece)2.png"], disponible: false },
+        { id: 102, nombre: "70s-80s HERITAGE OVERSIZE PULLMAN TRUNK – OXBLOOD PEBBLED VINYL (MADE IN KOREA", precio: "50,000", info: "70x50cm", estado: "8/10", fotos: ["1980s Heritage Traveler Trunk – Oxblood Pebbled Vinyl (Made in Korea).png","1980s Heritage Traveler Trunk – Oxblood Pebbled Vinyl (Made in Korea)2.png","1980s Heritage Traveler Trunk – Oxblood Pebbled Vinyl (Made in Korea)3.png","1980s Heritage Traveler Trunk – Oxblood Pebbled Vinyl (Made in Korea)4.png"], disponible: true }
     ];
 
     const bitacora = [
@@ -231,11 +231,23 @@
         document.getElementById(id).innerHTML = lista.map(p => {
             const fotos = p.fotos.map(f => `<img src="${f}">`).join('');
             const nav = p.fotos.length > 1 ? `<button class="nav-btn prev-btn" onclick="moveCarousel(${p.id}, -1)">←</button><button class="nav-btn next-btn" onclick="moveCarousel(${p.id}, 1)">→</button>` : '';
-            return `<div class="card ${p.disponible?'':'agotado-visual'}">
-                <div class="badge ${p.disponible?'':'agotado'}">${p.disponible?'Disponible':'Agotado'}</div>
-                <div class="carousel-container"><div class="carousel-track" id="track-${p.id}">${fotos}</div>${nav}</div>
-                <div class="card-info"><h3>${p.nombre}</h3><p class="precio">₡${p.precio}</p><div class="specs">${p.talla} // ${p.estado}</div>
-                <button class="btn-adquirir" ${p.disponible?'':'disabled'} onclick="abrirModal('${p.nombre.replace(/'/g, "\\'")}')">${p.disponible?'Adquirir':'Agotado'}</button></div></div>`;
+            
+            // Usamos p.info que ahora es estándar para todos
+            return `<div class="card ${p.disponible ? '' : 'agotado-visual'}">
+                <div class="badge ${p.disponible ? '' : 'agotado'}">${p.disponible ? 'Disponible' : 'Agotado'}</div>
+                <div class="carousel-container">
+                    <div class="carousel-track" id="track-${p.id}">${fotos}</div>
+                    ${nav}
+                </div>
+                <div class="card-info">
+                    <h3>${p.nombre}</h3>
+                    <p class="precio">₡${p.precio}</p>
+                    <div class="specs">${p.info || ""} // ${p.estado}</div>
+                    <button class="btn-adquirir" ${p.disponible ? '' : 'disabled'} onclick="abrirModal('${p.nombre.replace(/'/g, "\\'")}')">
+                        ${p.disponible ? 'Adquirir' : 'Agotado'}
+                    </button>
+                </div>
+            </div>`;
         }).join('');
     }
 
