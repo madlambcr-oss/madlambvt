@@ -142,6 +142,7 @@
     </div>
     <div class="filter-bar">
         <button class="filter-btn active" onclick="filtrar('todas')">Todo</button>
+        <button class="filter-btn" onclick="filtrar('disponible')">Disponible</button>
         <button class="filter-btn" onclick="filtrar('jackets')">Jackets</button>
         <button class="filter-btn" onclick="filtrar('hoodies')">Hoodies</button>
         <button class="filter-btn" onclick="filtrar('camisetas')">T-Shirts</button>
@@ -236,8 +237,6 @@
             const fotos = p.fotos.map(f => `<img src="${f}">`).join('');
             const nav = p.fotos.length > 1 ? `<button class="nav-btn prev-btn" onclick="moveCarousel(${p.id}, -1)">←</button><button class="nav-btn next-btn" onclick="moveCarousel(${p.id}, 1)">→</button>` : '';
             
-            // LÓGICA CORREGIDA:
-            // Si el objeto tiene 'talla', la usa. Si tiene 'info', usa esa.
             const detallePrincipal = p.talla || p.info || "";
 
             return `<div class="card ${p.disponible?'':'agotado-visual'}">
@@ -267,7 +266,17 @@
     window.filtrar = function(cat) {
         document.querySelectorAll('#suministros .filter-btn').forEach(b => b.classList.remove('active'));
         event.target.classList.add('active');
-        cargarGrid('galeria', cat === 'todas' ? prendas : prendas.filter(p => p.categoria === cat));
+        
+        let filtrados;
+        if (cat === 'todas') {
+            filtrados = prendas;
+        } else if (cat === 'disponible') {
+            filtrados = prendas.filter(p => p.disponible === true);
+        } else {
+            filtrados = prendas.filter(p => p.categoria === cat);
+        }
+        
+        cargarGrid('galeria', filtrados);
     };
 
     window.showSection = (id) => {
