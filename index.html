@@ -16,7 +16,6 @@
             --oxido: #b35a38; 
         }
 
-        /* --- Base & Grano --- */
         body { 
             margin: 0; font-family: 'Inter', sans-serif; 
             background-color: var(--bg); color: var(--accent);
@@ -26,7 +25,6 @@
             cursor: none;
         }
 
-        /* --- Elementos PC (Ocultos por defecto en móviles) --- */
         #custom-cursor {
             position: fixed; width: 20px; height: 20px; background: #fff;
             border-radius: 50%; pointer-events: none; z-index: 10001;
@@ -43,7 +41,6 @@
         .side-label.left { left: 20px; }
         .side-label.right { right: 20px; transform: translateY(-50%) rotate(180deg); }
 
-        /* --- Preloader --- */
         #preloader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000; z-index: 10000; display: flex; justify-content: center; align-items: center;
@@ -52,22 +49,20 @@
         #preloader h2 { font-weight: 900; letter-spacing: 15px; font-size: 1.5rem; text-transform: uppercase; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
-        /* --- Header --- */
         .site-header { 
             background: rgba(10, 10, 10, 0.9); backdrop-filter: blur(15px);
-            padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; 
+            padding: 1rem 0; display: flex; flex-direction: column; align-items: center; 
             position: fixed; top: 0; width: 100%; z-index: 1000; box-sizing: border-box;
             border-bottom: 1px solid var(--border);
         }
-        .site-header h1 { font-weight: 900; font-size: 1.5rem; letter-spacing: 2px; margin: 0; cursor: pointer; }
-        .nav-menu ul { display: flex; gap: 3.5rem; list-style: none; margin: 0; padding: 0; }
-        .nav-menu a { color: var(--accent); text-decoration: none; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; opacity: 0.4; transition: var(--transition); }
+        .site-header h1 { font-weight: 900; font-size: 1.3rem; letter-spacing: 3px; margin-bottom: 8px; cursor: pointer; text-align: center; }
+        .nav-menu ul { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; justify-content: center; width: 100%; }
+        .nav-menu a { color: var(--accent); text-decoration: none; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.4; transition: var(--transition); }
         .nav-menu a.active { opacity: 1; color: var(--oxido); }
 
         .content-section { display: none; opacity: 0; transform: translateY(20px); transition: var(--transition); }
         .content-section.active { display: block; opacity: 1; transform: translateY(0); }
 
-        /* --- Hero (PC Restaurado) --- */
         .hero-banner { 
             position: relative; height: 75vh; width: 100%; margin-bottom: 5rem;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -75,29 +70,24 @@
         }
         .hero-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-size: cover; background-position: center; filter: brightness(0.5); z-index: -1;
+            background-size: cover; background-position: center; filter: brightness(0.4); z-index: -1;
             background-image: url('banner-vintage regal.png');
         }
-        .hero-banner h2 { 
-            font-size: clamp(3.5rem, 12vw, 10rem); /* Títulos grandes restaurados */
-            font-weight: 900; line-height: 0.9; margin: 0; text-transform: uppercase; 
-            animation: tracking-in 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-        }
+        /* TITULOS PC MAS GRANDES */
+        .hero-banner h2 { font-size: clamp(4rem, 15vw, 12rem); font-weight: 900; line-height: 0.85; margin: 0; text-transform: uppercase; animation: tracking-in 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both; }
         @keyframes tracking-in { 0% { letter-spacing: -0.5em; opacity: 0; } 40% { opacity: 0.6; } 100% { opacity: 1; } }
-        .hero-banner .frase-pregunta { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; color: #eee; margin: 25px 0 40px; }
+        .hero-banner .frase-pregunta { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-style: italic; color: #eee; margin: 25px 0 40px; }
         .btn-banner { background: #fff; color: #000; padding: 18px 45px; font-weight: 700; text-transform: uppercase; text-decoration: none; font-size: 0.8rem; letter-spacing: 2px; }
 
-        /* --- Filtros --- */
         .filter-bar { padding: 1rem 5% 4rem; display: flex; justify-content: center; gap: 3rem; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
         .filter-bar::-webkit-scrollbar { display: none; }
         .filter-btn { background: none; border: none; color: var(--accent); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; opacity: 0.3; white-space: nowrap; padding-bottom: 5px; transition: var(--transition); cursor: pointer;}
         .filter-btn.active { opacity: 1; color: var(--oxido); border-bottom: 1px solid var(--oxido); }
 
-        /* --- Grid & Cards --- */
-        .main-container { max-width: 1600px; margin: 0 auto; padding: 0 5% 10rem; }
+        .main-container { max-width: 1600px; margin: 0 auto; padding: 0 8% 10rem; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 50px; }
         
-        .carousel-container { position: relative; width: 100%; aspect-ratio: 1 / 1.3; overflow: hidden; margin-bottom: 25px; background: #0d0d0d; border: 1px solid var(--border); }
+        .carousel-container { position: relative; width: 100%; aspect-ratio: 1 / 1.3; overflow: hidden; background: #0d0d0d; border: 1px solid var(--border); }
         .carousel-track { display: flex; height: 100%; transition: transform 0.6s ease; }
         .carousel-track img { width: 100%; min-width: 100%; object-fit: cover; }
         
@@ -108,62 +98,43 @@
         .card-info .precio { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 10px; }
         .card-info .specs { font-size: 0.7rem; opacity: 0.5; margin-bottom: 20px; border-top: 1px solid var(--border); padding-top: 10px; }
 
-        .btn-adquirir { background: transparent; color: #fff; padding: 15px; border: 1px solid var(--border); width: 100%; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; transition: var(--transition); cursor: pointer;}
+        .btn-adquirir { background: transparent; color: #fff; padding: 15px; border: 1px solid var(--border); width: 100%; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; cursor: pointer;}
         .btn-adquirir:hover:not(:disabled) { background: #fff; color: #000; }
 
-        /* Flechas de carrusel visibles */
         .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 15px 10px; z-index: 30; cursor: pointer;}
         .prev-btn { left: 10px; }
         .next-btn { right: 10px; }
 
-        /* --- Bitácora (PC Restaurado) --- */
         .bitacora-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 100px 60px; max-width: 1400px; margin: 0 auto; padding: 5rem 5% 10rem; }
         .bitacora-item { cursor: pointer; border-bottom: 1px solid var(--border); padding-bottom: 60px; transition: var(--transition); }
         .bitacora-item .img-container { width: 100%; aspect-ratio: 16/9; overflow: hidden; margin: 25px 0 35px; border: 1px solid var(--border); }
         .bitacora-item .img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-        .bitacora-item:hover .img-container img { transform: scale(1.05); }
-        .bitacora-item h3 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin: 20px 0; font-style: italic; font-weight: 400; }
+        .bitacora-item h3 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 20px 0; font-style: italic; font-weight: 400; }
 
-        /* --- Modales --- */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); justify-content: center; align-items: center; z-index: 9999; padding: 20px; box-sizing: border-box; backdrop-filter: blur(10px); }
         .modal-content { width: 100%; max-width: 500px; background: #0a0a0a; padding: 40px 20px; border: 1px solid var(--border); position: relative; }
-        #modal-lectura .modal-content { max-width: 800px; max-height: 85vh; overflow-y: auto; padding: 60px 40px; text-align: left; }
-        #modal-lectura h3 { font-size: 2.5rem; font-family: 'Playfair Display', serif; font-style: italic; color: var(--oxido); margin-top: 0; line-height: 1.2;}
-        #modal-lectura div { line-height: 1.8; font-size: 1rem; color: #ccc; font-weight: 300; }
+        #modal-lectura .modal-content { max-width: 800px; max-height: 85vh; overflow-y: auto; padding: 60px 40px; text-align: left; background: #0a0a0a; border: 1px solid var(--border); }
+        #modal-lectura h3 { font-size: 2.2rem; font-family: 'Playfair Display', serif; font-style: italic; color: var(--oxido); margin-top: 0; line-height: 1.2;}
+        #modal-lectura div { line-height: 1.9; font-size: 1.1rem; color: #eee; font-weight: 300; }
 
         input { width: 100%; background: transparent; border: none; border-bottom: 1px solid #333; color: #fff; font-size: 1.5rem; text-align: center; padding: 15px 0; margin-bottom: 30px; outline: none; font-family: 'Playfair Display', serif; }
         footer { padding: 6rem 5%; text-align: center; font-size: 0.75rem; letter-spacing: 5px; opacity: 0.3; border-top: 1px solid var(--border); text-transform: uppercase;}
 
-        /* --- MEDIA QUERIES CELULAR (Corregido y Refinado) --- */
         @media (max-width: 768px) {
             body { cursor: auto; padding-top: 100px; }
             #custom-cursor, .side-label { display: none; }
-            
-            /* Header Móvil Centrado */
-            .site-header { flex-direction: column; padding: 1rem 0; }
-            .site-header h1 { font-size: 1.2rem; margin-bottom: 8px; }
-            .nav-menu ul { gap: 1.5rem; justify-content: center; width: 100%; }
-            .nav-menu a { font-size: 0.7rem; }
-
-            /* Grid y Cards Móvil Estético */
+            .grid { grid-template-columns: 1fr; width: 85%; margin: 0 auto; gap: 40px; }
             .main-container { padding: 0 5% 5rem; }
-            .grid { grid-template-columns: 1fr; width: 90%; margin: 0 auto; gap: 40px; }
             .hero-banner { height: 50vh; margin-bottom: 3rem;}
             .hero-banner h2 { font-size: 3rem; }
-            .hero-banner .frase-pregunta { font-size: 1.2rem; margin: 15px 0 25px; }
-            
-            /* Filtros Móvil */
-            .filter-bar { justify-content: flex-start; gap: 1.5rem; padding: 1rem 8% 3rem;}
+            .hero-banner .frase-pregunta { font-size: 1.2rem; }
+            .filter-bar { justify-content: flex-start; padding-left: 10%; }
             .filter-btn { font-size: 0.7rem; }
-
-            /* Info de prenda Estética en Móvil */
-            .card-info h3 { font-size: 0.9rem; }
-            .card-info .precio { font-size: 1.1rem; }
-            .card-info .specs { font-size: 0.6rem; opacity: 0.4; } /* Descripción más pequeña en móvil */
-            .btn-adquirir { font-size: 0.7rem; padding: 12px; }
-
-            /* Bitácora Móvil */
-            .bitacora-grid { grid-template-columns: 1fr; padding: 2rem 8% 5rem; }
+            .card-info h3 { font-size: 0.85rem; }
+            /* PRECIO CELULAR MAS PEQUEÑO */
+            .card-info .precio { font-size: 0.95rem !important; }
+            .card-info .specs { font-size: 0.55rem; }
+            .bitacora-grid { grid-template-columns: 1fr; padding: 2rem 10% 5rem; }
             #modal-lectura .modal-content { padding: 40px 25px; }
             #modal-lectura h3 { font-size: 1.8rem; }
         }
@@ -217,17 +188,17 @@
 </section>
 
 <section id="bitacora" class="content-section">
-    <div style="text-align: center; padding: 8rem 0 2rem;"><h2 style="font-size: clamp(3rem, 15vw, 7rem); font-weight: 900; text-transform: uppercase;">Legado</h2></div>
+    <div style="text-align: center; padding: 10rem 0 2rem;"><h2 style="font-size: clamp(3.5rem, 15vw, 10rem); font-weight: 900; text-transform: uppercase;">Legado</h2></div>
     <div class="bitacora-grid" id="bitacora-grid"></div>
 </section>
 
 <div id="modal" class="modal">
     <div class="modal-content">
         <form id="form-pedido">
-            <h3 style="text-transform: uppercase; font-weight: 900; font-size: 0.8rem; letter-spacing: 5px; margin-bottom: 30px; opacity: 0.5; text-align: center;">Adquirir Pieza</h3>
+            <h3 style="text-transform: uppercase; font-weight: 900; font-size: 0.7rem; letter-spacing: 3px; margin-bottom: 20px; opacity: 0.5; text-align: center;">Adquirir Pieza</h3>
             <input type="text" id="nombre-cliente" placeholder="Tu nombre" required>
-            <button type="submit" class="btn-adquirir" style="background: #fff; color: #000;">SOLICITAR VÍA WHATSAPP</button>
-            <p onclick="cerrarModal()" style="margin-top: 30px; cursor: pointer; font-size: 0.75rem; letter-spacing: 2px; opacity: 0.4; text-align: center;">REGRESAR</p>
+            <button type="submit" class="btn-adquirir" style="background: #fff; color: #000;">WHATSAPP</button>
+            <p onclick="cerrarModal()" style="margin-top: 20px; cursor: pointer; font-size: 0.7rem; opacity: 0.4; text-align: center;">CANCELAR</p>
         </form>
     </div>
 </div>
@@ -276,7 +247,7 @@
         { id: 11, nombre: "UNDER ARMOUR COLDGEAR REALTREE AP CAMO HOODIE", precio: "35,000", talla: "L", estado: "10/10", categoria: "hoodies", fotos: ["Hoodie under armour real tree.jpg"], disponible: true },
         { id: 12, nombre: "HOT SHOT REALTREE EDGE CAMO HOODED BOMBER JACKET", precio: "25,000", talla: "S", estado: "10/10", categoria: "jackets", fotos: ["Hot Shot Realtree Edge Camo Hooded Bomber Jacket - Quilted Lined.jpg","Hot Shot Realtree Edge Camo Hooded Bomber Jacket - Quilted Lined2.jpg"], disponible: false },
         { id: 13, nombre: "RARE VINTAGE FFA AGRICULTURAL EDUCATION JACKET", precio: "70,000", talla: "L", estado: "10/10", categoria: "jackets", fotos: ["Rare Vintage Ffa Agricultural Education Jacket - Illinois Taylorville.jpg","Rare Vintage Ffa Agricultural Education Jacket - Illinois Taylorville2.jpg","Rare Vintage Ffa Agricultural Education Jacket - Illinois Taylorville3.jpg"], disponible: true },
-        { id: 14, nombre: "RARE VINTAGE CARHARTT ACTIVE JACKET", precio: "40,000", talla: "L", estado: "10/10", categoria: "jackets", fotos: ["Rare Vintage Carhartt Active Jacket - Dark Purple Washed Finish.jpg","Rare Vintage Carhartt Active Jacket - Dark Purple Washed Finish3.jpg"], disponible: false },
+        { id: 14, nombre: "RARE VINTAGE CARHARTT ACTIVE JACKET - DARK PURPLE WASHED FINISH", precio: "40,000", talla: "L", estado: "10/10", categoria: "jackets", fotos: ["Rare Vintage Carhartt Active Jacket - Dark Purple Washed Finish.jpg","Rare Vintage Carhartt Active Jacket - Dark Purple Washed Finish3.jpg"], disponible: false },
         { id: 15, nombre: "VINTAGE CARHARTT ARCTIC TRADITIONAL COAT", precio: "40,000", talla: "M", estado: "10/10", categoria: "hoodies", fotos: ["Vintage Carhartt Arctic Traditional Coat - Navy Blue.jpg","Vintage Carhartt Arctic Traditional Coat - Navy Blue2.jpg"], disponible: false },
         { id: 16, nombre: "VINTAGE CARHARTT SANTA FE JACKET", precio: "50,000", talla: "L", estado: "9/10", categoria: "jackets", fotos: ["Carhartt Santa Fe Sandstone Finish.jpg","Carhartt Santa Fe Sandstone Finish2.jpg"], disponible: false },
         { id: 17, nombre: "CHALECO AMF HARLEY-DAVIDSON '70S BRITISH CROWN COLONY'", precio: "DM", talla: "L fit M", estado: "9/10", categoria: "Vests", fotos: ["Chaleco AMF Harley-Davidson Era 70s.jpg","Chaleco AMF Harley-Davidson Era 70s2.jpg","Chaleco AMF Harley-Davidson Era 70s3.jpg","Chaleco AMF Harley-Davidson Era 70s4.jpg"], disponible: true }
@@ -289,11 +260,11 @@
     ];
 
     const bitacora = [
-        { titulo: "The Waxed Canvas Trucker", meta: "10 Mar. 2026 — 3 min read", img: "The Waxed Canvas Trucker.jpg", short: "La chaqueta de lona encerada es mucho más que una prenda...", content: "La chaqueta de lona encerada es mucho más que una prenda; es una herencia de ingeniería textil que nació en el siglo XV para proteger a los marineros de los climas más hostiles...\n\nDesde las velas de alta mar hasta las icónicas rutas de motociclismo, este material ha evolucionado..." },
-        { titulo: "La Detroit Jacket: El Icono del Asfalto", meta: "17 Mar. 2026 — 4 min read", img: "El Oro de Lona La Detroit Jacket.png", short: "No es moda rápida. Es lona de pato de 12 onzas...", content: "No es moda rápida. No es una tendencia de Instagram que desaparece en dos semanas. Es lona de pato de 12 onzas, triple costura..." },
-        { titulo: "El Guardián de 1970 Regal Toy Ltd", meta: "12 Mar. 2026 — 3 min read", img: "Regal toy.jpg", short: "En el universo del coleccionismo vintage...", content: "En el universo del coleccionismo vintage, existe una jerarquía invisible. En la cima no están los objetos producidos por millones..." },
-        { titulo: "Ebbets Field Flannels: El Heritage Americano", meta: "14 Mar. 2026 — 3 min read", img: "Ebbets Field Flannels2.png", short: "Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna...", content: "Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna de lo retro; es una réplica exacta..." },
-        { titulo: "El Santo Grial del Denim: El Chaleco AMF Harley-Davidson de los 70", meta: "22 Mar. 2026 — 4 min read", img: "Chaleco_AMF_Harley_70s.png", short: "Este chaleco de mezclilla AMF no es solo una prenda...", content: "En el mundo del coleccionismo vintage, hay piezas que hablan, y luego están las que rugen. Este chaleco representa un capítulo fascinante..."}
+        { titulo: "The Waxed Canvas Trucker", meta: "10 Mar. 2026 — 3 min read", img: "The Waxed Canvas Trucker.jpg", short: "La chaqueta de lona encerada es mucho más que una prenda...", content: "La chaqueta de lona encerada es mucho más que una prenda; es una herencia de ingeniería textil que nació en el siglo XV para proteger a los marineros de los climas más hostiles.\n\nDesde las velas de alta mar hasta las icónicas rutas de motociclismo, este material ha evolucionado utilizando fibras como el algodón Martexin y remaches de cobre para ofrecer una resistencia hercúlea y eterna.\n\nA diferencia de la moda desechable, su valor real reside en la pátina que desarrolla con el tiempo, transformando cada arruga y marca en una crónica visual de las aventuras de quien la viste, convirtiéndola en una inversión única diseñada para pasar de generación en generación." },
+        { titulo: "La Detroit Jacket: El Icono del Asfalto", meta: "17 Mar. 2026 — 4 min read", img: "El Oro de Lona La Detroit Jacket.png", short: "No es moda rápida. Es lona de pato de 12 onzas...", content: "No es moda rápida. No es una tendencia de Instagram que desaparece en dos semanas. Es lona de pato de 12 onzas, triple costura y una reputación forjada en el acero y el concreto de Michigan.\n\n(La Historia: Nacida del Vapor)\nHamilton Carhartt no diseñó la Detroit Jacket para las pasarelas en 1889. La diseñó para los hombres que construyeron América: trabajadores del ferrocarril y obreros siderúrgicos. Necesitaban algo que no se rompiera, que resistiera chispas y que los mantuviera calientes sin restringir el movimiento. La Detroit Jacket original (con su corte corto a la cintura y forro de manta) fue la respuesta. Su color 'Carhartt Brown' no era estético; era el color natural de la lona resistente que usaban. Nació de la pura necesidad funcional.\n\n(La Curiosidad: Del Andamio al 'Grunge' y el Hip-Hop)\n¿Cómo pasó de un sitio de construcción a ser la pieza central del streetwear? En los años 90, algo cambió. El movimiento grunge en Seattle adoptó la ropa de trabajo por su autenticidad y durabilidad. Simultáneamente, la escena del Hip-Hop en Nueva York comenzó a usarla como un símbolo de 'dureza' y resistencia urbana.\n\n(La Conexión de Hollywood: El Uniforme del Héroe Relatable)\nAquí es donde la Detroit Jacket solidifica su estatus legendario. En el cine, cuando un director necesita que un personaje parezca rudo, honesto y práctico, no le ponen un traje. Le ponen una Carhartt Detroit desgastada.\n\nEn un mundo de consumo desechable, la Carhartt Detroit es una anomalía. Se ve mejor cuando está vieja, manchada y desgastada. Cada rasguño cuenta una historia. No es solo una chaqueta; es un testimonio de que la autenticidad y la función nunca pasan de moda." },
+        { titulo: "El Guardián de 1970 Regal Toy Ltd", meta: "12 Mar. 2026 — 3 min read", img: "Regal toy.jpg", short: "En el universo del coleccionismo vintage...", content: "En el universo del coleccionismo vintage, existe una jerarquía invisible. En la cima no están los objetos producidos por millones, sino aquellos que cuentan la historia de una industria que ya no existe.\n\nHoy nos enfocamos en una de nuestras piezas más valiosas: el Regal Toy de la serie First Nations.\n\nRareza de Origen: El Sello de Toronto\nFundada en 1959, Regal Toy Ltd. fue el titán de la manufactura juguetera en Canadá. Poseer una pieza con el grabado original en la espalda no es solo tener un juguete; es poseer un fragmento del patrimonio industrial norteamericano. Tras el cierre de sus fábricas, estas figuras pasaron de los estantes de las tiendas a las vitrinas de los museos de diseño.\n\n⏳ La Exclusividad de la Supervivencia\nLo que hace a este ejemplar de 1970 una pieza de exclusividad absoluta no es solo su edad (más de 55 años), sino su estado de conservación.\n\nEl Vinilo Térmico: A diferencia del plástico moderno que se degrada y se vuelve quebradizo, el vinilo Regal fue diseñado para durar siglos.\n\nLa Pátina del Tiempo: La suavidad de sus facciones y el brillo conservado en su mirada son imposibles de replicar. Es una cápsula del tiempo que ha sobrevivido a décadas de cambios culturales y tecnológicos." },
+        { titulo: "Ebbets Field Flannels: El Heritage Americano", meta: "14 Mar. 2026 — 3 min read", img: "Ebbets Field Flannels2.png", short: "Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna...", content: "Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna de lo retro; es una réplica exacta de ingeniería textil. Fabricada en Seattle, esta gorra logra capturar el 'look & feel' preciso de los años 40 y 50, manteniendo viva la artesanía que las máquinas actuales han olvidado.\n\n¿Qué la hace una pieza única?\n\nLa Identidad de 'La Casa': A diferencia de las reproducciones de equipos de ligas menores, esta edición limitada porta el logotipo 'EFF' en fieltro blanco. Es la firma de la marca, una declaración de principios para el coleccionista que valora la historia de la propia manufactura.\n\nEstética de Época Impecable: Su estructura es exactamente igual a las gorras usadas en el diamante hace 80 años. Al no tener los refuerzos rígidos frontales de las gorras modernas, ofrece esa caída natural y perfil bajo que definió la silueta de los jugadores de la era dorada.\n\nDetalles de Fidelidad Histórica:\nVisera de Satín Verde: Recupera el reverso clásico diseñado para mitigar el brillo solar, un sello de autenticidad visual.\nCorrea de Cuero Genuino: Un cierre robusto y tradicional que refuerza su herencia artesanal.\n\nEn conclusión: Es una pieza de diseño de autor. Combina la exclusividad de una tirada limitada de 2014 con la apariencia visual de una reliquia de 1945. Es, sencillamente, historia viva que puedes usar." },
+        { titulo: "El Santo Grial del Denim: El Chaleco AMF Harley-Davidson de los 70", meta: "22 Mar. 2026 — 4 min read", img: "Chaleco_AMF_Harley_70s.png", short: "Este chaleco de mezclilla AMF no es solo una prenda...", content: "En el mundo del coleccionismo vintage, hay piezas que hablan, y luego están las que rugen. Este chaleco representa un capítulo fascinante de la cultura biker, fabricado en un momento de transición donde el estilo se volvió más audaz y rebelde.\n\nLa Era AMF: El Atractivo de lo Rebelde: Para los puristas, la etapa de American Machine and Foundry (1969-1981) es sagrada. Llevar este logo es portar el estandarte de la contracultura de los 70.\n\nUn Origen Exclusivo: 'British Crown Colony of Hong Kong': Encontrar una pieza Harley con este origen colonial es una rareza geográfica que los expertos buscan con lupa.\n\nDetalles Técnicos:\nLacing Lateral: Cordones de cuero genuino que permitían ajustar la prenda sobre chaquetas gruesas.\nFidelidad de Materiales: Denim 100% Algodón con un lavado natural." }
     ];
 
     function cargarGrid(id, lista) {
@@ -340,9 +311,8 @@
         window.scrollTo({top: 0, behavior: 'smooth'});
     };
 
-    // Función de carrusel corregida para PC y Móvil
     window.moveCarousel = (id, dir) => {
-        event.stopPropagation(); // Evita que se abra el modal al tocar las flechas
+        event.stopPropagation();
         const item = [...prendas, ...articulos].find(p => p.id === id);
         if (!carruselPositions[id]) carruselPositions[id] = 0;
         carruselPositions[id] = (carruselPositions[id] + dir + item.fotos.length) % item.fotos.length;
