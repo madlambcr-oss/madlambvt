@@ -7,33 +7,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;900&family=Playfair+Display:italic,wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root { 
-            --bg: #070707; 
+            --bg: #0a0a0a; 
             --surface: #111111;
             --accent: #ffffff;
             --text-secondary: #a0a0a0;
-            --border: rgba(255, 255, 255, 0.08);
-            --transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            --border: rgba(255, 255, 255, 0.1);
+            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             --oxido: #b35a38; 
         }
 
-        /* --- Estética de Fondo y Ruido --- */
+        /* --- Reset & Base --- */
         body { 
             margin: 0; font-family: 'Inter', sans-serif; 
             background-color: var(--bg); color: var(--accent);
             padding-top: 80px; overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            cursor: none;
-            background-image: url("https://www.transparenttextures.com/patterns/stardust.png"); /* Ruido sutil */
+            cursor: none; 
+            /* Fondo con grano agregado */
+            background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
         }
 
-        /* --- Punto 1: Cursor e Indicadores Laterales --- */
+        /* --- Punto 1: Cursor Personalizado --- */
         #custom-cursor {
-            position: fixed; width: 12px; height: 12px; background: #fff;
+            position: fixed; width: 20px; height: 20px; background: #fff;
             border-radius: 50%; pointer-events: none; z-index: 10001;
             mix-blend-mode: difference; transition: transform 0.2s ease;
             transform: translate(-50%, -50%);
         }
 
+        /* --- Texto Vertical Lateral agregado --- */
         .side-label {
             position: fixed; top: 50%; font-size: 10px; font-weight: 600;
             letter-spacing: 5px; text-transform: uppercase; color: rgba(255,255,255,0.2);
@@ -50,87 +52,104 @@
             display: flex; justify-content: center; align-items: center;
             transition: opacity 1s ease;
         }
-        #preloader h2 { font-weight: 900; letter-spacing: 15px; font-size: 1.2rem; text-transform: uppercase; animation: pulse 2s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+        #preloader h2 { font-weight: 900; letter-spacing: 15px; font-size: 1.5rem; text-transform: uppercase; color: #fff; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
         /* --- Header --- */
         .site-header { 
-            background: rgba(7, 7, 7, 0.8); backdrop-filter: blur(20px);
+            background: rgba(10, 10, 10, 0.7); backdrop-filter: blur(20px);
             padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; 
             position: fixed; top: 0; width: 100%; z-index: 1000; box-sizing: border-box;
             border-bottom: 1px solid var(--border);
         }
-        .site-header h1 { font-weight: 900; font-size: 1.3rem; letter-spacing: 5px; margin: 0; cursor: pointer; text-transform: uppercase; }
-        .nav-menu ul { display: flex; gap: 3rem; list-style: none; margin: 0; padding: 0; }
-        .nav-menu a { color: var(--accent); text-decoration: none; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 4px; opacity: 0.4; transition: var(--transition); cursor: pointer; }
+        .site-header h1 { font-weight: 900; font-size: 1.5rem; letter-spacing: 3px; margin: 0; cursor: pointer; text-transform: uppercase; }
+        .nav-menu ul { display: flex; gap: 3.5rem; list-style: none; margin: 0; padding: 0; }
+        .nav-menu a { color: var(--accent); text-decoration: none; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; opacity: 0.4; transition: var(--transition); cursor: pointer; }
         .nav-menu a.active, .nav-menu a:hover { opacity: 1; color: var(--oxido); }
 
-        .content-section { display: none; opacity: 0; transform: translateY(30px); transition: var(--transition); }
+        .content-section { display: none; opacity: 0; transform: translateY(20px); transition: var(--transition); }
         .content-section.active { display: block; opacity: 1; transform: translateY(0); }
 
-        /* --- Hero Banner --- */
+        /* --- Punto 2: Hero Banner Animado --- */
         .hero-banner { 
-            position: relative; height: 85vh; width: 100%; margin-bottom: 5rem;
+            position: relative; height: 75vh; width: 100%; margin: 0px auto 5rem;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; overflow: hidden; border-bottom: 1px solid var(--border);
+            text-align: center; overflow: hidden;
         }
         .hero-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-size: cover; background-position: center;
-            filter: brightness(0.4) grayscale(30%);
-            transform: scale(1.1); transition: transform 12s linear;
+            filter: brightness(0.5) contrast(1.1) grayscale(20%);
+            transform: scale(1.1); transition: transform 10s linear;
             z-index: -1;
         }
-        .hero-banner:hover .hero-bg { transform: scale(1.02); }
+        .hero-banner:hover .hero-bg { transform: scale(1); }
+        
         #suministros .hero-bg { background-image: url('banner-vintage regal.png'); }
         #articulos .hero-bg { background-image: url('banner-vintage regal.png'); }
 
-        .hero-banner h2 { font-size: clamp(3.5rem, 15vw, 12rem); font-weight: 900; line-height: 0.75; margin: 0; letter-spacing: -0.06em; text-transform: uppercase; }
-        .hero-banner .frase-pregunta { font-family: 'Playfair Display', serif; font-size: clamp(1rem, 3vw, 1.8rem); font-style: italic; opacity: 0.8; margin: 30px 0; }
-        .btn-banner { border: 1px solid #fff; color: #fff; padding: 20px 50px; text-transform: uppercase; letter-spacing: 3px; text-decoration: none; transition: var(--transition); font-size: 0.75rem; font-weight: 700; }
-        .btn-banner:hover { background: #fff; color: #000; }
+        .hero-banner h2 { font-size: clamp(3.5rem, 12vw, 10rem); font-weight: 900; line-height: 0.8; margin: 0; letter-spacing: -0.05em; text-transform: uppercase; color: #fff; animation: tracking-in 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both; }
+        @keyframes tracking-in { 0% { letter-spacing: -0.5em; opacity: 0; } 40% { opacity: 0.6; } 100% { opacity: 1; } }
 
-        /* --- Grid & Layout --- */
-        .main-container { max-width: 1400px; margin: 0 auto; padding: 0 8% 10rem; position: relative; }
+        .hero-banner .frase-pregunta { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; color: #eee; margin: 25px 0 40px; }
+        .btn-banner { background: #fff; color: #000; padding: 18px 45px; border-radius: 2px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; transition: var(--transition); font-size: 0.8rem; }
+        .btn-banner:hover { background: var(--oxido); color: #fff; transform: translateY(-3px); }
+
+        /* --- Filtros --- */
+        .filter-bar { padding: 0 5% 4rem; display: flex; justify-content: center; gap: 3rem; overflow-x: auto; scrollbar-width: none;}
+        .filter-btn { background: none; border: none; color: var(--accent); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; opacity: 0.3; transition: var(--transition); padding-bottom: 8px; border-bottom: 1px solid transparent; white-space: nowrap; }
+        .filter-btn.active, .filter-btn:hover { opacity: 1; color: var(--oxido); border-bottom: 1px solid var(--oxido); }
+
+        /* --- Grid de Productos --- */
+        .main-container { max-width: 1600px; margin: 0 auto; padding: 0 5% 10rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 50px; }
         
-        /* Efecto de rejilla editorial: Columnas desalineadas */
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 80px 50px; }
-        .card { position: relative; }
-        .card:nth-child(even) { transform: translateY(40px); } /* Desalineado sutil */
+        /* Punto 5: Animación de entrada y Zoom */
+        .card { position: relative; opacity: 0; transform: translateY(30px); animation: fadeUp 0.8s forwards; }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-        .carousel-container { position: relative; width: 100%; aspect-ratio: 4 / 5; overflow: hidden; background: #0a0a0a; border: 1px solid var(--border); }
+        .carousel-container { position: relative; width: 100%; aspect-ratio: 1 / 1.3; overflow: hidden; margin-bottom: 25px; background: #0d0d0d; }
         .carousel-track { display: flex; height: 100%; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        .carousel-track img { min-width: 100%; object-fit: cover; transition: transform 1.5s ease; filter: contrast(1.05); }
-        .card:hover .carousel-track img { transform: scale(1.08); }
+        .carousel-track img { min-width: 100%; object-fit: cover; transition: transform 1.2s ease; }
+        .carousel-container:hover .carousel-track img { transform: scale(1.1); }
         
-        .badge { position: absolute; top: 0; right: 0; z-index: 20; padding: 10px 15px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; background: #fff; color: #000; }
-        .badge.agotado { background: #111; color: #555; }
+        .badge { position: absolute; top: 20px; left: 20px; z-index: 20; padding: 8px 15px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; background: #fff; color: #000; }
+        .badge.agotado { background: #1a1a1a; color: #888; border: 1px solid rgba(255,255,255,0.1); }
+        .card.agotado-visual .carousel-track img { filter: grayscale(100%); opacity: 0.5; }
 
-        .card-info h3 { font-size: 1rem; margin: 25px 0 10px; font-weight: 600; letter-spacing: 1px; line-height: 1.4; text-transform: uppercase; }
-        .card-info .precio { font-family: 'Playfair Display', serif; font-style: italic; color: var(--oxido); font-size: 1.4rem; margin-bottom: 15px; }
-        .card-info .specs { font-size: 10px; letter-spacing: 2px; opacity: 0.4; margin-bottom: 25px; border-top: 1px solid var(--border); padding-top: 15px; }
+        .card-info h3 { font-size: 1.1rem; margin: 20px 0 8px; font-weight: 600; letter-spacing: 1px; line-height: 1.3; }
+        .card-info .precio { font-family: 'Playfair Display', serif; font-style: italic; color: var(--text-secondary); margin-bottom: 12px; font-size: 1.3rem; }
+        .card-info .specs { font-size: 0.8rem; letter-spacing: 1px; opacity: 0.5; margin-bottom: 25px; text-transform: uppercase; }
 
-        .btn-adquirir { background: transparent; color: #fff; padding: 20px; border: 1px solid var(--border); width: 100%; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 4px; transition: var(--transition); }
+        .btn-adquirir { background: transparent; color: #fff; padding: 18px; border: 1px solid var(--border); width: 100%; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; cursor: pointer; transition: var(--transition); }
         .btn-adquirir:hover:not(:disabled) { background: #fff; color: #000; border-color: #fff; }
 
-        /* --- Bitácora --- */
-        .bitacora-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 120px 80px; max-width: 1200px; margin: 0 auto; padding: 5rem 5%; }
-        .bitacora-item { cursor: pointer; transition: var(--transition); }
-        .bitacora-item .img-container { width: 100%; aspect-ratio: 1; overflow: hidden; border: 1px solid var(--border); }
-        .bitacora-item h3 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-style: italic; margin: 30px 0 15px; font-weight: 400; }
-        .bitacora-item p { font-size: 1rem; opacity: 0.6; line-height: 1.8; font-weight: 300; }
+        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.4); color: white; border: none; padding: 20px 15px; cursor: pointer; z-index: 30; opacity: 0; transition: 0.3s; }
+        .card:hover .nav-btn { opacity: 1; }
+
+        /* --- Punto 4: Bitácora Refinada --- */
+        .bitacora-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 100px 60px; max-width: 1400px; margin: 0 auto; padding: 5rem 5% 10rem; }
+        .bitacora-item { cursor: pointer; border-bottom: 1px solid var(--border); padding-bottom: 60px; transition: var(--transition); }
+        .bitacora-item:hover { border-color: var(--oxido); }
+        .bitacora-item .img-container { width: 100%; aspect-ratio: 16/9; overflow: hidden; margin: 25px 0 35px; }
+        .bitacora-item .img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.5s ease; filter: sepia(20%); }
+        .bitacora-item:hover .img-container img { transform: scale(1.05); filter: sepia(0%); }
+        .bitacora-item h3 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin: 20px 0; font-style: italic; font-weight: 400; }
 
         /* --- Modales --- */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); justify-content: center; align-items: center; z-index: 9999; backdrop-filter: blur(15px); }
-        #modal-lectura .modal-content { max-width: 700px; padding: 80px; background: #000; border: 1px solid var(--border); }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); justify-content: center; align-items: center; z-index: 9999; padding: 20px; backdrop-filter: blur(10px); }
+        #modal-lectura .modal-content { width:100%; max-width: 800px; text-align: left; padding: 60px; overflow-y: auto; max-height: 85vh; border: 1px solid var(--border); background: #0a0a0a; }
+        #modal-lectura h3 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; margin-bottom: 30px; color: var(--oxido); }
+        #modal-lectura p { font-size: 1.2rem; line-height: 1.8; color: #ccc; white-space: pre-line; font-weight: 300; }
 
-        footer { padding: 10rem 5%; text-align: center; border-top: 1px solid var(--border); font-size: 10px; letter-spacing: 8px; opacity: 0.3; }
+        input { width: 100%; padding: 20px 0; border: none; border-bottom: 1px solid #333; background: transparent; font-size: 2rem; outline: none; text-align: center; color: #fff; margin-bottom: 45px; font-family: 'Playfair Display', serif; font-style: italic; transition: border-color 0.4s; }
+        input:focus { border-color: var(--oxido); }
+        footer { padding: 6rem 5%; text-align: center; border-top: 1px solid var(--border); font-size: 0.75rem; letter-spacing: 5px; color: #333; text-transform: uppercase; }
 
-        @media (max-width: 768px) { 
-            .side-label, #custom-cursor { display: none; } 
-            .grid { grid-template-columns: 1fr; } 
-            .card:nth-child(even) { transform: none; }
-            .bitacora-grid { grid-template-columns: 1fr; }
+        @media (max-width: 1024px) { 
+            .bitacora-grid { grid-template-columns: 1fr; } 
+            #custom-cursor, .side-label { display: none; } 
+            body { cursor: auto; } 
         }
     </style>
 </head>
@@ -156,10 +175,9 @@
 <section id="suministros" class="content-section active">
     <div class="hero-banner">
         <div class="hero-bg"></div>
-        <span style="font-size: 10px; letter-spacing: 10px; opacity: 0.5; margin-bottom: 20px;">VINTAGE CURATION</span>
         <h2>Archivo</h2>
         <span class="frase-pregunta">¿Qué historia vestirás hoy?</span>
-        <a href="#galeria" class="btn-banner">Explorar</a>
+        <a href="#galeria" class="btn-banner">Explorar Selección</a>
     </div>
     <div class="filter-bar">
         <button class="filter-btn active" onclick="filtrar('todas')">Todo</button>
@@ -183,17 +201,17 @@
 </section>
 
 <section id="bitacora" class="content-section">
-    <div style="text-align: center; padding: 10rem 0 2rem;"><h2 style="font-size: clamp(4rem, 15vw, 10rem); font-weight: 900; margin:0; letter-spacing: -6px; text-transform: uppercase;">LEGADO</h2></div>
+    <div style="text-align: center; padding: 8rem 0 2rem;"><h2 style="font-size: clamp(4rem, 15vw, 9rem); font-weight: 900; margin:0; letter-spacing: -4px; text-transform: uppercase;">Legado</h2></div>
     <div class="bitacora-grid" id="bitacora-grid"></div>
 </section>
 
 <div id="modal" class="modal">
     <div class="modal-content">
-        <form id="form-pedido" style="max-width: 400px; margin: auto;">
-            <h3 style="text-transform: uppercase; font-weight: 900; font-size: 0.7rem; letter-spacing: 5px; margin-bottom: 40px; opacity: 0.4;">Adquirir Pieza</h3>
-            <input type="text" id="nombre-cliente" placeholder="TU NOMBRE" required>
-            <button type="submit" class="btn-adquirir" style="background: #fff; color: #000;">WHATSAPP DIRECTO</button>
-            <p onclick="cerrarModal()" style="margin-top: 30px; cursor: pointer; font-size: 9px; letter-spacing: 3px; opacity: 0.4;">CERRAR</p>
+        <form id="form-pedido">
+            <h3 style="text-transform: uppercase; font-weight: 900; font-size: 0.8rem; letter-spacing: 5px; margin-bottom: 30px; opacity: 0.5;">Adquirir Pieza</h3>
+            <input type="text" id="nombre-cliente" placeholder="Tu nombre" required>
+            <button type="submit" class="btn-adquirir" style="background: #fff; color: #000;">SOLICITAR VÍA WHATSAPP</button>
+            <p onclick="cerrarModal()" style="margin-top: 30px; cursor: pointer; font-size: 0.75rem; letter-spacing: 2px; opacity: 0.4;">REGRESAR</p>
         </form>
     </div>
 </div>
@@ -206,13 +224,12 @@
     </div>
 </div>
 
-<footer>MADLAMB. ARCHIVE SUPPLY © 2026</footer>
+<footer>© 2026 MADLAMB. | ARCHIVE SUPPLY</footer>
 
 <script>
     let prendaSeleccionadaParaEnvio = "";
     const carruselPositions = {};
 
-    // Cursor
     const cursor = document.getElementById('custom-cursor');
     document.addEventListener('mousemove', e => {
         cursor.style.left = e.clientX + 'px';
@@ -254,11 +271,11 @@
     ];
 
     const bitacora = [
-        { titulo: "The Waxed Canvas Trucker", meta: "10 Mar. 2026 — 3 min read", img: "The Waxed Canvas Trucker.jpg", short: "La chaqueta de lona encerada es mucho más que una prenda...", content: "La chaqueta de lona encerada es mucho más que una prenda; es una herencia de ingeniería textil que nació en el siglo XV..." },
-        { titulo: "La Detroit Jacket: El Icono del Asfalto", meta: "17 Mar. 2026 — 4 min read", img: "El Oro de Lona La Detroit Jacket.png", short: "No es moda rápida. Es lona de pato de 12 onzas...", content: "No es moda rápida. No es una tendencia de Instagram que desaparece en dos semanas. Es lona de pato de 12 onzas..." },
-        { titulo: "El Guardián de 1970 Regal Toy Ltd", meta: "12 Mar. 2026 — 3 min read", img: "Regal toy.jpg", short: "En el universo del coleccionismo vintage...", content: "En el universo del coleccionismo vintage, existe una jerarquía invisible..." },
-        { titulo: "Ebbets Field Flannels: El Heritage Americano", meta: "14 Mar. 2026 — 3 min read", img: "Ebbets Field Flannels2.png", short: "Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna...", content: "Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna de lo retro..." },
-        { titulo: "El Santo Grial del Denim: El Chaleco AMF Harley-Davidson de los 70", meta: "22 Mar. 2026 — 4 min read", img: "Chaleco_AMF_Harley_70s.png", short: "Este chaleco de mezclilla AMF no es solo una prenda...", content: "En el mundo del coleccionismo vintage, hay piezas que hablan, y luego están las que rugen..."}
+        { titulo: "The Waxed Canvas Trucker", meta: "10 Mar. 2026 — 3 min read", img: "The Waxed Canvas Trucker.jpg", short: "La chaqueta de lona encerada es mucho más que una prenda...", content: "La chaqueta de lona encerada es mucho más que una prenda; es una herencia de ingeniería textil que nació en el siglo XV para proteger a los marineros de los climas más hostiles..." },
+        { titulo: "La Detroit Jacket: El Icono del Asfalto", meta: "17 Mar. 2026 — 4 min read", img: "El Oro de Lona La Detroit Jacket.png", short: "No es moda rápida. Es lona de pato de 12 onzas...", content: "No es moda rápida. No es una tendencia de Instagram que desaparece en dos semanas. Es lona de pato de 12 onzas, triple costura y una reputación forjada en el acero y el concreto de Michigan..." },
+        { titulo: "El Guardián de 1970 Regal Toy Ltd", meta: "12 Mar. 2026 — 3 min read", img: "Regal toy.jpg", short: "En el universo del coleccionismo vintage...", content: "En el universo del coleccionismo vintage, existe una jerarquía invisible. En la cima no están los objetos producidos por millones, sino aquellos que cuentan la historia de una industria que ya no existe..." },
+        { titulo: "Ebbets Field Flannels: El Heritage Americano", meta: "14 Mar. 2026 — 3 min read", img: "Ebbets Field Flannels2.png", short: "Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna...", content: "Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna de lo retro; es una réplica exacta de ingeniería textil..." },
+        { titulo: "El Santo Grial del Denim: El Chaleco AMF Harley-Davidson de los 70", meta: "22 Mar. 2026 — 4 min read", img: "Chaleco_AMF_Harley_70s.png", short: "Este chaleco de mezclilla AMF no es solo una prenda...", content: "En el mundo del coleccionismo vintage, hay piezas que hablan, y luego están las que rugen. Este chaleco representa un capítulo fascinante de la cultura biker..."}
     ];
 
     function cargarGrid(id, lista) {
@@ -312,8 +329,8 @@
         document.getElementById(`track-${id}`).style.transform = `translateX(-${carruselPositions[id]*100}%)`;
     };
 
-    window.abrirModal = (n) => { prendaSeleccionadaParaEnvio = n; document.getElementById('modal').style.display = 'flex'; cursor.style.display = 'none'; };
-    window.cerrarModal = () => { document.getElementById('modal').style.display = 'none'; cursor.style.display = 'block'; };
+    window.abrirModal = (n) => { prendaSeleccionadaParaEnvio = n; document.getElementById('modal').style.display = 'flex'; };
+    window.cerrarModal = () => document.getElementById('modal').style.display = 'none';
     window.abrirLectura = (t, txt) => { document.getElementById('lectura-titulo').innerText = t; document.getElementById('lectura-texto').innerText = txt; document.getElementById('modal-lectura').style.display = 'flex'; document.body.style.overflow = 'hidden'; };
     window.cerrarLectura = () => { document.getElementById('modal-lectura').style.display = 'none'; document.body.style.overflow = 'auto'; };
 
