@@ -74,8 +74,8 @@
             background-image: url('banner-vintage regal.png');
         }
         
-        /* TITULOS PC: AUMENTO DE IMPACTO */
-        .hero-banner h2 { font-size: 120px !important; font-weight: 900; line-height: 0.8; margin: 0; text-transform: uppercase; animation: tracking-in 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both; }
+        /* TITULOS PC: FORZADOS A SER GRANDES */
+        .hero-banner h2 { font-size: 130px !important; font-weight: 900; line-height: 0.8; margin: 0; text-transform: uppercase; animation: tracking-in 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both; }
         @keyframes tracking-in { 0% { letter-spacing: -0.5em; opacity: 0; } 40% { opacity: 0.6; } 100% { opacity: 1; } }
         .hero-banner .frase-pregunta { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-style: italic; color: #eee; margin: 25px 0 40px; }
         .btn-banner { background: #fff; color: #000; padding: 18px 45px; font-weight: 700; text-transform: uppercase; text-decoration: none; font-size: 0.8rem; letter-spacing: 2px; }
@@ -88,13 +88,13 @@
         .main-container { max-width: 1600px; margin: 0 auto; padding: 0 8% 10rem; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 50px; }
         
-        /* CARD Y BADGE: CORRECCIÓN DE ETIQUETA FLOTANTE */
-        .card { position: relative; overflow: visible; }
-        .carousel-container { position: relative; width: 100%; aspect-ratio: 1 / 1.3; overflow: hidden; background: #0d0d0d; border: 1px solid var(--border); z-index: 1; }
+        /* FIX DEFINITIVO ETIQUETA CELULAR */
+        .card { position: relative; overflow: visible; display: flex; flex-direction: column; }
+        .carousel-container { position: relative; width: 100%; aspect-ratio: 1 / 1.3; overflow: hidden; background: #0d0d0d; border: 1px solid var(--border); }
         .carousel-track { display: flex; height: 100%; transition: transform 0.6s ease; }
         .carousel-track img { width: 100%; min-width: 100%; object-fit: cover; }
         
-        .badge { position: absolute; top: 15px; left: 15px; z-index: 20; padding: 6px 12px; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; background: #fff; color: #000; }
+        .badge { position: absolute; top: 15px; left: 15px; z-index: 20; padding: 6px 12px; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; background: #fff; color: #000; pointer-events: none; }
         .card.agotado-visual img { filter: grayscale(100%); opacity: 0.4; }
 
         .card-info h3 { font-size: 0.95rem; margin: 15px 0 5px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
@@ -118,37 +118,28 @@
         .modal-content { width: 100%; max-width: 500px; background: #0a0a0a; padding: 40px 20px; border: 1px solid var(--border); position: relative; }
         #modal-lectura .modal-content { max-width: 800px; max-height: 85vh; overflow-y: auto; padding: 60px 40px; text-align: left; background: #0a0a0a; border: 1px solid var(--border); }
         #modal-lectura h3 { font-size: 2.2rem; font-family: 'Playfair Display', serif; font-style: italic; color: var(--oxido); margin-top: 0; line-height: 1.2;}
-        #modal-lectura .texto-bitacora { line-height: 1.9; font-size: 1.1rem; color: #eee; font-weight: 300; white-space: pre-line; }
+        #modal-lectura div { line-height: 1.9; font-size: 1.1rem; color: #eee; font-weight: 300; }
 
         input { width: 100%; background: transparent; border: none; border-bottom: 1px solid #333; color: #fff; font-size: 1.5rem; text-align: center; padding: 15px 0; margin-bottom: 30px; outline: none; font-family: 'Playfair Display', serif; }
         footer { padding: 6rem 5%; text-align: center; font-size: 0.75rem; letter-spacing: 5px; opacity: 0.3; border-top: 1px solid var(--border); text-transform: uppercase;}
 
-        /* --- MEDIA QUERIES CELULAR: AJUSTES DE TAMAÑO RADICALES --- */
+        /* --- MEDIA QUERIES CELULAR: RE-AJUSTADOS --- */
         @media (max-width: 768px) {
             body { cursor: auto; padding-top: 100px; }
             #custom-cursor, .side-label { display: none; }
-            
-            .site-header h1 { font-size: 1.1rem !important; }
-            .nav-menu a { font-size: 0.6rem !important; }
-
-            .grid { grid-template-columns: 1fr; width: 85%; margin: 0 auto; gap: 40px; }
+            .grid { grid-template-columns: 1fr; width: 85%; margin: 0 auto; gap: 50px; }
             .hero-banner { height: 50vh; margin-bottom: 3rem;}
-            /* TITULOS CELULAR: CONTROLADOS */
             .hero-banner h2 { font-size: 3.5rem !important; }
-            .hero-banner .frase-pregunta { font-size: 1.1rem !important; margin: 15px 0 20px; }
+            .hero-banner .frase-pregunta { font-size: 1.2rem !important; }
             
-            .filter-bar { justify-content: flex-start; padding-left: 8%; gap: 1rem; }
-            .filter-btn { font-size: 0.65rem !important; }
-
-            /* INFO PRENDA CELULAR: MINI */
-            .card-info h3 { font-size: 0.75rem !important; letter-spacing: 0.5px; opacity: 0.9; }
-            .card-info .precio { font-size: 0.85rem !important; margin-bottom: 5px; }
-            .card-info .specs { font-size: 0.5rem !important; opacity: 0.4; padding-top: 5px; }
-            .btn-adquirir { font-size: 0.6rem !important; padding: 10px !important; letter-spacing: 1px !important; }
+            /* INFO PRENDA CELULAR: MAS PEQUEÑO */
+            .card-info h3 { font-size: 0.8rem !important; }
+            .card-info .precio { font-size: 0.9rem !important; }
+            .card-info .specs { font-size: 0.55rem; }
 
             .bitacora-grid { grid-template-columns: 1fr; padding: 2rem 10% 5rem; }
             #modal-lectura .modal-content { padding: 40px 25px; }
-            #modal-lectura h3 { font-size: 1.8rem; }
+            #modal-lectura h3 { font-size: 1.8rem !important; }
         }
     </style>
 </head>
@@ -200,14 +191,14 @@
 </section>
 
 <section id="bitacora" class="content-section">
-    <div style="text-align: center; padding: 8rem 0 2rem;"><h2 style="font-size: clamp(3.5rem, 15vw, 10rem); font-weight: 900; text-transform: uppercase;">Legado</h2></div>
+    <div style="text-align: center; padding: 8rem 0 2rem;"><h2 style="font-size: clamp(3.5rem, 15vw, 10rem) !important; font-weight: 900; text-transform: uppercase;">Legado</h2></div>
     <div class="bitacora-grid" id="bitacora-grid"></div>
 </section>
 
 <div id="modal" class="modal">
     <div class="modal-content">
         <form id="form-pedido">
-            <h3 style="text-transform: uppercase; font-weight: 900; font-size: 0.7rem; letter-spacing: 3px; margin-bottom: 20px; opacity: 0.5; text-align: center;">Adquirir Pieza</h3>
+            <h3 style="text-transform: uppercase; font-weight: 900; font-size: 0.7rem; letter-spacing: 3px; margin-bottom: 30px; opacity: 0.5; text-align: center;">Adquirir Pieza</h3>
             <input type="text" id="nombre-cliente" placeholder="Tu nombre" required>
             <button type="submit" class="btn-adquirir" style="background: #fff; color: #000;">WHATSAPP</button>
             <p onclick="cerrarModal()" style="margin-top: 20px; cursor: pointer; font-size: 0.7rem; opacity: 0.4; text-align: center;">CANCELAR</p>
@@ -218,7 +209,7 @@
 <div id="modal-lectura" class="modal">
     <div class="modal-content">
         <h3 id="lectura-titulo"></h3>
-        <div id="lectura-texto" class="texto-bitacora"></div>
+        <div id="lectura-texto"></div>
         <button type="button" onclick="cerrarLectura()" class="btn-adquirir" style="width: auto; padding: 12px 30px; margin-top: 30px; cursor: pointer;">Cerrar</button>
     </div>
 </div>
@@ -274,9 +265,9 @@
     const bitacora = [
         { titulo: "The Waxed Canvas Trucker", meta: "10 Mar. 2026 — 3 min read", img: "The Waxed Canvas Trucker.jpg", short: "La chaqueta de lona encerada es mucho más que una prenda...", content: "La chaqueta de lona encerada es mucho más que una prenda; es una herencia de ingeniería textil que nació en el siglo XV para proteger a los marineros de los climas más hostiles.\n\nDesde las velas de alta mar hasta las icónicas rutas de motociclismo, este material ha evolucionado utilizando fibras como el algodón Martexin y remaches de cobre para ofrecer una resistencia hercúlea y eterna.\n\nA diferencia de la moda desechable, su valor real reside en la pátina que desarrolla con el tiempo, transformando cada arruga y marca en una crónica visual de las aventuras de quien la viste, convirtiéndola en una inversión única diseñada para pasar de generación en generación." },
         { titulo: "La Detroit Jacket: El Icono del Asfalto", meta: "17 Mar. 2026 — 4 min read", img: "El Oro de Lona La Detroit Jacket.png", short: "No es moda rápida. Es lona de pato de 12 onzas...", content: "No es moda rápida. No es una tendencia de Instagram que desaparece en dos semanas. Es lona de pato de 12 onzas, triple costura y una reputación forjada en el acero y el concreto de Michigan.\n\n(La Historia: Nacida del Vapor)\nHamilton Carhartt no diseñó la Detroit Jacket para las pasarelas en 1889. La diseñó para los hombres que construyeron América: trabajadores del ferrocarril y obreros siderúrgicos. Necesitaban algo que no se rompiera, que resistiera chispas y que los mantuviera calientes sin restringir el movimiento. La Detroit Jacket original (con su corte corto a la cintura y forro de manta) fue la respuesta. Su color 'Carhartt Brown' no era estético; era el color natural de la lona resistente que usaban. Nació de la pura necesidad funcional.\n\n(La Curiosidad: Del Andamio al 'Grunge' y el Hip-Hop)\n¿Cómo pasó de un sitio de construcción a ser la pieza central del streetwear? En los años 90, algo cambió. El movimiento grunge en Seattle adoptó la ropa de trabajo por su autenticidad y durabilidad. Simultáneamente, la escena del Hip-Hop en Nueva York comenzó a usarla como un símbolo de 'dureza' y resistencia urbana.\n\n(La Conexión de Hollywood: El Uniforme del Héroe Relatable)\nAquí es donde la Detroit Jacket solidifica su estatus legendario. En el cine, cuando un director necesita que un personaje parezca rudo, honesto y práctico, no le ponen un traje. Le ponen una Carhartt Detroit desgastada.\n\nEn un mundo de consumo desechable, la Carhartt Detroit es una anomalía. Se ve mejor cuando está vieja, manchada y desgastada. Cada rasguño cuenta una historia. No es solo una chaqueta; es un testimonio de que la autenticidad y la función nunca pasan de moda." },
-        { titulo: "El Guardián de 1970 Regal Toy Ltd", meta: "12 Mar. 2026 — 3 min read", img: "Regal toy.jpg", short: "En el universo del coleccionismo vintage...", content: "En el universo del coleccionismo vintage, existe una jerarquía invisible. En la cima no están los objetos producidos por millones, sino aquellos que cuentan la historia de una industria que ya no existe.\n\nHoy nos enfocamos en una de nuestras piezas más valiosas: el Regal Toy de la serie First Nations.\n\nRareza de Origen: El Sello de Toronto\nFundada en 1959, Regal Toy Ltd. fue el titán de la manufactura juguetera en Canadá. Poseer una pieza con el grabado original en la espalda no es solo tener un juguete; es poseer un fragmento del patrimonio industrial norteamericano. Tras el cierre de sus fábricas, estas figuras pasaron de los estantes de las tiendas a las vitrinas de los museos de diseño.\n\n⏳ La Exclusividad de la Supervivencia\nLo que hace a este ejemplar de 1970 una pieza de exclusividad absoluta no es solo su edad (más de 55 años), sino su estado de conservación.\n\nEl Vinilo Térmico: A diferencia del plástico moderno que se degrada y se vuelve quebradizo, el vinilo Regal fue diseñado para durar siglos.\n\nLa Pátina del Tiempo: La suavidad de sus facciones y el brillo conservado en su mirada son imposibles de replicar. Es una cápsula del tiempo que ha sobrevivido a décadas de cambios culturales y tecnológicos.\n\n💎 Más que un Objeto, una Inversión Cultural\nEn una era de consumo desechable, la exclusividad reside en la permanencia. Este muñeco representa una época donde el juguete era una obra de arte manual. Su vestimenta de fieltro, sus costuras reforzadas y su diseño étnico detallado lo convierten en un objeto muy interesante." },
-        { titulo: "Ebbets Field Flannels: El Heritage Americano", meta: "14 Mar. 2026 — 3 min read", img: "Ebbets Field Flannels2.png", short: "Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna...", content: "Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna de lo retro; es una réplica exacta de ingeniería textil. Fabricada en Seattle, esta gorra logra capturar el 'look & feel' preciso de los años 40 y 50, manteniendo viva la artesanía que las máquinas actuales han olvidado.\n\n¿Qué la hace una pieza única?\n\nLa Identidad de 'La Casa': A diferencia de las reproducciones de equipos de ligas menores, esta edición limitada porta el logotipo 'EFF' en fieltro blanco. Es la firma de la marca, una declaración de principios para el coleccionista que valora la historia de la propia manufactura.\n\nEstética de Época Impecable: Su estructura es exactamente igual a las gorras usadas en el diamante hace 80 años. Al no tener los refuerzos rígidos frontales de las gorras modernas, ofrece esa caída natural y perfil bajo que definió la silueta de los jugadores de la era dorada.\n\nDetalles de Fidelidad Histórica:\nVisera de Satín Verde: sello de autenticidad visual.\nCorrea de Cuero Genuino: Cierre robusto y tradicional." },
-        { titulo: "El Santo Grial del Denim: El Chaleco AMF Harley-Davidson de los 70", meta: "22 Mar. 2026 — 4 min read", img: "Chaleco_AMF_Harley_70s.png", short: "Este chaleco de mezclilla AMF no es solo una prenda...", content: "En el mundo del coleccionismo vintage, hay piezas que hablan, y luego están las que rugen. Este chaleco representa un capítulo fascinante de la cultura biker, fabricado en un momento de transición donde el estilo se volvió más audaz y rebelde.\n\nLa Era AMF: El Atractivo de lo Rebelde: Para los puristas, la etapa de American Machine and Foundry (1969-1981) es sagrada. Llevar este logo es portar el estandarte de la contracultura de los 70.\n\nUn Origen Exclusivo: 'British Crown Colony of Hong Kong': Encontrar una pieza Harley con este origen colonial es una rareza geográfica que los expertos buscan con lupa.\n\nDetalles Técnicos:\nLacing Lateral: Cordones de cuero genuino que permitían ajustar la prenda sobre chaquetas gruesas.\nFidelidad de Materiales: Denim 100% Algodón con un lavado natural." }
+        { titulo: "El Guardián de 1970 Regal Toy Ltd", meta: "12 Mar. 2026 — 3 min read", img: "Regal toy.jpg", short: "En el universo del coleccionismo vintage...", content: "En el universo del coleccionismo vintage, existe una jerarquía invisible. En la cima no están los objetos producidos por millones, sino aquellos que cuentan la historia de una industria que ya no existe.\n\nHoy nos enfocamos en una de nuestras piezas más valiosas: el Regal Toy de la serie First Nations.\n\nFundada en 1959, Regal Toy Ltd. fue el titán de la manufactura juguetera en Canadá. Poseer una pieza con el grabado original en la espalda no es solo tener un juguete; es poseer un fragmento del patrimonio industrial norteamericano. Tras el cierre de sus fábricas, estas figuras pasaron de los estantes de las tiendas a las vitrinas de los museos de diseño.\n\nLo que hace a este ejemplar de 1970 una pieza de exclusividad absoluta no es solo su edad (más de 55 años), sino su estado de conservación.\n\nA diferencia del plástico moderno que se degrada y se vuelve quebradizo, el vinilo Regal fue diseñado para durar siglos.\n\nLa suavidad de sus facciones y el brillo conservado en su mirada son imposibles de replicar. Es una cápsula del tiempo que ha sobrevivido a décadas de cambios culturales y tecnológicos." },
+        { titulo: "Ebbets Field Flannels: El Heritage Americano", meta: "14 Mar. 2026 — 3 min read", img: "Ebbets Field Flannels2.png", short: "Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna...", content: "Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna de lo retro; es una réplica exacta de ingeniería textil. Fabricada en Seattle, esta gorra logra capturar el 'look & feel' preciso de los años 40 y 50, manteniendo viva la artesanía que las máquinas actuales han olvidado.\n\n¿Qué la hace una pieza única?\n\nLa Identidad de 'La Casa': A diferencia de las reproducciones de equipos de ligas menores, esta edición limitada porta el logotipo 'EFF' en fieltro blanco. Es la firma de la marca, una declaración de principios para el coleccionista que valora la historia de la propia manufactura.\n\nSu estructura es exactamente igual a las gorras usadas en el diamante hace 80 años. Al no tener los refuerzos rígidos frontales de las gorras modernas, ofrece esa caída natural y perfil bajo que definió la silueta de los jugadores de la era dorada.\n\nTejida con la densidad y el peso originales.\nRecupera el reverso clásico diseñado para mitigar el brillo solar, un sello de autenticidad visual.\nUn cierre robusto y tradicional que refuerza su herencia artesanal.\n\nEs una pieza de diseño de autor. Combina la exclusividad de una tirada limitada de 2014 con la apariencia visual de una reliquia de 1945. Es, sencillamente, historia viva que puedes usar." },
+        { titulo: "El Santo Grial del Denim: El Chaleco AMF Harley-Davidson de los 70", meta: "22 Mar. 2026 — 4 min read", img: "Chaleco_AMF_Harley_70s.png", short: "Este chaleco de mezclilla AMF no es solo una prenda...", content: "En el mundo del coleccionismo vintage, hay piezas que hablan, y luego están las que rugen. Este chaleco representa un capítulo fascinante de la cultura biker, fabricado en un momento de transición donde el estilo se volvió más audaz y rebelde.\n\nPara los puristas, la etapa de American Machine and Foundry (1969-1981) es sagrada. Llevar este logo es portar el estandarte de la contracultura de los 70, la década donde el estilo 'Chopper' alcanzó su clímax.\n\nUn Origen Exclusivo: 'British Crown Colony of Hong Kong': Encontrar una pieza Harley con este origen colonial es una rareza geográfica que los expertos buscan con lupa.\n\nCordones de cuero genuino que permitían ajustar la prenda sobre chaquetas gruesas o usarla sola, una solución funcional de la carretera.\n\nUn tejido pesado con un lavado natural que solo décadas de historia pueden lograr.\nMetalistería original en el pecho que aporta ese carácter rudo y protector.\n\nEste chaleco es para el coleccionista que valora la procedencia por encima de todo. Es una pieza fabricada para una leyenda americana en su época más psicodélica. No es solo ropa; es un trozo de asfalto, sudor y libertad de 1970." }
     ];
 
     function cargarGrid(id, lista) {
