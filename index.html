@@ -26,7 +26,6 @@
             cursor: none;
         }
 
-        /* --- Elementos PC (Ocultos por defecto en móviles) --- */
         #custom-cursor {
             position: fixed; width: 20px; height: 20px; background: #fff;
             border-radius: 50%; pointer-events: none; z-index: 10001;
@@ -52,7 +51,7 @@
         #preloader h2 { font-weight: 900; letter-spacing: 15px; font-size: 1.5rem; text-transform: uppercase; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
-        /* --- Header Ajustado para Móvil --- */
+        /* --- Header --- */
         .site-header { 
             background: rgba(10, 10, 10, 0.9); backdrop-filter: blur(15px);
             padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; 
@@ -67,11 +66,11 @@
         .content-section { display: none; opacity: 0; transform: translateY(20px); transition: var(--transition); }
         .content-section.active { display: block; opacity: 1; transform: translateY(0); }
 
-        /* --- Hero Banner Responsivo --- */
+        /* --- Hero --- */
         .hero-banner { 
             position: relative; height: 60vh; width: 100%; margin-bottom: 3rem;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; overflow: hidden; padding: 0 5%; box-sizing: border-box;
+            text-align: center; overflow: hidden; padding: 0 10%; box-sizing: border-box;
         }
         .hero-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -82,14 +81,15 @@
         .btn-banner { background: #fff; color: #000; padding: 15px 35px; font-weight: 700; text-transform: uppercase; text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; }
 
         /* --- Filtros --- */
-        .filter-bar { padding: 1rem 5% 3rem; display: flex; justify-content: flex-start; gap: 1.5rem; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+        .filter-bar { padding: 1rem 5% 3rem; display: flex; justify-content: center; gap: 1.5rem; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+        @media (max-width: 768px) { .filter-bar { justify-content: flex-start; } }
         .filter-bar::-webkit-scrollbar { display: none; }
         .filter-btn { background: none; border: none; color: var(--accent); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; opacity: 0.3; white-space: nowrap; padding-bottom: 5px; }
         .filter-btn.active { opacity: 1; color: var(--oxido); border-bottom: 1px solid var(--oxido); }
 
         /* --- Grid & Cards --- */
-        .main-container { max-width: 1400px; margin: 0 auto; padding: 0 5% 5rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 40px; }
+        .main-container { max-width: 1400px; margin: 0 auto; padding: 0 8% 5rem; } /* Más margen para estética */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 50px; }
         
         .carousel-container { position: relative; width: 100%; aspect-ratio: 1 / 1.3; overflow: hidden; background: #0d0d0d; border: 1px solid var(--border); }
         .carousel-track { display: flex; height: 100%; transition: transform 0.6s ease; }
@@ -102,27 +102,36 @@
         .card-info .precio { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 10px; }
         .card-info .specs { font-size: 0.7rem; opacity: 0.5; margin-bottom: 20px; border-top: 1px solid var(--border); padding-top: 10px; }
 
-        .btn-adquirir { background: transparent; color: #fff; padding: 15px; border: 1px solid var(--border); width: 100%; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+        .btn-adquirir { background: transparent; color: #fff; padding: 15px; border: 1px solid var(--border); width: 100%; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; transition: var(--transition); }
+        .btn-adquirir:hover:not(:disabled) { background: #fff; color: #000; }
 
         /* --- Bitácora --- */
-        .bitacora-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 60px 40px; padding: 2rem 5% 5rem; }
+        .bitacora-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px 40px; padding: 2rem 8% 5rem; }
         .bitacora-item { cursor: pointer; border-bottom: 1px solid var(--border); padding-bottom: 30px; }
-        .bitacora-item .img-container { width: 100%; aspect-ratio: 16/9; overflow: hidden; margin: 15px 0; }
-        .bitacora-item .img-container img { width: 100%; height: 100%; object-fit: cover; }
+        .bitacora-item .img-container { width: 100%; aspect-ratio: 16/9; overflow: hidden; margin: 15px 0; border: 1px solid var(--border); }
+        .bitacora-item .img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .bitacora-item:hover .img-container img { transform: scale(1.05); }
         .bitacora-item h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; margin: 10px 0; }
 
-        /* --- Media Queries --- */
+        /* --- Modales --- */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); justify-content: center; align-items: center; z-index: 9999; padding: 20px; box-sizing: border-box; backdrop-filter: blur(10px); }
+        .modal-content { width: 100%; max-width: 500px; background: #0a0a0a; padding: 40px 20px; border: 1px solid var(--border); position: relative; }
+        #modal-lectura .modal-content { max-width: 800px; max-height: 85vh; overflow-y: auto; padding: 60px 40px; text-align: left; }
+        #modal-lectura h3 { font-size: 2.5rem; font-family: 'Playfair Display', serif; font-style: italic; color: var(--oxido); margin-top: 0; }
+        #modal-lectura p { line-height: 1.8; font-size: 1.1rem; color: #ccc; font-weight: 300; }
+
+        input { width: 100%; background: transparent; border: none; border-bottom: 1px solid #333; color: #fff; font-size: 1.5rem; text-align: center; padding: 15px 0; margin-bottom: 30px; outline: none; font-family: 'Playfair Display', serif; }
+        footer { padding: 4rem 5%; text-align: center; font-size: 0.6rem; letter-spacing: 5px; opacity: 0.3; border-top: 1px solid var(--border); }
+
+        /* --- Media Queries Celular --- */
         @media (max-width: 768px) {
             body { cursor: auto; padding-top: 60px; }
             #custom-cursor, .side-label { display: none; }
-            .grid { grid-template-columns: 1fr; }
+            .grid { grid-template-columns: 1fr; width: 90%; margin: 0 auto; }
+            .main-container { padding: 0 5% 5rem; }
             .hero-banner { height: 50vh; }
-            .bitacora-grid { grid-template-columns: 1fr; }
-            .modal-content { padding: 30px 15px; }
-        }
-
-        @media (min-width: 1025px) {
-            .grid { grid-template-columns: repeat(3, 1fr); }
+            .bitacora-grid { grid-template-columns: 1fr; padding: 2rem 10% 5rem; }
+            #modal-lectura .modal-content { padding: 40px 25px; }
         }
     </style>
 </head>
@@ -193,7 +202,7 @@
     <div class="modal-content">
         <h3 id="lectura-titulo"></h3>
         <p id="lectura-texto"></p>
-        <button type="button" onclick="cerrarLectura()" class="btn-adquirir" style="width: auto; padding: 12px 30px; margin-top: 20px;">Cerrar</button>
+        <button type="button" onclick="cerrarLectura()" class="btn-adquirir" style="width: auto; padding: 12px 30px; margin-top: 40px;">Cerrar Lectura</button>
     </div>
 </div>
 
@@ -274,12 +283,16 @@
     }
 
     function cargarBitacora() {
-        document.getElementById('bitacora-grid').innerHTML = bitacora.map(b => `
-            <div class="bitacora-item" onclick="abrirLectura('${b.titulo.replace(/'/g, "\\'")}', \`${b.content}\`)">
-                <span class="meta-bitacora">${b.meta}</span>
+        document.getElementById('bitacora-grid').innerHTML = bitacora.map(b => {
+            // Limpiamos el texto para evitar errores de JS al pasarlo al modal
+            const textoLimpio = b.content.replace(/`/g, '\\`').replace(/\n/g, '<br>');
+            return `
+            <div class="bitacora-item" onclick="abrirLectura('${b.titulo.replace(/'/g, "\\'")}', \`${textoLimpio}\`)">
+                <span class="meta-bitacora" style="font-size:0.65rem; color:var(--oxido); letter-spacing:2px;">${b.meta}</span>
                 <div class="img-container"><img src="${b.img}" loading="lazy"></div>
-                <h3>${b.titulo}</h3><p>${b.short}</p>
-            </div>`).join('');
+                <h3>${b.titulo}</h3><p style="font-size:0.85rem; opacity:0.6; font-weight:300;">${b.short}</p>
+            </div>`;
+        }).join('');
     }
 
     window.filtrar = function(cat) {
@@ -305,8 +318,18 @@
 
     window.abrirModal = (n) => { prendaSeleccionadaParaEnvio = n; document.getElementById('modal').style.display = 'flex'; };
     window.cerrarModal = () => document.getElementById('modal').style.display = 'none';
-    window.abrirLectura = (t, txt) => { document.getElementById('lectura-titulo').innerText = t; document.getElementById('lectura-texto').innerText = txt; document.getElementById('modal-lectura').style.display = 'flex'; document.body.style.overflow = 'hidden'; };
-    window.cerrarLectura = () => { document.getElementById('modal-lectura').style.display = 'none'; document.body.style.overflow = 'auto'; };
+    
+    window.abrirLectura = (t, html) => { 
+        document.getElementById('lectura-titulo').innerText = t; 
+        document.getElementById('lectura-texto').innerHTML = html; 
+        document.getElementById('modal-lectura').style.display = 'flex'; 
+        document.body.style.overflow = 'hidden'; 
+    };
+    
+    window.cerrarLectura = () => { 
+        document.getElementById('modal-lectura').style.display = 'none'; 
+        document.body.style.overflow = 'auto'; 
+    };
 
     document.getElementById('form-pedido').addEventListener('submit', function(e) {
         e.preventDefault();
