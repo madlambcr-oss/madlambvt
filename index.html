@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MADLAMB. | Archive Supply</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;900&family=Playfair+Display:italic,wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -16,18 +16,17 @@
             --oxido: #b35a38; 
         }
 
-        /* --- Reset & Base --- */
+        /* --- Estética Base & Grano --- */
         body { 
             margin: 0; font-family: 'Inter', sans-serif; 
             background-color: var(--bg); color: var(--accent);
             padding-top: 80px; overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            cursor: none; 
-            /* Fondo con grano agregado */
             background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+            cursor: none;
         }
 
-        /* --- Punto 1: Cursor Personalizado --- */
+        /* --- Elementos Visuales PC --- */
         #custom-cursor {
             position: fixed; width: 20px; height: 20px; background: #fff;
             border-radius: 50%; pointer-events: none; z-index: 10001;
@@ -35,15 +34,14 @@
             transform: translate(-50%, -50%);
         }
 
-        /* --- Texto Vertical Lateral agregado --- */
         .side-label {
-            position: fixed; top: 50%; font-size: 10px; font-weight: 600;
-            letter-spacing: 5px; text-transform: uppercase; color: rgba(255,255,255,0.2);
+            position: fixed; top: 50%; font-size: 9px; font-weight: 600;
+            letter-spacing: 5px; text-transform: uppercase; color: rgba(255,255,255,0.15);
             writing-mode: vertical-rl; transform: translateY(-50%);
             z-index: 100; pointer-events: none;
         }
-        .side-label.left { left: 30px; }
-        .side-label.right { right: 30px; transform: translateY(-50%) rotate(180deg); }
+        .side-label.left { left: 20px; }
+        .side-label.right { right: 20px; transform: translateY(-50%) rotate(180deg); }
 
         /* --- Preloader --- */
         #preloader {
@@ -52,7 +50,7 @@
             display: flex; justify-content: center; align-items: center;
             transition: opacity 1s ease;
         }
-        #preloader h2 { font-weight: 900; letter-spacing: 15px; font-size: 1.5rem; text-transform: uppercase; color: #fff; animation: pulse 2s infinite; }
+        #preloader h2 { font-weight: 900; letter-spacing: 15px; font-size: 1.5rem; text-transform: uppercase; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
         /* --- Header --- */
@@ -70,7 +68,7 @@
         .content-section { display: none; opacity: 0; transform: translateY(20px); transition: var(--transition); }
         .content-section.active { display: block; opacity: 1; transform: translateY(0); }
 
-        /* --- Punto 2: Hero Banner Animado --- */
+        /* --- Hero Banner --- */
         .hero-banner { 
             position: relative; height: 75vh; width: 100%; margin: 0px auto 5rem;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -80,17 +78,14 @@
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-size: cover; background-position: center;
             filter: brightness(0.5) contrast(1.1) grayscale(20%);
-            transform: scale(1.1); transition: transform 10s linear;
-            z-index: -1;
+            transform: scale(1.1); transition: transform 10s linear; z-index: -1;
         }
         .hero-banner:hover .hero-bg { transform: scale(1); }
-        
         #suministros .hero-bg { background-image: url('banner-vintage regal.png'); }
         #articulos .hero-bg { background-image: url('banner-vintage regal.png'); }
 
-        .hero-banner h2 { font-size: clamp(3.5rem, 12vw, 10rem); font-weight: 900; line-height: 0.8; margin: 0; letter-spacing: -0.05em; text-transform: uppercase; color: #fff; animation: tracking-in 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both; }
+        .hero-banner h2 { font-size: clamp(3rem, 12vw, 10rem); font-weight: 900; line-height: 0.8; margin: 0; letter-spacing: -0.05em; text-transform: uppercase; animation: tracking-in 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both; }
         @keyframes tracking-in { 0% { letter-spacing: -0.5em; opacity: 0; } 40% { opacity: 0.6; } 100% { opacity: 1; } }
-
         .hero-banner .frase-pregunta { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; color: #eee; margin: 25px 0 40px; }
         .btn-banner { background: #fff; color: #000; padding: 18px 45px; border-radius: 2px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; transition: var(--transition); font-size: 0.8rem; }
         .btn-banner:hover { background: var(--oxido); color: #fff; transform: translateY(-3px); }
@@ -100,11 +95,9 @@
         .filter-btn { background: none; border: none; color: var(--accent); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; opacity: 0.3; transition: var(--transition); padding-bottom: 8px; border-bottom: 1px solid transparent; white-space: nowrap; }
         .filter-btn.active, .filter-btn:hover { opacity: 1; color: var(--oxido); border-bottom: 1px solid var(--oxido); }
 
-        /* --- Grid de Productos --- */
+        /* --- Grid & Cards --- */
         .main-container { max-width: 1600px; margin: 0 auto; padding: 0 5% 10rem; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 50px; }
-        
-        /* Punto 5: Animación de entrada y Zoom */
         .card { position: relative; opacity: 0; transform: translateY(30px); animation: fadeUp 0.8s forwards; }
         @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
@@ -127,13 +120,11 @@
         .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.4); color: white; border: none; padding: 20px 15px; cursor: pointer; z-index: 30; opacity: 0; transition: 0.3s; }
         .card:hover .nav-btn { opacity: 1; }
 
-        /* --- Punto 4: Bitácora Refinada --- */
+        /* --- Bitácora --- */
         .bitacora-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 100px 60px; max-width: 1400px; margin: 0 auto; padding: 5rem 5% 10rem; }
         .bitacora-item { cursor: pointer; border-bottom: 1px solid var(--border); padding-bottom: 60px; transition: var(--transition); }
-        .bitacora-item:hover { border-color: var(--oxido); }
         .bitacora-item .img-container { width: 100%; aspect-ratio: 16/9; overflow: hidden; margin: 25px 0 35px; }
         .bitacora-item .img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.5s ease; filter: sepia(20%); }
-        .bitacora-item:hover .img-container img { transform: scale(1.05); filter: sepia(0%); }
         .bitacora-item h3 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin: 20px 0; font-style: italic; font-weight: 400; }
 
         /* --- Modales --- */
@@ -142,22 +133,27 @@
         #modal-lectura h3 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; margin-bottom: 30px; color: var(--oxido); }
         #modal-lectura p { font-size: 1.2rem; line-height: 1.8; color: #ccc; white-space: pre-line; font-weight: 300; }
 
-        input { width: 100%; padding: 20px 0; border: none; border-bottom: 1px solid #333; background: transparent; font-size: 2rem; outline: none; text-align: center; color: #fff; margin-bottom: 45px; font-family: 'Playfair Display', serif; font-style: italic; transition: border-color 0.4s; }
-        input:focus { border-color: var(--oxido); }
+        input { width: 100%; padding: 20px 0; border: none; border-bottom: 1px solid #333; background: transparent; font-size: 2rem; outline: none; text-align: center; color: #fff; margin-bottom: 45px; font-family: 'Playfair Display', serif; font-style: italic; }
         footer { padding: 6rem 5%; text-align: center; border-top: 1px solid var(--border); font-size: 0.75rem; letter-spacing: 5px; color: #333; text-transform: uppercase; }
 
-        @media (max-width: 1024px) { 
-            .bitacora-grid { grid-template-columns: 1fr; } 
-            #custom-cursor, .side-label { display: none; } 
-            body { cursor: auto; } 
+        /* --- MEDIA QUERIES (RESPONSIVO) --- */
+        @media (max-width: 1024px) {
+            body { cursor: auto; }
+            #custom-cursor, .side-label { display: none; }
+            .grid { grid-template-columns: 1fr; gap: 40px; }
+            .bitacora-grid { grid-template-columns: 1fr; }
+            .nav-menu ul { gap: 1.5rem; }
+            .nav-menu a { font-size: 0.7rem; }
+            .filter-bar { justify-content: flex-start; gap: 1.5rem; }
+            .hero-banner { height: 55vh; }
         }
     </style>
 </head>
 <body>
 
 <div id="custom-cursor"></div>
-<div class="side-label left">MADLAMB. CORDERO MALO //NO SIGAS AL REBAÑO</div>
-<div class="side-label right">ENCUENTRA TU PROPIA PIEL</div>
+<div class="side-label left">MADLAMB. ARCHIVE SUPPLY // MILWAUKEE TO SAN JOSE</div>
+<div class="side-label right">EST. 2026 — ALL RIGHTS RESERVED</div>
 
 <div id="preloader"><h2>MADLAMB.</h2></div>
 
@@ -271,11 +267,11 @@
     ];
 
     const bitacora = [
-        { titulo: "The Waxed Canvas Trucker", meta: "10 Mar. 2026 — 3 min read", img: "The Waxed Canvas Trucker.jpg", short: "La chaqueta de lona encerada es mucho más que una prenda...", content: "La chaqueta de lona encerada es mucho más que una prenda; es una herencia de ingeniería textil que nació en el siglo XV para proteger a los marineros de los climas más hostiles..." },
-        { titulo: "La Detroit Jacket: El Icono del Asfalto", meta: "17 Mar. 2026 — 4 min read", img: "El Oro de Lona La Detroit Jacket.png", short: "No es moda rápida. Es lona de pato de 12 onzas...", content: "No es moda rápida. No es una tendencia de Instagram que desaparece en dos semanas. Es lona de pato de 12 onzas, triple costura y una reputación forjada en el acero y el concreto de Michigan..." },
-        { titulo: "El Guardián de 1970 Regal Toy Ltd", meta: "12 Mar. 2026 — 3 min read", img: "Regal toy.jpg", short: "En el universo del coleccionismo vintage...", content: "En el universo del coleccionismo vintage, existe una jerarquía invisible. En la cima no están los objetos producidos por millones, sino aquellos que cuentan la historia de una industria que ya no existe..." },
-        { titulo: "Ebbets Field Flannels: El Heritage Americano", meta: "14 Mar. 2026 — 3 min read", img: "Ebbets Field Flannels2.png", short: "Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna...", content: "Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna de lo retro; es una réplica exacta de ingeniería textil..." },
-        { titulo: "El Santo Grial del Denim: El Chaleco AMF Harley-Davidson de los 70", meta: "22 Mar. 2026 — 4 min read", img: "Chaleco_AMF_Harley_70s.png", short: "Este chaleco de mezclilla AMF no es solo una prenda...", content: "En el mundo del coleccionismo vintage, hay piezas que hablan, y luego están las que rugen. Este chaleco representa un capítulo fascinante de la cultura biker..."}
+        { titulo: "The Waxed Canvas Trucker", meta: "10 Mar. 2026 — 3 min read", img: "The Waxed Canvas Trucker.jpg", short: "La chaqueta de lona encerada es mucho más que una prenda...", content: "La chaqueta de lona encerada es mucho más que una prenda; es una herencia de ingeniería textil que nació en el siglo XV para proteger a los marineros de los climas más hostiles. Desde las velas de alta mar hasta las icónicas rutas de motociclismo, este material ha evolucionado utilizando fibras como el algodón Martexin y remaches de cobre para ofrecer una resistencia hercúlea y eterna. A diferencia de la moda desechable, su valor real reside en la pátina que desarrolla con el tiempo, transformando cada arruga y marca en una crónica visual de las aventuras de quien la viste, convirtiéndola en una inversión única diseñada para pasar de generación en generación." },
+        { titulo: "La Detroit Jacket: El Icono del Asfalto", meta: "17 Mar. 2026 — 4 min read", img: "El Oro de Lona La Detroit Jacket.png", short: "No es moda rápida. Es lona de pato de 12 onzas...", content: "No es moda rápida. No es una tendencia de Instagram que desaparece en dos semanas. Es lona de pato de 12 onzas, triple costura y una reputación forjada en el acero y el concreto de Michigan. Estamos hablando de la Carhartt Detroit Jacket. Si has visto Interstellar, Yellowstone, o simplemente has caminado por cualquier ciudad con clima frío en los últimos 30 años, la has visto. Pero, ¿por qué esta pieza de ropa de trabajo se convirtió en un ícono cultural inamovible? En MadLamb, desglosamos el ADN de la chaqueta que se niega a morir. \n\n (La Historia: Nacida del Vapor) \n Hamilton Carhartt no diseñó la Detroit Jacket para las pasarelas en 1889. La diseñó para los hombres que construyeron América: trabajadores del ferrocarril y obreros siderúrgicos. Necesitaban algo que no se rompiera, que resistiera chispas y que los mantuviera calientes sin restringir el movimiento. La Detroit Jacket original (con su corte corto a la cintura y forro de manta) fue la respuesta. Su color 'Carhartt Brown' no era estético; era el color natural de la lona resistente que usaban. Nació de la pura necesidad funcional. \n\n (La Curiosidad: Del Andamio al 'Grunge' y el Hip-Hop) \n ¿Cómo pasó de un sitio de construcción a ser la pieza central del streetwear? En los años 90, algo cambió. El movimiento grunge en Seattle adoptó la ropa de trabajo por su autenticidad y durabilidad. Simultáneamente, la escena del Hip-Hop en Nueva York comenzó a usarla como un símbolo de 'dureza' y resistencia urbana. No estaban tratando de parecer trabajadores; estaban usando una armadura urbana que reflejaba la realidad de la calle. \n\n (La Conexión de Hollywood: El Uniforme del Héroe Relatable) \n Aquí es donde la Detroit Jacket solidifica su estatus legendario. En el cine, cuando un director necesita que un personaje parezca rudo, honesto y práctico, no le ponen un traje. Le ponen una Carhartt Detroit desgastada. \n\n - Matthew McConaughey en Interstellar: Su chaqueta marrón representa al agricultor que debe salvar el mundo. \n - Kevin Costner en Yellowstone: La versión de lona negra encarna al cowboy moderno y endurecido. \n - Robert Pattinson en Tenet: Aparece en azul marino para anclar al personaje en la realidad física de la acción. \n\n En un mundo de consumo desechable, la Carhartt Detroit es una anomalía. Se ve mejor cuando está vieja, manchada y desgastada. Cada rasguño cuenta una historia. No es solo una chaqueta; es un testimonio de que la autenticidad y la función nunca pasan de moda." },
+        { titulo: "El Guardián de 1970 Regal Toy Ltd", meta: "12 Mar. 2026 — 3 min read", img: "Regal toy.jpg", short: "En el universo del coleccionismo vintage...", content: "En el universo del coleccionismo vintage, existe una jerarquía invisible. En la cima no están los objetos producidos por millones, sino aquellos que cuentan la historia de una industria que ya no existe.\n\nHoy nos enfocamos en una de nuestras piezas más valiosas: el Regal Toy de la serie First Nations.\n\nRareza de Origen: El Sello de Toronto\nFundada en 1959, Regal Toy Ltd. fue el titán de la manufactura juguetera en Canadá. Poseer una pieza con el grabado original en la espalda no es solo tener un juguete; es poseer un fragmento del patrimonio industrial norteamericano. Tras el cierre de sus fábricas, estas figuras pasaron de los estantes de las tiendas a las vitrinas de los museos de diseño.\n\n⏳ La Exclusividad de la Supervivencia\nLo que hace a este ejemplar de 1970 una pieza de exclusividad absoluta no es solo su edad (más de 55 años), sino su estado de conservación.\n\nEl Vinilo Térmico: A diferencia del plástico moderno que se degrada y se vuelve quebradizo, el vinilo Regal fue diseñado para durar siglos.\n\nLa Pátina del Tiempo: La suavidad de sus facciones y el brillo conservado en su mirada son imposibles de replicar. Es una cápsula del tiempo que ha sobrevivido a décadas de cambios culturales y tecnológicos.\n\n💎 Más que un Objeto, una Inversión Cultural\nEn una era de consumo desechable, la exclusividad reside en la permanencia. Este muñeco representa una época donde el juguete era una obra de arte manual. Su vestimenta de fieltro, sus costuras reforzadas y su diseño étnico detallado lo convierten en un objeto muy interesante." },
+        { titulo: "Ebbets Field Flannels: El Heritage Americano", meta: "14 Mar. 2026 — 3 min read", img: "Ebbets Field Flannels2.png", short: "Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna...", content: "Esta pieza de Ebbets Field Flannels (2014) no es una interpretación moderna de lo retro; es una réplica exacta de ingeniería textil. Fabricada en Seattle, esta gorra logra capturar el 'look & feel' preciso de los años 40 y 50, manteniendo viva la artesanía que las máquinas actuales han olvidado.\n\n¿Qué la hace una pieza única?\n\nLa Identidad de 'La Casa': A diferencia de las reproducciones de equipos de ligas menores, esta edición limitada porta el logotipo 'EFF' en fieltro blanco. Es la firma de la marca, una declaración de principios para el coleccionista que valora la historia de la propia manufactura.\n\nEstética de Época Impecable: Su estructura es exactamente igual a las gorras usadas en el diamante hace 80 años. Al no tener los refuerzos rígidos frontales de las gorras modernas, ofrece esa caída natural y perfil bajo que definió la silueta de los jugadores de la era dorada.\n\nMateriales que Cuentan una Historia:\nLana Broadcloth Auténtica: Tejida con la densidad y el peso originales.\n\nDetalles de Fidelidad Histórica:\nVisera de Satín Verde: Recupera el reverso clásico diseñado para mitigar el brillo solar, un sello de autenticidad visual.\nCorrea de Cuero Genuino: Un cierre robusto y tradicional que refuerza su herencia artesanal.\n\nEn conclusión: Es una pieza de diseño de autor. Combina la exclusividad de una tirada limitada de 2014 con la apariencia visual de una reliquia de 1945. Es, sencillamente, historia viva que puedes usar." },
+        { titulo: "El Santo Grial del Denim: El Chaleco AMF Harley-Davidson de los 70", meta: "22 Mar. 2026 — 4 min read", img: "Chaleco_AMF_Harley_70s.png", short: "Este chaleco de mezclilla AMF no es solo una prenda...", content: "En el mundo del coleccionismo vintage, hay piezas que hablan, y luego están las que rugen. Este chaleco representa un capítulo fascinante de la cultura biker, fabricado en un momento de transición donde el estilo se volvió más audaz y rebelde.\n\n¿Por qué es una pieza de culto?\n\nLa Era AMF: El Atractivo de lo Rebelde: Para los puristas, la etapa de American Machine and Foundry (1969-1981) es sagrada. Llevar este logo es portar el estandarte de la contracultura de los 70, la década donde el estilo 'Chopper' alcanzó su clímax.\n\nUn Origen Exclusivo: 'British Crown Colony of Hong Kong': Un detalle que dispara su valor es su etiqueta de origen. Antes de la producción masiva actual, Hong Kong, bajo soberanía británica, era el epicentro de la confección de alta calidad. Encontrar una pieza Harley con este origen colonial es una rareza geográfica que los expertos buscan con lupa.\n\nDetalles Técnicos y Estéticos:\nLacing Lateral: Cordones de cuero genuino que permitían ajustar la prenda sobre chaquetas gruesas o usarla sola, una solución funcional de la carretera.\n\nFidelidad de Materiales:\nDenim 100% Algodón: Un tejido pesado con un lavado natural que solo décadas de historia pueden lograr.\nRemaches y Ojales: Metalistería original en el pecho que aporta ese carácter rudo y protector.\n\nEn conclusión: Este chaleco es para el coleccionista que valora la procedencia por encima de todo. Es una pieza fabricada para una leyenda americana en su época más psicodélica. No es solo ropa; es un trozo de asfalto, sudor y libertad de 1970."}
     ];
 
     function cargarGrid(id, lista) {
@@ -283,7 +279,6 @@
             const fotos = p.fotos.map(f => `<img src="${f}" loading="lazy">`).join('');
             const nav = p.fotos.length > 1 ? `<button class="nav-btn prev-btn" onclick="moveCarousel(${p.id}, -1)">←</button><button class="nav-btn next-btn" onclick="moveCarousel(${p.id}, 1)">→</button>` : '';
             const detallePrincipal = p.talla || p.info || "";
-
             return `<div class="card ${p.disponible?'':'agotado-visual'}" style="animation-delay: ${index * 0.1}s">
                 <div class="badge ${p.disponible?'':'agotado'}">${p.disponible?'Disponible':'Agotado'}</div>
                 <div class="carousel-container"><div class="carousel-track" id="track-${p.id}">${fotos}</div>${nav}</div>
